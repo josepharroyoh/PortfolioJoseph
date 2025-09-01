@@ -29,7 +29,7 @@ export const HeroSection = () => {
         initial={false}
       >
         <motion.h1
-          className="text-4xl font-bold whitespace-nowrap"
+          className="text-4xl font-bold md:whitespace-nowrap"
           initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
           animate={{
             opacity: 1,
