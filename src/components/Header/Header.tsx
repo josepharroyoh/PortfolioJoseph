@@ -5,24 +5,23 @@ import { Menu, X, Sun, Moon, BookCheckIcon, ChevronDown, Check } from "lucide-re
 import { BorderBeam } from "../lightswind/border-beam";
 import { useTranslation } from "react-i18next";
 
-// 2. DEFINIMOS EL COMPONENTE PERSONALIZADO PARA EL IDIOMA AQUÍ MISMO
 const languages = [
   { code: "es", name: "Español", flag: "🇪🇸" },
   { code: "en", name: "English", flag: "🇬🇧" },
   { code: "pt", name: "Português", flag: "🇧🇷" },
 ];
 
-const LanguageSwitcher = () => {
+const LanguageSwitcher = ({ openDirection = "down" }: { openDirection?: "up" | "down" }) => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-
   const currentLang = languages.find(lang => lang.code === i18n.language) || languages[0];
-
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
     setIsOpen(false);
   };
-
+  const directionClasses = openDirection === 'up'
+    ? 'origin-bottom-right bottom-full mb-2'
+    : 'origin-top-right mt-2';
   return (
     <div className="relative inline-block text-left">
       <div>
@@ -36,9 +35,8 @@ const LanguageSwitcher = () => {
           <ChevronDown className="-mr-1 ml-2 h-5 w-5 text-gray-400" aria-hidden="true" />
         </button>
       </div>
-
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
+        <div className={`${directionClasses} absolute right-0 w-40 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none z-50`}>
           <div className="py-1">
             {languages.map((lang) => (
               <button
@@ -56,16 +54,12 @@ const LanguageSwitcher = () => {
     </div>
   );
 };
-
-// componente Header original empieza aquí
 type HeaderProps = {
   scrollToSection: (id: string) => void;
   onContactClick: () => void;
 };
-
 export default function Header({ scrollToSection, onContactClick }: HeaderProps) {
   const { t } = useTranslation();
-
   const navItems = [
     { name: t("nav.home"), href: "#hero" },
     { name: t("nav.about"), href: "#about" },
@@ -73,14 +67,12 @@ export default function Header({ scrollToSection, onContactClick }: HeaderProps)
     { name: t("nav.skills"), href: "#skills" },
     { name: t("nav.contact"), href: "#contact-modal" },
   ];
-
   const [theme, setTheme] = useState<string>(() => {
     return localStorage.getItem("theme") || "dark";
   });
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
@@ -89,7 +81,6 @@ export default function Header({ scrollToSection, onContactClick }: HeaderProps)
     }
     localStorage.setItem("theme", theme);
   }, [theme]);
-
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -100,15 +91,33 @@ export default function Header({ scrollToSection, onContactClick }: HeaderProps)
       }
       setLastScrollY(currentScrollY);
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  // ==================> ESTE ES EL CÓDIGO CORRECTO Y DEFINITIVO <==================
+  useEffect(() => {
+    const html = document.documentElement;
+    const body = document.body;
+
+    if (isMobileMenuOpen) {
+      html.classList.add('overflow-hidden');
+      body.classList.add('overflow-hidden');
+    } else {
+      html.classList.remove('overflow-hidden');
+      body.classList.remove('overflow-hidden');
+    }
+
+    return () => {
+      html.classList.remove('overflow-hidden');
+      body.classList.remove('overflow-hidden');
+    };
+  }, [isMobileMenuOpen]);
+  // ==============================================================================
+
   const menuVariants: Variants = { /* ... */ };
   const listVariants: Variants = { /* ... */ };
   const itemVariants: Variants = { /* ... */ };
-
   return (
     <AnimatePresence>
       {showHeader && (
@@ -132,7 +141,7 @@ export default function Header({ scrollToSection, onContactClick }: HeaderProps)
                 {navItems.map((item) => (
                   <motion.li key={item.name} className="relative group text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors">
                     <a onClick={() => { if (item.href === "#contact-modal") { onContactClick(); } else { scrollToSection(item.href); } }} className="cursor-pointer hover:text-[#06b6d4] dark:hover:text-[#06b6d4] inline-block transition-transform duration-300 ease-in-out hover:scale-110">{item.name}</a>
-                    <motion.span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-[#06b6d4] rounded-full" initial={{ width: 0, x: "-50%" }} whileHover={{ width: "100%" }} transition={{ duration: 0.3 }} />
+                    <motion.span className="absolute bottom-0 left-12 w-0 h-0.5 bg-[#06b6d4] rounded-full" initial={{ width: 0, x: "-50%" }} whileHover={{ width: "100%" }} transition={{ duration: 0.3 }} />
                   </motion.li>
                 ))}
               </ul>
@@ -144,12 +153,9 @@ export default function Header({ scrollToSection, onContactClick }: HeaderProps)
             </motion.button>
             <button onClick={() => setIsMobileMenuOpen(true)} className="md:hidden text-gray-800 dark:text-white"><Menu size={24} /></button>
           </div>
-          
-          {/* 3. REEMPLAZA EL ANTIGUO SELECT CON EL NUEVO COMPONENTE */}
           <div className="absolute right-2 top-1/2 -translate-y-1/2 hidden md:block">
             <LanguageSwitcher />
           </div>
-
           <AnimatePresence>
             {isMobileMenuOpen && (
               <motion.div
@@ -166,10 +172,8 @@ export default function Header({ scrollToSection, onContactClick }: HeaderProps)
                     </motion.li>
                   ))}
                 </motion.ul>
-                
-                {/* 4. REEMPLAZA TAMBIÉN EL SELECT DEL MENÚ MÓVIL */}
                 <div className="absolute bottom-10 ">
-                  <LanguageSwitcher />
+                  <LanguageSwitcher openDirection="up" />
                 </div>
               </motion.div>
             )}
