@@ -6,9 +6,9 @@ import { BorderBeam } from "../lightswind/border-beam";
 import { useTranslation } from "react-i18next";
 
 const languages = [
-  { code: "es", name: "Español", flag: "🇪🇸" },
-  { code: "en", name: "English", flag: "🇬🇧" },
-  { code: "pt", name: "Português", flag: "🇧🇷" },
+  { code: "es", name: "Español", flag: "src/assets/es-flag.png" },
+  { code: "en", name: "English", flag: "src/assets/gb-flag.png"  },
+  { code: "pt", name: "Português", flag: "src/assets/br-flag.png"  },
 ];
 
 const LanguageSwitcher = ({ openDirection = "down" }: { openDirection?: "up" | "down" }) => {
@@ -30,7 +30,7 @@ const LanguageSwitcher = ({ openDirection = "down" }: { openDirection?: "up" | "
           className="inline-flex items-center justify-center w-full rounded-full border border-gray-500 shadow-sm px-3 py-1 bg-black/70 dark:bg-gray-800 text-sm font-medium text-white hover:bg-black/80 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-pink-500"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <span className="mr-2">{currentLang.flag}</span>
+          <img src={currentLang.flag} alt={currentLang.name} className="mr-2 h-4 w-4" />
           {currentLang.code.toUpperCase()}
           <ChevronDown className="-mr-1 ml-2 h-5 w-5 text-gray-400" aria-hidden="true" />
         </button>
@@ -44,7 +44,10 @@ const LanguageSwitcher = ({ openDirection = "down" }: { openDirection?: "up" | "
                 onClick={() => changeLanguage(lang.code)}
                 className="text-gray-700 dark:text-gray-200 flex items-center justify-between px-4 py-2 text-sm w-full text-left hover:bg-gray-100 dark:hover:bg-gray-700"
               >
-                <span>{lang.flag} {lang.name}</span>
+                <span>
+                  <img src={lang.flag} alt={lang.name} className="mr-2 h-4 w-4 inline-block" />
+                  {lang.name}
+                </span>
                 {i18n.language === lang.code && <Check className="h-4 w-4 text-pink-500" />}
               </button>
             ))}
