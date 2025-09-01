@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "home": "Início",
+    "about": "Sobre Mim",
+    "education": "Educação",
+    "skills": "Habilidades",
+    "contact": "Contato"
+  },
+  "hero": {
+    "role": "Analista de Dados | Especializando-me em Cloud & Machine Learning (AWS)",
+    "badge1": "Líder de equipe",
+    "badge2": "Planejamento",
+    "badge3": "Pensamento Analítico",
+    "ctaButton": "Conheça minha trajetória"
+  },
+  "about": {
+    "title": "Sobre Mim",
+    "description": "Bacharel em Ciências Físicas, minha formação me expôs ao desafio de gerenciar bancos de dados em grande escala no <1>CIEASEST</1>, o que me deu uma base sólida em análise e automação. Para superar as limitações da infraestrutura local, agora me especializo em AWS para projetar e implantar pipelines de dados robustos na nuvem. Meu objetivo é claro: que essa infraestrutura alimente futuros modelos e agentes de IA para construir sistemas que atuem em tempo real em soluções inovadoras."
+  },
+  "education": {
+    "title": "Educação",
+    "degree": "Bacharelado em Física",
+    "summary": "Adquiriu bases sólidas em <1>programação</1>, <3>análise</3>, e <5>pesquisa</5>.",
+    "achievement1": "Vencedor do Prêmio de Pesquisa Científica UNICA 2023, Pesquisador de tese no projeto <1>Alerta precoce de tempestades de poeira</1>, financiado com USD 16.000",
+    "achievement2": "Voluntário no Grupo de Astronomia MUTSUNICA & Candidato estudantil para a assembleia universitária",
+    "achievement3": "Terço Superior, ocupando o 2º lugar da turma"
+  },
+  "skills": {
+    "title": "Habilidades",
+    "items": {
+      "python": "Python",
+      "sql": "SQL",
+      "aws": "AWS",
+      "powerbi": "Power BI",
+      "ml": "Aprendizado de Máquina",
+      "excel": "Excel",
+      "etl": "ETL",
+      "agents": "Agentes de IA",
+      "git": "Git",
+      "bash": "Bash"
+    }
+  }
+}

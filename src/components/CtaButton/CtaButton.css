@@ -1,0 +1,29 @@
+.cta-button-animated {
+  /* --- ESTILOS PARA MODO CLARO (POR DEFECTO) --- */
+  --slide-bg-color: #000;   /* El fondo que se desliza será NEGRO */
+  --hover-text-color: #FFF; /* El texto al pasar el mouse será BLANCO */
+
+  /* Lógica de la animación (usa las variables de arriba) */
+  background-image: linear-gradient(
+    90deg,
+    var(--slide-bg-color) 0%,
+    var(--slide-bg-color) 50%,
+    transparent 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  transition: background-position 0.6s ease-in-out, color 0.6s ease;
+}
+
+/* --- SOBREESCRIBE LAS VARIABLES CUANDO EL MODO OSCURO ESTÁ ACTIVO --- */
+.dark .cta-button-animated {
+  --slide-bg-color: #64FFDA; /* El fondo que se desliza será TURQUESA */
+  --hover-text-color: #000;   /* El texto al pasar el mouse será NEGRO */
+}
+
+/* El efecto hover ahora usa las variables, por lo que funciona para ambos temas */
+.cta-button-animated:hover {
+  background-position: 0 0;
+  color: var(--hover-text-color);
+}

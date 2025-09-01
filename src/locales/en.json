@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Me",
+    "education": "Education",
+    "skills": "Skills",
+    "contact": "Contact"
+  },
+  "hero": {
+    "role": "Data Analyst | Specializing in Cloud & Machine Learning (AWS)",
+    "badge1": "Team Leader",
+    "badge2": "Planning",
+    "badge3": "Analytical Thinking",
+    "ctaButton": "Learn about my career"
+  },
+  "about": {
+    "title": "About Me",
+    "description": "With a Bachelor's degree in Physical Sciences, my training exposed me to the challenge of managing large-scale databases at <1>CIEASEST</1>, which gave me a solid foundation in analysis and automation. To overcome the limitations of local infrastructure, I now specialize in AWS to design and deploy robust data pipelines in the cloud. My goal is clear: for this infrastructure to feed future AI models and agents to build systems that act in real-time on innovative solutions."
+  },
+  "education": {
+    "title": "Education",
+    "degree": "Bachelor of Science in Physics",
+    "summary": "Acquired a solid foundation in <1>programming</1>, <3>analysis</3>, and <5>research</5>.",
+    "achievement1": "Winner of the UNICA 2023 Scientific Research Award, Thesis researcher for the <1>Early Warning System for Dust Storms</1> project, funded with USD 16,000",
+    "achievement2": "Volunteer at the MUTSUNICA Astronomy Group & Student candidate for the university assembly",
+    "achievement3": "Top Third of the class, ranking 2nd in the graduating class"
+  },
+  "skills": {
+    "title": "Skills",
+    "items": {
+      "python": "Python",
+      "sql": "SQL",
+      "aws": "AWS",
+      "powerbi": "Power BI",
+      "ml": "Machine Learning",
+      "excel": "Excel",
+      "etl": "ETL",
+      "agents": "AI Agents",
+      "git": "Git",
+      "bash": "Bash"
+    }
+  }
+}
