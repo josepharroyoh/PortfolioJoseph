@@ -6,9 +6,9 @@ import { BorderBeam } from "../lightswind/border-beam";
 import { useTranslation } from "react-i18next";
 
 const languages = [
-  { code: "es", name: "Español", flag: "public/images/es-flag.png" },
-  { code: "en", name: "English", flag: "public/images/gb-flag.png"  },
-  { code: "pt", name: "Português", flag: "public/images/br-flag.png"  },
+  { code: "es", name: "Español", flag: "/images/es-flag.png" },
+  { code: "en", name: "English", flag: "/images/gb-flag.png"  },
+  { code: "pt", name: "Português", flag: "/images/br-flag.png"  },
 ];
 
 const LanguageSwitcher = ({ openDirection = "down" }: { openDirection?: "up" | "down" }) => {
