@@ -6,11 +6,10 @@ type CtaButtonProps = {
   as?: 'a' | 'button';
   children: React.ReactNode;
   isSubmitting?: boolean;
-  isSuccess?: boolean; // 1. SE AÑADE LA NUEVA PROP 'isSuccess'
   [key: string]: any;
 };
 
-const CtaButtonform = ({ as, children, isSubmitting, isSuccess, ...props }: CtaButtonProps) => { // 2. SE OBTIENE LA PROP
+const CtaButtonform = ({ as, children, isSubmitting, ...props }: CtaButtonProps) => {
   const Component = as || 'button';
 
   return (
@@ -28,9 +27,6 @@ const CtaButtonform = ({ as, children, isSubmitting, isSuccess, ...props }: CtaB
         disabled:opacity-50 disabled:cursor-not-allowed
         /* La clase se añade solo si el formulario se está enviando */
         ${isSubmitting ? 'submitting' : ''}
-        
-        /* 3. SE APLICA LA CLASE .success SI EL ENVÍO FUE EXITOSO */
-        ${isSuccess ? 'success' : ''}
       `}
     >
       {children}
