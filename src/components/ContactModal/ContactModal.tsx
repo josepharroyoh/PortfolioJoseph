@@ -94,7 +94,6 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   as="button"
                   type="submit"
                   disabled={state.submitting || state.succeeded}
-                  // --- ESTE ES EL ÚNICO CAMBIO ---
                   isSubmitting={state.submitting}
                 >
                   Enviar Mensaje
