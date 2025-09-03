@@ -37,6 +37,10 @@
   font-family: "Geist Sans", sans-serif !important;
 }
 
+body.loading-active {
+  overflow: hidden;
+}
+
 /* src/index.css or src/app.css */
 #particle-bg {
     position: fixed;

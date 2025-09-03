@@ -12,6 +12,18 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   const [logs, setLogs] = useState<string[]>([]);
   const [divergenceReadout, setDivergenceReadout] = useState("?.??????");
 
+  // --- INICIO DEL BLOQUE AÑADIDO PARA BLOQUEAR SCROLL ---
+  useEffect(() => {
+    // Añade la clase al body para deshabilitar el scroll
+    document.body.classList.add('loading-active');
+
+    // Función de limpieza que se ejecuta cuando el componente se desmonta
+    return () => {
+      document.body.classList.remove('loading-active');
+    };
+  }, []); // El array vacío asegura que solo se ejecute una vez al montar/desmontar
+  // --- FIN DEL BLOQUE AÑADIDO ---
+
   useEffect(() => {
     // --- Lógica de la barra de progreso ---
     const totalDuration = 3500;
@@ -32,33 +44,13 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     // --- Lógica de mensajes y logs ---
     const messageSequence = [
       { delay: 100, update: () => setStatusMessage("Establishing secure connection...") },
-      { delay: 100, update: () => setLogs(prev => {
-        const newLogs = [...prev, "[OK] Divergence field detected"];
-        if (newLogs.length > 4) return newLogs.slice(1);
-        return newLogs;
-      }) },
+      { delay: 100, update: () => setLogs(prev => [...prev, "[OK] Divergence field detected"].slice(-4)) },
       { delay: 150, update: () => setStatusMessage("Loading user interface...") },
-      { delay: 100, update: () => setLogs(prev => {
-        const newLogs = [...prev, "[SYS] Reading Steiner sync..."];
-        if (newLogs.length > 4) return newLogs.slice(1);
-        return newLogs;
-      }) },
+      { delay: 100, update: () => setLogs(prev => [...prev, "[SYS] Reading Steiner sync..."].slice(-4)) },
       { delay: 150, update: () => setStatusMessage("Finalizing...") },
-      { delay: 100, update: () => setLogs(prev => {
-        const newLogs = [...prev, "[WARN] Time-leap machine unstable"];
-        if (newLogs.length > 4) return newLogs.slice(1);
-        return newLogs;
-      }) },
-      { delay: 100, update: () => setLogs(prev => {
-        const newLogs = [...prev, "[OK] Worldline data loaded"];
-        if (newLogs.length > 4) return newLogs.slice(1);
-        return newLogs;
-      }) },
-      { delay: 150, update: () => setLogs(prev => {
-        const newLogs = [...prev, "[SYS] Entropy stabilized"];
-        if (newLogs.length > 4) return newLogs.slice(1);
-        return newLogs;
-      }) },
+      { delay: 100, update: () => setLogs(prev => [...prev, "[WARN] Time-leap machine unstable"].slice(-4)) },
+      { delay: 100, update: () => setLogs(prev => [...prev, "[OK] Worldline data loaded"].slice(-4)) },
+      { delay: 150, update: () => setLogs(prev => [...prev, "[SYS] Entropy stabilized"].slice(-4)) },
       { delay: 100, update: () => setStatusMessage("Welcome.") },
     ];
 
@@ -70,27 +62,32 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
 
     // --- Lógica de animación del medidor y partículas ---
     const flickerInterval = setInterval(() => {
-      if (progress < 100) {
-        let randomDivergence = Math.random() * 2;
-        const paddedValue = (randomDivergence * 1000000).toFixed(0).padStart(7, '0');
-        setDivergenceReadout(`${paddedValue.slice(0, 1)}.${paddedValue.slice(1)}`);
-      } else {
-        clearInterval(flickerInterval);
-        setDivergenceReadout("1.048596");
-      }
+        if (document.hidden) return;
+        setProgress(currentProgress => {
+            if (currentProgress < 100) {
+                let randomDivergence = Math.random() * 2;
+                const paddedValue = (randomDivergence * 1000000).toFixed(0).padStart(7, '0');
+                setDivergenceReadout(`${paddedValue.slice(0, 1)}.${paddedValue.slice(1)}`);
+            } else {
+                clearInterval(flickerInterval);
+                setDivergenceReadout("1.048596");
+            }
+            return currentProgress;
+        });
     }, 60);
 
     const particleContainer = document.querySelector(".particles");
     if (particleContainer) {
-      const particleCount = 40;
-      for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement("span");
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.top = `${Math.random() * 100}%`;
-        particle.style.animationDuration = `${Math.random() * 8 + 5}s`;
-        particle.style.animationDelay = `${Math.random() * -15}s`;
-        particleContainer.appendChild(particle);
-      }
+        particleContainer.innerHTML = '';
+        const particleCount = 40;
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement("span");
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            particle.style.animationDuration = `${Math.random() * 8 + 5}s`;
+            particle.style.animationDelay = `${Math.random() * -15}s`;
+            particleContainer.appendChild(particle);
+        }
     }
 
     return () => {
