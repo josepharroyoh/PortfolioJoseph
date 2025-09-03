@@ -16,7 +16,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   useEffect(() => {
     if (state.succeeded) {
-      formRef.current?.reset(); 
+      formRef.current?.reset();
       const timer = setTimeout(() => {
         onClose();
       }, 1400);
@@ -30,7 +30,6 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     }
   }, [isOpen, state.succeeded, reset]);
 
-  // Este useEffect se encarga de cerrar el modal al presionar la tecla 'Escape'
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -45,7 +44,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen, onClose]); 
+  }, [isOpen, onClose]);
 
   return (
     <AnimatePresence>
@@ -95,6 +94,8 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   as="button"
                   type="submit"
                   disabled={state.submitting || state.succeeded}
+                  // --- ESTE ES EL ÚNICO CAMBIO ---
+                  isSubmitting={state.submitting}
                 >
                   Enviar Mensaje
                 </CtaButtonform>
