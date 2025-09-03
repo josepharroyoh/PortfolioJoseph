@@ -164,4 +164,22 @@
     left: 10px;
     font-size: 0.6rem;
   }
+
+  /* --- ADICIONES PARA MEJORAR RESPONSIVE --- */
+
+  /* Reduce el tamaño de la etiqueta del medidor para que coincida con el valor */
+  .widget-label {
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+  }
+
+  /* Evita que los logs se extiendan demasiado en pantallas estrechas */
+  .terminal-logs {
+    max-width: 45%;
+  }
+
+  /* Reduce un poco el espacio vertical para compactar la vista en móviles */
+  .progress-wrapper, .status-text, .completion-quote {
+    margin-top: 0.75rem;
+  }
 }
