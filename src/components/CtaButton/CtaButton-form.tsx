@@ -1,26 +1,26 @@
 import './CtaButton-form.css';
-
+import React from 'react'; // Añadido para claridad
 
 type CtaButtonProps = {
-  as?: 'a' | 'button'; 
+  as?: 'a' | 'button';
   children: React.ReactNode;
-  [key: string]: any; 
+  isSubmitting?: boolean; // 1. AÑADIMOS UNA NUEVA PROP PARA EL ESTADO DE ENVÍO
+  [key: string]: any;
 };
 
-const CtaButton = ({ as, children, ...props }: CtaButtonProps) => {
-  const Component = as || 'a'; 
+const CtaButton = ({ as, children, isSubmitting, ...props }: CtaButtonProps) => { // 2. OBTENEMOS LA NUEVA PROP
+  const Component = as || 'a';
 
   return (
     <Component
-      // Pasamos todas las propiedades adicionales (href, type, disabled, etc.) al componente
-      {...props} 
+      {...props}
       className={`
         /* --- Clase para nuestra animación custom --- */
         cta-button-animated
 
         /* --- Estilos de texto (SENSIBLE AL TEMA) --- */
         font-semibold no-underline
-      dark:text-[#64FFDA]
+        dark:text-[#64FFDA]
 
         /* --- Bordes y fondo (SENSIBLE AL TEMA) --- */
         bg-transparent rounded-[7px]
@@ -37,6 +37,9 @@ const CtaButton = ({ as, children, ...props }: CtaButtonProps) => {
         
         /* --- Estilos para estado deshabilitado (para el formulario) --- */
         disabled:opacity-50 disabled:cursor-not-allowed
+
+        /* --- 3. AÑADIMOS LA CLASE .submitting CUANDO isSubmitting ES TRUE --- */
+        ${isSubmitting ? 'submitting' : ''}
       `}
     >
       {children}

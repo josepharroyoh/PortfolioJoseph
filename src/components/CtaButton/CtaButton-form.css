@@ -1,6 +1,6 @@
 .cta-button-animated {
-  --slide-bg-color: #000;   
-  --hover-text-color: #FFF; 
+  --slide-bg-color: #000;
+  --hover-text-color: #FFF;
 
   /* Lógica de la animación */
   background-image: linear-gradient(
@@ -18,11 +18,13 @@
 /* --- SOBREESCRIBE LAS VARIABLES CUANDO EL MODO OSCURO ESTÁ ACTIVO --- */
 .dark .cta-button-animated {
   --slide-bg-color: #64FFDA;
-  --hover-text-color: #000;   
+  --hover-text-color: #000;
 }
 
-/* El efecto hover ahora usa las variables, por lo que funciona para ambos temas */
-.cta-button-animated:hover {
+/* --- CAMBIO PARA MÓVILES --- */
+/* El efecto ahora se activa con HOVER (para PC) O con la clase .submitting (para móvil) */
+.cta-button-animated:hover,
+.cta-button-animated.submitting {
   background-position: 0 0;
   color: var(--hover-text-color);
 }
