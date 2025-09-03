@@ -39,5 +39,180 @@
       "git": "Git",
       "bash": "Bash"
     }
+  },
+  "cv": {
+    "nav": {
+      "summary": "Resumo",
+      "experience": "Experiência",
+      "education": "Educação",
+      "publications": "Publicações",
+      "congresses": "Congressos",
+      "awards": "Prêmios",
+      "volunteering": "Voluntariado"
+    },
+    "summary": {
+      "title": "Resumo Profissional",
+      "description": "Sou Bacharel em Ciências Físicas com conhecimentos em desenvolvimento web, análise de dados, automação, coleta, preparação e armazenamento de dados. Aspiro aprofundar no design de sistemas inteligentes, no processamento de dados em grande escala, a fim de contribuir tanto para o desenvolvimento acadêmico quanto para aplicações de impacto na sociedade."
+    },
+    "experience": {
+      "title": "Experiência Profissional",
+      "job1": {
+        "title": "Supervisor e assistente técnico",
+        "company": "Instituto Geofísico do Peru (IGP) - CIEASEST, Ica",
+        "date": "Março, 2023 - Julho, 2024",
+        "desc1": "Realizei relatórios mensais em Excel sobre as incidências na estação HF, Radar Biestático e Magnetômetro Magdas, utilizados para o planejamento e melhoria contínua.",
+        "achievementsTitle": "Conquistas:",
+        "achievementsDesc1": "Supervisionei o funcionamento dos equipamentos geofísicos, coordenei manutenções e relatei incidentes críticos, o que permitiu manter uma operacionalidade superior a 95% e reduzir os tempos de resposta em 20%."
+      },
+      "job2": {
+        "title": "Estagiário pré-profissional no laboratório de física",
+        "company": "Instituição Educativa San Luis Gonzaga",
+        "date": "Maio, 2023 - Julho, 2023",
+        "desc1": "Responsável pela manutenção, reparo e calibração de equipamentos de laboratório, garantindo seu correto funcionamento nas práticas acadêmicas. Gerenciei a aquisição de peças de reposição e componentes, realizei restaurações por meio de soldagem e substituição de peças, e apliquei manutenção preventiva para prolongar a vida útil do equipamento. Organizei o armazenamento e a classificação do material, otimizando a identificação e o uso eficiente dos recursos por parte de estudantes e professores."
+      }
+    },
+    "publications": {
+      "title": "Publicações e Projetos Acadêmicos",
+      "item1": {
+        "title": "\"Primeiros resultados da variação do gradiente de potencial em uma estação tropical na América do Sul (Ica, Peru).\"",
+        "journal": "Journal of Atmospheric and Solar Terrestrial Physics, 2024",
+        "authors": "Romero, R., Tacza, J., Arroyo, J., Prieto, F., Macotela, L., Buleje, Y., Loayza, R., Femandez, U., & Raulin, J.-P."
+      },
+      "item2": {
+        "title": "NASA Space Apps Challenge 2025 - De EarthData à Ação: Computação em Nuvem com Dados de Observação da Terra para Prever Céus Mais Limpos e Seguros",
+        "date": "Agendado: 4-5 de Outubro, 2025",
+        "authors": "Rubén M. Romero, Joseph P. Arroyo",
+        "description": "Participação no hackathon global da NASA. O projeto envolve o desenvolvimento de um aplicativo web para prever a qualidade do ar combinando dados de satélite em tempo real (TEMPO) com medições de qualidade do ar em solo e dados meteorológicos."
+      },
+      "item3": {
+        "title": "Análise da qualidade do ar para alerta precoce de tempestades de poeira através do monitoramento climático em Ica - 2023 (em andamento)",
+        "status": "Em andamento",
+        "authors": "Loayza R., Romero R., Buleje Y., Arroyo J., Euribe C.",
+        "description": "Tese de graduação - Projeto vencedor do Concurso de Pesquisa Científica UNICA 2023, financiado com aprox. USD 16.000. Foram aplicadas análise de dados, Python, SQL, Power BI e máquina virtual para o monitoramento climático e alerta precoce de tempestades de poeira, resultando na plataforma aireica.com."
+      }
+    },
+    "congresses": {
+      "title": "Congressos e Conferências",
+      "item1": {
+        "title": "XIII Congresso Internacional de Tecnologia e Inovação + Ciência e Pesquisa (CITICI)",
+        "location": "Conferência Virtual-Bogotá, Colômbia (Agendado: 3-5 de Setembro, 2025)",
+        "topic": " Plataforma de Monitoramento Atmosférico e Sistema de Alerta Precoce para Tempestades de Poeira em Ica, Peru."
+      },
+      "item2": {
+        "title": "Encontro Científico Internacional | ECI 2023 (Peru)",
+        "date": "Agosto 2023",
+        "topic": "Apresentação Oral (Coautor): Análise de Efeitos Locais e Globais na Variação do Campo Elétrico Atmosférico em Ica - Peru."
+      },
+      "item3": {
+        "title": "Encontro Científico Internacional | ECI 2023 (Peru)",
+        "date": "Agosto 2023",
+        "topic": "Apresentação Oral (Coautor): Catálogo de Fenômenos Solares Observados pelo Telescópio Monitor de Erupções Solares."
+      }
+    },
+    "volunteering": {
+      "title": "Voluntariado",
+      "item1": {
+        "title": "NoCountry.Tech - Simulação de trabalho tecnológico",
+        "role": "Voluntário (2025)",
+        "description": "Participei como Líder de Equipe, onde demonstrei habilidades de liderança, responsabilidade e trabalho em equipe liderando equipes de desenvolvimento em um ambiente profissional simulado."
+      },
+      "item2": {
+        "title": "Movimento Universitário Unidos pela Democracia e Pesquisa \"Pelo Bem Comum\" - UDI",
+        "role": "Voluntário (2022)",
+        "description": "Candidato estudantil no processo eleitoral para a Assembleia Universitária, UNICA."
+      },
+      "item3": {
+        "title": "Hult Prize 2021-Campus Universidade Nacional San Luis Gonzaga",
+        "role": "Voluntário (2021)",
+        "description": "Fiz parte da equipe Songo no desafio Hult Prize, onde desenvolvemos um biscoito inovador à base de abóbora para abordar questões do sistema alimentar."
+      },
+      "item4": {
+        "title": "Grupo Astronômico MUTSUNICA - CIEASEST, UNICA",
+        "role": "Voluntário (2018-2022)",
+        "description": "Apoiei na organização de eventos de astronomia, facilitando o acesso público a observações telescópicas com o Nishimura e FMT no CIEASEST para promover diversas atividades de divulgação científica."
+      }
+    },
+    "contact": {
+      "title": "Contato",
+      "email": "E-mail"
+    },
+    "education": {
+      "title": "Educação e Formação",
+      "degree": "Bacharelado em Física",
+      "university": "Universidade Nacional San Luis Gonzaga (UNICA) - Ica, Peru",
+      "degreeDate": "Abril, 2018 - Agosto, 2023",
+      "coursesTitle": "Cursos",
+      "course1": {
+        "title": "Programa Amazon Web Services (AWS) re/Start",
+        "institution": "Bootcamp Institute, México",
+        "date": "Agosto - Novembro, 2025"
+      },
+      "course2": {
+        "title": "Programa de iniciação em competências digitais",
+        "institution": "IMMUNE Technology Institute, Espanha",
+        "date": "Julho - Setembro, 2025"
+      },
+      "course3": {
+        "title": "IT Training Lab N° 04 - Data Analyst",
+        "institution": "Igrowker, Espanha",
+        "date": "Novembro - Dezembro, 2024"
+      },
+      "course4": {
+        "title": "Bootcamp de Análise de Dados",
+        "institution": "Le Wagon Latam",
+        "date": "Julho - Outubro, 2024"
+      },
+      "course5": {
+        "title": "Programa: Analista de Dados com Python - Datacamp",
+        "institution": "Universitários pelos ODS, Bolívia",
+        "date": "Fevereiro – Maio, 2024"
+      },
+      "course6": {
+        "title": "Curso: Programa Especializado em Ciência de Dados com Python",
+        "institution": "Data Analítica",
+        "date": "Janeiro - Março, 2024"
+      },
+      "course7": {
+        "title": "Curso: Desenvolvedor Backend com Java",
+        "institution": "Oracle Next Education",
+        "date": "Dezembro, 2022 - Maio, 2023"
+      },
+      "course8": {
+        "title": "Grupo de Estudo: Escola de Computação Quântica",
+        "institution": "Universidade Nacional Maior de São Marcos - Lima, Peru",
+        "date": "Outubro, 2022"
+      }
+    },
+    "awards": {
+      "title": "Prêmios e Reconhecimentos",
+      "item1": {
+        "title": "Amazon Web Services (AWS)",
+        "description": "Bolsa integral para o Programa AWS re/Start – treinamento de 12 semanas em computação em nuvem em colaboração com o Bootcamp Institute."
+      },
+      "item2": {
+        "title": "Secretaria-Geral Ibero-Americana, SENAJU, OIJ & AECID",
+        "description": "Bolsa integral para o Programa Ibero-Americano de Competências Digitais para Jovens – Edição 2025."
+      },
+      "item3": {
+        "title": "Programa Nacional de Desenvolvimento Tecnológico e Inovação (ProInnovate)",
+        "description": "Bolsa integral para o Bootcamp de Análise de Dados financiado com aprox. USD 5.000 no Le Wagon, 2024."
+      },
+      "item4": {
+        "title": "Prêmio ao Projeto de Pesquisa Científica UNICA 2023",
+        "description": "Tese de graduação no projeto vencedor sobre alerta precoce de tempestades de poeira; projeto financiado com aprox. USD 16.000."
+      },
+      "item5": {
+        "title": "Instituição Educativa República da Bolívia, Lima, 2016.",
+        "description": "Primeiro lugar no Concurso de Projetos Produtivos e Empreendedores, 5º ano do Ensino Médio, 2016."
+      }
+    },
+    "skills": {
+      "title": "Habilidades Técnicas",
+      "programming": "Linguagens de Programação",
+      "dataScience": "Software de Ciência de Dados",
+      "dbAdmin": "Administração de Bancos de Dados",
+      "ides": "IDE para ciência de dados",
+      "writing": "Escrita científica"
+    }
   }
 }

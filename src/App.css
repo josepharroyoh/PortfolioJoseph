@@ -52,3 +52,7 @@ body {
     position: relative;
     /* otras propiedades del body */
 }
+
+.cv-section {
+  scroll-margin-top: 155px; /* O la altura exacta de tu header */
+}

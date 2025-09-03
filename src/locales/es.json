@@ -8,9 +8,9 @@
   },
   "hero": {
     "role": "Analista de Datos | Especializándome en Cloud & Machine Learning (AWS)",
-    "badge1": "Lider de equipo",
+    "badge1": "Líder de equipo",
     "badge2": "Planificación",
-    "badge3": "Pensamiento Analitico",
+    "badge3": "Pensamiento Analítico",
     "ctaButton": "Conoce mi trayectoria"
   },
   "about": {
@@ -38,6 +38,181 @@
       "agents": "Agentes IA",
       "git": "Git",
       "bash": "Bash"
+    }
+  },
+  "cv": {
+    "nav": {
+      "summary": "Resumen",
+      "experience": "Experiencia",
+      "education": "Educación",
+      "publications": "Publicaciones",
+      "congresses": "Congresos",
+      "awards": "Premios",
+      "volunteering": "Voluntariados"
+    },
+    "summary": {
+      "title": "Resumen Profesional",
+      "description": "Soy Bachiller en Ciencias Físicas con conocimientos en desarrollo web, análisis de datos, automatización, recopilación, preparación y almacenamiento de datos. Aspiro a profundizar en el diseño de sistemas inteligentes, el procesamiento de datos a gran escala, con el fin de contribuir tanto al desarrollo académico como a aplicaciones de impacto en la sociedad."
+    },
+    "experience": {
+      "title": "Experiencia Profesional",
+      "job1": {
+        "title": "Supervisor y asistente técnico",
+        "company": "Instituto Geofísico del Perú (IGP) - CIEASEST, Ica",
+        "date": "Marzo, 2023 - Julio, 2024",
+        "desc1": "Realicé reporte mensual en Excel sobre las incidencias en la estación HF, Radar Biestático y Magnetómetro Magdas, utilizados para la planificación y mejora continua.",
+        "achievementsTitle": "Logros:",
+        "achievementsDesc1": "Supervisé el funcionamiento de los equipos geofísicos, coordiné mantenimientos y reporté incidencias críticas, lo que permitió mantener una operatividad superior al 95% y reducir tiempos de respuesta en un 20%."
+      },
+      "job2": {
+        "title": "Practicante preprofesional en el laboratorio de física",
+        "company": "Institución Educativa San Luis Gonzaga",
+        "date": "Mayo, 2023 - Julio, 2023",
+        "desc1": "Responsable del mantenimiento, reparación y calibración de equipos de laboratorio, asegurando su correcto funcionamiento en las prácticas académicas. Gestioné la adquisición de repuestos y componentes, realicé restauraciones mediante soldadura y sustitución de piezas, y apliqué mantenimiento preventivo para prolongar la vida útil del equipo. Organicé el almacenamiento y clasificación del material, optimizando la identificación y el uso eficiente de los recursos por parte de los estudiantes y docentes."
+      }
+    },
+    "publications": {
+      "title": "Publicaciones y Proyectos Académicos",
+      "item1": {
+        "title": "\"Primeros resultados de la variación del gradiente de potencial en una estación tropical en América del Sur (Ica, Perú).\"",
+        "journal": "Journal of Atmospheric and Solar Terrestrial Physics, 2024",
+        "authors": "Romero, R., Tacza, J., Arroyo, J., Prieto, F., Macotela, L., Buleje, Y., Loayza, R., Femandez, U., & Raulin, J.-P."
+      },
+      "item2": {
+        "title": "NASA Space Apps Challenge 2025 - De EarthData a la Acción: Computación en la Nube con Datos de Observación Terrestre para Predecir Cielos Más Limpios y Seguros",
+        "date": "Programado: 4-5 de Octubre, 2025",
+        "authors": "Rubén M. Romero, Joseph P. Arroyo",
+        "description": "Participación en el hackathon global de la NASA. El proyecto implica el desarrollo de una aplicación web para pronosticar la calidad del aire combinando datos satelitales en tiempo real (TEMPO) con mediciones de calidad del aire en tierra y datos meteorológicos."
+      },
+      "item3": {
+        "title": "Análisis de la calidad del aire para la alerta temprana de tormentas de polvo mediante monitoreo climático en Ica - 2023 (en proceso)",
+        "status": "En proceso",
+        "authors": "Loayza R., Romero R., Buleje Y., Arroyo J., Euribe C.",
+        "description": "Tesista-Proyecto ganador del Concurso de Investigación Científica UNICA 2023, financiado con aprox. USD 16,000. Se aplicó análisis de datos, Python, SQL, Power BI y máquina virtual para el monitoreo climático y alerta temprana de tormentas de polvo, resultando en la plataforma aireica.com."
+      }
+    },
+    "congresses": {
+      "title": "Congresos y Conferencias",
+      "item1": {
+        "title": "XIII Congreso Internacional de Tecnología e Innovación + Ciencia e Investigación (CITICI)",
+        "location": "Conferencia Virtual-Bogotá, Colombia (Programado: 3-5 de Septiembre, 2025)",
+        "topic": " Plataforma de Monitoreo Atmosférico y Sistema de Alerta Temprana para Tormentas de Polvo en Ica, Perú."
+      },
+      "item2": {
+        "title": "Encuentro Científico Internacional | ECI 2023 (Perú)",
+        "date": "Agosto 2023",
+        "topic": "Presentación Oral (Coautor): Análisis de Efectos Locales y Globales en la Variación del Campo Eléctrico Atmosférico en Ica - Perú."
+      },
+      "item3": {
+        "title": "Encuentro Científico Internacional | ECI 2023 (Perú)",
+        "date": "Agosto 2023",
+        "topic": "Presentación Oral (Coautor): Catálogo de Fenómenos Solares Observados por el Telescopio Monitor de Fulguraciones."
+      }
+    },
+    "volunteering": {
+      "title": "Voluntariado",
+      "item1": {
+        "title": "NoCountry.Tech - Simulación laboral tecnológica",
+        "role": "Voluntario (2025)",
+        "description": "Participé como Líder de Equipo, donde demostré habilidades de liderazgo, responsabilidad y trabajo en equipo liderando equipos de desarrollo en un entorno profesional simulado."
+      },
+      "item2": {
+        "title": "Movimiento Universitario Unidos por la Democracia e Investigación \"Por el Bien Común\" - UDI",
+        "role": "Voluntario (2022)",
+        "description": "Candidato estudiantil en el proceso electoral para la Asamblea Universitaria, UNICA."
+      },
+      "item3": {
+        "title": "Hult Prize 2021-Campus Universidad Nacional San Luis Gonzaga",
+        "role": "Voluntario (2021)",
+        "description": "Formé parte del equipo Songo en el desafío Hult Prize, donde desarrollamos una galleta innovadora a base de calabaza para abordar problemas del sistema alimentario."
+      },
+      "item4": {
+        "title": "Grupo Astronómico MUTSUNICA - CIEASEST, UNICA",
+        "role": "Voluntario (2018-2022)",
+        "description": "Apoyé en la organización de eventos de astronomía, facilitando el acceso público a observaciones telescópicas con el Nishimura y FMT en CIEASEST para promover diversas actividades de divulgación científica."
+      }
+    },
+    "contact": {
+      "title": "Contacto",
+      "email": "Correo Electrónico"
+    },
+    "education": {
+      "title": "Educación y Formación",
+      "degree": "Bachiller en Física",
+      "university": "Universidad Nacional San Luis Gonzaga (UNICA) - Ica, Perú",
+      "degreeDate": "Abril, 2018 - Agosto, 2023",
+      "coursesTitle": "Cursos",
+      "course1": {
+        "title": "Programa Amazon Web Services (AWS) re/Start",
+        "institution": "Bootcamp Institute, México",
+        "date": "Agosto - Noviembre, 2025"
+      },
+      "course2": {
+        "title": "Programa de iniciación en competencias digitales",
+        "institution": "IMMUNE Technology Institute, España",
+        "date": "Julio - Septiembre, 2025"
+      },
+      "course3": {
+        "title": "IT Training Lab N° 04 - Data Analyst",
+        "institution": "Igrowker, España",
+        "date": "Noviembre - Diciembre, 2024"
+      },
+      "course4": {
+        "title": "Bootcamp de Análisis de Datos",
+        "institution": "Le Wagon Latam",
+        "date": "Julio - Octubre, 2024"
+      },
+      "course5": {
+        "title": "Programa: Analista de Datos con Python - Datacamp",
+        "institution": "Universitarios por los ODS, Bolivia",
+        "date": "Febrero – Mayo, 2024"
+      },
+      "course6": {
+        "title": "Curso: Programa Especializado en Ciencia de Datos con Python",
+        "institution": "Data Analítica",
+        "date": "Enero - Marzo, 2024"
+      },
+      "course7": {
+        "title": "Curso: Desarrollador Backend con Java",
+        "institution": "Oracle Next Education",
+        "date": "Diciembre, 2022 - Mayo, 2023"
+      },
+      "course8": {
+        "title": "Grupo de Estudio: Escuela de Computación Cuántica",
+        "institution": "Universidad Nacional Mayor de San Marcos - Lima, Perú",
+        "date": "Octubre, 2022"
+      }
+    },
+    "awards": {
+      "title": "Premios y Reconocimientos",
+      "item1": {
+        "title": "Amazon Web Services (AWS)",
+        "description": "Beca completa para el Programa AWS re/Start – formación de 12 semanas en computación en la nube en colaboración con Bootcamp Institute."
+      },
+      "item2": {
+        "title": "Secretaría General Iberoamericana, SENAJU, OIJ & AECID",
+        "description": "Beca completa para el Programa Iberoamericano de Competencias Digitales para Jóvenes – Edición 2025."
+      },
+      "item3": {
+        "title": "Programa Nacional de Desarrollo Tecnológico e Innovación (ProInnovate)",
+        "description": "Beca completa para el Bootcamp de Análisis de Datos financiado con aprox. USD 5,000 en Le Wagon, 2024."
+      },
+      "item4": {
+        "title": "Premio al Proyecto de Investigación Científica UNICA 2023",
+        "description": "Tesista en el proyecto ganador sobre alerta temprana de tormentas de polvo; proyecto financiado con aprox. USD 16,000."
+      },
+      "item5": {
+        "title": "Institución Educativa República de Bolivia, Lima, 2016.",
+        "description": "Primer lugar en el Concurso de Proyectos Productivos y Emprendedores, 5º año de Secundaria, 2016."
+      }
+    },
+    "skills": {
+      "title": "Habilidades Técnicas",
+      "programming": "Lenguajes de Programación",
+      "dataScience": "Software de Ciencia de Datos",
+      "dbAdmin": "Administración de Bases de Datos",
+      "ides": "IDE para ciencia de datos",
+      "writing": "Redacción científica"
     }
   }
 }
