@@ -1,94 +1,83 @@
 import './CtaButton.css';
-// --- INICIO DE CAMBIOS ---
+// --- INICIO DE ADICIONES ---
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-// --- FIN DE CAMBIOS ---
+// --- FIN DE ADICIONES ---
 
 type CtaButtonProps = {
-  as?: 'a' | 'button'; 
+  as?: 'a' | 'button';
   children: React.ReactNode;
-  href?: string; // Hacemos href opcional
-  [key: string]: any; 
+  href?: string;
+  [key: string]: any;
 };
 
-const CtaButton = ({ as, children, href, ...props }: CtaButtonProps) => {
-  // --- LÓGICA AÑADIDA PARA CONTROLAR LA NAVEGACIÓN EN MÓVIL ---
+const CtaButton = ({ as, children, ...props }: CtaButtonProps) => {
+  const Component = as || 'a';
+
+  // --- LÓGICA AÑADIDA PARA SOLUCIONAR EL PROBLEMA EN MÓVIL ---
   const navigate = useNavigate();
-  const [isNavigating, setIsNavigating] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // 1. Manejador de clic que activa la animación y navega con retraso
-  const handleNavigateClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    // Prevenimos cualquier comportamiento por defecto si es necesario
-    e.preventDefault();
-    
-    setIsNavigating(true); // Activa el estado de carga (y la clase .loading en el CSS)
-
-    // Esperamos 600ms para que la animación se complete antes de navegar
-    setTimeout(() => {
-      if (href) {
-        navigate(href);
-      }
-    }, 600); // Esta duración debe coincidir con la de tu transición en CSS
-  };
-
-  // 2. useEffect para arreglar el problema del botón "atrás" en el navegador (bfcache)
   useEffect(() => {
     const handlePageShow = (event: PageTransitionEvent) => {
       if (event.persisted) {
-        // Si la página se restaura desde la caché, reiniciamos el estado del botón
-        setIsNavigating(false);
+        setIsLoading(false);
       }
     };
-
     window.addEventListener('pageshow', handlePageShow);
-    
     return () => {
       window.removeEventListener('pageshow', handlePageShow);
     };
   }, []);
+
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+    if (props.href) {
+      e.preventDefault();
+      setIsLoading(true);
+      setTimeout(() => {
+        navigate(props.href as string);
+      }, 600); // Duración de tu animación CSS
+    }
+    if (props.onClick) {
+      props.onClick(e);
+    }
+  };
   // --- FIN DE LA LÓGICA AÑADIDA ---
 
-
-  // Si el botón es un enlace simple (no el de navegación principal), usamos una etiqueta 'a'
-  if (as === 'a') {
-    return (
-      <a
-        href={href}
-        {...props}
-        className={`
-          cta-button-animated
-          font-semibold no-underline text-black dark:text-[#64FFDA]
-          bg-transparent rounded-[7px] border border-black dark:border-[#64FFDA]
-          inline-block py-[14px] px-[30px]
-          relative overflow-hidden z-10 transition-transform duration-300
-          hover:-translate-y-[3px] hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(0,173,81,0.7)]
-          disabled:opacity-50 disabled:cursor-not-allowed
-        `}
-      >
-        {children}
-      </a>
-    );
-  }
-
-  // Este es el botón principal que ahora tiene la lógica de navegación controlada
   return (
-    <button
+    <Component
       {...props}
-      onClick={handleNavigateClick}
-      disabled={isNavigating}
+      onClick={handleClick} // Se añade el manejador de clic
       className={`
+        /* --- Clase para nuestra animación custom --- */
         cta-button-animated
-        font-semibold no-underline text-black dark:text-[#64FFDA]
-        bg-transparent rounded-[7px] border border-black dark:border-[#64FFDA]
+
+        /* --- Estilos de texto (SENSIBLE AL TEMA) --- */
+        font-semibold no-underline
+        text-black dark:text-[#64FFDA]
+
+        /* --- Bordes y fondo (SENSIBLE AL TEMA) --- */
+        bg-transparent rounded-[7px]
+        border border-black! dark:border-[#64FFDA]!
+
+        /* --- Layout y tamaño (Tailwind) --- */
         inline-block py-[14px] px-[30px]
+
+        /* --- Posicionamiento y transiciones --- */
         relative overflow-hidden z-10 transition-transform duration-300
-        hover:-translate-y-[3px] hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(0,173,81,0.7)]
+        
+        /* --- Efectos de Hover --- */
+        hover:-translate-y-[3px] hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(0,173,181,0.7)]
+        
+        /* --- Estilos para estado deshabilitado (para el formulario) --- */
         disabled:opacity-50 disabled:cursor-not-allowed
-        ${isNavigating ? 'loading' : ''} // Añadimos la clase .loading cuando está navegando
+        
+        /* --- CAMBIO AQUÍ: Se añade la clase de carga condicional --- */
+        ${isLoading ? 'loading' : ''}
       `}
     >
       {children}
-    </button>
+    </Component>
   );
 };
 
