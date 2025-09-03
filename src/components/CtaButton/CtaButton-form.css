@@ -21,10 +21,20 @@
   --hover-text-color: #000;
 }
 
-/* --- CAMBIO PARA MÓVILES --- */
 /* El efecto ahora se activa con HOVER (para PC) O con la clase .submitting (para móvil) */
 .cta-button-animated:hover,
 .cta-button-animated.submitting {
   background-position: 0 0;
   color: var(--hover-text-color);
+}
+
+/* --- INICIO DE LA ADICIÓN --- */
+/* Estilo para el estado de "éxito" después de enviar el formulario */
+.cta-button-animated.success {
+  background-color: #64FFDA; /* El color verde vibrante que quieres */
+  color: #000; /* Texto en negro para que sea legible */
+  border-color: #64FFDA; /* Borde del mismo color */
+  background-position: 0 0; /* Asegura que el fondo esté lleno */
+  opacity: 1; /* Asegura que no se vea opaco si está deshabilitado */
+  cursor: default;
 }
