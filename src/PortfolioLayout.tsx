@@ -5,19 +5,15 @@ import ParticleBackground from "./components/ParticleBackground/ParticleBackgrou
 import Header from "./components/Header/Header";
 import { HeroSection } from "./components/HeroSection/HeroSection";
 import { AboutSection } from "./components/AboutSection/AboutSection";
-import { EducationSection } from "./components/EducationSection/EducationSection";
-import { SkillsSection } from "./components/SkillsSection/SkillsSection";
 import ReactLenis from "lenis/react";
 import Dock from "./components/lightswind/dock";
-import { Home, User, GraduationCap, Code, Briefcase } from "lucide-react";
+import { Home, User, Briefcase } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ContactModal } from "./components/ContactModal/ContactModal";
 import { useTranslation } from "react-i18next";
 import React from "react";
-// --- INICIO DE LA CORRECCIÓN ---
 import Carousel3D from "./components/Carousel3D";
 import type { Carousel3DItem } from "./components/Carousel3D";
-// --- FIN DE LA CORRECCIÓN ---
 
 type DockItem = {
   icon: React.ReactNode;
@@ -25,7 +21,6 @@ type DockItem = {
   onClick: () => void;
 };
 
-// --- DATOS DE EJEMPLO PARA EL CARRUSEL ---
 const projectItems: Carousel3DItem[] = [
   {
     id: 1,
@@ -58,6 +53,7 @@ const projectItems: Carousel3DItem[] = [
 
 export function PortfolioLayout() {
   const { t } = useTranslation();
+
   const [isLoading, setIsLoading] = useState(() => {
     const justNavigatedInternally = sessionStorage.getItem('justNavigatedInternally') === 'true';
     if (justNavigatedInternally) {
@@ -106,10 +102,12 @@ export function PortfolioLayout() {
 
   const scrollToSection = (rawId: string) => {
     const cleanId = rawId.startsWith("#") ? rawId.slice(1) : rawId;
+
     if (cleanId === "hero" || cleanId === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
+
     const element = document.getElementById(cleanId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -120,8 +118,6 @@ export function PortfolioLayout() {
     { icon: <Home size={24} />, label: t("nav.home"), onClick: () => scrollToSection("home") },
     { icon: <User size={24} />, label: t("nav.about"), onClick: () => scrollToSection("about") },
     { icon: <Briefcase size={24} />, label: "Proyectos", onClick: () => scrollToSection("projects") },
-    { icon: <GraduationCap size={24} />, label: t("nav.education"), onClick: () => scrollToSection("education") },
-    { icon: <Code size={24} />, label: t("nav.skills"), onClick: () => scrollToSection("skills") }
   ];
 
   return (
@@ -143,24 +139,20 @@ export function PortfolioLayout() {
         animate={{ opacity: isLoading ? 0 : 1 }}
         transition={{ duration: 0.8, delay: isLoading ? 0.8 : 0 }}
       >
-        <div className="bg-transparent min-h-screen">
+        <div className="bg-transparent">
           <ParticleBackground />
           <ReactLenis root>
             <Header
               scrollToSection={scrollToSection}
               onContactClick={handleOpenContactModal}
             />
-            <main className="w-full bg-transparent max-w-5xl mx-auto px-4 flex flex-col items-center justify-center">
+            <main className="w-full max-w-5xl mx-auto px-4">
               <div className="z-10 w-full">
                 <div id="home"><HeroSection /></div>
                 <div id="about"><AboutSection /></div>
-                
                 <div id="projects">
                   <Carousel3D items={projectItems} />
                 </div>
-
-                <div id="education"><EducationSection /></div>
-                <div id="skills"><SkillsSection /></div>
               </div>
             </main>
             <AnimatePresence>

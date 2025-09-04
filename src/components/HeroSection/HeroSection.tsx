@@ -15,7 +15,7 @@ export const HeroSection = () => {
   return (
     <motion.div
       id="hero"
-      className="text-foreground flex flex-col md:flex-row md:items-center justify-center pt-14 pb-20 max-w-6xl mx-auto w-full"
+      className="min-h-screen text-foreground flex flex-col md:flex-row md:items-center justify-center pt-14 pb-20 max-w-6xl mx-auto w-full"
       initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
