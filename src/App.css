@@ -38,8 +38,10 @@
 }
 
 body.loading-active {
-  overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
+
 
 /* src/index.css or src/app.css */
 #particle-bg {
