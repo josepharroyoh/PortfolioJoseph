@@ -62,7 +62,7 @@ body {
 }
 
 @media (max-width: 768px) {
-  .typing-container-mobile-fix span:last-child::after {
+  .typing-container-mobile-fix span:last-child {
     display: none !important;
   }
 }
