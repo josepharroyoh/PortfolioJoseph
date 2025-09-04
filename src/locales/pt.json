@@ -41,6 +41,10 @@
     }
   },
   "cv": {
+    "header": {
+      "field1": "Campo elétrico atmosférico",
+      "field2": "Análise de Dados"
+    },
     "nav": {
       "summary": "Resumo",
       "experience": "Experiência",
@@ -51,7 +55,7 @@
       "volunteering": "Voluntariado"
     },
     "summary": {
-      "title": "Resumo Profissional",
+      "title": "Resumo",
       "description": "Sou Bacharel em Ciências Físicas com conhecimentos em desenvolvimento web, análise de dados, automação, coleta, preparação e armazenamento de dados. Aspiro aprofundar no design de sistemas inteligentes, no processamento de dados em grande escala, a fim de contribuir tanto para o desenvolvimento acadêmico quanto para aplicações de impacto na sociedade."
     },
     "experience": {
@@ -74,7 +78,7 @@
     "publications": {
       "title": "Publicações e Projetos Acadêmicos",
       "item1": {
-        "title": "\"Primeiros resultados da variação do gradiente de potencial em uma estação tropical na América do Sul (Ica, Peru).\"",
+        "title": "Primeiros resultados da variação do gradiente de potencial em uma estação tropical na América do Sul (Ica, Peru).",
         "journal": "Journal of Atmospheric and Solar Terrestrial Physics, 2024",
         "authors": "Romero, R., Tacza, J., Arroyo, J., Prieto, F., Macotela, L., Buleje, Y., Loayza, R., Femandez, U., & Raulin, J.-P."
       },
@@ -164,7 +168,7 @@
       },
       "course5": {
         "title": "Programa: Analista de Dados com Python - Datacamp",
-        "institution": "Universitários pelos ODS, Bolívia",
+        "institution": "Universitarios por los ODS, Bolívia",
         "date": "Fevereiro – Maio, 2024"
       },
       "course6": {
@@ -179,7 +183,7 @@
       },
       "course8": {
         "title": "Grupo de Estudo: Escola de Computação Quântica",
-        "institution": "Universidade Nacional Maior de São Marcos - Lima, Peru",
+        "institution": "Universidad Nacional Mayor de San Marcos - Lima, Peru",
         "date": "Outubro, 2022"
       }
     },

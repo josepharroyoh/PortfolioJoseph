@@ -41,6 +41,10 @@
     }
   },
   "cv": {
+    "header": {
+      "field1": "Campo eléctrico atmosférico",
+      "field2": "Análisis de datos"
+    },
     "nav": {
       "summary": "Resumen",
       "experience": "Experiencia",
@@ -51,7 +55,7 @@
       "volunteering": "Voluntariados"
     },
     "summary": {
-      "title": "Resumen Profesional",
+      "title": "Resumen",
       "description": "Soy Bachiller en Ciencias Físicas con conocimientos en desarrollo web, análisis de datos, automatización, recopilación, preparación y almacenamiento de datos. Aspiro a profundizar en el diseño de sistemas inteligentes, el procesamiento de datos a gran escala, con el fin de contribuir tanto al desarrollo académico como a aplicaciones de impacto en la sociedad."
     },
     "experience": {
@@ -74,7 +78,7 @@
     "publications": {
       "title": "Publicaciones y Proyectos Académicos",
       "item1": {
-        "title": "\"Primeros resultados de la variación del gradiente de potencial en una estación tropical en América del Sur (Ica, Perú).\"",
+        "title": "Primeros resultados de la variación del gradiente de potencial en una estación tropical en América del Sur (Ica, Perú).",
         "journal": "Journal of Atmospheric and Solar Terrestrial Physics, 2024",
         "authors": "Romero, R., Tacza, J., Arroyo, J., Prieto, F., Macotela, L., Buleje, Y., Loayza, R., Femandez, U., & Raulin, J.-P."
       },

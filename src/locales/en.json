@@ -41,6 +41,10 @@
     }
   },
   "cv": {
+    "header": {
+      "field1": "Atmospheric electric field",
+      "field2": "Data Analytics"
+    },
     "nav": {
       "summary": "Summary",
       "experience": "Experience",
@@ -51,7 +55,7 @@
       "volunteering": "Volunteering"
     },
     "summary": {
-      "title": "Professional Summary",
+      "title": "Summary",
       "description": "I am a graduate in Physical Sciences with knowledge in web development, data analysis, automation, data collection, preparation, and storage. I aspire to delve deeper into the design of intelligent systems and large-scale data processing to contribute to both academic development and high-impact societal applications."
     },
     "experience": {
@@ -74,7 +78,7 @@
     "publications": {
       "title": "Academic Publications & Projects",
       "item1": {
-        "title": "\"First results of the potential gradient variation in a tropical station in South America (Ica, Peru).\"",
+        "title": "First results of the potential gradient variation in a tropical station in South America (Ica, Peru).",
         "journal": "Journal of Atmospheric and Solar Terrestrial Physics, 2024",
         "authors": "Romero, R., Tacza, J., Arroyo, J., Prieto, F., Macotela, L., Buleje, Y., Loayza, R., Femandez, U., & Raulin, J.-P."
       },
@@ -164,7 +168,7 @@
       },
       "course5": {
         "title": "Program: Data Analyst with Python - Datacamp",
-        "institution": "Universities for the SDGs, Bolivia",
+        "institution": "Universitarios por los ODS, Bolivia",
         "date": "February – May, 2024"
       },
       "course6": {
@@ -179,7 +183,7 @@
       },
       "course8": {
         "title": "Study Group: School of Quantum Computing",
-        "institution": "National University of San Marcos - Lima, Peru",
+        "institution": "Universidad Nacional Mayor de San Marcos - Lima, Peru",
         "date": "October, 2022"
       }
     },

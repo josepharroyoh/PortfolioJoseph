@@ -22,7 +22,8 @@ const languages = [
 ];
 
 export const Header: React.FC<HeaderProps> = ({ theme, setTheme, navItems, scrollToSection, setIsOpen, isOpen, setIsSidebarOpen }) => {
-  const { i18n } = useTranslation();
+  // --- ESTA ES LA ÚNICA LÍNEA CORREGIDA ---
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
 
   const currentLang = languages.find(lang => lang.code === i18n.language) || languages[0];
@@ -50,8 +51,8 @@ export const Header: React.FC<HeaderProps> = ({ theme, setTheme, navItems, scrol
               <div className="flex flex-col">
                 <h1 className="text-sm font-bold text-gray-800 dark:text-white">Joseph Pascual</h1>
                 <h1 className="text-sm font-bold text-gray-800 dark:text-white">Arroyo Hernandez</h1>
-                <p className="text-xs text-gray-600 dark:text-gray-400">• Campo eléctrico atmosférico</p>
-                <p className="text-xs text-gray-600 dark:text-gray-400">• Data Analytics</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">• {t("cv.header.field1")}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">• {t("cv.header.field2")}</p>
               </div>
             </div>
             {/* Contenido principal del encabezado (solo PC), oculto en móvil */}
@@ -60,8 +61,8 @@ export const Header: React.FC<HeaderProps> = ({ theme, setTheme, navItems, scrol
               <div className="flex flex-col">
                 <h1 className="text-3xl font-bold text-gray-800 dark:text-white">Joseph Pascual</h1>
                 <h1 className="text-3xl font-bold text-gray-800 dark:text-white">Arroyo Hernandez</h1>
-                <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">• Campo eléctrico atmosférico</p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">• Data Analytics</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">• {t("cv.header.field1")}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">• {t("cv.header.field2")}</p>
               </div>
             </div>
           </div>
@@ -74,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({ theme, setTheme, navItems, scrol
                 </a>
               ))}
             </div>
-             {/* Botón de menú para móviles, visible solo en responsive */}
+              {/* Botón de menú para móviles, visible solo en responsive */}
             <button
               onClick={() => setIsSidebarOpen(true)}
               className="p-1 rounded-full text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors md:hidden"

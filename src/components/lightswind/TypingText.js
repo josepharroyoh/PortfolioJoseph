@@ -1,101 +1,42 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react";
+import { jsx as _jsx } from "react/jsx-runtime";
+import { motion } from "framer-motion";
+import React, { useEffect, useState, } from "react";
 import { cn } from "../lib/utils";
-// --- 1. IMPORTAMOS EL HOOK PARA DETECTAR MÓVILES ---
-import { useMediaQuery } from "../../hooks/useMediaQuery";
-
-export const TypingText = ({
-  children,
-  as: Component = "div",
-  className = "",
-  delay = 0,
-  duration = 2,
-  fontSize = "text-4xl",
-  fontWeight = "font-bold",
-  color = "text-white",
-  letterSpacing = "tracking-wide",
-  align = "left",
-  loop = false,
-}) => {
-  const [textContent, setTextContent] = useState("");
-  const [displayed, setDisplayed] = useState("");
-  const [index, setIndex] = useState(0);
-  const [deleting, setDeleting] = useState(false);
-  const isInitialMount = useRef(true);
-
-  // --- 2. USAMOS EL HOOK PARA SABER SI ESTAMOS EN MÓVIL ---
-  const isMobile = useMediaQuery('(max-width: 768px)');
-
-  // Extract plain text from children
-  useEffect(() => {
-    const extractText = (node) => {
-      if (typeof node === "string" || typeof node === "number") {
-        return node.toString();
-      }
-      if (Array.isArray(node)) {
-        return node.map(extractText).join("");
-      }
-      if (
-        React.isValidElement(node) &&
-        typeof node.props.children !== "undefined"
-      ) {
-        return extractText(node.props.children);
-      }
-      return "";
+export const TypingText = ({ children, as: Component = "div", className = "", delay = 0, duration = 2, fontSize = "text-4xl", fontWeight = "font-bold", color = "text-white", letterSpacing = "tracking-wide", align = "left", loop = false, }) => {
+    const [textContent, setTextContent] = useState("");
+    useEffect(() => {
+        const extractText = (node) => {
+            if (typeof node === "string" || typeof node === "number") {
+                return node.toString();
+            }
+            if (Array.isArray(node)) {
+                return node.map(extractText).join("");
+            }
+            if (React.isValidElement(node) &&
+                typeof node.props.children !== "undefined") {
+                return extractText(node.props.children);
+            }
+            return "";
+        };
+        setTextContent(extractText(children));
+    }, [children]);
+    const characters = textContent.split("").map((char) => char === " " ? "\u00A0" : char);
+    const characterVariants = {
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: (i) => ({
+            opacity: 1,
+            scale: 1,
+            transition: {
+                delay: delay + i * (duration / characters.length),
+                duration: 0.3,
+                ease: "easeInOut",
+            },
+        }),
     };
-    setTextContent(extractText(children));
-  }, [children]);
-
-  // Typing logic with a loop
-  useEffect(() => {
-    if (!textContent) return;
-
-    const typingSpeed = 150;
-    const deletingSpeed = 10;
-
-    let currentDelay = isInitialMount.current ? delay * 1000 : 0;
-    isInitialMount.current = false;
-
-    const timeout = setTimeout(() => {
-      if (!deleting && index < textContent.length) {
-        setDisplayed((prev) => prev + textContent.charAt(index));
-        setIndex(index + 1);
-      } else if (deleting && index > 0) {
-        setDisplayed((prev) => prev.slice(0, 0));
-        setIndex(index - 1);
-      } else if (!deleting && index === textContent.length) {
-        if (loop) {
-          setTimeout(() => setDeleting(true), 900);
-        }
-      } else if (deleting && index === 0) {
-        setDeleting(false);
-      }
-    }, (deleting ? deletingSpeed : typingSpeed) + currentDelay);
-
-    return () => clearTimeout(timeout);
-  }, [index, deleting, textContent, loop, delay]);
-
-  // Render the component
-  return React.createElement(
-    Component,
-    {
-      className: cn(
-        "inline-flex",
-        className,
-        fontSize,
-        fontWeight,
-        color,
-        letterSpacing,
-        align === "center"
-          ? "justify-center text-center"
-          : align === "right"
-          ? "justify-end text-right"
-          : "justify-start text-left"
-      ),
-    },
-    React.createElement("span", null, displayed),
-    // --- 3. AÑADIMOS LA CONDICIÓN: RENDERIZA EL CURSOR SOLO SI NO ES MÓVIL ---
-    !isMobile && index < textContent.length &&
-      React.createElement("span", { className: "animate-pulse" }, "|")
-  );
+    return (_jsx(Component, { className: cn("inline-flex", className, fontSize, fontWeight, color, letterSpacing, align === "center"
+            ? "justify-center text-center"
+            : align === "right"
+                ? "justify-end text-right"
+                : "justify-start text-left"), children: _jsx(motion.span, { className: "inline-block", initial: "hidden", animate: "visible", "aria-label": textContent, role: "text", children: characters.map((char, index) => (_jsx(motion.span, { className: "inline-block", variants: characterVariants, custom: index, initial: "hidden", animate: "visible", children: char }, `${char}-${index}`))) }) }));
 };
