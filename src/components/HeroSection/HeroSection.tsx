@@ -6,9 +6,11 @@ import { TypingText } from "../lightswind/TypingText";
 // @ts-ignore
 import { ShinyText } from "../lightswind/shiny-text";
 import CtaButton from '../CtaButton/CtaButton';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
 
 export const HeroSection = () => {
   const { t } = useTranslation();
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <motion.div
@@ -38,21 +40,21 @@ export const HeroSection = () => {
             transition: { duration: 0.8, ease: "easeOut" },
           }}
         >
-          <div className="typing-container-mobile-fix">
-            <TypingText
-              as="span"
-              duration={2}
-              delay={0.1}
-              fontSize="text-5xl"
-              fontWeight="font-bold"
-              color="text-foreground"
-              letterSpacing="tracking-tight"
-              align="left"
-              loop={true}
-            >
-              Joseph Arroyo Hernandez
-            </TypingText>
-          </div>
+          <TypingText
+            as="span"
+            duration={2}
+            delay={0.1}
+            fontSize="text-5xl"
+            fontWeight="font-bold"
+            color="text-foreground"
+            letterSpacing="tracking-tight"
+            // --- ESTE ES EL ÚNICO CAMBIO ---
+            align={isMobile ? 'center' : 'left'} // Centrado en móvil, a la izquierda en escritorio
+            loop={true}
+            showCursor={!isMobile}
+          >
+            Joseph Arroyo Hernandez
+          </TypingText>
 
           <motion.span
             className="text-sm text-pink-500 font-semibold block"
