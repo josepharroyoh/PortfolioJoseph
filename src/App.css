@@ -7,7 +7,7 @@
   --font-sans: var(--font-geist-sans);
 }
 
-@import "./src/components/lightswind.css";
+@import "./components/lightswind.css";
 
 
 
