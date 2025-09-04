@@ -38,19 +38,21 @@ export const HeroSection = () => {
             transition: { duration: 0.8, ease: "easeOut" },
           }}
         >
-          <TypingText
-            as="span"
-            duration={2}
-            delay={0.1}
-            fontSize="text-5xl"
-            fontWeight="font-bold"
-            color="text-foreground"
-            letterSpacing="tracking-tight"
-            align="left"
-            loop={true}
-          >
-            Joseph Arroyo Hernandez
-          </TypingText>
+          <div className="typing-container-mobile-fix">
+            <TypingText
+              as="span"
+              duration={2}
+              delay={0.1}
+              fontSize="text-5xl"
+              fontWeight="font-bold"
+              color="text-foreground"
+              letterSpacing="tracking-tight"
+              align="left"
+              loop={true}
+            >
+              Joseph Arroyo Hernandez
+            </TypingText>
+          </div>
 
           <motion.span
             className="text-sm text-pink-500 font-semibold block"

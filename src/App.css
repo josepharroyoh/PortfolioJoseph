@@ -60,3 +60,9 @@ body {
 .cv-section {
   scroll-margin-top: 155px; /* O la altura exacta de tu header */
 }
+
+@media (max-width: 768px) {
+  .typing-container-mobile-fix span:last-child::after {
+    display: none !important;
+  }
+}
