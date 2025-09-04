@@ -79,7 +79,7 @@ export const Header: React.FC<HeaderProps> = ({ theme, setTheme, navItems, scrol
               onClick={() => setIsSidebarOpen(true)}
               className="p-1 rounded-full text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors md:hidden"
             >
-              <Menu size={20} className="text-gray-800 dark:text-white" />
+              <Menu size={34} className="text-gray-800 dark:text-white" />
             </button>
           </div>
         </div>

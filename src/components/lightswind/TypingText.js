@@ -1,6 +1,8 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
 import { cn } from "../lib/utils";
+// --- 1. IMPORTAMOS EL HOOK PARA DETECTAR MÓVILES ---
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export const TypingText = ({
   children,
@@ -19,9 +21,10 @@ export const TypingText = ({
   const [displayed, setDisplayed] = useState("");
   const [index, setIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
-
-  // Use useRef to handle if it is the initial render
   const isInitialMount = useRef(true);
+
+  // --- 2. USAMOS EL HOOK PARA SABER SI ESTAMOS EN MÓVIL ---
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   // Extract plain text from children
   useEffect(() => {
@@ -50,26 +53,21 @@ export const TypingText = ({
     const typingSpeed = 150;
     const deletingSpeed = 10;
 
-    // Initial delay only on the first render
     let currentDelay = isInitialMount.current ? delay * 1000 : 0;
     isInitialMount.current = false;
 
     const timeout = setTimeout(() => {
       if (!deleting && index < textContent.length) {
-        // Typing
         setDisplayed((prev) => prev + textContent.charAt(index));
         setIndex(index + 1);
       } else if (deleting && index > 0) {
-        // Deleting
         setDisplayed((prev) => prev.slice(0, 0));
         setIndex(index - 1);
       } else if (!deleting && index === textContent.length) {
-        // Wait before deleting
         if (loop) {
           setTimeout(() => setDeleting(true), 900);
         }
       } else if (deleting && index === 0) {
-        // Restart typing
         setDeleting(false);
       }
     }, (deleting ? deletingSpeed : typingSpeed) + currentDelay);
@@ -96,8 +94,8 @@ export const TypingText = ({
       ),
     },
     React.createElement("span", null, displayed),
-    // Conditionally render the cursor
-    index < textContent.length &&
+    // --- 3. AÑADIMOS LA CONDICIÓN: RENDERIZA EL CURSOR SOLO SI NO ES MÓVIL ---
+    !isMobile && index < textContent.length &&
       React.createElement("span", { className: "animate-pulse" }, "|")
   );
 };

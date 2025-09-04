@@ -41,22 +41,30 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({
     <AnimatePresence>
       {isSidebarOpen && (
         <motion.div
-          initial={{ x: "100%" }} // <-- CAMBIO AQUÍ
+          initial={{ x: "100%" }}
           animate={{ x: 0 }}
-          exit={{ x: "100%" }} // <-- CAMBIO AQUÍ
+          exit={{ x: "100%" }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-y-0 right-0 w-64 bg-white dark:bg-gray-900 shadow-2xl z-50 p-6 flex flex-col" // <-- CAMBIO AQUÍ
+          className="fixed inset-y-0 right-0 w-64 bg-white dark:bg-gray-900 shadow-2xl z-50 p-6 flex flex-col"
         >
           {/* Encabezado de la barra lateral */}
           <div className="flex items-center justify-between mb-8">
-            {/* Botón de cerrar a la izquierda */}
+            
+            {/* --- INICIO DEL CAMBIO --- */}
+            
+            {/* 1. Título ahora a la izquierda */}
+            <h2 className="text-xl font-bold text-gray-800 dark:text-white">Menú</h2>
+            
+            {/* 2. Botón de cerrar ahora a la derecha */}
             <button
               onClick={() => setIsSidebarOpen(false)}
               className="p-1 rounded-full text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
             >
               <X size={24} className="text-gray-800 dark:text-white" />
             </button>
-            <h2 className="text-xl font-bold text-gray-800 dark:text-white">Menú</h2>
+            
+            {/* --- FIN DEL CAMBIO --- */}
+
           </div>
 
           {/* Botones de utilidades (tema y idioma) */}
