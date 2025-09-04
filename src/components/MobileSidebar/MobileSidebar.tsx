@@ -78,7 +78,7 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({
               aria-label="Cambiar tema"
             >
               <AnimatePresence mode="wait" initial={false}>
-                {theme === "dark" ? (<motion.div key="moon" initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 20, opacity: 0 }} transition={{ duration: 0.2 }}><Moon size={20} className="text-gray-800 dark:text-white" /></motion.div>) : (<motion.div key="sun" initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -20, opacity: 0 }} transition={{ duration: 0.2 }}><Sun size={20} className="text-gray-800 dark:text-white" /></motion.div>)}
+                {theme === "dark" ? (<motion.div key="moon" initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 20, opacity: 0 }} transition={{ duration: 0.2 }}><Moon size={25} className="text-gray-800 dark:text-white" /></motion.div>) : (<motion.div key="sun" initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: -20, opacity: 0 }} transition={{ duration: 0.2 }}><Sun size={25} className="text-gray-800 dark:text-white" /></motion.div>)}
               </AnimatePresence>
             </motion.button>
 
