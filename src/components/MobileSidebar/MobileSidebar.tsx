@@ -60,7 +60,7 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({
               onClick={() => setIsSidebarOpen(false)}
               className="p-1 rounded-full text-sm font-semibold hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
             >
-              <X size={24} className="text-gray-800 dark:text-white" />
+              <X size={32} className="text-gray-800 dark:text-white" />
             </button>
             
             {/* --- FIN DEL CAMBIO --- */}
