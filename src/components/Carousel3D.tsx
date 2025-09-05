@@ -5,7 +5,6 @@ import React, { useRef, useEffect, useState } from "react";
 import type { TouchEvent } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { useMediaQuery } from '../hooks/useMediaQuery';
-import { Link } from "react-router-dom";
 
 export interface Carousel3DItem {
   id: string | number;

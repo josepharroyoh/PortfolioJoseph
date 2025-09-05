@@ -58,7 +58,7 @@ export const HeroSection = () => {
         }}
       >
         <a
-          href="https://github.com/TU_USUARIO"
+          href="https://github.com/josepharroyoh"
           target="_blank"
           rel="noopener noreferrer"
           className="text-foreground transition duration-500 ease-in-out transform hover:scale-125 hover:text-cyan-400 hover:drop-shadow-[0_0_12px_rgba(6,182,212,0.8)]"
@@ -66,7 +66,7 @@ export const HeroSection = () => {
           <Github size={34} />
         </a>
         <a
-          href="https://www.linkedin.com/in/TU_USUARIO/"
+          href="https://www.linkedin.com/in/arroyohernandezjoseph/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-foreground transition duration-500 ease-in-out transform hover:scale-125 hover:text-cyan-400 hover:drop-shadow-[0_0_12px_rgba(6,182,212,0.8)]"
@@ -164,7 +164,7 @@ export const HeroSection = () => {
           {/* Íconos solo en PC */}
           <div className="hidden md:flex gap-x-6 ml-6">
             <a
-              href="https://github.com/TU_USUARIO"
+              href="https://github.com/josepharroyoh"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground transition duration-500 ease-in-out transform hover:scale-125 hover:text-cyan-400 hover:drop-shadow-[0_0_12px_rgba(6,182,212,0.8)]"
@@ -172,7 +172,7 @@ export const HeroSection = () => {
               <Github size={34} />
             </a>
             <a
-              href="https://www.linkedin.com/in/TU_USUARIO/"
+              href="https://www.linkedin.com/in/arroyohernandezjoseph/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground transition duration-500 ease-in-out transform hover:scale-125 hover:text-cyan-400 hover:drop-shadow-[0_0_12px_rgba(6,182,212,0.8)]"
