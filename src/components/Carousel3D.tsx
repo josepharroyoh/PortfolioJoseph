@@ -181,15 +181,17 @@ const Carousel3D: React.FC<Carousel3DProps> = ({ items, autoRotate = true, rotat
                             </span>
                           ))}
                         </div>
-                        <Link
-                          to={item.link}
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           onMouseEnter={() => setHoveredItemId(item.id)}
                           onMouseLeave={() => setHoveredItemId(null)}
                           className="text-gray-400 hover:text-white transition-colors text-sm inline-flex items-center"
                         >
                           Más información
                           <ArrowRight className={`ml-2 w-4 h-4 transition-transform ${hoveredItemId === item.id ? 'translate-x-1' : ''}`} />
-                        </Link>
+                        </a>
                         <span
                           className={`absolute bottom-0 left-0 h-px bg-gray-400/60 transition-all duration-500 ease-out ${hoveredItemId === item.id ? 'w-full' : 'w-0'}`}
                         ></span>

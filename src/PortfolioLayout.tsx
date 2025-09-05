@@ -38,7 +38,7 @@ const projectItems: Carousel3DItem[] = [
     description: 'Desarrollo de mi portafolio personal interactivo utilizando React, TypeScript y Tailwind CSS, con un diseño moderno y animaciones fluidas.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     imageUrl: '',
-    link: '#'
+    link: ''
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ const projectItems: Carousel3DItem[] = [
     description: 'Análisis de un conjunto de datos de un e-commerce para identificar patrones de compra y optimizar estrategias de marketing.',
     tags: ['Python', 'Pandas', 'Matplotlib', 'SQL'],
     imageUrl: '',
-    link: '#'
+    link: ''
   }
 ];
 
