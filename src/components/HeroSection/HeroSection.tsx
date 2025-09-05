@@ -66,7 +66,7 @@ export const HeroSection = () => {
           <Github size={34} />
         </a>
         <a
-          href="https://www.linkedin.com/in/arroyohernandezjoseph/"
+          href="https://www.linkedin.com/in/josepharroyohernandez/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-foreground transition duration-500 ease-in-out transform hover:scale-125 hover:text-cyan-400 hover:drop-shadow-[0_0_12px_rgba(6,182,212,0.8)]"
@@ -172,7 +172,7 @@ export const HeroSection = () => {
               <Github size={34} />
             </a>
             <a
-              href="https://www.linkedin.com/in/arroyohernandezjoseph/"
+              href="https://www.linkedin.com/in/josepharroyohernandez/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground transition duration-500 ease-in-out transform hover:scale-125 hover:text-cyan-400 hover:drop-shadow-[0_0_12px_rgba(6,182,212,0.8)]"
