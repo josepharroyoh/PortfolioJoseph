@@ -1,20 +1,13 @@
-// src/App.tsx
+import { Navigate, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage";
 
-import { Routes, Route } from "react-router-dom";
-import  {PortfolioLayout}  from "../src/PortfolioLayout";
-import  CVPage  from "./pages/CVPage";
-import "./App.css";
-
-function App() {
+export default function App() {
   return (
     <Routes>
-      {/* Cuando la URL es "/", muestra la página principal del portafolio */}
-      <Route path="/" element={<PortfolioLayout />} />
-      
-      {/* Cuando la URL es "/cv", muestra la nueva página del CV */}
-      <Route path="/cv" element={<CVPage />} />
+      <Route path="/" element={<HomePage />} />
+      {/* The old /cv page now lives inside the home page. */}
+      <Route path="/cv" element={<Navigate to="/#experience" replace />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
-
-export default App;
