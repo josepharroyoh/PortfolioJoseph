@@ -41,19 +41,20 @@
     }
   },
   "cv": {
-    "header": {
-      "field1": "Atmospheric electric field",
-      "field2": "Data Analytics"
-    },
-    "nav": {
-      "summary": "Summary",
-      "experience": "Experience",
-      "education": "Education",
-      "publications": "Publications",
-      "congresses": "Congresses",
-      "awards": "Awards",
-      "volunteering": "Volunteering"
-    },
+    "sections": [
+      "Summary",
+      "Experience",
+      "Education",
+      "Publications",
+      "Congresses",
+      "Awards",
+      "Volunteering"
+    ],
+    "messages": [
+      "Hello, I'm Joseph Arroyo.",
+      "Welcome to my portfolio.",
+      "Data Analyst, based in Peru."
+    ],
     "summary": {
       "title": "Summary",
       "description": "I am a graduate in Physical Sciences with knowledge in web development, data analysis, automation, data collection, preparation, and storage. I aspire to delve deeper into the design of intelligent systems and large-scale data processing to contribute to both academic development and high-impact societal applications."
@@ -62,7 +63,7 @@
       "title": "Professional Experience",
       "job1": {
         "title": "Supervisor and Technical Assistant",
-        "company": "Geophysical Institute of Peru (IGP) - CIEASEST, Ica",
+        "company": "Geophysical Institute of Peru (IGP)",
         "date": "March, 2023 - July, 2024",
         "desc1": "Created monthly reports in Excel on incidents at the HF station, Bistatic Radar, and Magdas Magnetometer, used for planning and continuous improvement.",
         "achievementsTitle": "Achievements:",
@@ -83,10 +84,10 @@
         "authors": "Romero, R., Tacza, J., Arroyo, J., Prieto, F., Macotela, L., Buleje, Y., Loayza, R., Femandez, U., & Raulin, J.-P."
       },
       "item2": {
-        "title": "NASA Space Apps Challenge 2025 - From EarthData to Action: Cloud Computing with Earth Observation Data for Predicting Cleaner, Safer Skies",
-        "date": "Scheduled: October 4-5, 2025",
+        "title": "NASA Space Apps Challenge 2025 — Stellar Stories",
+        "date": "October 4-5, 2025",
         "authors": "Rubén M. Romero, Joseph P. Arroyo",
-        "description": "Participation in NASA’s global hackathon. The project involves developing a web application to forecast air quality by combining real-time satellite data (TEMPO) with ground-based air quality measurements and meteorological data."
+        "description": "We created Cori’s Journey, an interactive digital story. Our project follows Cori—a personified coronal mass ejection—on its voyage to Earth. Through this narrative, we illustrate the effects of solar activity, from the creation of auroras to its impact on technologies like GPS, satellites, and power grids, highlighting the importance of understanding space weather."
       },
       "item3": {
         "title": "Air quality analysis for early warning of dust storms through climate monitoring in Ica - 2023 (in process)",
@@ -212,11 +213,39 @@
     },
     "skills": {
       "title": "Technical Skills",
-      "programming": "Programming Languages",
-      "dataScience": "Data Science Software",
-      "dbAdmin": "Database Administration",
-      "ides": "IDE for Data Science",
-      "writing": "Scientific Writing"
+      "groups": [
+        {
+          "category": "Development & Programming",
+          "items": [
+            { "name": "Python", "style": "text-sky-400" },
+            { "name": "Java", "style": "text-red-400" },
+            { "name": "JavaScript", "style": "text-yellow-400" },
+            { "name": "HTML", "style": "text-orange-400" },
+            { "name": "Flask", "style": "text-emerald-400" },
+            { "name": "Django", "style": "text-purple-400" }
+          ]
+        },
+        {
+          "category": "Data & Cloud",
+          "items": [
+            { "name": "Scikit-learn", "style": "text-orange-400" },
+            { "name": "Google Cloud Platform", "style": "text-blue-400" },
+            { "name": "Power BI", "style": "text-fuchsia-400" },
+            { "name": "SQL Server", "style": "text-red-400" },
+            { "name": "MySQL", "style": "text-cyan-400" },
+            { "name": "PostgreSQL", "style": "text-indigo-400" }
+          ]
+        },
+        {
+          "category": "Environment & Tools",
+          "items": [
+            { "name": "VSCode", "style": "text-sky-400" },
+            { "name": "Jupyter Notebook", "style": "text-orange-400" },
+            { "name": "Spyder", "style": "text-rose-400" },
+            { "name": "Latex", "style": "text-teal-400" }
+          ]
+        }
+      ]
     }
   }
 }

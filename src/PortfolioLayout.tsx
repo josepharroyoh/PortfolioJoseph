@@ -25,7 +25,7 @@ const projectItems: Carousel3DItem[] = [
   {
     id: 1,
     title: 'Igrowkers Intake 4 Proyecto Reffindr',
-    brand: 'Data Analyst',
+    brand: '',
     description: 'Reffindr es una solución PropTech desarrollada en 4 semanas; lideré el equipo de datos creando una API para automatizar la recolección de más de 300 datos inmobiliarios, logrando un MVP de alta calidad.',
     tags: ['Python', 'Flask', 'Azure App Services', 'Power BI', 'Supabase', 'render'],
     imageUrl: '/videos/reffindr.mp4',
@@ -34,7 +34,7 @@ const projectItems: Carousel3DItem[] = [
   {
     id: 2,
     title: 'Portafolio Personal',
-    brand: 'Desarrollo Web',
+    brand: '',
     description: 'Desarrollo de mi portafolio personal interactivo utilizando React, TypeScript y Tailwind CSS, con un diseño moderno y animaciones fluidas.',
     tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     imageUrl: '',
@@ -42,13 +42,13 @@ const projectItems: Carousel3DItem[] = [
   },
   {
     id: 3,
-    title: 'Análisis de Datos para E-commerce',
-    brand: 'Proyecto Académico',
-    description: 'Análisis de un conjunto de datos de un e-commerce para identificar patrones de compra y optimizar estrategias de marketing.',
-    tags: ['Python', 'Pandas', 'Matplotlib', 'SQL'],
-    imageUrl: '',
-    link: ''
-  }
+    title: 'Sistema de Puntuación para Prello – Evaluación de Inversiones en Segundas Residencias',
+    brand: '',
+    description: `El objetivo fue identificar las ciudades más atractivas para inversores, analizando diversos factores clave relacionados con los Score turístico, inmobiliario y viviendas`,
+    tags: ['Python', 'ETL', 'Power Bi', 'BigQuery'],
+    imageUrl: '/videos/prello.mp4',
+    link: 'https://drive.google.com/file/d/1K07cqroSZ_A3oh06IIFEHFe5NUXQSgvd/view?usp=sharing'
+}
 ];
 
 export function PortfolioLayout() {

@@ -2,7 +2,7 @@
 
 import { Routes, Route } from "react-router-dom";
 import  {PortfolioLayout}  from "../src/PortfolioLayout";
-import { CVPage } from "./pages/CVPage";
+import  CVPage  from "./pages/CVPage";
 import "./App.css";
 
 function App() {

@@ -41,19 +41,20 @@
     }
   },
   "cv": {
-    "header": {
-      "field1": "Campo eléctrico atmosférico",
-      "field2": "Análisis de datos"
-    },
-    "nav": {
-      "summary": "Resumen",
-      "experience": "Experiencia",
-      "education": "Educación",
-      "publications": "Publicaciones",
-      "congresses": "Congresos",
-      "awards": "Premios",
-      "volunteering": "Voluntariados"
-    },
+    "sections": [
+      "Resumen",
+      "Experiencia",
+      "Educación",
+      "Publicaciones",
+      "Congresos",
+      "Premios",
+      "Voluntariado"
+    ],
+    "messages": [
+      "Hola, soy Joseph Arroyo.",
+      "Bienvenido a mi portafolio.",
+      "Analista de Datos, con residencia en Perú."
+    ],
     "summary": {
       "title": "Resumen",
       "description": "Soy Bachiller en Ciencias Físicas con conocimientos en desarrollo web, análisis de datos, automatización, recopilación, preparación y almacenamiento de datos. Aspiro a profundizar en el diseño de sistemas inteligentes, el procesamiento de datos a gran escala, con el fin de contribuir tanto al desarrollo académico como a aplicaciones de impacto en la sociedad."
@@ -62,17 +63,15 @@
       "title": "Experiencia Profesional",
       "job1": {
         "title": "Supervisor y asistente técnico",
-        "company": "Instituto Geofísico del Perú (IGP) - CIEASEST, Ica",
+        "company": "Instituto Geofísico del Perú (IGP)",
         "date": "Marzo, 2023 - Julio, 2024",
-        "desc1": "Realicé reporte mensual en Excel sobre las incidencias en la estación HF, Radar Biestático y Magnetómetro Magdas, utilizados para la planificación y mejora continua.",
-        "achievementsTitle": "Logros:",
-        "achievementsDesc1": "Supervisé el funcionamiento de los equipos geofísicos, coordiné mantenimientos y reporté incidencias críticas, lo que permitió mantener una operatividad superior al 95% y reducir tiempos de respuesta en un 20%."
+        "desc1": "Mantener operativa la Estación de Transmisión de Radar HF y equipos relacionados (Magnetómetro y Radar Biestático) instalados en el CIEASEST (Centro de Investigación sobre la Actividad Solar y sus Efectos sobre la Tierra) de la Universidad Nacional de San Luis Gonzaga de Ica – UNICA."
       },
       "job2": {
         "title": "Practicante preprofesional en el laboratorio de física",
         "company": "Institución Educativa San Luis Gonzaga",
         "date": "Mayo, 2023 - Julio, 2023",
-        "desc1": "Responsable del mantenimiento, reparación y calibración de equipos de laboratorio, asegurando su correcto funcionamiento en las prácticas académicas. Gestioné la adquisición de repuestos y componentes, realicé restauraciones mediante soldadura y sustitución de piezas, y apliqué mantenimiento preventivo para prolongar la vida útil del equipo. Organicé el almacenamiento y clasificación del material, optimizando la identificación y el uso eficiente de los recursos por parte de los estudiantes y docentes."
+        "desc1": "Aseguré la operatividad del laboratorio de física mediante el mantenimiento, reparación y calibración de equipos. Gestioné la compra de componentes, apliqué mantenimiento preventivo para prolongar la vida útil de los instrumentos y organicé el inventario para un acceso eficiente y ordenado."
       }
     },
     "publications": {
@@ -83,10 +82,10 @@
         "authors": "Romero, R., Tacza, J., Arroyo, J., Prieto, F., Macotela, L., Buleje, Y., Loayza, R., Femandez, U., & Raulin, J.-P."
       },
       "item2": {
-        "title": "NASA Space Apps Challenge 2025 - De EarthData a la Acción: Computación en la Nube con Datos de Observación Terrestre para Predecir Cielos Más Limpios y Seguros",
-        "date": "Programado: 4-5 de Octubre, 2025",
+        "title": "NASA Space Apps Challenge 2025 — Historias Estelares",
+        "date": "4-5 de Octubre, 2025",
         "authors": "Rubén M. Romero, Joseph P. Arroyo",
-        "description": "Participación en el hackathon global de la NASA. El proyecto implica el desarrollo de una aplicación web para pronosticar la calidad del aire combinando datos satelitales en tiempo real (TEMPO) con mediciones de calidad del aire en tierra y datos meteorológicos."
+        "description": "Creamos El Viaje de Cori, una historia digital interactiva. Nuestro proyecto sigue a Cori, una eyección de masa coronal personificada, en su travesía a la Tierra. A través de su historia, ilustramos los efectos de la actividad solar: desde la creación de auroras hasta el impacto en tecnología como GPS, satélites y redes eléctricas, mostrando la importancia de entender el clima espacial."
       },
       "item3": {
         "title": "Análisis de la calidad del aire para la alerta temprana de tormentas de polvo mediante monitoreo climático en Ica - 2023 (en proceso)",
@@ -99,13 +98,13 @@
       "title": "Congresos y Conferencias",
       "item1": {
         "title": "XIII Congreso Internacional de Tecnología e Innovación + Ciencia e Investigación (CITICI)",
-        "location": "Conferencia Virtual-Bogotá, Colombia (Programado: 3-5 de Septiembre, 2025)",
+        "location": "Conferencia Virtual-Bogotá, Colombia (Programado: 3-5 de Noviembre)",
         "topic": " Plataforma de Monitoreo Atmosférico y Sistema de Alerta Temprana para Tormentas de Polvo en Ica, Perú."
       },
       "item2": {
         "title": "Encuentro Científico Internacional | ECI 2023 (Perú)",
         "date": "Agosto 2023",
-        "topic": "Presentación Oral (Coautor): Análisis de Efectos Locales y Globales en la Variación del Campo Eléctrico Atmosférico en Ica - Perú."
+        "topic": "Presentación Oral (Coautor): Análisis de Efectos Locales y Globales en la Variación del Campo Eléctrico Atmosférico en Ica, Perú."
       },
       "item3": {
         "title": "Encuentro Científico Internacional | ECI 2023 (Perú)",
@@ -212,11 +211,39 @@
     },
     "skills": {
       "title": "Habilidades Técnicas",
-      "programming": "Lenguajes de Programación",
-      "dataScience": "Software de Ciencia de Datos",
-      "dbAdmin": "Administración de Bases de Datos",
-      "ides": "IDE para ciencia de datos",
-      "writing": "Redacción científica"
+      "groups": [
+        {
+          "category": "Desarrollo y Programación",
+          "items": [
+            { "name": "Python", "style": "text-sky-400" },
+            { "name": "Java", "style": "text-red-400" },
+            { "name": "JavaScript", "style": "text-yellow-400" },
+            { "name": "HTML", "style": "text-orange-400" },
+            { "name": "Flask", "style": "text-emerald-400" },
+            { "name": "Django", "style": "text-purple-400" }
+          ]
+        },
+        {
+          "category": "Datos y Cloud",
+          "items": [
+            { "name": "Scikit-learn", "style": "text-orange-400" },
+            { "name": "Google Cloud Platform", "style": "text-blue-400" },
+            { "name": "Power BI", "style": "text-fuchsia-400" },
+            { "name": "SQL Server", "style": "text-red-400" },
+            { "name": "MySQL", "style": "text-cyan-400" },
+            { "name": "PostgreSQL", "style": "text-indigo-400" }
+          ]
+        },
+        {
+          "category": "Entorno y Herramientas",
+          "items": [
+            { "name": "VSCode", "style": "text-sky-400" },
+            { "name": "Jupyter Notebook", "style": "text-orange-400" },
+            { "name": "Spyder", "style": "text-rose-400" },
+            { "name": "Latex", "style": "text-teal-400" }
+          ]
+        }
+      ]
     }
   }
 }
