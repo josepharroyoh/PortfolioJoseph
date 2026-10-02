@@ -123,7 +123,7 @@ const Carousel3D: React.FC<Carousel3DProps> = ({ items, autoRotate = true, rotat
                     style={{ height: `${cardHeight}px` }}
                   >
                     <div
-                      className="relative p-6 flex items-center justify-center h-48 overflow-hidden text-white rounded-t-xl"
+                      className="relative p-6 flex items-center justify-center h-48 overflow-hidden text-white rounded-t-xl shrink-0"
                       style={!hasMedia ? meshHeaderStyle : {}}
                     >
                       {hasMedia && (
