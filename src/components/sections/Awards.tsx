@@ -1,47 +1,48 @@
 import { useTranslation } from "react-i18next";
-import { Award as AwardIcon } from "lucide-react";
 import clsx from "clsx";
-import { SectionHeader } from "../ui/SectionHeader";
-import { Reveal } from "../ui/motion";
+import { SectionHeading } from "../ui/SectionHeading";
+import { container } from "../ui/styles";
 import { useCopy } from "../../hooks/useCopy";
-import { useSpotlight } from "../../hooks/useSpotlight";
 
-type Award = { year: string; title: string; org: string; description: string; amount?: string };
+type Award = { year: string; title: string; org: string; text: string; amount?: string };
+
+// Five awards, five cells: the research prize leads at 2x2, the rest fill a 3x3 grid.
+const CELLS = [
+  "md:col-span-2 md:row-span-2 bg-accent text-on-accent",
+  "bg-surface border border-line",
+  "bg-surface border border-line",
+  "md:col-span-2 bg-bg-2",
+  "bg-surface border border-line",
+];
 
 export function Awards() {
   const { t } = useTranslation();
   const awards = useCopy<Award[]>("awards.items");
-  const spotlight = useSpotlight<HTMLDivElement>();
 
   return (
-    <section id="awards" className="relative z-10 mx-auto max-w-7xl px-4 py-28 md:px-6 md:py-40">
-      <SectionHeader eyebrow={t("awards.eyebrow")} title={t("awards.title")} />
-
-      <div className="mt-16 grid gap-5 md:mt-24 md:grid-cols-2 lg:grid-cols-6">
-        {awards.map((a, i) => (
-          <Reveal key={a.title} delay={(i % 3) * 0.08} className={clsx(i < 2 ? "lg:col-span-3" : "lg:col-span-2")}>
-            <div {...spotlight} className="spotlight glass group relative flex h-full flex-col overflow-hidden rounded-[2rem] p-7 md:p-8">
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -right-4 -bottom-10 font-display text-[9rem] leading-none text-transparent transition-transform duration-700 ease-out-expo [-webkit-text-stroke:1px_rgba(245,194,107,0.18)] group-hover:-translate-y-3"
-              >
-                {a.year}
-              </span>
-              <div className="flex items-center justify-between">
-                <span className="grid h-11 w-11 place-items-center rounded-full bg-gold/10 text-gold ring-1 ring-gold/30">
-                  <AwardIcon size={20} strokeWidth={1.6} />
-                </span>
-                <span className="font-mono text-xs tracking-[0.18em] text-muted">{a.year}</span>
-              </div>
-              <h3 className="mt-8 font-display text-2xl leading-snug text-paper md:text-[1.75rem]">{a.title}</h3>
-              <p className="mt-2 text-sm text-gold/90">{a.org}</p>
-              <p className="relative mt-4 flex-1 text-sm leading-relaxed text-muted">{a.description}</p>
-              {a.amount && (
-                <p className="relative mt-6 w-fit rounded-full border border-gold/30 bg-gold/10 px-3 py-1 font-mono text-xs text-gold">{a.amount}</p>
-              )}
-            </div>
-          </Reveal>
-        ))}
+    <section id="awards" aria-labelledby="awards-title" className="border-t border-line py-24 md:py-36">
+      <div className={container}>
+        <SectionHeading id="awards-title" title={t("awards.title")} intro={t("awards.intro")} />
+        <ul className="mt-14 grid gap-4 md:grid-cols-3">
+          {awards.map((a, i) => {
+            const lead = i === 0;
+            return (
+              <li key={a.title} className={clsx("reveal flex flex-col rounded-xl p-6 md:p-7", CELLS[i])}>
+                <p className={clsx("font-mono text-sm", lead ? "opacity-80" : "text-faint")}>{a.year}</p>
+                {a.amount && (
+                  <p className={clsx("mt-6 font-display leading-none font-semibold tracking-[-0.04em]", lead ? "text-[clamp(3rem,7vw,5.5rem)]" : "text-4xl")}>
+                    {a.amount}
+                  </p>
+                )}
+                <h3 className={clsx("leading-snug font-semibold tracking-[-0.015em]", lead ? "mt-auto pt-10 text-2xl md:text-3xl" : "mt-4 text-lg")}>
+                  {a.title}
+                </h3>
+                <p className={clsx("mt-1 text-sm", lead ? "opacity-85" : "text-accent")}>{a.org}</p>
+                <p className={clsx("mt-3 text-[15px] leading-relaxed", lead ? "opacity-85" : "text-muted")}>{a.text}</p>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </section>
   );

@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => ({
         // Long-lived vendor chunks cache across deploys.
         manualChunks: {
           react: ["react", "react-dom", "react-dom/client", "react-router-dom"],
-          motion: ["framer-motion", "lenis"],
+          motion: ["framer-motion"],
           i18n: ["i18next", "react-i18next", "i18next-browser-languagedetector"],
         },
       },

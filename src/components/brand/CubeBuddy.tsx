@@ -55,7 +55,7 @@ export function CubeBuddy({ size = 32 }: { size?: number }) {
   return (
     <span
       aria-hidden="true"
-      className="relative block shrink-0 rounded-[3px] bg-black"
+      className="relative block shrink-0 rounded-[3px] bg-[#0b0c0e] ring-1 ring-white/10"
       style={{ width: size, height: size }}
     >
       <span ref={leftEye} className={eye} style={{ width: 4 * unit, height: 4 * unit, left: 7 * unit, top: 8 * unit }} />

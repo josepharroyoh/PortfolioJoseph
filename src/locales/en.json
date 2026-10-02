@@ -1,292 +1,345 @@
 {
   "meta": {
-    "title": "Joseph Arroyo Hernández — Physicist, Data Analyst & Researcher",
-    "description": "Academic portfolio of Joseph Arroyo Hernández: B.Sc. in Physics (UNICA), research in atmospheric electricity and space weather, data analytics and cloud (AWS)."
+    "title": "Joseph Arroyo Hernández | Physicist researching atmospheric electricity",
+    "description": "Portfolio of Joseph Arroyo Hernández, B.Sc. in Physics (UNICA). Research in atmospheric electricity and lightning prediction, data analysis and cloud."
   },
   "nav": {
+    "projects": "Projects",
     "about": "About",
     "research": "Research",
-    "projects": "Projects",
-    "experience": "Journey",
-    "awards": "Awards",
-    "contact": "Contact",
+    "journey": "Journey",
+    "contact": "Write to me",
     "menu": "Menu",
     "close": "Close",
     "language": "Language",
-    "skip": "Skip to content"
+    "toDark": "Switch to dark mode",
+    "toLight": "Switch to light mode",
+    "skip": "Skip to content",
+    "home": "Home"
   },
   "intro": {
-    "loading": "Calibrating instruments"
+    "loading": "Loading"
   },
   "hero": {
-    "eyebrow": "Academic portfolio · Ica, Peru",
-    "firstName": "Joseph",
-    "lastName": "Arroyo Hernández",
-    "rolePrefix": "I'm a",
-    "roles": ["physicist", "data analyst", "researcher", "cloud & ML on AWS"],
-    "tagline": "I turn data from the atmosphere and outer space into knowledge. I research atmospheric electricity and space weather, and build cloud data pipelines for intelligent systems.",
-    "ctaPrimary": "Explore my research",
-    "ctaSecondary": "Get in touch",
-    "localTime": "Time in Ica",
-    "scroll": "Scroll"
+    "name1": "Joseph",
+    "name2": "Arroyo Hernández",
+    "text": "Physicist and data analyst. I study atmospheric electricity to anticipate lightning using electric field, satellite and radar data.",
+    "ctaWork": "See projects",
+    "ctaContact": "Write to me",
+    "caption": "Simulated electric field. Move your cursor to add a charge.",
+    "captionTouch": "Simulated electric field. Tap to add a charge.",
+    "sensor": "Field sensor, simulated"
   },
-  "stats": [
-    { "value": 16, "prefix": "USD ", "suffix": "K", "label": "in research funding as a thesis student" },
-    { "value": 5, "prefix": "", "suffix": "", "label": "awards and full scholarships" },
-    { "value": 3, "prefix": "", "suffix": "", "label": "congresses and scientific meetings" },
-    { "value": 8, "prefix": "", "suffix": "", "label": "specialization programs" }
-  ],
-  "about": {
-    "eyebrow": "01 — About",
-    "title": "From radar to the cloud.",
-    "lead": "I hold a Bachelor's degree in Physical Sciences. My training exposed me to the challenge of managing large-scale databases at CIEASEST, which gave me a solid foundation in analysis and automation.",
-    "body": "To overcome the limitations of local infrastructure, I now specialize in AWS to design and deploy robust data pipelines in the cloud. My goal is clear: for this infrastructure to feed future AI models and agents, building systems that act in real time on innovative solutions.",
-    "cieasestLabel": "Discover CIEASEST",
-    "photoCaption": "Ica, Peru",
-    "facts": [
-      { "label": "Degree", "value": "B.Sc. in Physics · UNICA" },
-      { "label": "Based in", "value": "Ica, Peru" },
-      { "label": "Focus", "value": "Data · Cloud · AI" }
-    ],
-    "focusTitle": "Areas of interest",
-    "focus": [
-      { "title": "Atmospheric physics & space weather", "text": "Atmospheric electricity, solar activity and its effects on Earth." },
-      { "title": "Cloud data engineering", "text": "Collecting, preparing and storing data with AWS and GCP." },
-      { "title": "Intelligent systems", "text": "Large-scale processing for real-time AI models and agents." }
-    ],
-    "traits": ["Team leader", "Planning", "Analytical thinking"]
-  },
-  "research": {
-    "eyebrow": "02 — Research",
-    "title": "Science with real data.",
-    "intro": "Publications, academic projects and talks where physics meets data analysis.",
-    "featuredBadge": "Peer-reviewed journal article",
+  "projects": {
+    "title": "Projects",
+    "intro": "Research, data engineering and science outreach. Starting with the one that matters most to me right now.",
     "featured": {
-      "title": "First results of the potential gradient variation in a tropical station in South America (Ica, Peru).",
-      "journal": "Journal of Atmospheric and Solar-Terrestrial Physics",
-      "year": "2024",
-      "authors": "Romero, R., Tacza, J., Arroyo, J., Prieto, F., Macotela, L., Buleje, Y., Loayza, R., Fernandez, U., & Raulin, J.-P."
+      "status": "Thesis in progress",
+      "title": "Lightning prediction",
+      "text": "I use electric field mill networks in São Paulo and test whether GLM satellite and radar data improve the warning.",
+      "tags": ["Electric field", "GOES-GLM", "Radar", "Warning algorithms"],
+      "cta": "View the project"
     },
-    "authorsLabel": "Authors",
-    "visit": "Visit",
-    "projects": [
+    "open": "Open",
+    "items": [
       {
-        "badge": "Thesis · In progress",
-        "title": "Air quality analysis for early warning of dust storms through climate monitoring in Ica — 2023",
-        "authors": "Loayza R., Romero R., Buleje Y., Arroyo J., Euribe C.",
-        "description": "Winning project of the UNICA 2023 Scientific Research Contest, funded with approx. USD 16,000. Data analysis, Python, SQL, Power BI and a virtual machine were applied for climate monitoring and dust-storm early warning, resulting in the aireica.com platform.",
-        "link": "aireica"
+        "key": "reffindr",
+        "title": "Reffindr",
+        "category": "Data engineering",
+        "year": "2024",
+        "text": "A PropTech product built in 4 weeks. I led the data team and built an API that automated the collection of more than 300 real-estate data points."
       },
       {
-        "badge": "NASA Space Apps · Oct 4–5, 2025",
-        "title": "NASA Space Apps Challenge 2025 — Stellar Stories",
-        "authors": "Rubén M. Romero, Joseph P. Arroyo",
-        "description": "We created “Cori's Journey”, an interactive digital story following Cori — a personified coronal mass ejection — on its voyage to Earth. It illustrates the effects of solar activity: from auroras to its impact on GPS, satellites and power grids."
+        "key": "prello",
+        "title": "Prello",
+        "category": "Data analysis",
+        "year": "2024",
+        "text": "A scoring system that finds the most attractive cities for second-home investment by combining tourism, real-estate and housing indicators."
+      },
+      {
+        "key": "aireica",
+        "title": "AIREICA",
+        "category": "Environmental monitoring",
+        "year": "2023",
+        "text": "A climate monitoring and dust-storm early warning platform for Ica, born from the winning UNICA 2023 research project."
+      },
+      {
+        "key": "cori",
+        "title": "Cori's Journey",
+        "category": "Science outreach",
+        "year": "2025",
+        "text": "An interactive story for the NASA Space Apps Challenge 2025, with Rubén M. Romero. A coronal mass ejection travels to Earth and shows the effects of space weather."
+      },
+      {
+        "key": "portfolio",
+        "title": "This portfolio",
+        "category": "Web design and development",
+        "year": "2025",
+        "text": "A React site with an interactive electric field, light and dark modes and three languages."
       }
+    ]
+  },
+  "about": {
+    "title": "About",
+    "paragraphs": [
+      "I hold a B.Sc. in Physics from the National University San Luis Gonzaga (UNICA) in Ica, Peru. At CIEASEST, the university's center for solar activity and its effects on Earth, I learned to work with data from real instruments: HF radars, magnetometers and electric field sensors.",
+      "Today I combine that background with data analysis and cloud computing. I trained in AWS, Python and SQL, and led data teams on projects with tight deadlines.",
+      "My thesis aims to anticipate lightning by combining electric field networks, satellite and radar. I care about systems that turn measurements into timely decisions."
     ],
-    "congressesTitle": "Congresses & conferences",
+    "cieasest": "Discover CIEASEST",
+    "facts": [
+      { "label": "Degree", "value": "B.Sc. in Physics, UNICA" },
+      { "label": "Class rank", "value": "Top third, 2nd place" },
+      { "label": "Based in", "value": "Ica, Peru" },
+      { "label": "Focus", "value": "Atmospheric electricity and data" }
+    ],
+    "traits": ["Team leadership", "Planning", "Analytical thinking"]
+  },
+  "research": {
+    "title": "Research",
+    "intro": "Publications and talks where atmospheric physics meets data analysis.",
+    "publication": {
+      "label": "Peer-reviewed journal article",
+      "authors": "Romero, R., Tacza, J., Arroyo, J., Prieto, F., Macotela, L., Buleje, Y., Loayza, R., Fernandez, U., & Raulin, J.-P.",
+      "year": "2024",
+      "title": "First results of the potential gradient variation in a tropical station in South America (Ica, Peru).",
+      "journal": "Journal of Atmospheric and Solar-Terrestrial Physics"
+    },
+    "academic": {
+      "label": "UNICA 2023 research project, in progress",
+      "title": "Air quality analysis for early warning of dust storms through climate monitoring in Ica",
+      "authors": "Loayza, R., Romero, R., Buleje, Y., Arroyo, J., & Euribe, C.",
+      "text": "Winner of the UNICA 2023 Scientific Research Contest, funded with about USD 16,000. I took part as a thesis student, doing data analysis in Python, SQL and Power BI. The result is the aireica.com platform.",
+      "link": "Visit aireica.com"
+    },
+    "congressesTitle": "Congresses and conferences",
     "congresses": [
       {
+        "date": "Sep 3-5, 2025",
         "title": "XIII International Congress on Technology and Innovation + Science and Research (CITICI)",
-        "meta": "Virtual conference · Bogotá, Colombia · September 3–5, 2025",
+        "place": "Virtual, Bogotá, Colombia",
         "topic": "Atmospheric monitoring platform and early warning system for dust storms in Ica, Peru."
       },
       {
-        "title": "International Scientific Meeting · ECI 2023",
-        "meta": "Peru · August 2023",
-        "topic": "Oral presentation (co-author): Analysis of local and global effects on the variation of the atmospheric electric field in Ica, Peru."
+        "date": "Aug 2023",
+        "title": "International Scientific Meeting (ECI 2023)",
+        "place": "Peru",
+        "topic": "Oral presentation as co-author: local and global effects on the variation of the atmospheric electric field in Ica."
       },
       {
-        "title": "International Scientific Meeting · ECI 2023",
-        "meta": "Peru · August 2023",
-        "topic": "Oral presentation (co-author): Catalog of solar phenomena observed by the Flare Monitor Telescope."
+        "date": "Aug 2023",
+        "title": "International Scientific Meeting (ECI 2023)",
+        "place": "Peru",
+        "topic": "Oral presentation as co-author: catalog of solar phenomena observed by the Flare Monitor Telescope."
       }
     ]
   },
-  "projects": {
-    "eyebrow": "03 — Projects",
-    "title": "Data turned into products.",
-    "intro": "A selection of work in analytics, data engineering and web development.",
-    "open": "View project",
-    "items": [
+  "journey": {
+    "title": "Journey",
+    "experienceTitle": "Experience",
+    "jobs": [
       {
-        "title": "Reffindr",
-        "role": "Data team lead · Igrowker Intake 4",
-        "description": "A PropTech solution built in 4 weeks. I led the data team, creating an API that automated the collection of 300+ real-estate data points and delivered a high-quality MVP."
-      },
-      {
-        "title": "Prello",
-        "role": "Investment scoring · Data analysis",
-        "description": "A scoring system to evaluate second-home investments: it identifies the most attractive cities by combining tourism, real-estate and housing scores."
-      },
-      {
-        "title": "AIREICA",
-        "role": "Atmospheric monitoring platform",
-        "description": "Climate monitoring and dust-storm early warning platform for Ica, born from the winning UNICA 2023 research project."
-      },
-      {
-        "title": "This portfolio",
-        "role": "Web design & development",
-        "description": "An interactive site with a WebGL particle universe that changes shape in every chapter, fluid animations and support for three languages."
-      }
-    ]
-  },
-  "experience": {
-    "eyebrow": "04 — Journey",
-    "title": "Professional experience.",
-    "items": [
-      {
+        "date": "Mar 2023 - Jul 2024",
         "role": "Supervisor and Technical Assistant",
         "org": "Geophysical Institute of Peru (IGP)",
-        "date": "Mar 2023 — Jul 2024",
-        "description": "Kept the HF Radar Transmission Station and related equipment (magnetometer and bistatic radar) operational at CIEASEST — the Research Center on Solar Activity and its Effects on Earth — at UNICA. Produced monthly incident reports in Excel used for planning and continuous improvement.",
+        "text": "Kept the HF radar, bistatic radar and magnetometer at CIEASEST running. Supervised their operation, coordinated maintenance and wrote monthly incident reports in Excel.",
         "metrics": [
-          { "value": "+95%", "label": "equipment operational availability" },
+          { "value": "+95%", "label": "equipment availability" },
           { "value": "−20%", "label": "in response times" }
         ]
       },
       {
-        "role": "Pre-professional Intern · Physics Laboratory",
+        "date": "May 2023 - Jul 2023",
+        "role": "Physics Laboratory Intern",
         "org": "San Luis Gonzaga Educational Institution",
-        "date": "May 2023 — Jul 2023",
-        "description": "Kept the laboratory running through maintenance, repair and calibration of equipment. Managed the purchase of components, applied preventive maintenance and organized the inventory for efficient access.",
+        "text": "Maintenance, repair and calibration of equipment, purchasing components and organizing the laboratory inventory.",
         "metrics": []
       }
-    ]
-  },
-  "education": {
-    "eyebrow": "05 — Education",
-    "title": "Always learning.",
+    ],
+    "educationTitle": "Education",
     "degree": {
-      "title": "Bachelor's degree in Physics",
-      "school": "National University San Luis Gonzaga (UNICA) · Ica, Peru",
-      "date": "2018 — 2023",
-      "highlights": [
-        "Top third · 2nd place in graduating class",
-        "Strong foundations in programming, analysis and research"
-      ]
+      "date": "2018 - 2023",
+      "title": "B.Sc. in Physics",
+      "school": "National University San Luis Gonzaga (UNICA), Ica",
+      "highlights": ["Top third, 2nd place in my class", "Thesis student on the winning UNICA 2023 project"]
     },
-    "coursesTitle": "Programs & courses",
-    "courses": [
-      { "title": "Amazon Web Services (AWS) re/Start Program", "institution": "Bootcamp Institute, Mexico", "date": "2025" },
-      { "title": "Digital skills initiation program", "institution": "IMMUNE Technology Institute, Spain", "date": "2025" },
-      { "title": "IT Training Lab No. 04 — Data Analyst", "institution": "Igrowker, Spain", "date": "2024" },
-      { "title": "Data Analytics Bootcamp", "institution": "Le Wagon Latam", "date": "2024" },
-      { "title": "Data Analyst with Python — DataCamp", "institution": "Universitarios por los ODS, Bolivia", "date": "2024" },
-      { "title": "Specialized Program in Data Science with Python", "institution": "Data Analítica", "date": "2024" },
-      { "title": "Backend Developer with Java", "institution": "Oracle Next Education", "date": "2022 — 2023" },
-      { "title": "School of Quantum Computing (study group)", "institution": "Universidad Nacional Mayor de San Marcos, Lima", "date": "2022" }
-    ]
-  },
-  "awards": {
-    "eyebrow": "06 — Recognition",
-    "title": "Awards & scholarships.",
-    "items": [
+    "coursesTitle": "Programs and courses",
+    "courseGroups": [
       {
         "year": "2025",
-        "title": "Full scholarship · AWS re/Start",
-        "org": "Amazon Web Services",
-        "description": "12-week cloud computing training in collaboration with Bootcamp Institute."
-      },
-      {
-        "year": "2025",
-        "title": "Full scholarship · Ibero-American Youth Digital Skills Program",
-        "org": "SEGIB, SENAJU, OIJ & AECID",
-        "description": "2025 edition of the Ibero-American digital skills program."
+        "items": [
+          { "title": "Amazon Web Services (AWS) re/Start", "institution": "Bootcamp Institute, Mexico" },
+          { "title": "Digital skills initiation program", "institution": "IMMUNE Technology Institute, Spain" }
+        ]
       },
       {
         "year": "2024",
-        "title": "Full scholarship · Data Analytics Bootcamp",
-        "org": "ProInnovate · Le Wagon",
-        "amount": "≈ USD 5,000",
-        "description": "Funded by Peru's National Program for Technological Development and Innovation."
+        "items": [
+          { "title": "IT Training Lab No. 04: Data Analyst", "institution": "Igrowker, Spain" },
+          { "title": "Data Analytics Bootcamp", "institution": "Le Wagon Latam" },
+          { "title": "Data Analyst with Python (DataCamp)", "institution": "Universitarios por los ODS, Bolivia" },
+          { "title": "Specialized Program in Data Science with Python", "institution": "Data Analítica" }
+        ]
       },
+      {
+        "year": "2022 - 2023",
+        "items": [
+          { "title": "Backend Developer with Java", "institution": "Oracle Next Education" },
+          { "title": "School of Quantum Computing (study group)", "institution": "Universidad Nacional Mayor de San Marcos, Lima" }
+        ]
+      }
+    ]
+  },
+  "awards": {
+    "title": "Recognition",
+    "intro": "Full scholarships and awards that funded my training and my research.",
+    "items": [
       {
         "year": "2023",
         "title": "UNICA 2023 Scientific Research Project Award",
         "org": "National University San Luis Gonzaga",
-        "amount": "≈ USD 16,000",
-        "description": "Thesis student in the winning project on dust-storm early warning."
+        "amount": "USD 16,000",
+        "text": "Thesis student on the winning project on dust-storm early warning."
+      },
+      {
+        "year": "2025",
+        "title": "Full scholarship, AWS re/Start",
+        "org": "Amazon Web Services",
+        "text": "12 weeks of cloud computing training with Bootcamp Institute."
+      },
+      {
+        "year": "2025",
+        "title": "Full scholarship, Ibero-American Youth Digital Skills Program",
+        "org": "SEGIB, SENAJU, OIJ and AECID",
+        "text": "2025 edition."
+      },
+      {
+        "year": "2024",
+        "title": "Full scholarship, Data Analytics Bootcamp",
+        "org": "ProInnovate and Le Wagon",
+        "amount": "USD 5,000",
+        "text": "Funded by Peru's National Program for Technological Development and Innovation."
       },
       {
         "year": "2016",
-        "title": "First place · Productive and Entrepreneurial Projects Contest",
+        "title": "First place, Productive and Entrepreneurial Projects Contest",
         "org": "República de Bolivia School, Lima",
-        "description": "5th year of secondary school."
+        "text": "5th year of secondary school."
       }
     ]
   },
-  "volunteering": {
-    "eyebrow": "07 — Community",
-    "title": "Volunteering.",
+  "community": {
+    "title": "Community",
     "items": [
       {
         "period": "2025",
         "title": "NoCountry.Tech",
-        "role": "Team leader · Tech job simulation",
-        "description": "Led development teams in a simulated professional environment, showing leadership, responsibility and teamwork."
+        "role": "Team leader",
+        "text": "Led development teams in a tech job simulation."
       },
       {
-        "period": "2018 — 2022",
+        "period": "2018 - 2022",
         "title": "MUTSUNICA Astronomical Group",
-        "role": "Volunteer · CIEASEST, UNICA",
-        "description": "Organized astronomy events and enabled public telescope observations with the Nishimura and the FMT for science outreach."
+        "role": "Volunteer, CIEASEST",
+        "text": "Organized astronomy events and public observations with the Nishimura and FMT telescopes."
       },
       {
         "period": "2022",
         "title": "UDI University Movement “For the Common Good”",
         "role": "Student candidate",
-        "description": "Candidate in the election process for UNICA's University Assembly."
+        "text": "Candidate for UNICA's University Assembly."
       },
       {
         "period": "2021",
-        "title": "Hult Prize 2021 · UNICA Campus",
+        "title": "Hult Prize, UNICA campus",
         "role": "Team Songo",
-        "description": "We developed an innovative pumpkin-based cookie to address food system issues."
+        "text": "We developed a pumpkin-based cookie to tackle food system problems."
       }
     ]
   },
   "skills": {
-    "eyebrow": "08 — Toolkit",
-    "title": "My toolkit.",
-    "groups": ["Programming & development", "Cloud & databases", "Analytics, BI & ML", "Work environment"]
+    "title": "Tools",
+    "groups": ["Programming", "Cloud and databases", "Analysis and BI", "Environment"]
   },
   "contact": {
-    "eyebrow": "09 — Contact",
-    "title": "Shall we collaborate?",
-    "text": "I'm open to research, data analytics and cloud projects. Drop me a line and let's talk.",
-    "copy": "Copy email",
-    "copied": "Copied!",
+    "title": "Let's talk?",
+    "text": "I'm open to collaborating on research, data analysis and cloud. Write to me by email or with this form.",
+    "copy": "Copy",
+    "copied": "Copied",
     "form": {
       "name": "Name",
       "email": "Email",
       "message": "Message",
-      "placeholder": "Tell me about your project…",
+      "hint": "Tell me what you are working on.",
       "send": "Send message",
       "sending": "Sending…",
-      "success": "Thank you! Your message was sent.",
-      "error": "Something went wrong. Please try again."
+      "success": "Message sent. Thank you!",
+      "error": "It couldn't be sent. Try again or email me directly."
     }
   },
   "assistant": {
     "label": "Assistant",
     "more": "More links",
+    "email": "Email",
     "messages": {
-      "home": ["Hi, I'm Joseph Arroyo.", "Welcome to my portfolio.", "Scroll: the universe changes shape with you."],
-      "about": ["I'm a physicist from UNICA, in Ica, Peru.", "Today I specialize in AWS and data."],
-      "research": ["I published in the Journal of Atmospheric and Solar-Terrestrial Physics.", "This Lorenz attractor is pure atmospheric chaos."],
-      "projects": ["I led the data team at Reffindr.", "Hover over the cards."],
-      "experience": ["I worked with HF radars at the Geophysical Institute of Peru."],
-      "education": ["I graduated in the top third of my class."],
+      "home": ["Hi, I'm Joseph.", "Move your cursor over the storm.", "Each flash is a simulated strike."],
+      "projects": ["My thesis aims to anticipate lightning.", "Hover over the projects."],
+      "about": ["I'm a physicist from UNICA, in Ica."],
+      "research": ["I published in the Journal of Atmospheric and Solar-Terrestrial Physics."],
+      "journey": ["I worked with HF radars at the Geophysical Institute of Peru."],
       "awards": ["Scholarships from AWS, ProInnovate and SEGIB."],
-      "volunteering": ["I did astronomy outreach with the MUTSUNICA group."],
+      "community": ["I did astronomy outreach with the MUTSUNICA group."],
       "skills": ["Python, SQL and AWS: my main tools."],
-      "contact": ["Let's talk? Write to me below."]
+      "contact": ["Let's talk? The form is right here."],
+      "thesis": ["This is my thesis in progress.", "The chart is an illustrative simulation."]
     }
+  },
+  "thesis": {
+    "back": "Back to projects",
+    "status": "Thesis in progress",
+    "title": "Lightning prediction with electric field mill networks",
+    "lead": "Lightning usually announces itself: the electric field near the ground changes while a storm charges up. My thesis uses that signal to anticipate strikes and tests whether adding satellite and radar data improves the warning.",
+    "questionLabel": "Research question",
+    "question": "Does adding GLM and weather radar data make an electric-field-based warning algorithm more efficient?",
+    "demoTitle": "How an electric field warning works",
+    "demoCaption": "Illustrative simulation, not real data. When the field crosses the threshold a warning is issued; the time until the strike is the lead time.",
+    "demoReplay": "Replay",
+    "demo": {
+      "field": "Electric field",
+      "threshold": "Threshold",
+      "alert": "Warning",
+      "strike": "Strike",
+      "lead": "Lead time"
+    },
+    "dataTitle": "Data",
+    "data": [
+      {
+        "name": "Electric field mills (EFM)",
+        "text": "Ground sensor networks in São Paulo, Brazil: the CRAAM EFMs (Mackenzie Presbyterian University), the Atibaia station and the USP network."
+      },
+      {
+        "name": "GOES-GLM",
+        "text": "The Geostationary Lightning Mapper on board the GOES satellites detects lightning light from geostationary orbit."
+      },
+      {
+        "name": "Weather radar",
+        "text": "Describes the structure of storm clouds and how they evolve, information that can precede their electrification."
+      }
+    ],
+    "methodTitle": "Method",
+    "method": [
+      { "name": "Baseline", "text": "A warning algorithm that uses only the electric field network." },
+      { "name": "Data fusion", "text": "Add the GLM and radar data to the same algorithm." },
+      { "name": "Comparison", "text": "Measure whether the warning improves: hits, false alarms and lead time." }
+    ],
+    "whyTitle": "Why it matters",
+    "why": "Lightning puts people, power grids, airports and outdoor activities at risk. Knowing which data improve the warning helps decide where to invest in sensors and how to combine them.",
+    "note": "Project in progress. This page will be updated with results.",
+    "cta": "Working on atmospheric electricity or lightning? Write to me."
   },
   "footer": {
     "rights": "All rights reserved.",
-    "built": "Designed and built with React, Three.js and Framer Motion.",
+    "built": "Made with React and Framer Motion.",
     "top": "Back to top"
   }
 }

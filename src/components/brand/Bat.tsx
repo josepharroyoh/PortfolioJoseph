@@ -62,7 +62,7 @@ export function Bat({ size = 32, className }: BatProps) {
 export function BatTile({ size = 36 }: { size?: number }) {
   return (
     <span
-      className="inline-grid shrink-0 place-items-center overflow-hidden rounded-[9px] bg-white"
+      className="inline-grid shrink-0 place-items-center overflow-hidden rounded-[9px] bg-white ring-1 ring-line"
       style={{ width: size, height: size }}
     >
       <Bat size={size * 0.9} />

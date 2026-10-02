@@ -1,49 +1,50 @@
-# Joseph Arroyo Hernández — Portafolio académico
+# Joseph Arroyo Hernández | Portafolio
 
 Desplegado [aquí](https://portfolio-josepharroyo.netlify.app/)
 
-Portafolio de investigación y analítica de datos: un universo de partículas en WebGL que cambia de forma en cada capítulo de la página (galaxia, atractor de Lorenz, hélice, cinta de Möbius…), tipografía editorial, animaciones con scroll y soporte en español, inglés y portugués.
+Portafolio de investigación y proyectos: un campo eléctrico interactivo en la portada, modo claro y oscuro con botón, tres idiomas (es / en / pt) y una página propia para la tesis en [`/proyectos/prediccion-de-rayos`](https://portfolio-josepharroyo.netlify.app/proyectos/prediccion-de-rayos).
 
 ## Stack
 
 - **React 19 + TypeScript + Vite 7**
-- **Tailwind CSS 4** (tokens de diseño en `src/index.css`)
-- **Three.js** para el fondo de partículas (se carga aparte, después de la página)
-- **Framer Motion** para las animaciones y **Lenis** para el scroll suave
-- **i18next** para los tres idiomas y **Formspree** para el formulario de contacto
+- **Tailwind CSS 4** con tokens de color en variables CSS (ver `DESIGN.md`)
+- **Canvas 2D** para el campo eléctrico (sin librerías 3D)
+- **Framer Motion** para las animaciones, **i18next** para los idiomas, **Formspree** para el formulario
 
 ## Cómo editar el contenido
 
 | Qué cambiar | Dónde |
 | --- | --- |
-| Textos, experiencia, publicaciones, premios, cursos… | `src/locales/es.json`, `en.json`, `pt.json` (mismas claves en los tres) |
-| Correo, redes, enlaces, foto, ID de Formspree | `src/data/profile.ts` → `PROFILE` |
-| Proyectos (video, etiquetas, enlace) | `src/data/profile.ts` → `PROJECTS` (el texto va en `projects.items` de los JSON, en el mismo orden) |
+| Todos los textos (proyectos, tesis, experiencia, premios…) | `src/locales/es.json`, `en.json`, `pt.json` (mismas claves en los tres) |
+| Correo, redes, foto, ID de Formspree | `src/data/profile.ts` → `PROFILE` |
+| Video, etiquetas y enlace de cada proyecto | `src/data/profile.ts` → `PROJECTS` (el texto va en `projects.items`, unido por `key`) |
 | Habilidades | `src/data/profile.ts` → `SKILL_GROUPS` |
-| Forma de partículas de cada sección | `src/data/profile.ts` → `SECTION_SHAPE` |
+| Colores, tipografías y animaciones | `src/index.css` y `DESIGN.md` |
 
 ## Estructura
 
 ```
 src/
-  pages/HomePage.tsx          página única con todas las secciones
+  pages/HomePage.tsx        portada con todas las secciones
+  pages/ThesisPage.tsx      /proyectos/prediccion-de-rayos
   components/
-    sections/                 Hero, About, Research, Projects, Experience, Education, Awards, Volunteering, Skills, Contact
-    layout/                   Navbar, Intro, Assistant (el cubo con ojos), Footer, ScrollProgress, LanguageSwitcher
-    background/               CosmosScene (Three.js) y las figuras matemáticas
-    brand/                    Bat (murciélago pixel-art) y CubeBuddy
-    ui/                       animaciones reutilizables, botones, marquee, iconos
-  data/profile.ts             datos que no dependen del idioma
-  locales/                    textos en es / en / pt
+    fx/                     ElectricField (canvas) y FieldTrace (gráfica de la tesis)
+    sections/               Hero, Projects, About, Research, Journey, Awards, Community, Contact
+    layout/                 Navbar, Footer, Intro, Assistant (el cubo con ojos), PageShell
+    brand/                  Bat (murciélago pixel-art) y CubeBuddy
+    ui/                     estilos de botones, encabezados, redes
+  data/profile.ts           datos que no dependen del idioma
+  locales/                  textos en es / en / pt
+.claude/skills/             skills de diseño usadas (Emil Kowalski, Impeccable, Taste)
 ```
 
 ## Scripts
 
 ```bash
 npm install
-npm run dev      # servidor de desarrollo en http://localhost:8080
-npm run build    # compila a dist/
+npm run dev      # http://localhost:8080
+npm run build
 npm run lint
 ```
 
-`public/_redirects` hace que Netlify sirva la app en cualquier ruta (la antigua `/cv` redirige a la sección de trayectoria).
+`public/_redirects` hace que Netlify sirva la app en cualquier ruta (la antigua `/cv` lleva a Trayectoria).

@@ -32,10 +32,9 @@ i18n
     interpolation: { escapeValue: false },
   });
 
-// Keep <html lang>, the title and the meta description in sync with the language.
+// Keep <html lang> and the meta description in sync; pages set their own title.
 const syncDocument = (lng: string) => {
   document.documentElement.lang = lng;
-  document.title = i18n.t("meta.title");
   document
     .querySelector('meta[name="description"]')
     ?.setAttribute("content", i18n.t("meta.description"));

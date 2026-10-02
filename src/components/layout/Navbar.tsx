@@ -1,127 +1,158 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
-import { useLenis } from "lenis/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { ListIcon, MoonIcon, SunIcon, XIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
-import { ArrowUpRight } from "lucide-react";
 import { BatTile } from "../brand/Bat";
-import { LanguageSwitcher } from "./LanguageSwitcher";
-import { GithubIcon, LinkedinIcon, OrcidIcon } from "../ui/icons";
-import { PROFILE, type SectionId } from "../../data/profile";
-import { useScrollTo } from "../../hooks/useScrollTo";
+import { SocialLinks } from "../ui/SocialLinks";
+import { button, container } from "../ui/styles";
+import { LANGUAGES } from "../../i18n";
+import { useTheme } from "../../hooks/useTheme";
+import type { SectionId } from "../../data/profile";
 
-const LINKS = ["about", "research", "projects", "experience", "awards", "contact"] as const;
-type LinkId = (typeof LINKS)[number];
+const LINKS = ["projects", "research", "journey", "about"] as const;
 
-/** Sections without their own nav entry highlight the closest one. */
-const NAV_FOR: Partial<Record<SectionId, LinkId>> = {
+/** Sections without their own link light up the closest one. */
+const NAV_FOR: Partial<Record<SectionId, (typeof LINKS)[number]>> = {
+  projects: "projects",
   about: "about",
   research: "research",
-  projects: "projects",
-  experience: "experience",
-  education: "experience",
-  awards: "awards",
-  volunteering: "awards",
-  contact: "contact",
+  journey: "journey",
+  awards: "journey",
 };
 
-const EASE = [0.16, 1, 0.3, 1] as const;
-
-export function Navbar({ active }: { active: SectionId }) {
+function ThemeToggle() {
   const { t } = useTranslation();
-  const scrollTo = useScrollTo();
-  const lenis = useLenis();
+  const { theme, toggle } = useTheme();
+  const ref = useRef<HTMLButtonElement>(null);
+  const dark = theme === "dark";
+  return (
+    <button
+      ref={ref}
+      type="button"
+      onClick={() => toggle(ref.current)}
+      aria-label={dark ? t("nav.toLight") : t("nav.toDark")}
+      title={dark ? t("nav.toLight") : t("nav.toDark")}
+      className="press grid h-10 w-10 place-items-center rounded-full text-ink hover:bg-bg-2"
+    >
+      {dark ? <SunIcon size={19} /> : <MoonIcon size={19} />}
+    </button>
+  );
+}
+
+function LanguageSwitch({ className }: { className?: string }) {
+  const { i18n, t } = useTranslation();
+  const current = i18n.resolvedLanguage ?? "es";
+  return (
+    <div role="group" aria-label={t("nav.language")} className={clsx("flex items-center rounded-full border border-line p-0.5", className)}>
+      {LANGUAGES.map(({ code, label }) => (
+        <button
+          key={code}
+          type="button"
+          lang={code}
+          title={label}
+          aria-pressed={current === code}
+          onClick={() => i18n.changeLanguage(code)}
+          className={clsx(
+            "press h-8 rounded-full px-2.5 text-[13px] font-medium uppercase",
+            current === code ? "bg-ink text-bg" : "text-muted hover:text-ink",
+          )}
+        >
+          {code}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+export function Navbar({ active }: { active?: SectionId }) {
+  const { t } = useTranslation();
+  const { pathname } = useLocation();
+  const onHome = pathname === "/";
   const { scrollY } = useScroll();
-  const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  useMotionValueEvent(scrollY, "change", (y) => {
-    const prev = scrollY.getPrevious() ?? 0;
-    setScrolled(y > 40);
-    setHidden(y > prev && y > 240 && !open);
-  });
+  useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 8));
 
   useEffect(() => {
-    if (open) lenis?.stop();
-    else lenis?.start();
+    document.body.style.overflow = open ? "hidden" : "";
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open, lenis]);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
 
-  const go = (id: string) => {
-    setOpen(false);
-    // Let the menu start closing before the page moves.
-    window.setTimeout(() => scrollTo(id), open ? 250 : 0);
-  };
-
-  const current = NAV_FOR[active];
+  // On the home page links are in-page anchors; elsewhere they lead back home.
+  const href = (id: string) => (onHome ? `#${id}` : `/#${id}`);
+  const current = active ? NAV_FOR[active] : undefined;
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: hidden ? -110 : 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: EASE }}
-        className="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-6"
+      <header
+        className={clsx(
+          "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300",
+          scrolled || !onHome ? "border-b border-line bg-bg/85 backdrop-blur-md" : "border-b border-transparent",
+        )}
       >
-        <div
-          className={clsx(
-            "mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-full py-2 pr-2 pl-2 transition-all duration-500 md:pl-3",
-            scrolled ? "glass shadow-[0_10px_40px_-10px_rgba(0,0,0,0.8)]" : "border border-transparent",
-          )}
-        >
-          <button type="button" onClick={() => go("home")} className="flex items-center gap-3 rounded-full pr-2" aria-label="Joseph Arroyo">
-            <BatTile size={36} />
-            <span className="font-mono text-[12px] tracking-[0.2em] text-paper uppercase">Joseph Arroyo</span>
-          </button>
+        <div className={`${container} flex h-16 items-center justify-between gap-6`}>
+          <Link to="/" className="press flex items-center gap-3 rounded-lg" aria-label={t("nav.home")} onClick={() => onHome && window.scrollTo({ top: 0 })}>
+            <BatTile size={34} />
+            <span className="font-display text-[17px] font-semibold tracking-[-0.01em] whitespace-nowrap">Joseph Arroyo</span>
+          </Link>
 
-          <nav className="hidden lg:block" aria-label="Main">
-            <ul className="flex items-center gap-1">
+          <nav aria-label="Main" className="hidden lg:block">
+            <ul className="flex items-center gap-7">
               {LINKS.map((id) => (
                 <li key={id}>
-                  <button
-                    type="button"
-                    onClick={() => go(id)}
+                  <a
+                    href={href(id)}
                     aria-current={current === id ? "true" : undefined}
                     className={clsx(
-                      "relative rounded-full px-4 py-2 text-[13px] transition-colors duration-300",
-                      current === id ? "text-paper" : "text-muted hover:text-paper",
+                      "relative py-2 text-[15px] transition-colors duration-200",
+                      current === id ? "text-ink" : "text-muted hover:text-ink",
                     )}
                   >
-                    {current === id && (
-                      <motion.span
-                        layoutId="nav-pill"
-                        className="absolute inset-0 rounded-full border border-line-strong bg-white/[0.06]"
-                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                      />
-                    )}
-                    <span className="relative">{t(`nav.${id}`)}</span>
-                  </button>
+                    {t(`nav.${id}`)}
+                    <span
+                      aria-hidden="true"
+                      className={clsx(
+                        "absolute inset-x-0 -bottom-0.5 h-0.5 origin-left rounded-full bg-accent transition-transform duration-300 ease-out",
+                        current === id ? "scale-x-100" : "scale-x-0",
+                      )}
+                    />
+                  </a>
                 </li>
               ))}
             </ul>
           </nav>
 
           <div className="flex items-center gap-2">
-            <LanguageSwitcher className="hidden sm:flex" id="nav-lang" />
+            <div className="hidden md:block">
+              <LanguageSwitch />
+            </div>
+            <ThemeToggle />
+            <div className="hidden sm:block">
+              <a href={href("contact")} className={button("primary", "h-10 px-4 text-sm")}>
+                {t("nav.contact")}
+              </a>
+            </div>
             <button
               type="button"
               onClick={() => setOpen(true)}
-              className="glass flex h-11 items-center gap-2 rounded-full px-4 text-[13px] text-paper lg:hidden"
               aria-expanded={open}
               aria-controls="mobile-menu"
+              aria-label={t("nav.menu")}
+              className="press grid h-10 w-10 place-items-center rounded-full text-ink hover:bg-bg-2 lg:hidden"
             >
-              <span className="flex w-4 flex-col gap-[5px]" aria-hidden="true">
-                <span className="h-px w-full bg-paper" />
-                <span className="h-px w-2/3 bg-paper" />
-              </span>
-              {t("nav.menu")}
+              <ListIcon size={22} />
             </button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       <AnimatePresence>
         {open && (
@@ -130,68 +161,53 @@ export function Navbar({ active }: { active: SectionId }) {
             role="dialog"
             aria-modal="true"
             aria-label={t("nav.menu")}
-            className="fixed inset-0 z-[80] flex flex-col bg-ink/95 px-6 pt-5 pb-8 backdrop-blur-2xl lg:hidden"
-            initial={{ clipPath: "circle(0% at calc(100% - 3rem) 2.5rem)" }}
-            animate={{ clipPath: "circle(150% at calc(100% - 3rem) 2.5rem)" }}
-            exit={{ clipPath: "circle(0% at calc(100% - 3rem) 2.5rem)" }}
-            transition={{ duration: 0.7, ease: EASE }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 0.15 } }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[60] flex flex-col bg-bg lg:hidden"
           >
-            <div className="flex items-center justify-between">
+            <div className={`${container} flex h-16 items-center justify-between`}>
               <span className="flex items-center gap-3">
-                <BatTile size={36} />
-                <span className="font-mono text-[12px] tracking-[0.2em] uppercase">Joseph Arroyo</span>
+                <BatTile size={34} />
+                <span className="font-display text-[17px] font-semibold">Joseph Arroyo</span>
               </span>
-              <button type="button" onClick={() => setOpen(false)} className="glass h-11 rounded-full px-4 text-[13px]">
-                {t("nav.close")}
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label={t("nav.close")}
+                className="press grid h-10 w-10 place-items-center rounded-full hover:bg-bg-2"
+              >
+                <XIcon size={22} />
               </button>
             </div>
-
-            <nav className="mt-10 flex-1" aria-label="Mobile">
+            <nav aria-label="Mobile" className={`${container} flex-1 pt-8`}>
               <ul className="space-y-1">
-                {LINKS.map((id, i) => (
-                  <li key={id} className="overflow-hidden">
-                    <motion.button
-                      type="button"
-                      onClick={() => go(id)}
-                      initial={{ y: "100%" }}
-                      animate={{ y: 0 }}
-                      transition={{ duration: 0.8, delay: 0.15 + i * 0.06, ease: EASE }}
-                      className="group flex w-full items-baseline gap-4 py-1 text-left"
+                {[...LINKS, "contact" as const].map((id, i) => (
+                  <motion.li
+                    key={id}
+                    initial={{ opacity: 0, transform: "translateY(10px)" }}
+                    animate={{ opacity: 1, transform: "translateY(0px)" }}
+                    transition={{ duration: 0.3, delay: 0.04 + i * 0.04, ease: [0.23, 1, 0.32, 1] }}
+                  >
+                    <a
+                      href={href(id)}
+                      onClick={() => setOpen(false)}
+                      className={clsx(
+                        "block py-2 font-display text-[2.6rem] leading-tight font-semibold tracking-[-0.03em]",
+                        current === id || (id === "contact" && active === "contact") ? "text-accent" : "text-ink",
+                      )}
                     >
-                      <span className="font-mono text-xs text-faint">0{i + 1}</span>
-                      <span
-                        className={clsx(
-                          "font-display text-[clamp(2.6rem,11vw,4rem)] leading-tight transition-colors",
-                          current === id ? "text-gradient" : "text-paper group-active:text-cyan",
-                        )}
-                      >
-                        {t(`nav.${id}`)}
-                      </span>
-                    </motion.button>
-                  </li>
+                      {t(`nav.${id}`)}
+                    </a>
+                  </motion.li>
                 ))}
               </ul>
             </nav>
-
-            <motion.div
-              className="space-y-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
-              <LanguageSwitcher className="w-fit" id="menu-lang" />
-              <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line pt-6">
-                <a href={`mailto:${PROFILE.email}`} className="flex min-w-0 items-center gap-1 text-sm break-all text-muted">
-                  {PROFILE.email}
-                  <ArrowUpRight size={14} className="shrink-0" />
-                </a>
-                <div className="flex gap-4 text-muted">
-                  <a href={PROFILE.links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub"><GithubIcon className="h-5 w-5" /></a>
-                  <a href={PROFILE.links.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><LinkedinIcon className="h-5 w-5" /></a>
-                  <a href={PROFILE.links.orcid} target="_blank" rel="noopener noreferrer" aria-label="ORCID"><OrcidIcon className="h-5 w-5" /></a>
-                </div>
-              </div>
-            </motion.div>
+            <div className={`${container} flex flex-wrap items-center justify-between gap-4 border-t border-line py-6`}>
+              <LanguageSwitch />
+              <SocialLinks />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
