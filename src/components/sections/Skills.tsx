@@ -14,7 +14,7 @@ export function Skills() {
         {SKILL_GROUPS.map((skills, i) => (
           <div key={groups[i]} className="reveal bg-bg py-6 sm:px-5 sm:odd:pl-0">
             <dt className="label">{groups[i]}</dt>
-            <dd className="mt-3 font-serif text-[1.2rem] leading-relaxed">
+            <dd className="mt-3 flex flex-wrap items-baseline gap-y-1 font-serif text-[1.2rem] leading-relaxed">
               {skills.map((skill, j) => (
                 <span key={skill}>
                   <span className="whitespace-nowrap transition-colors duration-200 hover:text-accent">{skill}</span>

@@ -4,7 +4,7 @@ import { SHAPES, SHAPE_VIEW, sectionShape } from "./universe-shapes";
 import type { ShapeKey } from "./universe-shapes";
 
 /** Shapes that sit large and centred behind the hero title. */
-const HERO_SHAPES: ShapeKey[] = ["planet", "fieldlines", "globe", "aurora"];
+const HERO_SHAPES: ShapeKey[] = ["planet"];
 
 type Props = {
   /** Current section; drives the morphing figure. */
@@ -52,29 +52,12 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
     let last = performance.now();
     let night = false;
     const colors = { ink: "#1b1b1d", accent: "#9b1c2e", star: "#1b1b1d" };
-    // Star-temperature palette: blue-white, cyan, violet, gold. Vivid at night, ink-deep by day.
-    const NIGHT = ["#f4f6ff", "#8fc3ff", "#6fe3f0", "#b9a2ff", "#ffd27a"];
+    // Star palette: white and silver only, so the sky stays elegant behind the text.
+    const NIGHT = ["#ffffff", "#e3e7ef", "#cdd4e0", "#b8c0ce", "#f3efe6"];
     const DAY = ["#1b1b1d", "#1f4fa8", "#0e7a86", "#5b3fb0", "#a8730c"];
     let pal = DAY;
-    // Each figure has its own vivid set (same five slots: base, three hues, highlight).
-    const FIGURE: Record<ShapeKey, string[]> = {
-      fieldlines: ["#f4f6fb", "#b9cdf5", "#8fb0ee", "#dbe4f7", "#ffffff"],
-      globe: ["#eef8f8", "#9fd8d8", "#7cc3c9", "#d6efef", "#ffffff"],
-      aurora: ["#e9fbf2", "#7fe0b6", "#5cc8b4", "#a8b8ff", "#d8fff0"],
-      planet: ["#f1f6f3", "#bfe9d6", "#8fd8c0", "#dceee6", "#ffffff"],
-      galaxy: ["#f4f6ff", "#7fb2ff", "#62e0f0", "#a990ff", "#ffcf70"],
-      atmosphere: ["#e8fbff", "#4fa8ff", "#3ee0d0", "#7cc4ff", "#a6f0ff"],
-      lorenz: ["#f1edff", "#8f7bff", "#4cc9f0", "#c08cff", "#ffd166"],
-      lightning: ["#ffffff", "#9ecbff", "#d9c2ff", "#6fb7ff", "#fff1a8"],
-      dipole: ["#effff8", "#4ade9a", "#38d6e8", "#9f8bff", "#c4f56a"],
-      wave: ["#eefcff", "#2fd3c4", "#5aa7ff", "#8be0ff", "#ffd88a"],
-    };
-    const hex = (c: string) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
-    const mix = (a: string, b: string, t: number) => {
-      const A = hex(a), B = hex(b);
-      return `rgb(${A.map((v, i) => Math.round(v + (B[i] - v) * t)).join(",")})`;
-    };
-    let prevShape: ShapeKey = shapeRef.current;
+    // Every figure is drawn in the same silver set (base, three greys, warm highlight).
+    const SILVER = ["#ffffff", "#e6e9ef", "#cfd5df", "#b9c1cf", "#f4f1ea"];
 
     // Starfield in a unit box; z is depth (small = close).
     const stars: Star[] = Array.from({ length: STARS }, () => ({
@@ -109,6 +92,21 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
     });
 
     const pointer = { x: -9999, y: -9999, sx: 0, sy: 0, tx: 0, ty: 0 };
+
+    // Hero plexus (the original site's network of drifting points), shown only on the first screen.
+    type Node = { x: number; y: number; vx: number; vy: number; r: number };
+    let nodes: Node[] = [];
+    const seedNodes = () => {
+      const count = Math.round(Math.min(170, Math.max(60, (w * h) / 13000)));
+      nodes = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: 0.8 + Math.random() * 1.8,
+      }));
+    };
+    let hero = 1;
     let scrollPrev = window.scrollY;
     let impulse = 0;
     let yaw = 0;
@@ -134,6 +132,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
       canvas.width = Math.round(w * dpr);
       canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (fixed) seedNodes();
     };
 
     const drawStars = (t: number, dt: number) => {
@@ -238,11 +237,59 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
       ctx.globalAlpha = 1;
     };
 
+    const drawPlexus = (dt: number) => {
+      if (!fixed || hero < 0.02 || !nodes.length) return;
+      const step = dt / 16;
+      const LINK = Math.min(170, Math.max(120, w / 11));
+      const MOUSE = 190;
+      for (const n of nodes) {
+        n.x += n.vx * step;
+        n.y += n.vy * step;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+      }
+      ctx.lineWidth = 0.7;
+      ctx.strokeStyle = "#ffffff";
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        for (let j = i + 1; j < nodes.length; j++) {
+          const b = nodes[j];
+          const dx = a.x - b.x;
+          const dy = a.y - b.y;
+          const d2 = dx * dx + dy * dy;
+          if (d2 > LINK * LINK) continue;
+          ctx.globalAlpha = (1 - Math.sqrt(d2) / LINK) * 0.22 * hero;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
+        }
+        const md = Math.hypot(a.x - pointer.x, a.y - pointer.y);
+        if (md < MOUSE) {
+          ctx.globalAlpha = (1 - md / MOUSE) * 0.5 * hero;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(pointer.x, pointer.y);
+          ctx.stroke();
+          ctx.lineWidth = 0.7;
+        }
+      }
+      ctx.fillStyle = "#ffffff";
+      for (const n of nodes) {
+        const near = Math.hypot(n.x - pointer.x, n.y - pointer.y) < MOUSE ? 1 : 0;
+        ctx.globalAlpha = (0.55 + 0.35 * near) * hero;
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+    };
+
     const drawFigure = (t: number, dt: number) => {
       if (!N) return;
       // Start a new morph when the section changes.
       if (shapeRef.current !== current) {
-        prevShape = current;
         current = shapeRef.current;
         from.set(cur);
         to = get(current);
@@ -271,8 +318,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
 
       if (night) ctx.globalCompositeOperation = "lighter";
       for (let pass = 0; pass < pal.length; pass++) {
-        // Colours cross-fade with the morph.
-        ctx.fillStyle = night ? mix(FIGURE[prevShape][pass], FIGURE[current][pass], ease(progress)) : pal[pass];
+        ctx.fillStyle = night ? SILVER[pass] : pal[pass];
         for (let i = 0; i < N; i++) {
           if (colorIdx[i] !== pass) continue;
           const i3 = i * 3;
@@ -292,7 +338,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
           const px = ax + x1 * S * f;
           const py = ay + y2 * S * f;
           const size = (night ? 1.5 : 1.25) * f;
-          ctx.globalAlpha = alphaBase * Math.min(1, f * f) * (pass ? 1.25 : 1);
+          ctx.globalAlpha = alphaBase * Math.min(1, f * f) * (pass ? 1.25 : 1) * (fixed ? 1 - hero : 1);
           ctx.fillRect(px, py, size, size);
         }
       }
@@ -312,8 +358,11 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
       pointer.sy += (pointer.ty - pointer.sy) * 0.05;
 
       ctx.clearRect(0, 0, w, h);
+      // 1 on the first screen, 0 once the hero has scrolled away: plexus there, figures after.
+      hero = fixed ? Math.max(0, Math.min(1, 1 - window.scrollY / (window.innerHeight * 0.75))) : 0;
       drawStars(t, dt);
-      drawFigure(t, dt);
+      drawPlexus(dt);
+      if (hero < 0.98) drawFigure(t, dt);
       drawMeteor(t, dt);
     };
 
@@ -369,7 +418,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
       window.removeEventListener("pointermove", onPointer);
       document.documentElement.removeEventListener("pointerleave", onLeave);
     };
-  }, [morph]);
+  }, [morph, fixed]);
 
   return (
     <canvas

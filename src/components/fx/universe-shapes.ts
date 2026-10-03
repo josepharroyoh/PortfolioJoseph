@@ -5,17 +5,17 @@ export type ShapeKey = "fieldlines" | "globe" | "aurora" | "planet" | "galaxy" |
 
 /** Which figure the particles form while each section is on screen. */
 const SECTION_SHAPE: Record<string, ShapeKey> = {
-  home: "planet",
-  academic: "lorenz",
-  awards: "wave",
-  experience: "dipole",
+  home: "galaxy",
+  academic: "galaxy",
+  awards: "lorenz",
+  experience: "fieldlines",
   projects: "lightning",
-  skills: "atmosphere",
-  training: "lorenz",
+  skills: "globe",
+  training: "wave",
   volunteering: "atmosphere",
-  contact: "planet",
+  contact: "galaxy",
   thesis: "lightning",
-  cv: "planet",
+  cv: "galaxy",
 };
 export const sectionShape = (section: string): ShapeKey => SECTION_SHAPE[section] ?? "planet";
 
