@@ -5,12 +5,12 @@ import { useTranslation } from "react-i18next";
 import { PageShell } from "../components/layout/PageShell";
 import { Intro } from "../components/layout/Intro";
 import { Hero } from "../components/sections/Hero";
+import { Highlights } from "../components/sections/Highlights";
 import { Projects } from "../components/sections/Projects";
 import { About } from "../components/sections/About";
 import { Research } from "../components/sections/Research";
-import { Journey } from "../components/sections/Journey";
-import { Awards } from "../components/sections/Awards";
-import { Community } from "../components/sections/Community";
+import { Timeline } from "../components/sections/Timeline";
+import { Skills } from "../components/sections/Skills";
 import { Contact } from "../components/sections/Contact";
 import { useActiveSection } from "../hooks/useActiveSection";
 
@@ -56,12 +56,12 @@ export default function HomePage() {
     <PageShell active={active}>
       {intro && <Intro onDone={finishIntro} />}
       <Hero ready={!intro} />
+      <Highlights />
       <Projects />
       <About />
       <Research />
-      <Journey />
-      <Awards />
-      <Community />
+      <Timeline />
+      <Skills />
       <Contact />
     </PageShell>
   );

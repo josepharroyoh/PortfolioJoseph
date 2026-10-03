@@ -16,9 +16,10 @@ export const PROFILE = {
 } as const;
 
 export const THESIS_PATH = "/proyectos/prediccion-de-rayos";
+export const CV_PATH = "/cv";
 
 /** Home page sections in order; the nav and the assistant follow the active one. */
-export const SECTIONS = ["home", "projects", "about", "research", "journey", "awards", "community", "skills", "contact"] as const;
+export const SECTIONS = ["home", "highlights", "projects", "about", "research", "timeline", "skills", "contact"] as const;
 export type SectionId = (typeof SECTIONS)[number];
 
 type Project = {

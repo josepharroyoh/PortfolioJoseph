@@ -5,9 +5,17 @@ type Charge = { x: number; y: number; q: number };
 type Particle = { x: number; y: number; age: number; life: number };
 type Segment = { x1: number; y1: number; x2: number; y2: number; w: number };
 
+export type FieldState = { level: number; strikes: number; striking: boolean };
+
 type Props = {
   /** Horizontal position of the storm cloud, as a fraction of the width. */
   cloudX?: number;
+  /** Ground line height as a fraction of the canvas. */
+  ground?: number;
+  /** Called about ten times a second with the storm state (for readouts). */
+  onTick?: (state: FieldState) => void;
+  /** Stronger, accent-tinted field lines for dark instrument panels. */
+  vivid?: boolean;
   /** Small canvas below the field that plots the simulated sensor reading. */
   traceCanvas?: RefObject<HTMLCanvasElement | null>;
   className?: string;
@@ -15,12 +23,14 @@ type Props = {
 
 const SOFTEN = 900; // px² added to r² so the field stays finite near a charge
 
-function readColors() {
-  const css = getComputedStyle(document.documentElement);
+function readColors(el: Element) {
+  const css = getComputedStyle(el);
+  const ink = css.getPropertyValue("--ink").trim() || "#121418";
   return {
-    ink: css.getPropertyValue("--ink").trim() || "#121418",
+    ink,
     accent: css.getPropertyValue("--accent").trim() || "#2547d0",
-    dark: document.documentElement.dataset.theme === "dark",
+    // Light ink means a dark surface.
+    dark: parseInt(ink.replace("#", "").slice(0, 2), 16) > 128,
   };
 }
 
@@ -58,10 +68,12 @@ function buildBolt(x: number, y: number, groundY: number, width: number): Segmen
  * slowly charges, discharges as a lightning bolt, and starts again; the
  * pointer adds a positive charge that bends the field around it.
  */
-export function ElectricField({ cloudX = 0.66, traceCanvas, className }: Props) {
+export function ElectricField({ cloudX = 0.66, ground = 0.84, onTick, vivid = false, traceCanvas, className }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const flashRef = useRef<HTMLDivElement>(null);
+  const tickRef = useRef(onTick);
+  tickRef.current = onTick;
 
   useEffect(() => {
     const wrap = wrapRef.current;
@@ -72,7 +84,7 @@ export function ElectricField({ cloudX = 0.66, traceCanvas, className }: Props) 
     const tctx = traceEl?.getContext("2d") ?? null;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let colors = readColors();
+    let colors = readColors(wrap);
     let w = 0;
     let h = 0;
     let dpr = 1;
@@ -85,6 +97,8 @@ export function ElectricField({ cloudX = 0.66, traceCanvas, className }: Props) 
     let level = 0.45;
     let rate = 1 / 2.4; // the first strike comes quickly
     let bolt: { segs: Segment[]; t: number } | null = null;
+    let strikes = 0;
+    let lastTick = 0;
     let lastTime = performance.now();
 
     const trace: number[] = [];
@@ -131,7 +145,7 @@ export function ElectricField({ cloudX = 0.66, traceCanvas, className }: Props) 
       canvas.width = Math.round(w * dpr);
       canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, 1 * dpr, 0, 0);
-      groundY = h * 0.84;
+      groundY = h * ground;
       const cx = w * cloudX;
       cloud.pos = { x: cx + w * 0.03, y: h * 0.14 };
       cloud.neg = { x: cx, y: h * 0.34 };
@@ -237,6 +251,7 @@ export function ElectricField({ cloudX = 0.66, traceCanvas, className }: Props) 
         level = Math.min(1, level + rate * dt * 0.6);
         if (level >= 1) {
           bolt = { segs: buildBolt(cloud.neg.x, cloud.neg.y + 10, groundY, w), t: 0 };
+          strikes++;
           level = 0.3;
           rate = 1 / (5 + Math.random() * 4);
         }
@@ -257,9 +272,9 @@ export function ElectricField({ cloudX = 0.66, traceCanvas, className }: Props) 
 
       const list = charges();
       const speed = 1.4 + level * 1.8;
-      ctx.strokeStyle = colors.ink;
-      ctx.lineWidth = 1;
-      ctx.globalAlpha = colors.dark ? 0.55 : 0.45;
+      ctx.strokeStyle = vivid ? colors.accent : colors.ink;
+      ctx.lineWidth = vivid ? 1.2 : 1;
+      ctx.globalAlpha = vivid ? 0.5 + level * 0.35 : colors.dark ? 0.55 : 0.45;
       ctx.beginPath();
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
@@ -327,6 +342,11 @@ export function ElectricField({ cloudX = 0.66, traceCanvas, className }: Props) 
       trace.push(Math.max(0, Math.min(1, 0.1 + level * 0.82 + noise + (pointer.on ? 0.04 : 0))));
       if (trace.length > 160) trace.shift();
       drawTrace();
+
+      if (tickRef.current && now - lastTick > 100) {
+        lastTick = now;
+        tickRef.current({ level, strikes, striking: bolt !== null });
+      }
     };
 
     const onMove = (e: PointerEvent) => {
@@ -351,7 +371,7 @@ export function ElectricField({ cloudX = 0.66, traceCanvas, className }: Props) 
     };
 
     const onTheme = new MutationObserver(() => {
-      colors = readColors();
+      colors = readColors(wrap);
       ctx.clearRect(0, 0, w, h);
       if (reduced) drawStatic();
     });
@@ -385,7 +405,7 @@ export function ElectricField({ cloudX = 0.66, traceCanvas, className }: Props) 
       sizeObserver.disconnect();
       viewObserver.disconnect();
     };
-  }, [cloudX, traceCanvas]);
+  }, [cloudX, ground, vivid, traceCanvas]);
 
   return (
     <div ref={wrapRef} className={className}>

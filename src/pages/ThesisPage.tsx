@@ -41,7 +41,7 @@ export default function ThesisPage() {
 
         <div className="relative mt-14 h-[52vh] min-h-80 border-y border-line">
           <ElectricField cloudX={0.5} className="absolute inset-0" />
-          <p className={`${container} pointer-events-none absolute inset-x-0 bottom-4 text-xs text-muted`}>{t("hero.caption")}</p>
+          <p className={`${container} pointer-events-none absolute inset-x-0 bottom-4 text-xs text-muted`}>{t("hero.panel.hint")}</p>
         </div>
 
         <div className={`${container} py-20 md:py-28`}>

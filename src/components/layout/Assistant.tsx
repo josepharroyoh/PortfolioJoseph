@@ -16,9 +16,9 @@ const HOLD_MS = 3200;
  * The blinking cube from the old CV, now a guide that comments on whatever
  * section is on screen. On phones it folds down to the cube between messages.
  */
-export function Assistant({ active }: { active: SectionId | "thesis" }) {
+export function Assistant({ active }: { active: SectionId | "thesis" | "cv" }) {
   const { t, i18n } = useTranslation();
-  const all = useCopy<Record<SectionId | "thesis", string[]>>("assistant.messages");
+  const all = useCopy<Record<SectionId | "thesis" | "cv", string[]>>("assistant.messages");
   // i18next may hand back a fresh array each render; key the list by its text.
   const messagesKey = (all[active] ?? all.home).join("\u0000");
   const messages = useMemo(() => messagesKey.split("\u0000"), [messagesKey]);
@@ -71,7 +71,7 @@ export function Assistant({ active }: { active: SectionId | "thesis" }) {
       initial={{ y: 40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 1.2, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-      className="fixed bottom-4 left-4 z-[65] md:bottom-6 md:left-6"
+      className="no-print fixed bottom-4 left-4 z-[65] md:bottom-6 md:left-6"
     >
       <div className="overflow-hidden rounded-2xl border border-line bg-surface text-ink shadow-card">
         <AnimatePresence initial={false}>

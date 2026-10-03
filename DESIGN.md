@@ -52,6 +52,25 @@ entrances, `--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1)` for on-screen moveme
 - `prefers-reduced-motion`: the field is drawn once as static field lines, charts
   show their final state, nothing moves.
 
+## Page structure (home)
+
+Each section uses a different layout family and owns one interaction:
+
+| Section | Layout | Interaction |
+| --- | --- | --- |
+| Hero | split: copy + instrument panel | kinetic name (letter weight follows the cursor), rotating role, live field station with readouts |
+| Ticker | full-bleed strip | the only marquee on the page, pauses on hover |
+| Highlights | 6-cell bento, research funding leads | count-up numbers, cursor glow |
+| Projects | sticky stacking cards (desktop), stacked list (phones) | cards scale back as the next one arrives |
+| About | statement + photo + facts | words light up on scroll, photo parallax |
+| Research | paper card + project card + talks list | copy APA citation |
+| Journey | horizontal pinned track (desktop), vertical list (phones) | filter by type with a sliding pill |
+| Tools | tabs | staggered chips |
+| Contact | split: copy + form | copy email, link to CV |
+
+Global: island nav with sliding indicator and reading progress, ⌘K / Ctrl+K command
+palette (no animation, it is keyboard-driven), cube assistant, printable CV at `/cv`.
+
 ## Signature pieces
 
 - `fx/ElectricField.tsx`: canvas field of a storm cloud (point charges plus mirror
@@ -60,5 +79,9 @@ entrances, `--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1)` for on-screen moveme
 - `fx/FieldTrace.tsx`: illustrative warning chart (threshold, alert, strike, lead
   time). Labels are HTML so they stay legible at any size. Always labelled as a
   simulation.
+- `fx/ProximityText.tsx`: variable-weight letters that thicken near the pointer
+  (fine pointers only, off for reduced motion).
+- `pages/CVPage.tsx`: the CV is generated from the same locale files as the site and
+  prints on A4 (`@media print` hides all chrome).
 - `brand/Bat.tsx` and `brand/CubeBuddy.tsx`: the pixel bat logo and the blinking cube
   assistant, kept from earlier versions of the site.

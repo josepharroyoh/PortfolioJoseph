@@ -1,14 +1,18 @@
 {
   "meta": {
-    "title": "Joseph Arroyo Hernández | Físico e investigador en electricidad atmosférica",
-    "description": "Portafolio de Joseph Arroyo Hernández, Bachiller en Física (UNICA). Investigación en electricidad atmosférica y predicción de rayos, análisis de datos y cloud."
+    "title": "Joseph Arroyo Hernández | Físico, investigador y analista de datos",
+    "description": "Portafolio de Joseph Arroyo Hernández, Bachiller en Física (UNICA). Investigación en electricidad atmosférica y predicción de rayos, análisis de datos y cloud. Proyectos, publicaciones, premios y CV."
   },
   "nav": {
+    "highlights": "Logros",
     "projects": "Proyectos",
-    "about": "Sobre mí",
+    "about": "Quién soy",
     "research": "Investigación",
-    "journey": "Trayectoria",
-    "contact": "Escríbeme",
+    "timeline": "Trayectoria",
+    "skills": "Herramientas",
+    "contact": "Contacto",
+    "cv": "Ver CV",
+    "search": "Buscar",
     "menu": "Menú",
     "close": "Cerrar",
     "language": "Idioma",
@@ -17,93 +21,203 @@
     "skip": "Saltar al contenido",
     "home": "Inicio"
   },
-  "intro": {
-    "loading": "Cargando"
-  },
   "hero": {
+    "status": "Abierto a pasantías de investigación y posgrado",
     "name1": "Joseph",
     "name2": "Arroyo Hernández",
-    "text": "Físico y analista de datos. Investigo la electricidad atmosférica para anticipar rayos con datos de campo eléctrico, satélite y radar.",
+    "rolePrefix": "Físico que",
+    "roles": [
+      "investiga la electricidad atmosférica",
+      "anticipa rayos con datos",
+      "construye pipelines en la nube",
+      "lidera equipos de datos"
+    ],
+    "text": "Bachiller en Física por la UNICA. Uno la física de la atmósfera con el análisis de datos y la nube para convertir mediciones en alertas a tiempo.",
     "ctaWork": "Ver proyectos",
+    "ctaCv": "Ver CV",
     "ctaContact": "Escríbeme",
-    "caption": "Campo eléctrico simulado. Mueve el cursor para sumar una carga.",
-    "captionTouch": "Campo eléctrico simulado. Toca para sumar una carga.",
-    "sensor": "Sensor de campo, simulado"
+    "panel": {
+      "title": "Estación de campo eléctrico",
+      "sim": "Simulación en vivo",
+      "field": "Campo",
+      "state": "Estado",
+      "strikes": "Rayos",
+      "calm": "Calma",
+      "charging": "Cargando",
+      "alert": "Alerta",
+      "strike": "Rayo",
+      "hint": "Mueve el cursor para sumar una carga.",
+      "hintTouch": "Toca para sumar una carga.",
+      "link": "Así funciona mi tesis"
+    }
+  },
+  "ticker": [
+    "Coautor en el Journal of Atmospheric and Solar-Terrestrial Physics",
+    "Premio de Investigación UNICA 2023",
+    "Beca completa AWS re/Start",
+    "Beca completa ProInnovate y Le Wagon",
+    "Beca SEGIB de Competencias Digitales",
+    "NASA Space Apps Challenge 2025",
+    "Ponente en ECI 2023 y CITICI",
+    "2.º puesto de la promoción de Física"
+  ],
+  "highlights": {
+    "title": "Lo que he logrado",
+    "intro": "Resultados concretos en investigación, formación y trabajo técnico.",
+    "items": [
+      {
+        "value": 16000,
+        "prefix": "USD ",
+        "suffix": "",
+        "label": "de financiamiento",
+        "text": "Proyecto de investigación ganador UNICA 2023, donde participé como tesista."
+      },
+      {
+        "display": "JASTP",
+        "label": "artículo indexado, 2024",
+        "text": "Coautor en el Journal of Atmospheric and Solar-Terrestrial Physics (Elsevier)."
+      },
+      {
+        "value": 3,
+        "prefix": "",
+        "suffix": "",
+        "label": "becas completas",
+        "text": "AWS re/Start, SEGIB Competencias Digitales y ProInnovate con Le Wagon."
+      },
+      {
+        "value": 3,
+        "prefix": "",
+        "suffix": "",
+        "label": "ponencias",
+        "text": "En congresos científicos internacionales: ECI 2023 y CITICI."
+      },
+      {
+        "value": 2,
+        "prefix": "",
+        "suffix": ".º",
+        "label": "puesto de la promoción",
+        "text": "Bachiller en Física, tercio superior de la UNICA."
+      },
+      {
+        "value": 95,
+        "prefix": "+",
+        "suffix": "%",
+        "label": "de operatividad",
+        "text": "De los radares y el magnetómetro a mi cargo en el Instituto Geofísico del Perú."
+      }
+    ]
   },
   "projects": {
     "title": "Proyectos",
-    "intro": "Investigación, ingeniería de datos y divulgación. Empiezo por el que más me importa ahora.",
+    "intro": "Desde mi tesis sobre rayos hasta productos de datos construidos en equipo.",
+    "open": "Ver proyecto",
+    "visit": "Abrir enlace",
     "featured": {
       "status": "Tesis en curso",
       "title": "Predicción de rayos",
-      "text": "Uso redes de medidores de campo eléctrico en São Paulo y evalúo si los datos del satélite GLM y del radar mejoran la alerta.",
-      "tags": ["Campo eléctrico", "GOES-GLM", "Radar", "Algoritmos de alerta"],
+      "text": "Uso redes de medidores de campo eléctrico en São Paulo y evalúo si los datos del satélite GLM y del radar meteorológico hacen más eficiente la alerta.",
+      "tags": [
+        "Campo eléctrico",
+        "GOES-GLM",
+        "Radar",
+        "Algoritmos de alerta"
+      ],
       "cta": "Ver el proyecto"
     },
-    "open": "Abrir",
     "items": [
       {
         "key": "reffindr",
         "title": "Reffindr",
         "category": "Ingeniería de datos",
         "year": "2024",
-        "text": "Solución PropTech creada en 4 semanas. Lideré el equipo de datos y construí una API que automatizó la recolección de más de 300 datos inmobiliarios."
+        "role": "Líder del equipo de datos",
+        "text": "Solución PropTech construida en 4 semanas en el IT Training Lab de Igrowker. Diseñé una API que automatizó la recolección de más de 300 datos inmobiliarios y dejó lista la base del MVP."
       },
       {
         "key": "prello",
         "title": "Prello",
         "category": "Análisis de datos",
         "year": "2024",
-        "text": "Sistema de puntuación que identifica las ciudades más atractivas para invertir en segundas residencias, cruzando indicadores turísticos, inmobiliarios y de vivienda."
+        "role": "Analista de datos",
+        "text": "Sistema de puntuación para invertir en segundas residencias: cruza indicadores turísticos, inmobiliarios y de vivienda para encontrar las ciudades más atractivas."
       },
       {
         "key": "aireica",
         "title": "AIREICA",
         "category": "Monitoreo ambiental",
         "year": "2023",
-        "text": "Plataforma de monitoreo climático y alerta temprana de tormentas de polvo en Ica, nacida del proyecto de investigación ganador UNICA 2023."
+        "role": "Tesista y análisis de datos",
+        "text": "Plataforma de monitoreo climático y alerta temprana de tormentas de polvo en Ica. Nació del proyecto ganador UNICA 2023 y combina Python, SQL, Power BI y una máquina virtual."
       },
       {
         "key": "cori",
         "title": "El viaje de Cori",
         "category": "Divulgación científica",
         "year": "2025",
-        "text": "Historia interactiva para el NASA Space Apps Challenge 2025, con Rubén M. Romero. Una eyección de masa coronal viaja a la Tierra y muestra los efectos del clima espacial."
+        "role": "NASA Space Apps Challenge",
+        "text": "Historia interactiva creada con Rubén M. Romero: una eyección de masa coronal viaja a la Tierra y muestra cómo el clima espacial crea auroras y afecta al GPS, los satélites y las redes eléctricas."
       },
       {
         "key": "portfolio",
         "title": "Este portafolio",
-        "category": "Diseño y desarrollo web",
+        "category": "Desarrollo web",
         "year": "2025",
-        "text": "Sitio en React con un campo eléctrico interactivo, modo claro y oscuro y tres idiomas."
+        "role": "Diseño y desarrollo",
+        "text": "Sitio en React y TypeScript con una simulación de campo eléctrico en canvas, línea de tiempo interactiva, modo claro y oscuro y tres idiomas."
       }
     ]
   },
   "about": {
-    "title": "Sobre mí",
+    "title": "Quién soy",
+    "manifesto": "Soy físico. Aprendí a escuchar a la atmósfera con radares, magnetómetros y sensores de campo eléctrico, y hoy uso los datos y la nube para anticipar lo que va a pasar.",
     "paragraphs": [
-      "Soy Bachiller en Física por la Universidad Nacional San Luis Gonzaga (UNICA), en Ica, Perú. En el CIEASEST, el centro de la universidad que estudia la actividad solar y sus efectos sobre la Tierra, aprendí a trabajar con datos de instrumentos reales: radares HF, magnetómetros y sensores de campo eléctrico.",
-      "Hoy uno esa base con análisis de datos y computación en la nube. Me formé en AWS, Python y SQL, y lideré equipos de datos en proyectos con plazos cortos.",
-      "Mi tesis busca anticipar rayos combinando redes de campo eléctrico, satélite y radar. Me interesan los sistemas que convierten mediciones en decisiones a tiempo."
+      "Me formé en la Universidad Nacional San Luis Gonzaga, en Ica. En el CIEASEST, el centro que estudia la actividad solar y sus efectos sobre la Tierra, trabajé con grandes volúmenes de datos de instrumentos reales y supervisé equipos del Instituto Geofísico del Perú.",
+      "Esa experiencia me llevó al análisis de datos y a la computación en la nube: me formé en Python, SQL y AWS con becas completas, y lideré equipos de datos en proyectos con plazos cortos.",
+      "Mi tesis busca anticipar rayos combinando redes de campo eléctrico, satélite y radar. Quiero seguir investigando en un posgrado y construir sistemas que conviertan mediciones en decisiones a tiempo."
     ],
     "cieasest": "Conoce el CIEASEST",
     "facts": [
-      { "label": "Formación", "value": "Bachiller en Física, UNICA" },
-      { "label": "Promoción", "value": "Tercio superior, 2.º puesto" },
-      { "label": "Base", "value": "Ica, Perú" },
-      { "label": "Enfoque", "value": "Electricidad atmosférica y datos" }
+      {
+        "label": "Formación",
+        "value": "Bachiller en Física, UNICA"
+      },
+      {
+        "label": "Base",
+        "value": "Ica, Perú"
+      },
+      {
+        "label": "Promoción",
+        "value": "Tercio superior, 2.º puesto"
+      },
+      {
+        "label": "Enfoque",
+        "value": "Electricidad atmosférica, datos y cloud"
+      }
     ],
-    "traits": ["Liderazgo de equipos", "Planificación", "Pensamiento analítico"]
+    "seekingTitle": "Lo que busco",
+    "seeking": [
+      "Pasantías de investigación",
+      "Programas de posgrado",
+      "Proyectos de análisis de datos y cloud"
+    ],
+    "traitsTitle": "Cómo trabajo",
+    "traits": [
+      "Liderazgo de equipos",
+      "Planificación",
+      "Pensamiento analítico"
+    ]
   },
   "research": {
     "title": "Investigación",
-    "intro": "Publicaciones y presentaciones donde la física atmosférica se encuentra con el análisis de datos.",
+    "intro": "Publicaciones, proyectos y ponencias donde la física atmosférica se encuentra con el análisis de datos.",
     "publication": {
       "label": "Artículo en revista indexada",
       "authors": "Romero, R., Tacza, J., Arroyo, J., Prieto, F., Macotela, L., Buleje, Y., Loayza, R., Fernandez, U., y Raulin, J.-P.",
       "year": "2024",
       "title": "Primeros resultados de la variación del gradiente de potencial en una estación tropical en América del Sur (Ica, Perú).",
-      "journal": "Journal of Atmospheric and Solar-Terrestrial Physics"
+      "journal": "Journal of Atmospheric and Solar-Terrestrial Physics",
+      "copy": "Copiar cita",
+      "copied": "Cita copiada"
     },
     "academic": {
       "label": "Proyecto de investigación UNICA 2023, en proceso",
@@ -112,10 +226,10 @@
       "text": "Proyecto ganador del Concurso de Investigación Científica UNICA 2023, financiado con cerca de USD 16,000. Participé como tesista con análisis de datos en Python, SQL y Power BI. El resultado es la plataforma aireica.com.",
       "link": "Visitar aireica.com"
     },
-    "congressesTitle": "Congresos y conferencias",
+    "congressesTitle": "Ponencias",
     "congresses": [
       {
-        "date": "3-5 nov.",
+        "date": "2025",
         "title": "XIII Congreso Internacional de Tecnología e Innovación + Ciencia e Investigación (CITICI)",
         "place": "Virtual, Bogotá, Colombia",
         "topic": "Plataforma de monitoreo atmosférico y sistema de alerta temprana para tormentas de polvo en Ica, Perú."
@@ -134,164 +248,263 @@
       }
     ]
   },
-  "journey": {
+  "timeline": {
     "title": "Trayectoria",
-    "experienceTitle": "Experiencia",
-    "jobs": [
-      {
-        "date": "Mar 2023 - Jul 2024",
-        "role": "Supervisor y asistente técnico",
-        "org": "Instituto Geofísico del Perú (IGP)",
-        "text": "Mantuve operativos el radar HF, el radar biestático y el magnetómetro instalados en el CIEASEST. Supervisé su funcionamiento, coordiné mantenimientos y elaboré reportes mensuales de incidencias en Excel.",
-        "metrics": [
-          { "value": "+95%", "label": "de operatividad de los equipos" },
-          { "value": "−20%", "label": "en tiempos de respuesta" }
-        ]
-      },
-      {
-        "date": "May 2023 - Jul 2023",
-        "role": "Practicante en el laboratorio de física",
-        "org": "Institución Educativa San Luis Gonzaga",
-        "text": "Mantenimiento, reparación y calibración de equipos, compra de componentes y organización del inventario del laboratorio.",
-        "metrics": []
-      }
-    ],
-    "educationTitle": "Formación",
-    "degree": {
-      "date": "2018 - 2023",
-      "title": "Bachiller en Física",
-      "school": "Universidad Nacional San Luis Gonzaga (UNICA), Ica",
-      "highlights": ["Tercio superior, 2.º puesto de la promoción", "Tesista en el proyecto ganador UNICA 2023"]
+    "intro": "Diez años de formación, investigación y trabajo, en orden. Filtra por tipo o desliza para recorrerlos.",
+    "all": "Todo",
+    "types": {
+      "research": "Investigación",
+      "work": "Experiencia",
+      "education": "Formación",
+      "award": "Premios y becas",
+      "community": "Comunidad"
     },
-    "coursesTitle": "Programas y cursos",
-    "courseGroups": [
+    "now": "Hoy",
+    "events": [
       {
-        "year": "2025",
-        "items": [
-          { "title": "Amazon Web Services (AWS) re/Start", "institution": "Bootcamp Institute, México" },
-          { "title": "Programa de iniciación en competencias digitales", "institution": "IMMUNE Technology Institute, España" }
-        ]
-      },
-      {
-        "year": "2024",
-        "items": [
-          { "title": "IT Training Lab N.º 04: Data Analyst", "institution": "Igrowker, España" },
-          { "title": "Bootcamp de Análisis de Datos", "institution": "Le Wagon Latam" },
-          { "title": "Analista de Datos con Python (DataCamp)", "institution": "Universitarios por los ODS, Bolivia" },
-          { "title": "Programa Especializado en Ciencia de Datos con Python", "institution": "Data Analítica" }
-        ]
-      },
-      {
-        "year": "2022 - 2023",
-        "items": [
-          { "title": "Desarrollador Backend con Java", "institution": "Oracle Next Education" },
-          { "title": "Escuela de Computación Cuántica (grupo de estudio)", "institution": "Universidad Nacional Mayor de San Marcos, Lima" }
-        ]
-      }
-    ]
-  },
-  "awards": {
-    "title": "Reconocimientos",
-    "intro": "Becas completas y premios que financiaron mi formación y mi investigación.",
-    "items": [
-      {
-        "year": "2023",
-        "title": "Premio al Proyecto de Investigación Científica UNICA 2023",
-        "org": "Universidad Nacional San Luis Gonzaga",
-        "amount": "USD 16,000",
-        "text": "Tesista en el proyecto ganador sobre alerta temprana de tormentas de polvo."
-      },
-      {
-        "year": "2025",
-        "title": "Beca completa AWS re/Start",
-        "org": "Amazon Web Services",
-        "text": "12 semanas de formación en computación en la nube con Bootcamp Institute."
-      },
-      {
-        "year": "2025",
-        "title": "Beca completa del Programa Iberoamericano de Competencias Digitales para Jóvenes",
-        "org": "SEGIB, SENAJU, OIJ y AECID",
-        "text": "Edición 2025."
-      },
-      {
-        "year": "2024",
-        "title": "Beca completa del Bootcamp de Análisis de Datos",
-        "org": "ProInnovate y Le Wagon",
-        "amount": "USD 5,000",
-        "text": "Financiada por el Programa Nacional de Desarrollo Tecnológico e Innovación."
-      },
-      {
-        "year": "2016",
-        "title": "Primer lugar en el Concurso de Proyectos Productivos y Emprendedores",
+        "date": "2016",
+        "type": "award",
+        "title": "Primer lugar en proyectos productivos",
         "org": "I.E. República de Bolivia, Lima",
-        "text": "5.º año de secundaria."
-      }
-    ]
-  },
-  "community": {
-    "title": "Comunidad",
-    "items": [
-      {
-        "period": "2025",
-        "title": "NoCountry.Tech",
-        "role": "Líder de equipo",
-        "text": "Lideré equipos de desarrollo en una simulación laboral tecnológica."
+        "text": "Concurso de Proyectos Productivos y Emprendedores, 5.º de secundaria."
       },
       {
-        "period": "2018 - 2022",
-        "title": "Grupo Astronómico MUTSUNICA",
-        "role": "Voluntario, CIEASEST",
-        "text": "Organicé eventos de astronomía y observaciones públicas con los telescopios Nishimura y FMT."
+        "date": "2018",
+        "type": "education",
+        "title": "Ingreso a la carrera de Física",
+        "org": "Universidad Nacional San Luis Gonzaga (UNICA)",
+        "text": "Inicio el bachillerato en Ciencias Físicas en Ica."
       },
       {
-        "period": "2022",
-        "title": "Movimiento Universitario UDI «Por el Bien Común»",
-        "role": "Candidato estudiantil",
+        "date": "2018 - 2022",
+        "type": "community",
+        "title": "Divulgación astronómica",
+        "org": "Grupo Astronómico MUTSUNICA, CIEASEST",
+        "text": "Organicé observaciones públicas con los telescopios Nishimura y FMT."
+      },
+      {
+        "date": "2021",
+        "type": "community",
+        "title": "Hult Prize",
+        "org": "Campus UNICA",
+        "text": "Equipo Songo: una galleta de calabaza para atacar problemas del sistema alimentario."
+      },
+      {
+        "date": "2022",
+        "type": "education",
+        "title": "Escuela de Computación Cuántica",
+        "org": "Universidad Nacional Mayor de San Marcos, Lima",
+        "text": "Grupo de estudio sobre fundamentos de computación cuántica.",
+        "course": true
+      },
+      {
+        "date": "2022",
+        "type": "community",
+        "title": "Candidato estudiantil",
+        "org": "Movimiento Universitario UDI «Por el Bien Común»",
         "text": "Candidato a la Asamblea Universitaria de la UNICA."
       },
       {
-        "period": "2021",
-        "title": "Hult Prize, campus UNICA",
-        "role": "Equipo Songo",
-        "text": "Desarrollamos una galleta de calabaza para atacar problemas del sistema alimentario."
+        "date": "Dic 2022 - May 2023",
+        "type": "education",
+        "title": "Desarrollador Backend con Java",
+        "org": "Oracle Next Education",
+        "text": "Programación orientada a objetos y desarrollo backend.",
+        "course": true
+      },
+      {
+        "date": "Mar 2023 - Jul 2024",
+        "type": "work",
+        "title": "Supervisor y asistente técnico",
+        "org": "Instituto Geofísico del Perú (IGP)",
+        "text": "Mantuve operativos el radar HF, el radar biestático y el magnetómetro del CIEASEST: más del 95% de operatividad y 20% menos en tiempos de respuesta."
+      },
+      {
+        "date": "May - Jul 2023",
+        "type": "work",
+        "title": "Practicante en el laboratorio de física",
+        "org": "Institución Educativa San Luis Gonzaga",
+        "text": "Mantenimiento, reparación y calibración de equipos e inventario del laboratorio."
+      },
+      {
+        "date": "Ago 2023",
+        "type": "research",
+        "title": "Dos ponencias en el ECI 2023",
+        "org": "Encuentro Científico Internacional",
+        "text": "Campo eléctrico atmosférico en Ica y catálogo de fenómenos solares del FMT."
+      },
+      {
+        "date": "Ago 2023",
+        "type": "education",
+        "title": "Bachiller en Física",
+        "org": "UNICA",
+        "text": "Tercio superior, 2.º puesto de la promoción."
+      },
+      {
+        "date": "2023",
+        "type": "award",
+        "title": "Premio de Investigación UNICA 2023",
+        "org": "USD 16,000 de financiamiento",
+        "text": "Tesista en el proyecto ganador sobre alerta de tormentas de polvo, que dio origen a AIREICA."
+      },
+      {
+        "date": "Ene - Mar 2024",
+        "type": "education",
+        "title": "Ciencia de Datos con Python",
+        "org": "Data Analítica",
+        "text": "Programa especializado en análisis y modelado con Python.",
+        "course": true
+      },
+      {
+        "date": "Feb - May 2024",
+        "type": "education",
+        "title": "Analista de Datos con Python (DataCamp)",
+        "org": "Universitarios por los ODS, Bolivia",
+        "text": "Ruta completa de análisis de datos.",
+        "course": true
+      },
+      {
+        "date": "2024",
+        "type": "research",
+        "title": "Publicación en JASTP",
+        "org": "Journal of Atmospheric and Solar-Terrestrial Physics",
+        "text": "Coautor del primer estudio del gradiente de potencial en Ica."
+      },
+      {
+        "date": "Jul - Oct 2024",
+        "type": "award",
+        "title": "Bootcamp de Análisis de Datos con beca completa",
+        "org": "Le Wagon y ProInnovate (USD 5,000)",
+        "text": "Proyecto final: el sistema de puntuación Prello."
+      },
+      {
+        "date": "Nov - Dic 2024",
+        "type": "work",
+        "title": "Líder del equipo de datos en Reffindr",
+        "org": "Igrowker IT Training Lab N.º 04",
+        "text": "API que automatizó la recolección de más de 300 datos inmobiliarios."
+      },
+      {
+        "date": "2025",
+        "type": "community",
+        "title": "Líder de equipo",
+        "org": "NoCountry.Tech",
+        "text": "Lideré equipos de desarrollo en una simulación laboral tecnológica."
+      },
+      {
+        "date": "Jul - Sep 2025",
+        "type": "award",
+        "title": "Beca del Programa Iberoamericano de Competencias Digitales",
+        "org": "SEGIB, SENAJU, OIJ, AECID e IMMUNE",
+        "text": "Programa de iniciación en competencias digitales, edición 2025."
+      },
+      {
+        "date": "Ago - Nov 2025",
+        "type": "award",
+        "title": "Beca completa AWS re/Start",
+        "org": "Amazon Web Services y Bootcamp Institute",
+        "text": "12 semanas de formación en computación en la nube."
+      },
+      {
+        "date": "2025",
+        "type": "research",
+        "title": "Ponencia en CITICI",
+        "org": "Congreso virtual, Bogotá",
+        "text": "Plataforma de monitoreo atmosférico y alerta de tormentas de polvo."
+      },
+      {
+        "date": "Oct 2025",
+        "type": "research",
+        "title": "NASA Space Apps Challenge",
+        "org": "Historias Estelares",
+        "text": "El viaje de Cori, una historia interactiva sobre clima espacial."
+      },
+      {
+        "date": "Hoy",
+        "type": "research",
+        "title": "Tesis: predicción de rayos",
+        "org": "EFM del CRAAM, Atibaia y USP, GLM y radar",
+        "text": "Evalúo si los datos de satélite y radar mejoran una alerta basada en campo eléctrico."
       }
     ]
   },
   "skills": {
     "title": "Herramientas",
-    "groups": ["Programación", "Cloud y bases de datos", "Análisis y BI", "Entorno"]
+    "intro": "Lo que uso para pasar de la medición al resultado.",
+    "groups": [
+      "Programación",
+      "Cloud y bases de datos",
+      "Análisis y BI",
+      "Entorno"
+    ]
   },
   "contact": {
-    "title": "¿Hablamos?",
-    "text": "Estoy abierto a colaborar en investigación, análisis de datos y cloud. Escríbeme por correo o con este formulario.",
+    "title": "Hablemos",
+    "text": "Si buscas a alguien para una pasantía, un posgrado o un proyecto de datos, escríbeme. Respondo por correo o a través de este formulario.",
     "copy": "Copiar",
     "copied": "Copiado",
     "form": {
       "name": "Nombre",
       "email": "Correo",
       "message": "Mensaje",
-      "hint": "Cuéntame en qué estás trabajando.",
+      "hint": "Cuéntame sobre la oportunidad o el proyecto.",
       "send": "Enviar mensaje",
       "sending": "Enviando…",
       "success": "Mensaje enviado. ¡Gracias!",
       "error": "No se pudo enviar. Inténtalo de nuevo o escríbeme al correo."
     }
   },
+  "palette": {
+    "placeholder": "Escribe una sección o una acción…",
+    "empty": "Sin resultados.",
+    "sections": "Secciones",
+    "actions": "Acciones",
+    "copyEmail": "Copiar correo",
+    "emailCopied": "Correo copiado",
+    "openCv": "Abrir el CV",
+    "openThesis": "Ver la tesis de predicción de rayos",
+    "toggleTheme": "Cambiar tema",
+    "language": "Cambiar idioma a",
+    "hint": "Usa ↑ ↓ para moverte y Enter para abrir."
+  },
   "assistant": {
     "label": "Asistente",
     "more": "Más enlaces",
     "email": "Correo",
     "messages": {
-      "home": ["Hola, soy Joseph.", "Mueve el cursor sobre la tormenta.", "Cada destello es un rayo simulado."],
-      "projects": ["Mi tesis busca anticipar rayos.", "Pasa el cursor por los proyectos."],
-      "about": ["Soy físico de la UNICA, en Ica."],
-      "research": ["Publiqué en el Journal of Atmospheric and Solar-Terrestrial Physics."],
-      "journey": ["Trabajé con radares HF en el Instituto Geofísico del Perú."],
-      "awards": ["Becado por AWS, ProInnovate y la SEGIB."],
-      "community": ["Divulgué astronomía con el grupo MUTSUNICA."],
-      "skills": ["Python, SQL y AWS: mis herramientas principales."],
-      "contact": ["¿Hablamos? El formulario está aquí."],
-      "thesis": ["Esta es mi tesis en curso.", "La gráfica es una simulación ilustrativa."]
+      "home": [
+        "Hola, soy Joseph.",
+        "Mueve el cursor sobre la estación.",
+        "Prueba ⌘K o Ctrl+K para navegar."
+      ],
+      "highlights": [
+        "Esto es lo que he logrado hasta hoy."
+      ],
+      "projects": [
+        "Mi tesis busca anticipar rayos."
+      ],
+      "about": [
+        "Soy físico de la UNICA, en Ica."
+      ],
+      "research": [
+        "Puedes copiar la cita del artículo."
+      ],
+      "timeline": [
+        "Filtra la trayectoria por tipo."
+      ],
+      "skills": [
+        "Python, SQL y AWS son mi base."
+      ],
+      "contact": [
+        "¿Hablamos? El formulario está aquí."
+      ],
+      "thesis": [
+        "Esta es mi tesis en curso.",
+        "La gráfica es una simulación ilustrativa."
+      ],
+      "cv": [
+        "Usa Imprimir para guardarlo en PDF."
+      ]
     }
   },
   "thesis": {
@@ -328,18 +541,54 @@
     ],
     "methodTitle": "Método",
     "method": [
-      { "name": "Línea base", "text": "Un algoritmo de alerta que usa solo la red de campo eléctrico." },
-      { "name": "Fusión de fuentes", "text": "Incorporar los datos del GLM y del radar al mismo algoritmo." },
-      { "name": "Comparación", "text": "Medir si la alerta mejora o no: aciertos, falsas alarmas y tiempo de anticipación." }
+      {
+        "name": "Línea base",
+        "text": "Un algoritmo de alerta que usa solo la red de campo eléctrico."
+      },
+      {
+        "name": "Fusión de fuentes",
+        "text": "Incorporar los datos del GLM y del radar al mismo algoritmo."
+      },
+      {
+        "name": "Comparación",
+        "text": "Medir si la alerta mejora o no: aciertos, falsas alarmas y tiempo de anticipación."
+      }
     ],
     "whyTitle": "Por qué importa",
     "why": "Los rayos ponen en riesgo a personas, redes eléctricas, aeropuertos y actividades al aire libre. Saber qué datos mejoran la alerta ayuda a decidir dónde invertir en sensores y cómo combinarlos.",
     "note": "Proyecto en curso. Esta página se irá actualizando con resultados.",
     "cta": "¿Trabajas en electricidad atmosférica o rayos? Escríbeme."
   },
+  "cv": {
+    "print": "Imprimir o guardar PDF",
+    "back": "Volver al portafolio",
+    "title": "Físico | Investigación en electricidad atmosférica, análisis de datos y cloud",
+    "summaryTitle": "Perfil",
+    "summary": "Bachiller en Física (UNICA, tercio superior, 2.º puesto) con experiencia operando instrumentos geofísicos en el Instituto Geofísico del Perú. Coautor en el Journal of Atmospheric and Solar-Terrestrial Physics y tesista en un proyecto de investigación premiado con USD 16,000. Formación en análisis de datos, Python, SQL y AWS con becas completas. Actualmente desarrollo mi tesis sobre predicción de rayos con redes de campo eléctrico, satélite y radar.",
+    "researchTitle": "Investigación y publicaciones",
+    "experienceTitle": "Experiencia",
+    "educationTitle": "Educación",
+    "coursesTitle": "Cursos y programas",
+    "awardsTitle": "Premios y becas",
+    "projectsTitle": "Proyectos",
+    "communityTitle": "Voluntariado y comunidad",
+    "skillsTitle": "Habilidades",
+    "talksTitle": "Ponencias",
+    "degree": {
+      "date": "2018 - 2023",
+      "title": "Bachiller en Ciencias Físicas",
+      "org": "Universidad Nacional San Luis Gonzaga (UNICA), Ica, Perú",
+      "text": "Tercio superior, 2.º puesto de la promoción."
+    },
+    "thesis": {
+      "date": "En curso",
+      "title": "Tesis: predicción de rayos con redes de medidores de campo eléctrico",
+      "org": "Datos de EFM del CRAAM, Atibaia y la USP, GOES-GLM y radar meteorológico"
+    }
+  },
   "footer": {
     "rights": "Todos los derechos reservados.",
-    "built": "Hecho con React y Framer Motion.",
+    "built": "Diseñado y desarrollado con React, TypeScript y canvas.",
     "top": "Volver arriba"
   }
 }

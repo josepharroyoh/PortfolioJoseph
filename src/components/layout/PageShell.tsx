@@ -4,10 +4,11 @@ import { useTranslation } from "react-i18next";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { Assistant } from "./Assistant";
+import { CommandPalette } from "./CommandPalette";
 import type { SectionId } from "../../data/profile";
 
 /** Chrome shared by every page: skip link, nav, footer and the cube assistant. */
-export function PageShell({ active, children }: { active: SectionId | "thesis"; children: ReactNode }) {
+export function PageShell({ active, children }: { active: SectionId | "thesis" | "cv"; children: ReactNode }) {
   const { t } = useTranslation();
   return (
     <MotionConfig reducedMotion="user">
@@ -17,10 +18,11 @@ export function PageShell({ active, children }: { active: SectionId | "thesis"; 
       >
         {t("nav.skip")}
       </a>
-      <Navbar active={active === "thesis" ? undefined : active} />
+      <Navbar active={active === "thesis" || active === "cv" ? undefined : active} />
       <main id="main">{children}</main>
       <Footer />
       <Assistant active={active} />
+      <CommandPalette />
     </MotionConfig>
   );
 }

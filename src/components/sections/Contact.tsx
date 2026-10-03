@@ -1,10 +1,11 @@
 import { useForm, ValidationError } from "@formspree/react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { CheckIcon, CopyIcon } from "@phosphor-icons/react";
+import { Link } from "react-router-dom";
+import { CheckIcon, CopyIcon, FileTextIcon } from "@phosphor-icons/react";
 import { SocialLinks } from "../ui/SocialLinks";
 import { button, container } from "../ui/styles";
-import { PROFILE } from "../../data/profile";
+import { CV_PATH, PROFILE } from "../../data/profile";
 
 const field =
   "w-full rounded-xl border border-line-strong bg-surface px-4 py-3 text-ink outline-none transition-[border-color,box-shadow] duration-200 focus:border-accent focus:ring-4 focus:ring-accent-soft";
@@ -47,7 +48,13 @@ export function Contact() {
               {copied ? t("contact.copied") : t("contact.copy")}
             </button>
           </div>
-          <SocialLinks labelled className="reveal mt-6" />
+          <div className="reveal mt-6 flex flex-wrap items-center gap-2">
+            <Link to={CV_PATH} className={button("primary", "h-10 px-4 text-sm")}>
+              <FileTextIcon size={16} />
+              {t("nav.cv")}
+            </Link>
+            <SocialLinks labelled />
+          </div>
         </div>
 
         <form ref={formRef} onSubmit={handleSubmit} className="reveal space-y-5 lg:col-span-6" noValidate={false}>
