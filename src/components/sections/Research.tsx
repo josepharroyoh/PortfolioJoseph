@@ -26,7 +26,7 @@ export function Authors({ text }: { text: string }) {
 export type Publication = { status: string; authors: string; year: string; title: string; journal: string; doi?: string };
 
 /** One reference, set like an entry in a reference list, with its status, DOI and a copy button. */
-export function Reference({ pub, featured }: { pub: Publication; featured: boolean }) {
+export function Reference({ pub }: { pub: Publication }) {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
   const citation = `${pub.authors} (${pub.year}). ${pub.title}${pub.journal ? ` ${pub.journal}.` : ""}${pub.doi ? ` https://doi.org/${pub.doi}` : ""}`;
@@ -47,7 +47,7 @@ export function Reference({ pub, featured }: { pub: Publication; featured: boole
         <span className={published ? "font-medium text-accent" : "font-medium text-muted"}>{pub.status}</span>
         <span className="text-faint tabular-nums">{pub.year}</span>
       </p>
-      <h3 className={featured ? "mt-3 font-serif text-[clamp(1.55rem,2.6vw,2.15rem)] leading-[1.18] tracking-[-0.015em]" : "mt-2 font-serif text-[1.35rem] leading-snug"}>
+      <h3 className="mt-2 font-serif text-[1.35rem] leading-snug">
         {pub.title}
       </h3>
       {pub.journal && <p className="mt-2 font-serif text-lg text-muted italic">{pub.journal}</p>}

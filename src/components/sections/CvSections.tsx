@@ -98,8 +98,8 @@ export function Academic() {
         )}
         {tab === "publications" && (
           <ol className="divide-y divide-line border-t border-line-strong">
-            {pubs.map((pub, i) => (
-              <Reference key={pub.title} pub={pub} featured={i === 0} />
+            {pubs.map((pub) => (
+              <Reference key={pub.title} pub={pub} />
             ))}
           </ol>
         )}
@@ -111,10 +111,6 @@ export function Academic() {
           </ol>
         )}
       </Panel>
-      <a href={PROFILE.links.orcid} target="_blank" rel="noopener noreferrer" className="link-underline mt-8 inline-flex items-center gap-1 text-sm text-accent">
-        ORCID 0000-0002-1355-5182
-        <ArrowUpRightIcon size={13} />
-      </a>
     </Section>
   );
 }

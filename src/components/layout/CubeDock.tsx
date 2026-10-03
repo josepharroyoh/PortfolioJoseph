@@ -5,14 +5,18 @@ import { CubeBuddy } from "../brand/CubeBuddy";
 
 /**
  * The cube's home once you scroll: a small "back to top" button in the corner
- * whose eyes follow your cursor. It steps aside on the contact section, where
- * a larger cube is waiting.
+ * whose eyes follow your cursor. It steps aside at the footer so the page ends clean.
  */
 export function CubeDock({ hidden }: { hidden?: boolean }) {
   const { t } = useTranslation();
   const { scrollY } = useScroll();
   const [shown, setShown] = useState(false);
-  useMotionValueEvent(scrollY, "change", (y) => setShown(y > 640));
+  // Shown once you scroll, and stepping aside when the footer comes into view.
+  useMotionValueEvent(scrollY, "change", (y) => {
+    const footer = document.getElementById("site-footer");
+    const atFooter = footer ? footer.getBoundingClientRect().top < window.innerHeight : false;
+    setShown(y > 640 && !atFooter);
+  });
 
   return (
     <AnimatePresence>

@@ -1,10 +1,7 @@
-import { AnimatePresence, motion, useScroll } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 import type { SectionId } from "../../data/profile";
-import { sectionShape } from "../fx/universe-shapes";
-import type { ShapeKey } from "../fx/universe-shapes";
-import { useCopy } from "../../hooks/useCopy";
 
 const ITEMS = ["academic", "awards", "experience", "projects", "skills", "training", "volunteering"] as const;
 const OWNER: Partial<Record<SectionId, (typeof ITEMS)[number]>> = {};
@@ -14,8 +11,6 @@ export function Toc({ active }: { active: SectionId }) {
   const { t } = useTranslation();
   const { scrollYProgress } = useScroll();
   const current = OWNER[active] ?? active;
-  const shapes = useCopy<Record<ShapeKey, string>>("universe.shapes");
-  const shape = sectionShape(active);
 
   return (
     <nav aria-label={t("nav.toc")} className="sticky top-28 hidden xl:block">
@@ -36,22 +31,6 @@ export function Toc({ active }: { active: SectionId }) {
             </li>
           ))}
         </ol>
-      </div>
-      {/* Names the figure the background particles are drawing right now. */}
-      <div className="mt-10 border-t border-line pt-4">
-        <p className="label">{t("universe.label")}</p>
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.p
-            key={shape}
-            initial={{ opacity: 0, transform: "translateY(6px)" }}
-            animate={{ opacity: 1, transform: "translateY(0px)" }}
-            exit={{ opacity: 0, transform: "translateY(-6px)" }}
-            transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-            className="mt-1.5 font-serif text-[15px] leading-snug text-muted italic"
-          >
-            {shapes[shape]}
-          </motion.p>
-        </AnimatePresence>
       </div>
     </nav>
   );
