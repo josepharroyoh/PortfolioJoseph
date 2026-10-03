@@ -36,7 +36,7 @@ type Project = {
 export const PROJECTS: Project[] = [
   {
     key: "thesis",
-    tags: ["EFM", "GOES-GLM", "Radar", "Nowcasting", "Python"],
+    tags: ["Campo eléctrico", "GOES-16/19", "GLM", "Deep learning", "Series temporales"],
     page: THESIS_PATH,
   },
   {
@@ -55,12 +55,13 @@ export const PROJECTS: Project[] = [
   },
   {
     key: "aireica",
-    tags: ["Python", "SQL", "Power BI"],
+    tags: ["Python", "SQL", "Linux", "Power BI", "Sensores PM y campo eléctrico"],
     link: "https://www.aireica.com",
   },
   {
     key: "cori",
-    tags: ["NASA Space Apps", "Storytelling"],
+    tags: ["NASA Space Apps", "Clima espacial", "Web interactiva"],
+    link: "https://youtu.be/LrkSt2qn5bg",
   },
   {
     key: "portfolio",
@@ -71,8 +72,9 @@ export const PROJECTS: Project[] = [
 ];
 
 export const SKILL_GROUPS = [
-  ["Python", "SQL", "Java", "JavaScript", "HTML", "Flask", "Django"],
-  ["AWS", "Google Cloud Platform", "Azure", "BigQuery", "SQL Server", "MySQL", "PostgreSQL", "Supabase"],
-  ["Pandas", "Scikit-learn", "Power BI", "Looker Studio", "Excel", "ETL"],
-  ["Git", "Bash", "VS Code", "Jupyter", "Spyder", "LaTeX"],
+  ["scikit-learn", "Modelos de series temporales", "Deep learning (RNN, CNN, transformer)", "Evaluación y calibración"],
+  ["Python (NumPy, pandas, Matplotlib)", "SQL", "Flask", "Java", "HTML"],
+  ["GOES-16/19 (ABI, GLM)", "STARNET VLF", "Red AFINSA de campo eléctrico", "Radiosondas", "Sensores PM y meteorológicos"],
+  ["PostgreSQL", "MySQL", "SQL Server", "BigQuery", "Supabase", "Power BI", "Looker Studio", "ETL"],
+  ["Jupyter", "VS Code", "Git y GitHub", "LaTeX", "AWS", "Google Cloud Platform", "Azure App Services", "Linux", "Máquinas virtuales"],
 ];

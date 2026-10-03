@@ -6,7 +6,6 @@ import { button } from "../ui/styles";
 import { PROFILE } from "../../data/profile";
 import { useCopy } from "../../hooks/useCopy";
 
-type Publication = { label: string; authors: string; year: string; title: string; journal: string; copy: string; copied: string };
 type Academic = { label: string; title: string; authors: string; text: string; link: string };
 type Congress = { date: string; title: string; place: string; topic: string };
 
@@ -29,14 +28,13 @@ export function Authors({ text }: { text: string }) {
   );
 }
 
-export function Research() {
-  const { t } = useTranslation();
-  const pub = useCopy<Publication>("research.publication");
-  const academic = useCopy<Academic>("research.academic");
-  const congresses = useCopy<Congress[]>("research.congresses");
-  const [copied, setCopied] = useState(false);
+export type Publication = { status: string; authors: string; year: string; title: string; journal: string; doi?: string };
 
-  const citation = `${pub.authors} (${pub.year}). ${pub.title} ${pub.journal}.`;
+/** One reference, set like an entry in a reference list, with its status, DOI and a copy button. */
+function Reference({ pub, featured }: { pub: Publication; featured: boolean }) {
+  const { t } = useTranslation();
+  const [copied, setCopied] = useState(false);
+  const citation = `${pub.authors} (${pub.year}). ${pub.title}${pub.journal ? ` ${pub.journal}.` : ""}${pub.doi ? ` https://doi.org/${pub.doi}` : ""}`;
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(citation);
@@ -46,6 +44,42 @@ export function Research() {
       /* clipboard blocked: the citation is still selectable on the page */
     }
   };
+  const published = Boolean(pub.doi);
+
+  return (
+    <li className="reveal group -mx-5 rounded-sm px-5 py-6 transition-[background-color,box-shadow] duration-300 hover:bg-surface hover:shadow-card md:-mx-7 md:px-7">
+      <p className="flex flex-wrap items-baseline gap-x-3 text-sm">
+        <span className={published ? "font-medium text-accent" : "font-medium text-muted"}>{pub.status}</span>
+        <span className="text-faint tabular-nums">{pub.year}</span>
+      </p>
+      <h3 className={featured ? "mt-3 font-serif text-[clamp(1.55rem,2.6vw,2.15rem)] leading-[1.18] tracking-[-0.015em]" : "mt-2 font-serif text-[1.35rem] leading-snug"}>
+        {pub.title}
+      </h3>
+      {pub.journal && <p className="mt-2 font-serif text-lg text-muted italic">{pub.journal}</p>}
+      <p className="mt-2 max-w-[70ch] text-[15px] leading-relaxed text-muted">
+        <Authors text={pub.authors} />
+      </p>
+      {published && (
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noopener noreferrer" className={button("secondary", "h-9 px-4 text-sm")}>
+            {t("research.doi")}
+            <ArrowUpRightIcon size={14} />
+          </a>
+          <button type="button" onClick={copy} className={button("secondary", "h-9 px-4 text-sm")} aria-live="polite">
+            {copied ? <CheckIcon size={15} weight="bold" /> : <CopyIcon size={15} />}
+            {copied ? t("research.copied") : t("research.copy")}
+          </button>
+        </div>
+      )}
+    </li>
+  );
+}
+
+export function Research() {
+  const { t } = useTranslation();
+  const pubs = useCopy<Publication[]>("research.publications");
+  const academic = useCopy<Academic>("research.academic");
+  const congresses = useCopy<Congress[]>("research.congresses");
 
   return (
     <Section
@@ -59,26 +93,14 @@ export function Research() {
             0000-0002-1355-5182
             <ArrowUpRightIcon size={13} />
           </a>
-          <p className="pt-4 text-muted">{t("research.citeLabel")}</p>
-          <button type="button" onClick={copy} className={button("secondary", "h-9 px-4 text-sm")} aria-live="polite">
-            {copied ? <CheckIcon size={15} weight="bold" /> : <CopyIcon size={15} />}
-            {copied ? pub.copied : pub.copy}
-          </button>
         </div>
       }
     >
-      {/* The paper, set as it would appear in a reference list, only larger. */}
-      <article className="reveal group -mx-5 rounded-sm px-5 py-6 transition-[background-color,box-shadow] duration-300 hover:bg-surface hover:shadow-card md:-mx-7 md:px-7">
-        <p className="flex flex-wrap items-baseline gap-x-3 text-sm">
-          <span className="font-medium text-accent">{pub.label}</span>
-          <span className="text-faint">{pub.year}</span>
-        </p>
-        <h3 className="mt-3 font-serif text-[clamp(1.6rem,2.8vw,2.3rem)] leading-[1.18] tracking-[-0.015em]">{pub.title}</h3>
-        <p className="mt-3 font-serif text-lg text-muted italic">{pub.journal}</p>
-        <p className="mt-3 max-w-[70ch] leading-relaxed text-muted">
-          <Authors text={pub.authors} />
-        </p>
-      </article>
+      <ol className="divide-y divide-line">
+        {pubs.map((pub, i) => (
+          <Reference key={pub.title} pub={pub} featured={i === 0} />
+        ))}
+      </ol>
 
       <article className="reveal mt-12 border-l-2 border-accent pl-5 md:pl-7">
         <p className="text-sm text-muted">{academic.label}</p>

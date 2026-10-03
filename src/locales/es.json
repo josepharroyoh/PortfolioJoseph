@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Joseph Arroyo Hernández | Físico, investigador y analista de datos",
-    "description": "Portafolio de Joseph Arroyo Hernández, Bachiller en Física (UNICA). Investigación en electricidad atmosférica y predicción de rayos, análisis de datos y cloud. Proyectos, publicaciones, premios y CV."
+    "title": "Joseph Arroyo Hernández | Electricidad atmosférica y nowcasting de rayos",
+    "description": "Portafolio de Joseph Arroyo Hernández, físico y estudiante de Maestría en Ingeniería Eléctrica y Computación (Mackenzie, CRAAM, São Paulo) con beca CAPES. Electricidad atmosférica, nowcasting de rayos y deep learning de series temporales."
   },
   "nav": {
     "highlights": "En cifras",
@@ -21,18 +21,18 @@
     "toc": "Contenido"
   },
   "hero": {
-    "status": "Abierto a pasantías de investigación y posgrado",
+    "status": "Becario CAPES · Maestría en curso en São Paulo",
     "name1": "Joseph Arroyo",
     "name2": "Hernández",
-    "text": "Físico. Investigo la electricidad atmosférica y el nowcasting de rayos, y construyo herramientas de datos para convertir mediciones en alertas.",
+    "text": "Físico. En el CRAAM de la Universidade Presbiteriana Mackenzie uso campo eléctrico, satélites y deep learning para anticipar el primer rayo de una tormenta.",
     "ctaWork": "Ver investigación",
     "ctaCv": "Ver CV",
     "topics": [
       "Electricidad atmosférica",
-      "Medidores de campo eléctrico (EFM)",
       "Nowcasting de rayos",
-      "Ciencia de datos",
-      "Cloud"
+      "Deep learning de series temporales",
+      "Medidores de campo eléctrico (EFM)",
+      "Datos satelitales GOES"
     ],
     "photoAlt": "Retrato de Joseph Arroyo Hernández",
     "signal": {
@@ -52,87 +52,84 @@
       "say": "¡Rayo!"
     },
     "ctaContact": "Escríbeme",
-    "photoCaption": "Ica, Perú",
+    "photoCaption": "São Paulo, Brasil",
     "byline": [
       {
         "label": "Afiliación",
-        "value": "Universidad Nacional San Luis Gonzaga (UNICA), CIEASEST"
+        "value": "Universidade Presbiteriana Mackenzie, CRAAM"
       },
       {
-        "label": "Investigación",
-        "value": "Electricidad atmosférica y nowcasting de rayos"
+        "label": "Formación",
+        "value": "MSc en curso · Bachiller en Física (UNICA)"
       },
       {
         "label": "Ahora",
-        "value": "Tesis con redes de EFM, satélite GLM y radar",
+        "value": "Tesis: el primer rayo de una tormenta sobre São Paulo",
         "link": true
       },
       {
         "label": "Estado",
-        "value": "Abierto a pasantías y posgrado"
+        "value": "Abierto a colaboraciones y pasantías de investigación"
       }
     ],
     "institutionsLabel": "Instituciones y programas en mi recorrido",
     "institutions": [
-      "Universidad Nacional San Luis Gonzaga",
-      "CIEASEST",
-      "Instituto Geofísico del Perú",
+      "Universidade Presbiteriana Mackenzie",
+      "CRAAM",
+      "CAPES",
+      "The University of Tokyo",
+      "Atmospheric Research",
       "Journal of Atmospheric and Solar-Terrestrial Physics",
+      "Instituto Geofísico del Perú",
+      "Radio Observatorio de Jicamarca",
+      "Universidad Nacional San Luis Gonzaga",
+      "AFINSA",
       "Amazon Web Services",
-      "Le Wagon",
-      "ProInnovate",
-      "SEGIB",
       "NASA Space Apps Challenge",
-      "Oracle Next Education",
-      "Igrowker"
+      "Le Wagon"
     ],
-    "sky": {
-      "label": "Fondo interactivo",
-      "text": "Una galaxia de 3.000 partículas. Mueve el cursor para unir constelaciones y haz scroll para viajar entre las estrellas."
-    }
+    "role": "Estudiante de Maestría en Ingeniería Eléctrica y Computación"
   },
   "highlights": {
     "title": "En cifras",
     "items": [
       {
+        "value": 2,
+        "prefix": "",
+        "suffix": "",
+        "label": "artículos indexados",
+        "text": "Atmospheric Research (2026) y Journal of Atmospheric and Solar-Terrestrial Physics (2024); uno más en revisión."
+      },
+      {
+        "display": "CAPES",
+        "label": "beca de maestría",
+        "text": "Financiamiento completo de la maestría en Mackenzie, obtenido por concurso (2026)."
+      },
+      {
+        "display": "GCI World",
+        "label": "seleccionado, 2026",
+        "text": "Matsuo-Iwasawa Laboratory, The University of Tokyo (con apoyo de JICA)."
+      },
+      {
         "value": 16000,
         "prefix": "USD ",
         "suffix": "",
         "label": "de financiamiento",
-        "text": "Proyecto de investigación ganador UNICA 2023, donde participé como tesista."
+        "text": "Proyecto ganador UNICA 2023 de alerta temprana de tormentas de polvo, donde fui tesista."
       },
       {
-        "display": "JASTP",
-        "label": "artículo indexado, 2024",
-        "text": "Coautor en el Journal of Atmospheric and Solar-Terrestrial Physics (Elsevier)."
-      },
-      {
-        "value": 3,
+        "value": 4,
         "prefix": "",
         "suffix": "",
-        "label": "becas completas",
-        "text": "AWS re/Start, SEGIB Competencias Digitales y ProInnovate con Le Wagon."
-      },
-      {
-        "value": 3,
-        "prefix": "",
-        "suffix": "",
-        "label": "ponencias",
-        "text": "En congresos científicos internacionales: ECI 2023 y CITICI."
-      },
-      {
-        "value": 2,
-        "prefix": "",
-        "suffix": ".º",
-        "label": "puesto de la promoción",
-        "text": "Bachiller en Física, tercio superior de la UNICA."
+        "label": "ponencias orales",
+        "text": "CONINTI 2025, COINCOM 2025 y dos en el ECI 2023, como coautor."
       },
       {
         "value": 95,
         "prefix": "+",
         "suffix": "%",
         "label": "de operatividad",
-        "text": "De los radares y el magnetómetro a mi cargo en el Instituto Geofísico del Perú."
+        "text": "Del radar HF, la estación biestática y el magnetómetro MAGDAS a mi cargo (IGP, Jicamarca)."
       }
     ]
   },
@@ -144,19 +141,19 @@
     "items": [
       {
         "key": "thesis",
-        "title": "Predicción de rayos",
-        "category": "Tesis en curso",
-        "year": "Hoy",
-        "role": "Tesista",
-        "text": "Uso redes de medidores de campo eléctrico (EFM) en São Paulo para anticipar rayos y evalúo si sumar el satélite GOES-GLM y el radar meteorológico hace más eficiente la alerta."
+        "title": "El primer rayo de una tormenta",
+        "category": "Tesis de maestría",
+        "year": "2026 - 2028",
+        "role": "Maestría en Ingeniería Eléctrica y Computación · CRAAM, Mackenzie",
+        "text": "Predigo el primer rayo de una tormenta sobre São Paulo a partir del campo eléctrico medido en superficie y de observaciones satelitales GOES, y cuantifico cuánto tiempo de aviso aporta cada sensor, con modelos de deep learning para series temporales."
       },
       {
         "key": "cori",
         "title": "El viaje de Cori",
         "category": "Divulgación científica",
         "year": "2025",
-        "role": "NASA Space Apps Challenge",
-        "text": "Historia interactiva creada con Rubén M. Romero: una eyección de masa coronal viaja a la Tierra y muestra cómo el clima espacial crea auroras y afecta al GPS, los satélites y las redes eléctricas."
+        "role": "NASA Space Apps Challenge · Historias Estelares, con R. M. Romero",
+        "text": "Aplicación web interactiva sobre cómo una eyección de masa coronal llega a la Tierra y afecta al GPS, los satélites y las redes eléctricas."
       },
       {
         "key": "portfolio",
@@ -164,7 +161,7 @@
         "category": "Desarrollo web",
         "year": "2025",
         "role": "Diseño y desarrollo",
-        "text": "Sitio en React y TypeScript pensado como un artículo científico interactivo: figura de campo eléctrico en vivo, proyectos como figuras, modo claro y oscuro y CV imprimible."
+        "text": "Sitio en React y TypeScript diseñado como un artículo científico interactivo: un universo de partículas que cambia por sección, una figura de campo eléctrico en vivo y un CV imprimible."
       },
       {
         "key": "reffindr",
@@ -172,23 +169,23 @@
         "category": "Ingeniería de datos",
         "year": "2024",
         "role": "Líder del equipo de datos",
-        "text": "Solución PropTech construida en 4 semanas en el IT Training Lab de Igrowker. Diseñé una API que automatizó la recolección de más de 300 datos inmobiliarios y dejó lista la base del MVP."
+        "text": "Lideré el equipo de datos en un desarrollo de cuatro semanas (IT Training Lab N.º 04, Igrowker). Diseñé una API en Python y Flask que automatizó la recolección de más de 300 inmuebles, hice el ETL que enriqueció la base y entregué reportes de mercado en Power BI. Desplegado en Azure App Services con Supabase."
       },
       {
         "key": "prello",
         "title": "Prello",
         "category": "Análisis de datos",
         "year": "2024",
-        "role": "Analista de datos",
-        "text": "Sistema de puntuación para invertir en segundas residencias: cruza indicadores turísticos, inmobiliarios y de vivienda para encontrar las ciudades más atractivas."
+        "role": "Proyecto final · Bootcamp de Análisis de Datos, Le Wagon",
+        "text": "Modelo de puntuación que ordena ciudades por su atractivo para invertir en segundas residencias, combinando indicadores turísticos, inmobiliarios y de vivienda con un ETL en Python hacia BigQuery y resultados en Power BI."
       },
       {
         "key": "aireica",
         "title": "AIREICA",
         "category": "Monitoreo ambiental",
-        "year": "2023",
+        "year": "2023 - 2025",
         "role": "Tesista y análisis de datos",
-        "text": "Plataforma de monitoreo climático y alerta temprana de tormentas de polvo en Ica. Nació del proyecto ganador UNICA 2023 y combina Python, SQL, Power BI y una máquina virtual."
+        "text": "Plataforma de monitoreo y alerta temprana de tormentas de polvo en Ica. Integra sensores PM2.5 y PM10, un sensor de campo eléctrico como precursor, estaciones meteorológicas y cámaras que validan cada alerta. Emitió una alerta pública el 31 de julio de 2025."
       }
     ],
     "close": "Cerrar detalle",
@@ -198,89 +195,125 @@
   },
   "about": {
     "title": "Perfil",
-    "manifesto": "Soy físico. Aprendí a escuchar a la atmósfera con radares, magnetómetros y sensores de campo eléctrico, y hoy uso los datos y la nube para anticipar lo que va a pasar.",
+    "manifesto": "Soy físico. Aprendí a escuchar a la atmósfera con radares, magnetómetros y sensores de campo eléctrico, y hoy enseño a los modelos de deep learning a anticipar el primer rayo de una tormenta.",
     "paragraphs": [
-      "Me formé en la Universidad Nacional San Luis Gonzaga, en Ica. En el CIEASEST, el centro que estudia la actividad solar y sus efectos sobre la Tierra, trabajé con grandes volúmenes de datos de instrumentos reales y supervisé equipos del Instituto Geofísico del Perú.",
-      "Esa experiencia me llevó al análisis de datos y a la computación en la nube: me formé en Python, SQL y AWS con becas completas, y lideré equipos de datos en proyectos con plazos cortos.",
-      "Hoy trabajo en nowcasting de rayos: combino redes de campo eléctrico, satélite y radar en mi tesis. Quiero seguir investigando en un posgrado y construir sistemas que conviertan mediciones en decisiones a tiempo."
+      "Me formé en Física en la Universidad Nacional San Luis Gonzaga, en Ica (tercio superior, promedio 15.29/20). En la Estación Solar UNICA supervisé el radar HF, la estación de radar biestático y el magnetómetro MAGDAS del Instituto Geofísico del Perú, un nodo de la red ionosférica operada con la Universidad de Cornell.",
+      "Como tesista del proyecto ganador UNICA 2023 construí el pipeline de datos de aireica.com: sensores de material particulado, un sensor de campo eléctrico, estaciones meteorológicas y cámaras. La plataforma emitió una alerta pública durante la intrusión extrema de polvo del 31 de julio de 2025, evento que luego publicamos en Atmospheric Research.",
+      "Hoy curso la Maestría en Ingeniería Eléctrica y Computación en el CRAAM de la Universidade Presbiteriana Mackenzie con beca CAPES. Mi tesis combina campo eléctrico en superficie y satélites GOES para predecir el primer rayo de una tormenta sobre São Paulo y medir cuánto tiempo de aviso aporta cada sensor."
     ],
     "cieasest": "Conoce el CIEASEST",
     "facts": [
       {
         "label": "Formación",
-        "value": "Bachiller en Física, UNICA"
+        "value": "MSc en curso (Mackenzie, CRAAM) · Bachiller en Física (UNICA)"
       },
       {
         "label": "Base",
-        "value": "Ica, Perú"
+        "value": "São Paulo, Brasil"
       },
       {
-        "label": "Promoción",
-        "value": "Tercio superior, 2.º puesto"
+        "label": "Promedio",
+        "value": "15.29/20, tercio superior"
       },
       {
-        "label": "Enfoque",
-        "value": "Electricidad atmosférica, datos y cloud"
+        "label": "Idiomas",
+        "value": "Español nativo · inglés B1 · portugués intermedio"
+      },
+      {
+        "label": "Red",
+        "value": "AFINSA, colaborador desde 2022"
       }
     ],
     "seekingTitle": "Lo que busco",
     "seeking": [
+      "Colaboraciones de investigación",
       "Pasantías de investigación",
-      "Programas de posgrado",
-      "Proyectos de análisis de datos y cloud"
+      "Proyectos de datos y deep learning"
     ],
     "traitsTitle": "Cómo trabajo",
     "traits": [
       "Liderazgo de equipos",
-      "Planificación",
+      "Instrumentación y datos reales",
       "Pensamiento analítico"
     ]
   },
   "research": {
     "title": "Investigación",
     "intro": "Publicaciones, proyectos financiados y ponencias en congresos internacionales.",
-    "publication": {
-      "label": "Artículo en revista indexada",
-      "authors": "Romero, R., Tacza, J., Arroyo, J., Prieto, F., Macotela, L., Buleje, Y., Loayza, R., Fernandez, U., y Raulin, J.-P.",
-      "year": "2024",
-      "title": "Primeros resultados de la variación del gradiente de potencial en una estación tropical en América del Sur (Ica, Perú).",
-      "journal": "Journal of Atmospheric and Solar-Terrestrial Physics",
-      "copy": "Copiar cita",
-      "copied": "Cita copiada"
-    },
     "academic": {
-      "label": "Proyecto de investigación UNICA 2023, en proceso",
+      "label": "Proyecto de investigación UNICA 2023 · tesista, 2023 - 2025",
       "title": "Análisis de la calidad del aire para la alerta temprana de tormentas de polvo mediante monitoreo climático en Ica",
       "authors": "Loayza, R., Romero, R., Buleje, Y., Arroyo, J., y Euribe, C.",
-      "text": "Proyecto ganador del Concurso de Investigación Científica UNICA 2023, financiado con cerca de USD 16,000. Participé como tesista con análisis de datos en Python, SQL y Power BI. El resultado es la plataforma aireica.com.",
+      "text": "Proyecto ganador del Concurso de Investigación Científica UNICA 2023, financiado con cerca de USD 16,000. Construí el pipeline de datos de aireica.com en Python y SQL sobre máquinas virtuales Linux, con tableros en Power BI. La plataforma emitió una alerta pública durante el evento extremo de polvo del 31 de julio de 2025.",
       "link": "Visitar aireica.com"
     },
     "congressesTitle": "Ponencias",
     "congresses": [
       {
-        "date": "2025",
-        "title": "XIII Congreso Internacional de Tecnología e Innovación + Ciencia e Investigación (CITICI)",
-        "place": "Virtual, Bogotá, Colombia",
-        "topic": "Plataforma de monitoreo atmosférico y sistema de alerta temprana para tormentas de polvo en Ica, Perú."
+        "date": "Dic. 2025",
+        "title": "CONINTI 2025, XI Congreso Internacional y XIII Nacional de Investigación",
+        "place": "Ica, Perú",
+        "topic": "Análisis de la calidad del aire y alerta temprana de tormentas de polvo con mediciones de campo eléctrico y meteorológicas."
+      },
+      {
+        "date": "Nov. 2025",
+        "title": "COINCOM 2025, XVI Congreso Internacional de Competencias y Multidisciplinariedad",
+        "place": "Cartagena, Colombia",
+        "topic": "AIREICA: plataforma de monitoreo atmosférico y sistema de alerta temprana para tormentas de polvo."
       },
       {
         "date": "Ago. 2023",
-        "title": "Encuentro Científico Internacional (ECI 2023)",
-        "place": "Perú",
-        "topic": "Presentación oral como coautor: efectos locales y globales en la variación del campo eléctrico atmosférico en Ica."
+        "title": "Encuentro Científico Internacional (ECI)",
+        "place": "Lima, Perú",
+        "topic": "Variación del campo eléctrico atmosférico en Ica."
       },
       {
         "date": "Ago. 2023",
-        "title": "Encuentro Científico Internacional (ECI 2023)",
-        "place": "Perú",
-        "topic": "Presentación oral como coautor: catálogo de fenómenos solares observados por el Telescopio Monitor de Fulguraciones."
+        "title": "Encuentro Científico Internacional (ECI)",
+        "place": "Lima, Perú",
+        "topic": "Catálogo de fenómenos solares del Telescopio Monitor de Fulguraciones."
       }
     ],
-    "citeLabel": "Cita en formato APA"
+    "citeLabel": "Cita en formato APA",
+    "publications": [
+      {
+        "status": "Publicado",
+        "authors": "Romero, R. M., Loayza, R., Huamán, G., Calderón, D., Buleje, Y., Arroyo, J., et al.",
+        "year": "2026",
+        "title": "Electrical lead time during an extreme haboob-like dust-front intrusion in Ica, Peru.",
+        "journal": "Atmospheric Research, 342, 109171",
+        "doi": "10.1016/j.atmosres.2026.109171"
+      },
+      {
+        "status": "Publicado",
+        "authors": "Romero, R., Tacza, J., Arroyo, J., Prieto, F., Macotela, L., Buleje, Y., et al.",
+        "year": "2024",
+        "title": "First results of the potential gradient variation in a tropical station in South America (Ica, Peru).",
+        "journal": "Journal of Atmospheric and Solar-Terrestrial Physics, 256, 106198",
+        "doi": "10.1016/j.jastp.2024.106198"
+      },
+      {
+        "status": "En revisión",
+        "authors": "Tacza, J., Romero, R., Arroyo, J., Buzás, A., y Bór, J.",
+        "year": "2026",
+        "title": "Long-term land observations reveal distinct daily patterns in potential gradient measurements.",
+        "journal": "Atmospheric Research"
+      },
+      {
+        "status": "En preparación",
+        "authors": "Romero, R. M., Arroyo, J., Tacza, J., Orosco, G., et al.",
+        "year": "2026",
+        "title": "How the wind regime shapes size-resolved aerosol coupling with sea-breeze electrification at Ica, Peru.",
+        "journal": ""
+      }
+    ],
+    "copy": "Copiar cita",
+    "copied": "Cita copiada",
+    "doi": "Ver DOI"
   },
   "timeline": {
     "title": "Trayectoria",
-    "intro": "Experiencia, formación, premios y comunidad desde 2016, del más reciente al primero.",
+    "intro": "Formación, investigación, premios y trabajo desde 2016, del más reciente al primero.",
     "all": "Todo",
     "types": {
       "research": "Investigación",
@@ -299,40 +332,40 @@
         "text": "Concurso de Proyectos Productivos y Emprendedores, 5.º de secundaria."
       },
       {
-        "date": "2018",
-        "type": "education",
-        "title": "Ingreso a la carrera de Física",
-        "org": "Universidad Nacional San Luis Gonzaga (UNICA)",
-        "text": "Inicio el bachillerato en Ciencias Físicas en Ica."
-      },
-      {
         "date": "2018 - 2022",
         "type": "community",
         "title": "Divulgación astronómica",
         "org": "Grupo Astronómico MUTSUNICA, CIEASEST",
-        "text": "Organicé observaciones públicas con los telescopios Nishimura y FMT."
+        "text": "Observaciones públicas con los telescopios Nishimura y FMT."
       },
       {
         "date": "2021",
         "type": "community",
-        "title": "Hult Prize",
-        "org": "Campus UNICA",
-        "text": "Equipo Songo: una galleta de calabaza para atacar problemas del sistema alimentario."
-      },
-      {
-        "date": "2022",
-        "type": "education",
-        "title": "Escuela de Computación Cuántica",
-        "org": "Universidad Nacional Mayor de San Marcos, Lima",
-        "text": "Grupo de estudio sobre fundamentos de computación cuántica.",
-        "course": true
+        "title": "Hult Prize, ronda UNICA",
+        "org": "Competencia internacional de emprendimiento social",
+        "text": "Equipo Sonqo: un producto alimenticio a base de calabaza."
       },
       {
         "date": "2022",
         "type": "community",
         "title": "Candidato estudiantil",
-        "org": "Movimiento Universitario UDI «Por el Bien Común»",
+        "org": "Movimiento Universitario UDI",
         "text": "Candidato a la Asamblea Universitaria de la UNICA."
+      },
+      {
+        "date": "Oct 2022",
+        "type": "education",
+        "title": "Escuela de Computación Cuántica",
+        "org": "Universidad Nacional Mayor de San Marcos, Lima",
+        "text": "Fundamentos de computación cuántica.",
+        "course": true
+      },
+      {
+        "date": "Desde 2022",
+        "type": "research",
+        "title": "Colaborador de AFINSA",
+        "org": "Red de campo eléctrico atmosférico en Sudamérica",
+        "text": "Red de medición en Perú, Brasil y Argentina."
       },
       {
         "date": "Dic 2022 - May 2023",
@@ -343,54 +376,53 @@
         "course": true
       },
       {
+        "date": "2018 - 2023",
+        "type": "education",
+        "title": "Bachiller en Física",
+        "org": "Universidad Nacional San Luis Gonzaga (UNICA)",
+        "text": "Promedio 15.29/20, tercio superior."
+      },
+      {
         "date": "Mar 2023 - Jul 2024",
         "type": "work",
-        "title": "Supervisor y asistente técnico",
-        "org": "Instituto Geofísico del Perú (IGP)",
-        "text": "Mantuve operativos el radar HF, el radar biestático y el magnetómetro del CIEASEST: más del 95% de operatividad y 20% menos en tiempos de respuesta."
+        "title": "Supervisor de instrumentación geofísica",
+        "org": "Instituto Geofísico del Perú, Radio Observatorio de Jicamarca",
+        "text": "Radar HF, estación biestática y magnetómetro MAGDAS de la Estación Solar UNICA: más del 95% de operatividad y 20% menos en tiempos de respuesta."
       },
       {
         "date": "May - Jul 2023",
         "type": "work",
         "title": "Practicante en el laboratorio de física",
         "org": "Institución Educativa San Luis Gonzaga",
-        "text": "Mantenimiento, reparación y calibración de equipos e inventario del laboratorio."
+        "text": "Calibración de instrumentos, reparación de equipos y gestión de repuestos."
       },
       {
         "date": "Ago 2023",
         "type": "research",
-        "title": "Dos ponencias en el ECI 2023",
-        "org": "Encuentro Científico Internacional",
+        "title": "Dos ponencias en el ECI",
+        "org": "Encuentro Científico Internacional, Lima",
         "text": "Campo eléctrico atmosférico en Ica y catálogo de fenómenos solares del FMT."
-      },
-      {
-        "date": "Ago 2023",
-        "type": "education",
-        "title": "Bachiller en Física",
-        "org": "UNICA",
-        "text": "Tercio superior, 2.º puesto de la promoción."
       },
       {
         "date": "2023",
         "type": "award",
         "title": "Premio de Investigación UNICA 2023",
-        "org": "USD 16,000 de financiamiento",
-        "text": "Tesista en el proyecto ganador sobre alerta de tormentas de polvo, que dio origen a AIREICA."
+        "org": "Cerca de USD 16,000 de financiamiento",
+        "text": "Proyecto ganador de alerta de tormentas de polvo, origen de AIREICA."
+      },
+      {
+        "date": "2023 - 2025",
+        "type": "research",
+        "title": "Tesista en el proyecto AIREICA",
+        "org": "CIEASEST, UNICA",
+        "text": "Pipeline de datos de aireica.com con sensores PM, campo eléctrico, meteorología y cámaras."
       },
       {
         "date": "Ene - Mar 2024",
         "type": "education",
         "title": "Ciencia de Datos con Python",
         "org": "Data Analítica",
-        "text": "Programa especializado en análisis y modelado con Python.",
-        "course": true
-      },
-      {
-        "date": "Feb - May 2024",
-        "type": "education",
-        "title": "Analista de Datos con Python (DataCamp)",
-        "org": "Universitarios por los ODS, Bolivia",
-        "text": "Ruta completa de análisis de datos.",
+        "text": "Análisis y modelado con Python.",
         "course": true
       },
       {
@@ -398,80 +430,121 @@
         "type": "research",
         "title": "Publicación en JASTP",
         "org": "Journal of Atmospheric and Solar-Terrestrial Physics",
-        "text": "Coautor del primer estudio del gradiente de potencial en Ica."
+        "text": "Primer estudio del gradiente de potencial en Ica."
       },
       {
         "date": "Jul - Oct 2024",
         "type": "award",
-        "title": "Bootcamp de Análisis de Datos con beca completa",
-        "org": "Le Wagon y ProInnovate (USD 5,000)",
-        "text": "Proyecto final: el sistema de puntuación Prello."
+        "title": "Beca completa ProInnovate",
+        "org": "Bootcamp de Análisis de Datos, Le Wagon (cerca de USD 5,000)",
+        "text": "Proyecto final: el sistema de puntuación Prello.",
+        "course": true
       },
       {
         "date": "Nov - Dic 2024",
         "type": "work",
         "title": "Líder del equipo de datos en Reffindr",
-        "org": "Igrowker IT Training Lab N.º 04",
-        "text": "API que automatizó la recolección de más de 300 datos inmobiliarios."
+        "org": "Igrowker, IT Training Lab N.º 04",
+        "text": "API en Python y Flask, ETL y reportes en Power BI."
+      },
+      {
+        "date": "Feb 2025",
+        "type": "education",
+        "title": "Introducción a IA y Machine Learning en Google Cloud",
+        "org": "Arki1, partner autorizado de Google Cloud",
+        "text": "Fundamentos de IA y ML en la nube.",
+        "course": true
       },
       {
         "date": "2025",
         "type": "community",
         "title": "Líder de equipo",
-        "org": "NoCountry.Tech",
-        "text": "Lideré equipos de desarrollo en una simulación laboral tecnológica."
+        "org": "No Country Tech",
+        "text": "Lideré equipos de desarrollo en un ciclo completo de entrega."
       },
       {
-        "date": "Jul - Sep 2025",
+        "date": "Jul - Oct 2025",
         "type": "award",
         "title": "Beca del Programa Iberoamericano de Competencias Digitales",
-        "org": "SEGIB, SENAJU, OIJ, AECID e IMMUNE",
-        "text": "Programa de iniciación en competencias digitales, edición 2025."
+        "org": "SEGIB, OIJ, AECID e IMMUNE",
+        "text": "Fundé y coordiné un grupo de estudio en Discord para participantes de Iberoamérica.",
+        "course": true
       },
       {
         "date": "Ago - Nov 2025",
         "type": "award",
         "title": "Beca completa AWS re/Start",
         "org": "Amazon Web Services y Bootcamp Institute",
-        "text": "12 semanas de formación en computación en la nube."
-      },
-      {
-        "date": "2025",
-        "type": "research",
-        "title": "Ponencia en CITICI",
-        "org": "Congreso virtual, Bogotá",
-        "text": "Plataforma de monitoreo atmosférico y alerta de tormentas de polvo."
+        "text": "12 semanas de computación en la nube.",
+        "course": true
       },
       {
         "date": "Oct 2025",
         "type": "research",
         "title": "NASA Space Apps Challenge",
         "org": "Historias Estelares",
-        "text": "El viaje de Cori, una historia interactiva sobre clima espacial."
+        "text": "El viaje de Cori, una aplicación sobre clima espacial."
       },
       {
-        "date": "Hoy",
+        "date": "Nov 2025",
         "type": "research",
-        "title": "Tesis: predicción de rayos",
-        "org": "EFM del CRAAM, Atibaia y USP, GLM y radar",
-        "text": "Evalúo si los datos de satélite y radar mejoran una alerta basada en campo eléctrico."
+        "title": "Ponencia en COINCOM 2025",
+        "org": "Cartagena, Colombia",
+        "text": "AIREICA: monitoreo atmosférico y alerta de tormentas de polvo."
+      },
+      {
+        "date": "Dic 2025",
+        "type": "research",
+        "title": "Ponencia en CONINTI 2025",
+        "org": "Ica, Perú",
+        "text": "Calidad del aire y alerta de tormentas de polvo con campo eléctrico."
+      },
+      {
+        "date": "2026",
+        "type": "research",
+        "title": "Publicación en Atmospheric Research",
+        "org": "Elsevier",
+        "text": "Tiempo de anticipación eléctrica durante una intrusión extrema de polvo en Ica."
+      },
+      {
+        "date": "Jun 2026",
+        "type": "award",
+        "title": "Beca CAPES de maestría",
+        "org": "Coordenação de Aperfeiçoamento de Pessoal de Nível Superior, Brasil",
+        "text": "Financiamiento completo de la maestría, obtenido por concurso."
+      },
+      {
+        "date": "Desde Ago 2026",
+        "type": "education",
+        "title": "Maestría en Ingeniería Eléctrica y Computación",
+        "org": "Universidade Presbiteriana Mackenzie, CRAAM, São Paulo",
+        "text": "Tesis: predicción del primer rayo de una tormenta sobre São Paulo."
+      },
+      {
+        "date": "Desde Sep 2026",
+        "type": "award",
+        "title": "GCI World 2026, participante seleccionado",
+        "org": "Matsuo-Iwasawa Laboratory, The University of Tokyo",
+        "text": "Programa de tres meses en Python, machine learning y análisis de datos (apoyo de JICA).",
+        "course": true
       }
     ],
     "cv": "Ver el CV completo"
   },
   "skills": {
     "title": "Herramientas",
-    "intro": "Lo que uso para pasar de la medición al resultado.",
+    "intro": "Lo que uso para pasar de la medición al modelo.",
     "groups": [
+      "Machine learning",
       "Programación",
-      "Cloud y bases de datos",
-      "Análisis y BI",
-      "Entorno"
+      "Datos científicos",
+      "Bases de datos y BI",
+      "Herramientas e infraestructura"
     ]
   },
   "contact": {
     "title": "Contacto",
-    "text": "Si buscas a alguien para una pasantía, un posgrado o un proyecto de datos, escríbeme. Respondo por correo o a través de este formulario.",
+    "text": "Si buscas a alguien para una colaboración de investigación, una pasantía o un proyecto de datos, escríbeme. Respondo por correo o a través de este formulario.",
     "copy": "Copiar",
     "copied": "Copiado",
     "form": {
@@ -501,11 +574,11 @@
   },
   "thesis": {
     "back": "Volver a proyectos",
-    "status": "Tesis en curso",
-    "title": "Predicción de rayos con redes de medidores de campo eléctrico",
-    "lead": "Un rayo suele anunciarse antes de caer: el campo eléctrico cerca del suelo cambia mientras la tormenta se carga. Mi tesis usa esa señal para anticipar descargas y evalúa si sumar datos de satélite y de radar mejora la alerta.",
+    "status": "Tesis de maestría en curso",
+    "title": "El primer rayo de una tormenta sobre São Paulo",
+    "lead": "Un rayo suele anunciarse antes de caer: el campo eléctrico cerca del suelo cambia mientras la tormenta se carga, y los satélites ven crecer la nube. Mi tesis en el CRAAM de Mackenzie usa esas señales con deep learning para predecir el primer rayo y medir cuánto tiempo de aviso aporta cada sensor.",
     "questionLabel": "Pregunta de investigación",
-    "question": "¿Agregar datos del GLM y de radar meteorológico hace más eficiente un algoritmo de alerta basado en campo eléctrico?",
+    "question": "¿Cuánto tiempo de aviso aporta cada sensor (campo eléctrico en superficie, satélite y redes de detección) para predecir el primer rayo de una tormenta?",
     "demoTitle": "Cómo funciona una alerta por campo eléctrico",
     "demoCaption": "Simulación ilustrativa, no son datos reales. Cuando el campo supera el umbral se emite la alerta; el tiempo que pasa hasta el rayo es la anticipación.",
     "demoReplay": "Repetir",
@@ -519,44 +592,44 @@
     "dataTitle": "Datos",
     "data": [
       {
-        "name": "Medidores de campo eléctrico (EFM)",
-        "text": "Redes de sensores en superficie en São Paulo, Brasil: los EFM del CRAAM (Universidad Presbiteriana Mackenzie), la estación de Atibaia y la red de la USP."
+        "name": "Campo eléctrico en superficie",
+        "text": "Medidores de campo eléctrico (EFM) del CRAAM y de la red AFINSA, que registran cómo se carga la atmósfera sobre São Paulo."
       },
       {
-        "name": "GOES-GLM",
-        "text": "El Geostationary Lightning Mapper, a bordo de los satélites GOES, detecta la luz de los rayos desde la órbita geoestacionaria."
+        "name": "GOES-16/19: ABI y GLM",
+        "text": "El generador de imágenes ABI sigue el crecimiento de la nube y el Geostationary Lightning Mapper detecta la luz de los rayos desde la órbita geoestacionaria."
       },
       {
-        "name": "Radar meteorológico",
-        "text": "Describe la estructura de las nubes de tormenta y su evolución, información que puede adelantar su electrificación."
+        "name": "STARNET VLF",
+        "text": "Red de detección de descargas por ondas de muy baja frecuencia, usada como referencia de cuándo y dónde cae cada rayo."
       }
     ],
     "methodTitle": "Método",
     "method": [
       {
         "name": "Línea base",
-        "text": "Un algoritmo de alerta que usa solo la red de campo eléctrico."
+        "text": "Una alerta que usa solo el campo eléctrico en superficie."
       },
       {
-        "name": "Fusión de fuentes",
-        "text": "Incorporar los datos del GLM y del radar al mismo algoritmo."
+        "name": "Modelos de series temporales",
+        "text": "Redes recurrentes, convolucionales y transformers que combinan campo eléctrico y satélite."
       },
       {
-        "name": "Comparación",
-        "text": "Medir si la alerta mejora o no: aciertos, falsas alarmas y tiempo de anticipación."
+        "name": "Atribución del aviso",
+        "text": "Medir aciertos, falsas alarmas, calibración y cuántos minutos de anticipación aporta cada sensor."
       }
     ],
     "whyTitle": "Por qué importa",
     "why": "Los rayos ponen en riesgo a personas, redes eléctricas, aeropuertos y actividades al aire libre. Saber qué datos mejoran la alerta ayuda a decidir dónde invertir en sensores y cómo combinarlos.",
-    "note": "Proyecto en curso. Esta página se irá actualizando con resultados.",
+    "note": "Proyecto en curso (2026 - 2028). Esta página se irá actualizando con resultados.",
     "cta": "¿Trabajas en electricidad atmosférica o rayos? Escríbeme."
   },
   "cv": {
     "print": "Imprimir o guardar PDF",
     "back": "Volver al portafolio",
-    "title": "Físico | Investigación en electricidad atmosférica, análisis de datos y cloud",
+    "title": "Estudiante de MSc en Ingeniería Eléctrica y Computación | Electricidad atmosférica, nowcasting de rayos y deep learning",
     "summaryTitle": "Perfil",
-    "summary": "Bachiller en Física (UNICA, tercio superior, 2.º puesto) con experiencia operando instrumentos geofísicos en el Instituto Geofísico del Perú. Coautor en el Journal of Atmospheric and Solar-Terrestrial Physics y tesista en un proyecto de investigación premiado con USD 16,000. Formación en análisis de datos, Python, SQL y AWS con becas completas. Actualmente desarrollo mi tesis sobre predicción de rayos con redes de campo eléctrico, satélite y radar.",
+    "summary": "Físico y estudiante de Maestría en Ingeniería Eléctrica y Computación en el CRAAM de la Universidade Presbiteriana Mackenzie, con beca CAPES. Coautor en Atmospheric Research y en el Journal of Atmospheric and Solar-Terrestrial Physics. Experiencia supervisando instrumentación geofísica del Instituto Geofísico del Perú y construyendo el pipeline de datos de una plataforma de alerta temprana de tormentas de polvo. Mi tesis predice el primer rayo de una tormenta sobre São Paulo con campo eléctrico, satélites GOES y deep learning.",
     "researchTitle": "Investigación y publicaciones",
     "experienceTitle": "Experiencia",
     "educationTitle": "Educación",
@@ -566,17 +639,27 @@
     "communityTitle": "Voluntariado y comunidad",
     "skillsTitle": "Habilidades",
     "talksTitle": "Ponencias",
-    "degree": {
-      "date": "2018 - 2023",
-      "title": "Bachiller en Ciencias Físicas",
-      "org": "Universidad Nacional San Luis Gonzaga (UNICA), Ica, Perú",
-      "text": "Tercio superior, 2.º puesto de la promoción."
-    },
     "thesis": {
-      "date": "En curso",
-      "title": "Tesis: predicción de rayos con redes de medidores de campo eléctrico",
-      "org": "Datos de EFM del CRAAM, Atibaia y la USP, GOES-GLM y radar meteorológico"
-    }
+      "date": "2026 - 2028",
+      "title": "Tesis de maestría: predicción del primer rayo de una tormenta sobre São Paulo",
+      "org": "Campo eléctrico en superficie (AFINSA, CRAAM), GOES-16/19 ABI y GLM, STARNET; deep learning de series temporales"
+    },
+    "degrees": [
+      {
+        "date": "Ago 2026 - Jul 2028",
+        "title": "Maestría en Ingeniería Eléctrica y Computación",
+        "org": "Universidade Presbiteriana Mackenzie, CRAAM, São Paulo, Brasil",
+        "text": "Beca CAPES. Predicción del primer rayo de una tormenta sobre São Paulo con campo eléctrico en superficie y observaciones satelitales."
+      },
+      {
+        "date": "2018 - 2023",
+        "title": "Bachiller en Física",
+        "org": "Universidad Nacional San Luis Gonzaga (UNICA), Ica, Perú",
+        "text": "Promedio 15.29/20, tercio superior."
+      }
+    ],
+    "languagesTitle": "Idiomas",
+    "languages": "Español (nativo) · Inglés (B1) · Portugués (intermedio)"
   },
   "footer": {
     "rights": "Todos los derechos reservados.",

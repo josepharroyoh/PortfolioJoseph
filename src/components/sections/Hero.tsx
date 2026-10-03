@@ -172,30 +172,39 @@ export function Hero({ ready }: { ready: boolean }) {
 
   const item = {
     out: { opacity: 0, transform: "translateY(12px)" },
-    in: (i: number) => ({ opacity: 1, transform: "translateY(0px)", transition: { duration: 0.7, delay: 0.4 + i * 0.08, ease: EASE } }),
+    in: (i: number) => ({
+      opacity: 1,
+      transform: "translateY(0px)",
+      transition: { duration: 0.7, delay: 0.4 + i * 0.08, ease: EASE },
+    }),
   };
 
   return (
-    <section id="home" aria-labelledby="hero-title" className="relative pt-28 pb-6 md:pt-36">
+    <section id="home" aria-labelledby="hero-title" className="relative pb-6">
       <div className={clsx(container, "relative")}>
-        <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-12">
-          <div className="lg:col-span-8">
+        {/* The first screen: everything from the status line to the byline fits one viewport. */}
+        <div className="flex min-h-[100svh] flex-col pt-24 pb-6 md:pt-28">
+          <div className="my-auto max-w-[52rem]">
             <motion.p custom={0} variants={item} initial="out" animate={state} className="label flex items-center gap-2">
               <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-ok text-ok" aria-hidden="true" />
               {t("hero.status")}
             </motion.p>
 
-            <h1 id="hero-title" className="mt-6 text-[clamp(2.7rem,6.2vw,5.9rem)] leading-[0.95] font-semibold tracking-[-0.045em] whitespace-nowrap">
+            <h1 id="hero-title" className="mt-5 text-[clamp(3rem,min(7.2vw,11vh),6.6rem)] leading-[0.92] font-[380] tracking-[-0.035em] whitespace-nowrap">
               <Line ready={ready} delay={0.05}>
                 {t("hero.name1")}
               </Line>
-              <Line ready={ready} delay={0.15} className="text-accent">
+              <Line ready={ready} delay={0.15} className="text-accent italic">
                 {t("hero.name2")}
               </Line>
             </h1>
 
+            <motion.p custom={1} variants={item} initial="out" animate={state} className="mt-5 text-[clamp(1.05rem,1.5vw,1.25rem)] font-medium tracking-[-0.01em]">
+              {t("hero.role")}
+            </motion.p>
+
             {/* What I work on, right under the name. */}
-            <motion.ul custom={1} variants={item} initial="out" animate={state} className="mt-7 flex flex-wrap gap-2">
+            <motion.ul custom={1} variants={item} initial="out" animate={state} className="mt-4 flex flex-wrap gap-2">
               {topics.map((topic) => (
                 <li
                   key={topic}
@@ -206,11 +215,11 @@ export function Hero({ ready }: { ready: boolean }) {
               ))}
             </motion.ul>
 
-            <motion.p custom={2} variants={item} initial="out" animate={state} className="mt-6 max-w-[38ch] font-serif text-[clamp(1.3rem,2vw,1.6rem)] leading-[1.4] text-muted">
+            <motion.p custom={2} variants={item} initial="out" animate={state} className="mt-5 max-w-[44ch] font-serif text-[clamp(1.2rem,1.7vw,1.45rem)] leading-[1.45] text-muted">
               {t("hero.text")}
             </motion.p>
 
-            <motion.div custom={3} variants={item} initial="out" animate={state} className="mt-8 flex flex-wrap items-center gap-3">
+            <motion.div custom={3} variants={item} initial="out" animate={state} className="mt-7 flex flex-wrap items-center gap-3">
               <Magnetic>
                 <a href="#research" className={button("primary")}>
                   {t("hero.ctaWork")}
@@ -227,44 +236,31 @@ export function Hero({ ready }: { ready: boolean }) {
             </motion.div>
           </div>
 
-          {/* No portrait: the galaxy of the background fills this side; a caption explains how to play with it. */}
-          <motion.div
-            className="hidden lg:col-span-4 lg:block lg:self-end lg:justify-self-end"
-            initial={{ opacity: 0 }}
-            animate={ready ? { opacity: 1 } : undefined}
-            transition={{ duration: 1, delay: 1 }}
+          {/* Byline, the way a paper lists its author details. */}
+          <motion.dl
+            custom={4}
+            variants={item}
+            initial="out"
+            animate={state}
+            className="grid grid-cols-1 gap-px overflow-hidden border-y border-line-strong bg-line sm:grid-cols-2 lg:grid-cols-4"
           >
-            <p className="max-w-[17rem] border-l border-accent/60 pl-4 text-sm leading-relaxed text-muted">
-              <span className="label block text-accent">{t("hero.sky.label")}</span>
-              <span className="mt-1 block font-serif text-[15px] italic">{t("hero.sky.text")}</span>
-            </p>
-          </motion.div>
+            {byline.map((b) => (
+              <div key={b.label} className="group bg-bg py-4 transition-colors duration-300 hover:bg-surface sm:px-5">
+                <dt className="label transition-colors duration-200 group-hover:text-accent">{b.label}</dt>
+                <dd className="mt-1.5 leading-snug">
+                  {b.link ? (
+                    <Link to={THESIS_PATH} className="inline-flex items-start gap-1 hover:text-accent">
+                      <span className="link-underline">{b.value}</span>
+                      <ArrowUpRightIcon size={14} className="mt-1 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </Link>
+                  ) : (
+                    b.value
+                  )}
+                </dd>
+              </div>
+            ))}
+          </motion.dl>
         </div>
-
-        {/* Byline, the way a paper lists its author details. */}
-        <motion.dl
-          custom={4}
-          variants={item}
-          initial="out"
-          animate={state}
-          className="mt-14 grid grid-cols-1 gap-px overflow-hidden border-y border-line-strong bg-line sm:grid-cols-2 lg:grid-cols-4"
-        >
-          {byline.map((b) => (
-            <div key={b.label} className="group bg-bg py-4 transition-colors duration-300 hover:bg-surface sm:px-5">
-              <dt className="label transition-colors duration-200 group-hover:text-accent">{b.label}</dt>
-              <dd className="mt-1.5 leading-snug">
-                {b.link ? (
-                  <Link to={THESIS_PATH} className="inline-flex items-start gap-1 hover:text-accent">
-                    <span className="link-underline">{b.value}</span>
-                    <ArrowUpRightIcon size={14} className="mt-1 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </Link>
-                ) : (
-                  b.value
-                )}
-              </dd>
-            </div>
-          ))}
-        </motion.dl>
 
         <FigureOne />
       </div>

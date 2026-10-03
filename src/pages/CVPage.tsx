@@ -5,13 +5,13 @@ import { useTranslation } from "react-i18next";
 import { ArrowLeftIcon, PrinterIcon } from "@phosphor-icons/react";
 import { PageShell } from "../components/layout/PageShell";
 import { Authors } from "../components/sections/Research";
+import type { Publication } from "../components/sections/Research";
 import { button } from "../components/ui/styles";
 import { PROFILE, SKILL_GROUPS } from "../data/profile";
 import { useCopy } from "../hooks/useCopy";
 
 type Event = { date: string; type: string; title: string; org: string; text: string; course?: boolean };
 type Entry = { date: string; title: string; org: string; text?: string };
-type Publication = { authors: string; year: string; title: string; journal: string };
 type Academic = { title: string; authors: string; text: string };
 type Congress = { date: string; title: string; place: string; topic: string };
 type Project = { title: string; year: string; role: string; text: string };
@@ -41,9 +41,9 @@ function Row({ date, title, org, text }: Entry) {
 export default function CVPage() {
   const { t } = useTranslation();
   const events = useCopy<Event[]>("timeline.events");
-  const degree = useCopy<Entry>("cv.degree");
+  const degrees = useCopy<Entry[]>("cv.degrees");
   const thesis = useCopy<Entry>("cv.thesis");
-  const pub = useCopy<Publication>("research.publication");
+  const pubs = useCopy<Publication[]>("research.publications");
   const academic = useCopy<Academic>("research.academic");
   const congresses = useCopy<Congress[]>("research.congresses");
   const projects = useCopy<Project[]>("projects.items");
@@ -84,7 +84,7 @@ export default function CVPage() {
                 <li>
                   <a href={`mailto:${PROFILE.email}`} className="link-underline">{PROFILE.email}</a>
                 </li>
-                <li>Ica, Perú</li>
+                <li>São Paulo, Brasil</li>
                 <li>
                   <a href={PROFILE.links.linkedin} className="link-underline">linkedin.com/in/josepharroyohernandez</a>
                 </li>
@@ -103,14 +103,25 @@ export default function CVPage() {
             <p className="leading-relaxed">{t("cv.summary")}</p>
           </Section>
 
+          <Section title={t("cv.educationTitle")}>
+            {degrees.map((d) => (
+              <Row key={d.title} {...d} />
+            ))}
+          </Section>
+
           <Section title={t("cv.researchTitle")}>
             <Row date={thesis.date} title={thesis.title} org={thesis.org} />
-            <div className="avoid-break grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-5">
-              <p className="font-mono text-[13px] text-muted">{pub.year}</p>
-              <p className="text-[15px] leading-relaxed">
-                <Authors text={pub.authors} /> ({pub.year}). <span className="font-semibold">{pub.title}</span> <em>{pub.journal}</em>.
-              </p>
-            </div>
+            {pubs.map((pub) => (
+              <div key={pub.title} className="avoid-break grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-5">
+                <p className="font-mono text-[13px] text-muted">
+                  {pub.year} · {pub.status}
+                </p>
+                <p className="text-[15px] leading-relaxed">
+                  <Authors text={pub.authors} /> ({pub.year}). <span className="font-semibold">{pub.title}</span> {pub.journal && <em>{pub.journal}.</em>}{" "}
+                  {pub.doi && <span className="text-muted">doi.org/{pub.doi}</span>}
+                </p>
+              </div>
+            ))}
             <div className="avoid-break grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-5">
               <p className="font-mono text-[13px] text-muted">2023</p>
               <div>
@@ -135,9 +146,6 @@ export default function CVPage() {
             ))}
           </Section>
 
-          <Section title={t("cv.educationTitle")}>
-            <Row {...degree} />
-          </Section>
 
           <Section title={t("cv.awardsTitle")}>
             {byType("award").map((e) => (
@@ -163,6 +171,10 @@ export default function CVPage() {
             {byType("community").map((e) => (
               <Row key={e.title} {...e} />
             ))}
+          </Section>
+
+          <Section title={t("cv.languagesTitle")}>
+            <p className="text-[15px]">{t("cv.languages")}</p>
           </Section>
 
           <Section title={t("cv.skillsTitle")}>

@@ -77,7 +77,7 @@ export function Navbar({ active }: { active?: SectionId }) {
         <div className={`${container} flex h-16 items-center justify-between gap-4`}>
           <Link to="/" className="press flex items-center gap-3 rounded-lg" aria-label={t("nav.home")}>
             <BatTile size={34} />
-            <span className="hidden font-display text-[17px] font-semibold tracking-[-0.02em] whitespace-nowrap sm:inline">Joseph Arroyo</span>
+            <span className="hidden font-display text-[19px] whitespace-nowrap italic sm:inline">Joseph Arroyo</span>
           </Link>
 
           {/* Plain text links; a hairline under the current one slides between them. */}

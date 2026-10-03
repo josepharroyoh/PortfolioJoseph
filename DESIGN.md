@@ -21,8 +21,8 @@ Contact and footer are always dark (`.force-dark`).
 
 ## Type
 
-- Geist everywhere (semibold, tight tracking for headings and the name): technical and
-  firm. `.serif-body` / `font-serif` now map to Geist too.
+- Newsreader (variable, optical size, with italics) for headings, the name, leads and
+  long-form text; the surname is italic in the accent colour. Geist for UI and labels.
 - Geist for UI, metadata and labels (`.label`: tracked caps, used sparingly).
 - Geist Mono only for measurements.
 - No em or en dashes in copy.
@@ -51,7 +51,7 @@ Contact and footer are always dark (`.force-dark`).
 
 | Section | Layout | Interaction |
 | --- | --- | --- |
-| Title block | name (italic surname in accent), topics, dek, byline grid; the background galaxy fills the right side with a short caption | lines rise from masks |
+| Title block | status, name (italic surname in accent), role, topics, dek, CTAs and byline, all inside one viewport; the background galaxy fills the right side | lines rise from masks |
 | Figura 1 | full-width plot with caption | live EFM signal, storms on its own, cursor or tap brings the cloud |
 | Perfil | text column + margin notes | lead lights up word by word, drop cap |
 | En cifras | ruled 3x2 table, serif numerals | count-up |
