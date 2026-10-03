@@ -76,8 +76,7 @@ export function Navbar({ active }: { active?: SectionId }) {
       <header className={clsx("no-print fixed inset-x-0 top-0 z-50 transition-colors duration-300", scrolled || !onHome ? "border-b border-line bg-bg/85 backdrop-blur-md" : "border-b border-transparent")}>
         <div className={`${container} flex h-16 items-center justify-between gap-4`}>
           <Link to="/" className="press flex items-center gap-3 rounded-lg" aria-label={t("nav.home")}>
-            <BatTile size={34} />
-            <span className="hidden font-display text-[1.1875rem] whitespace-nowrap italic sm:inline">Joseph Arroyo</span>
+            <BatTile size={40} />
           </Link>
 
           {/* Plain text links; a hairline under the current one slides between them. */}

@@ -32,7 +32,7 @@
   "hero": {
     "status": "Becario CAPES · Maestría en curso en São Paulo",
     "name1": "Joseph Arroyo",
-    "name2": "Hernández",
+    "name2": "Hernandez",
     "text": "Físico. En el CRAAM de la Universidade Presbiteriana Mackenzie uso campo eléctrico, satélites y deep learning para anticipar el primer rayo de una tormenta.",
     "ctaWork": "Ver mi trayectoria",
     "ctaCv": "Ver CV",
@@ -594,5 +594,9 @@
       "publications": "Publicaciones",
       "talks": "Conferencias"
     }
+  },
+  "quote": {
+    "text": "Nada en la vida debe ser temido, solo comprendido. Es momento de comprender más, para temer menos.",
+    "author": "Marie Curie"
   }
 }

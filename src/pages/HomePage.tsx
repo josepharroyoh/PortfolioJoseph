@@ -54,7 +54,7 @@ export default function HomePage() {
     <PageShell active={active}>
       {intro && <Intro onDone={finishIntro} />}
       <Hero ready={!intro} />
-      <div className={`${container} xl:grid xl:grid-cols-[10rem_minmax(0,1fr)] xl:gap-14`}>
+      <div className={`${container} xl:grid xl:grid-cols-[13rem_minmax(0,1fr)] xl:gap-12`}>
         <aside className="hidden pt-24 xl:block">
           <Toc active={active} />
         </aside>
