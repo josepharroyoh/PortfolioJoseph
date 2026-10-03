@@ -8,7 +8,6 @@ import { Hero } from "../components/sections/Hero";
 import { Projects } from "../components/sections/Projects";
 import { Academic, Awards, Experience, Training, Volunteering } from "../components/sections/CvSections";
 import { Skills } from "../components/sections/Skills";
-import { Contact } from "../components/sections/Contact";
 import { Toc } from "../components/layout/Toc";
 import { container } from "../components/ui/styles";
 import { useActiveSection } from "../hooks/useActiveSection";
@@ -69,7 +68,6 @@ export default function HomePage() {
           <Volunteering />
         </div>
       </div>
-      <Contact />
     </PageShell>
   );
 }

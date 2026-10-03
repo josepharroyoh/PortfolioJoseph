@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { Magnetic } from "../fx/Interactions";
 import { SocialLinks } from "../ui/SocialLinks";
 import { button, container } from "../ui/styles";
-import { THESIS_PATH } from "../../data/profile";
+import { PROFILE, THESIS_PATH } from "../../data/profile";
 import { useCopy } from "../../hooks/useCopy";
 
 const EASE = [0.23, 1, 0.32, 1] as const;
@@ -114,7 +114,7 @@ export function Hero({ ready }: { ready: boolean }) {
                 </a>
               </Magnetic>
               <Magnetic>
-                <a href="#contact" className={button("secondary", "h-12 px-6 bg-bg/70 backdrop-blur-sm")}>
+                <a href={`mailto:${PROFILE.email}`} className={button("secondary", "h-12 px-6 bg-bg/70 backdrop-blur-sm")}>
                   <EnvelopeSimpleIcon size={17} />
                   {t("hero.ctaContact")}
                 </a>

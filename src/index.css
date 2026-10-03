@@ -16,18 +16,18 @@
   font-display: swap;
 }
 
-/* Colour tokens. Dark only: navy, cool white ink and an electric-blue accent
+/* Colour tokens. Dark only: near-black, cool white ink and an electric-blue accent
    that matches the stars of the background universe. The accent marks links, figures and the few
    things that must stand out. */
 :root {
-  --bg: #070b14;
-  --bg-2: #0f1626;
-  --surface: #0b1220;
-  --ink: #e8eef8;
-  --muted: #9aa7ba;
-  --faint: #5d6a80;
-  --line: rgb(232 238 248 / 0.1);
-  --line-strong: rgb(232 238 248 / 0.2);
+  --bg: #030303;
+  --bg-2: #0d0d0f;
+  --surface: #0a0a0b;
+  --ink: #ededed;
+  --muted: #a1a1a6;
+  --faint: #66666c;
+  --line: rgb(237 237 237 / 0.1);
+  --line-strong: rgb(237 237 237 / 0.2);
   --accent: #4f8dff;
   --accent-soft: rgb(79 141 255 / 0.14);
   --on-accent: #ffffff;
@@ -39,14 +39,14 @@
 
 /* Instrument panels stay dark whatever the page theme. */
 .force-dark {
-  --bg: #070b14;
-  --bg-2: #0f1626;
-  --surface: #0b1220;
-  --ink: #e8eef8;
-  --muted: #9aa7ba;
-  --faint: #5d6a80;
-  --line: rgb(232 238 248 / 0.1);
-  --line-strong: rgb(232 238 248 / 0.2);
+  --bg: #030303;
+  --bg-2: #0d0d0f;
+  --surface: #0a0a0b;
+  --ink: #ededed;
+  --muted: #a1a1a6;
+  --faint: #66666c;
+  --line: rgb(237 237 237 / 0.1);
+  --line-strong: rgb(237 237 237 / 0.2);
   --accent: #4f8dff;
   --accent-soft: rgb(79 141 255 / 0.14);
   --on-accent: #ffffff;

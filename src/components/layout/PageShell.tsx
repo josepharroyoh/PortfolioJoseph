@@ -27,7 +27,7 @@ export function PageShell({ active, children }: { active: SectionId | "thesis" |
         {children}
       </main>
       <Footer />
-      <CubeDock hidden={active === "contact"} />
+      <CubeDock />
       <CursorAura />
       <CommandPalette />
     </MotionConfig>

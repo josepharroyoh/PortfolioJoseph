@@ -6,7 +6,7 @@ import { sectionShape } from "../fx/universe-shapes";
 import type { ShapeKey } from "../fx/universe-shapes";
 import { useCopy } from "../../hooks/useCopy";
 
-const ITEMS = ["academic", "awards", "experience", "projects", "skills", "training", "volunteering", "contact"] as const;
+const ITEMS = ["academic", "awards", "experience", "projects", "skills", "training", "volunteering"] as const;
 const OWNER: Partial<Record<SectionId, (typeof ITEMS)[number]>> = {};
 
 /** Table of contents pinned in the left margin on wide screens, like a long-form paper. */

@@ -12,7 +12,7 @@ Contact and footer are always dark (`.force-dark`).
 
 | Token | Light | Dark | Use |
 | --- | --- | --- | --- |
-| `--bg` | | `#070b14` | page (navy) |
+| `--bg` | | `#030303` | page (near black) |
 | `--bg-2` | `#f1f1ee` | `#1c1c1f` | plates, tinted areas |
 | `--surface` | `#ffffff` | `#19191c` | figures, inputs |
 | `--ink` | `#1b1b1d` | `#eae9e6` | text |
@@ -53,5 +53,5 @@ Centred title block (one viewport), then: Educación e investigación (tabs: Edu
 Publicaciones, Conferencias), Becas y premios (tilt cards), Experiencia (tabs:
 Investigación, Profesional), Proyectos (alternating figures), Habilidades técnicas,
 Formación en IA y ciencia de datos, Voluntariado (languages and AFINSA as margin
-notes), Contacto. Tabs are a segmented control with a sliding pill (`ui/Tabs.tsx`,
+notes). No contact section: email is in the hero CTA and the footer. Tabs are a segmented control with a sliding pill (`ui/Tabs.tsx`,
 arrow-key navigation); CV rows share `EntryRow` (`sections/CvSections.tsx`).
