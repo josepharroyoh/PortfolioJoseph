@@ -41,15 +41,17 @@
       "figure": "Figura 1",
       "label": "Campo eléctrico en superficie",
       "caption": "Lo que registra un medidor de campo eléctrico (EFM) cuando se acerca una tormenta: el campo se vuelve negativo, cruza el umbral y se emite la alerta; cada rayo lo devuelve de golpe. Simulación ilustrativa.",
-      "hint": "Acerca el cursor para traer la nube.",
-      "hintTouch": "Toca la figura para traer la nube.",
+      "hint": "Acerca el cursor o pulsa el botón para traer la nube.",
+      "hintTouch": "Toca la figura o pulsa el botón para traer la nube.",
       "threshold": "Umbral de alerta",
       "states": {
         "calm": "Buen tiempo",
         "charging": "Cargando",
         "alert": "Alerta",
         "strike": "Descarga"
-      }
+      },
+      "trigger": "Provocar tormenta",
+      "say": "¡Rayo!"
     },
     "ctaContact": "Escríbeme",
     "photoCaption": "Ica, Perú",
@@ -71,7 +73,22 @@
         "label": "Estado",
         "value": "Abierto a pasantías y posgrado"
       }
-    ]
+    ],
+    "institutionsLabel": "Instituciones y programas en mi recorrido",
+    "institutions": [
+      "Universidad Nacional San Luis Gonzaga",
+      "CIEASEST",
+      "Instituto Geofísico del Perú",
+      "Journal of Atmospheric and Solar-Terrestrial Physics",
+      "Amazon Web Services",
+      "Le Wagon",
+      "ProInnovate",
+      "SEGIB",
+      "NASA Space Apps Challenge",
+      "Oracle Next Education",
+      "Igrowker"
+    ],
+    "backgroundNote": "Fondo: isobaras de un mapa del tiempo. Tu cursor es una baja presión."
   },
   "highlights": {
     "title": "En cifras",
@@ -175,7 +192,8 @@
     ],
     "close": "Cerrar detalle",
     "page": "Ver la página del proyecto",
-    "figure": "Figura"
+    "figure": "Figura",
+    "cursor": "Ver"
   },
   "about": {
     "title": "Perfil",
@@ -465,7 +483,8 @@
       "success": "Mensaje enviado. ¡Gracias!",
       "error": "No se pudo enviar. Inténtalo de nuevo o escríbeme al correo."
     },
-    "lead": "¿Una pasantía, un posgrado o un proyecto de datos?"
+    "lead": "¿Una pasantía, un posgrado o un proyecto de datos?",
+    "cube": "Te leo mientras escribes."
   },
   "palette": {
     "placeholder": "Escribe una sección o una acción…",
@@ -479,46 +498,6 @@
     "toggleTheme": "Cambiar tema",
     "language": "Cambiar idioma a",
     "hint": "Usa ↑ ↓ para moverte y Enter para abrir."
-  },
-  "assistant": {
-    "label": "Asistente",
-    "more": "Más enlaces",
-    "email": "Correo",
-    "messages": {
-      "home": [
-        "Hola, soy Joseph.",
-        "Acerca el cursor a la Figura 1.",
-        "Prueba ⌘K o Ctrl+K para navegar."
-      ],
-      "highlights": [
-        "Esto es lo que he logrado hasta hoy."
-      ],
-      "projects": [
-        "Cada figura es un proyecto real."
-      ],
-      "about": [
-        "Soy físico de la UNICA, en Ica."
-      ],
-      "research": [
-        "Puedes copiar la cita del artículo."
-      ],
-      "timeline": [
-        "Filtra la trayectoria por tipo."
-      ],
-      "skills": [
-        "Python, SQL y AWS son mi base."
-      ],
-      "contact": [
-        "¿Hablamos? El formulario está aquí."
-      ],
-      "thesis": [
-        "Esta es mi tesis en curso.",
-        "La gráfica es una simulación ilustrativa."
-      ],
-      "cv": [
-        "Usa Imprimir para guardarlo en PDF."
-      ]
-    }
   },
   "thesis": {
     "back": "Volver a proyectos",

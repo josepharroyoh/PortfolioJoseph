@@ -27,6 +27,20 @@ Contact and footer are always dark (`.force-dark`).
 - Geist Mono only for measurements.
 - No em or en dashes in copy.
 
+## Interaction layer (v5.1)
+
+- Background: `fx/IsobarField.tsx`, weather-map isobars (marching squares over drifting
+  pressure systems, "A"/"B" centres). The cursor is a low that bends the lines. Hero
+  and contact (night version with the pixel bat crossing).
+- Cursor: `CursorAura` ring trails the pointer, swells over links, reads "Ver" over
+  project media. `Magnetic` CTAs, `Tilt` 3D cards with a soft sheen.
+- Headings rise word by word (`Words`); highlight cells, timeline rows and the paper
+  card respond on hover with a drawn accent line.
+- The cube lives in three places: perched on Figure 1 (follows the cursor, jumps and
+  says "¡Rayo!" at every strike), as the back-to-top dock in the corner, and large in
+  contact, where it watches the form while you type. No floating chat bubble.
+- No "Ver CV" buttons; the CV stays reachable from Trayectoria, ⌘K and `/cv`.
+
 ## Page structure (home)
 
 | Section | Layout | Interaction |
@@ -39,7 +53,7 @@ Contact and footer are always dark (`.force-dark`).
 | Proyectos | alternating figures (Fig. 2+) with captions | videos play in view, media clip-reveal |
 | Trayectoria | CV table | underline tabs with counts |
 | Herramientas | ruled 2x2 table | none |
-| Contacto | dark slab, serif italic question, form | copy email |
+| Contacto | dark slab with night isobars, bat, big cube, form | copy email, cube watches the form |
 
 Global: sticky table of contents on wide screens with reading progress, text nav,
 ⌘K palette, cube assistant, pixel bat, printable CV, thesis page.

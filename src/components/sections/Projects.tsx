@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
 import { FieldTrace } from "../fx/FieldTrace";
+import { Tilt, Words } from "../fx/Interactions";
 import { Section } from "../ui/Section";
 import { button } from "../ui/styles";
 import { PROJECTS } from "../../data/profile";
@@ -61,8 +62,22 @@ function ProjectFigure({ item, index }: { item: Item; index: number }) {
   return (
     <article className="grid items-center gap-6 md:grid-cols-12 md:gap-10">
       <figure className={clsx("md:col-span-7", flip && "md:order-2")}>
-        <div className="reveal-clip group aspect-[16/10] overflow-hidden rounded-sm border border-line-strong">
-          <Media item={item} />
+        <div className="reveal-clip">
+          <Tilt className="group overflow-hidden rounded-sm border border-line-strong shadow-[0_0_0_0_transparent] transition-shadow duration-300 hover:shadow-card">
+            {p.page ? (
+              <Link to={p.page} data-cursor={t("projects.cursor")} aria-label={item.title} className="block aspect-[16/10]">
+                <Media item={item} />
+              </Link>
+            ) : p.link ? (
+              <a href={p.link} target="_blank" rel="noopener noreferrer" data-cursor={t("projects.cursor")} aria-label={item.title} className="block aspect-[16/10]">
+                <Media item={item} />
+              </a>
+            ) : (
+              <div className="aspect-[16/10]">
+                <Media item={item} />
+              </div>
+            )}
+          </Tilt>
         </div>
         <figcaption className="mt-2 text-sm text-muted">
           <span className="font-semibold text-ink">
@@ -76,7 +91,9 @@ function ProjectFigure({ item, index }: { item: Item; index: number }) {
         <p className="label">
           {item.category} · <span className="tabular-nums">{item.year}</span>
         </p>
-        <h3 className="mt-3 font-serif text-[clamp(1.9rem,3.2vw,2.7rem)] leading-[1.02] tracking-[-0.025em]">{item.title}</h3>
+        <h3 className="mt-3 font-serif text-[clamp(1.9rem,3.2vw,2.7rem)] leading-[1.02] tracking-[-0.025em]">
+          <Words text={item.title} />
+        </h3>
         <p className="mt-2 text-sm text-muted italic">{item.role}</p>
         <p className="serif-body mt-4 text-[1.1rem]">{item.text}</p>
         <ul className="mt-5 flex flex-wrap gap-1.5">

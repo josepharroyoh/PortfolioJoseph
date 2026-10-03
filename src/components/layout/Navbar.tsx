@@ -2,15 +2,15 @@ import { AnimatePresence, LayoutGroup, motion, useMotionValueEvent, useScroll, u
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { FileTextIcon, ListIcon, MagnifyingGlassIcon, MoonIcon, SunIcon, XIcon } from "@phosphor-icons/react";
+import { ListIcon, MagnifyingGlassIcon, MoonIcon, SunIcon, XIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
 import { BatTile } from "../brand/Bat";
 import { SocialLinks } from "../ui/SocialLinks";
-import { button, container } from "../ui/styles";
+import { container } from "../ui/styles";
 import { LANGUAGES } from "../../i18n";
 import { useTheme } from "../../hooks/useTheme";
 import { palette } from "../../hooks/usePalette";
-import { CV_PATH, type SectionId } from "../../data/profile";
+import type { SectionId } from "../../data/profile";
 
 const LINKS = ["about", "research", "projects", "timeline", "contact"] as const;
 type LinkId = (typeof LINKS)[number];
@@ -149,12 +149,6 @@ export function Navbar({ active }: { active?: SectionId }) {
               </div>
             )}
             <ThemeToggle />
-            <div className="hidden sm:block">
-              <Link to={CV_PATH} className={button("primary", "h-10 px-4 text-sm")}>
-                <FileTextIcon size={16} />
-                {t("nav.cv")}
-              </Link>
-            </div>
             <button
               type="button"
               onClick={() => setOpen(true)}
@@ -208,10 +202,6 @@ export function Navbar({ active }: { active?: SectionId }) {
                   </motion.li>
                 ))}
               </ul>
-              <Link to={CV_PATH} onClick={() => setOpen(false)} className={button("primary", "mt-8")}>
-                <FileTextIcon size={17} />
-                {t("nav.cv")}
-              </Link>
             </nav>
             <div className={`${container} flex flex-wrap items-center justify-between gap-4 border-t border-line py-6`}>
               {LANGUAGES.length > 1 && <LanguageSwitch />}

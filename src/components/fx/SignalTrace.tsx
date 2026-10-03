@@ -191,6 +191,8 @@ export function SignalTrace({ onTick, threshold, className }: { onTick?: (s: Sig
       proximity = Math.max(0, 1 - dy / 260);
     };
     const onTouch = () => (touchUntil = performance.now() + 3500);
+    // The "Provocar tormenta" button (keyboard and touch friendly) sends this event.
+    const onStorm = () => (touchUntil = performance.now() + 5000);
 
     resize();
     readColors();
@@ -208,6 +210,7 @@ export function SignalTrace({ onTick, threshold, className }: { onTick?: (s: Sig
     document.addEventListener("visibilitychange", onVisibility);
     window.addEventListener("pointermove", onPointer, { passive: true });
     canvas.addEventListener("pointerdown", onTouch);
+    window.addEventListener("signal:storm", onStorm);
     start();
 
     return () => {
@@ -218,6 +221,7 @@ export function SignalTrace({ onTick, threshold, className }: { onTick?: (s: Sig
       document.removeEventListener("visibilitychange", onVisibility);
       window.removeEventListener("pointermove", onPointer);
       canvas.removeEventListener("pointerdown", onTouch);
+      window.removeEventListener("signal:storm", onStorm);
     };
   }, []);
 

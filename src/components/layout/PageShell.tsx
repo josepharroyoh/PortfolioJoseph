@@ -3,11 +3,12 @@ import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
-import { Assistant } from "./Assistant";
+import { CubeDock } from "./CubeDock";
+import { CursorAura } from "../fx/Interactions";
 import { CommandPalette } from "./CommandPalette";
 import type { SectionId } from "../../data/profile";
 
-/** Chrome shared by every page: skip link, nav, footer and the cube assistant. */
+/** Chrome shared by every page: skip link, nav, footer and the cube, the cursor aura. */
 export function PageShell({ active, children }: { active: SectionId | "thesis" | "cv"; children: ReactNode }) {
   const { t } = useTranslation();
   return (
@@ -21,7 +22,8 @@ export function PageShell({ active, children }: { active: SectionId | "thesis" |
       <Navbar active={active === "thesis" || active === "cv" ? undefined : active} />
       <main id="main">{children}</main>
       <Footer />
-      <Assistant active={active} />
+      <CubeDock hidden={active === "contact"} />
+      <CursorAura />
       <CommandPalette />
     </MotionConfig>
   );

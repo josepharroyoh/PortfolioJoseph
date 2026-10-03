@@ -68,7 +68,7 @@ export function Research() {
       }
     >
       {/* The paper, set as it would appear in a reference list, only larger. */}
-      <article className="reveal">
+      <article className="reveal group -mx-5 rounded-sm px-5 py-6 transition-[background-color,box-shadow] duration-300 hover:bg-surface hover:shadow-card md:-mx-7 md:px-7">
         <p className="flex flex-wrap items-baseline gap-x-3 text-sm">
           <span className="font-medium text-accent">{pub.label}</span>
           <span className="text-faint">{pub.year}</span>

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import clsx from "clsx";
+import { Words } from "../fx/Interactions";
 
 type Props = {
   id: string;
@@ -16,8 +17,8 @@ export function Section({ id, title, intro, aside, children, className }: Props)
   return (
     <section id={id} aria-labelledby={`${id}-title`} className={clsx("py-16 md:py-24", className)}>
       <div aria-hidden="true" className="rule-draw h-px bg-line-strong" />
-      <h2 id={`${id}-title`} className="reveal mt-10 text-[clamp(2.2rem,4vw,3.4rem)] leading-[1.02] tracking-[-0.025em]">
-        {title}
+      <h2 id={`${id}-title`} className="mt-10 text-[clamp(2.2rem,4vw,3.4rem)] leading-[1.02] tracking-[-0.025em]">
+        <Words text={title} />
       </h2>
       {intro && <p className="reveal mt-3 max-w-[58ch] text-muted">{intro}</p>}
       <div className={clsx("mt-10", aside && "grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_14rem] lg:gap-12")}>

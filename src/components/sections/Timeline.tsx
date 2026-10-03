@@ -69,9 +69,13 @@ export function Timeline() {
       <Filters value={filter} onChange={setFilter} counts={counts} />
       <motion.ol key={filter} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.25 }}>
         {shown.map((ev) => (
-          <li key={`${ev.title}-${ev.date}`} className="group grid gap-1 border-b border-line py-6 md:grid-cols-[10rem_1fr_8rem] md:gap-8">
-            <p className="text-sm text-muted tabular-nums md:pt-1">{ev.date}</p>
-            <div>
+          <li
+            key={`${ev.title}-${ev.date}`}
+            className="group relative grid gap-1 border-b border-line py-6 transition-colors duration-300 hover:bg-surface md:grid-cols-[10rem_1fr_8rem] md:gap-8"
+          >
+            <span aria-hidden="true" className="absolute top-0 bottom-0 left-0 w-[2px] origin-top scale-y-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-y-100" />
+            <p className="text-sm text-muted tabular-nums transition-transform duration-300 ease-out group-hover:translate-x-3 md:pt-1">{ev.date}</p>
+            <div className="transition-transform duration-300 ease-out group-hover:translate-x-3">
               <h3 className="font-serif text-[1.35rem] leading-snug transition-colors duration-200 group-hover:text-accent">{ev.title}</h3>
               <p className="mt-0.5 text-[15px] text-muted italic">{ev.org}</p>
               <p className="mt-2 max-w-[62ch] text-[15px] leading-relaxed">{ev.text}</p>

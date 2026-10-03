@@ -1,11 +1,14 @@
 import { useForm, ValidationError } from "@formspree/react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
-import { CheckIcon, CopyIcon, FileTextIcon } from "@phosphor-icons/react";
+import { CheckIcon, CopyIcon } from "@phosphor-icons/react";
+import { Bat } from "../brand/Bat";
+import { CubeBuddy } from "../brand/CubeBuddy";
+import { IsobarField } from "../fx/IsobarField";
+import { Magnetic } from "../fx/Interactions";
 import { SocialLinks } from "../ui/SocialLinks";
 import { button, container } from "../ui/styles";
-import { CV_PATH, PROFILE } from "../../data/profile";
+import { PROFILE } from "../../data/profile";
 
 const field =
   "w-full rounded-xl border border-line-strong bg-surface px-4 py-3 text-ink outline-none transition-[border-color,box-shadow] duration-200 focus:border-accent focus:ring-4 focus:ring-accent-soft";
@@ -31,13 +34,27 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="force-dark bg-bg py-24 md:py-32">
+    <section id="contact" aria-labelledby="contact-title" className="force-dark relative isolate overflow-hidden bg-bg py-24 md:py-32">
+      {/* Night sky: faint isobars and the bat crossing now and then. */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 opacity-60">
+        <IsobarField className="h-full w-full" levels={11} accentLevel={false} letters={false} />
+      </div>
+      <div aria-hidden="true" className="bat-flight pointer-events-none absolute top-[14%] left-0 -z-10">
+        <Bat size={44} className="invert" />
+      </div>
+
       <div className={`${container} grid gap-14 lg:grid-cols-12`}>
         <div className="lg:col-span-6">
-          <h2 id="contact-title" className="label reveal">
-            {t("contact.title")}
-          </h2>
-          <p className="reveal mt-5 font-serif text-[clamp(2.3rem,5vw,4.2rem)] leading-[1.02] tracking-[-0.03em] italic">{t("contact.lead")}</p>
+          <div className="flex items-end gap-4">
+            <CubeBuddy size={72} follow watch={formRef} startle={state.succeeded ? 1 : 0} />
+            <div className="pb-1">
+              <h2 id="contact-title" className="label reveal">
+                {t("contact.title")}
+              </h2>
+              <p className="mt-1 text-sm text-faint italic">{t("contact.cube")}</p>
+            </div>
+          </div>
+          <p className="reveal mt-8 font-serif text-[clamp(2.3rem,5vw,4.2rem)] leading-[1.02] tracking-[-0.03em] italic">{t("contact.lead")}</p>
           <p className="reveal mt-6 max-w-[42ch] text-lg leading-relaxed text-muted">{t("contact.text")}</p>
 
           <div className="reveal mt-10 flex flex-wrap items-center gap-3">
@@ -49,11 +66,7 @@ export function Contact() {
               {copied ? t("contact.copied") : t("contact.copy")}
             </button>
           </div>
-          <div className="reveal mt-6 flex flex-wrap items-center gap-2">
-            <Link to={CV_PATH} className={button("primary", "h-10 px-4 text-sm")}>
-              <FileTextIcon size={16} />
-              {t("nav.cv")}
-            </Link>
+          <div className="reveal mt-6">
             <SocialLinks labelled />
           </div>
         </div>
@@ -77,9 +90,11 @@ export function Contact() {
             <ValidationError field="message" errors={state.errors} className="text-sm text-danger" />
           </div>
           <div className="flex flex-wrap items-center gap-4">
-            <button type="submit" disabled={state.submitting} className={button("primary", "disabled:opacity-60")}>
-              {state.submitting ? t("contact.form.sending") : t("contact.form.send")}
-            </button>
+            <Magnetic>
+              <button type="submit" disabled={state.submitting} className={button("primary", "disabled:opacity-60")}>
+                {state.submitting ? t("contact.form.sending") : t("contact.form.send")}
+              </button>
+            </Magnetic>
             <p className="text-sm" aria-live="polite">
               {state.succeeded && <span className="text-accent">{t("contact.form.success")}</span>}
               {!state.succeeded && !state.submitting && state.errors && <span className="text-danger">{t("contact.form.error")}</span>}
