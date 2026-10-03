@@ -85,7 +85,11 @@
       "NASA Space Apps Challenge",
       "Oracle Next Education",
       "Igrowker"
-    ]
+    ],
+    "sky": {
+      "label": "Fondo interactivo",
+      "text": "Una galaxia de 3.000 partículas. Mueve el cursor para unir constelaciones y haz scroll para viajar entre las estrellas."
+    }
   },
   "highlights": {
     "title": "En cifras",

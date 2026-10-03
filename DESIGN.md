@@ -12,12 +12,12 @@ Contact and footer are always dark (`.force-dark`).
 
 | Token | Light | Dark | Use |
 | --- | --- | --- | --- |
-| `--bg` | `#fbfbfa` | `#141416` | page |
+| `--bg` | | `#0b0e19` | page (deep-space navy) |
 | `--bg-2` | `#f1f1ee` | `#1c1c1f` | plates, tinted areas |
 | `--surface` | `#ffffff` | `#19191c` | figures, inputs |
 | `--ink` | `#1b1b1d` | `#eae9e6` | text |
 | `--muted` | `#5d5d64` | `#a4a3a9` | secondary text |
-| `--accent` | `#9b1c2e` | `#f08a93` | the only accent: oxblood |
+| `--accent` | | `#8fb6ff` | the only accent: celestial blue from the universe |
 
 ## Type
 
@@ -51,7 +51,7 @@ Contact and footer are always dark (`.force-dark`).
 
 | Section | Layout | Interaction |
 | --- | --- | --- |
-| Title block | name (italic surname in accent), topics, dek, B/W portrait, byline grid | lines rise from masks; portrait unveils, colour on hover |
+| Title block | name (italic surname in accent), topics, dek, byline grid; the background galaxy fills the right side with a short caption | lines rise from masks |
 | Figura 1 | full-width plot with caption | live EFM signal, storms on its own, cursor or tap brings the cloud |
 | Perfil | text column + margin notes | lead lights up word by word, drop cap |
 | En cifras | ruled 3x2 table, serif numerals | count-up |

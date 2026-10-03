@@ -274,9 +274,9 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
 
       // Anchor: wide and central for the galaxy in the hero, to the right margin elsewhere.
       const m = Math.min(w, h);
-      const ax = small ? w * (0.5 + 0.22 * (1 - view.home)) : w * (0.56 + 0.26 * (1 - view.home));
-      const ay = small ? h * (0.4 - 0.12 * (1 - view.home)) : h * (0.46 + 0.06 * (1 - view.home));
-      const S = (small ? w * (0.5 - 0.12 * (1 - view.home)) : m * (0.66 - 0.3 * (1 - view.home))) * view.scale;
+      const ax = small ? w * (0.5 + 0.22 * (1 - view.home)) : w * (0.74 + 0.08 * (1 - view.home));
+      const ay = small ? h * (0.4 - 0.12 * (1 - view.home)) : h * (0.42 + 0.1 * (1 - view.home));
+      const S = (small ? w * (0.5 - 0.12 * (1 - view.home)) : m * (0.6 - 0.24 * (1 - view.home))) * view.scale;
       // Brightest as the hero galaxy; dimmer when it sits behind reading text.
       const alphaBase = (night ? 0.7 : 0.38) * (small ? 0.7 : 1) * (0.72 + 0.28 * view.home);
 

@@ -5,12 +5,12 @@ import { useTranslation } from "react-i18next";
 import { ArrowDownIcon, ArrowUpRightIcon, EnvelopeSimpleIcon, LightningIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
 import { CubeBuddy } from "../brand/CubeBuddy";
-import { Magnetic, Tilt } from "../fx/Interactions";
+import { Magnetic } from "../fx/Interactions";
 import { SignalTrace } from "../fx/SignalTrace";
 import type { SignalState } from "../fx/SignalTrace";
 import { SocialLinks } from "../ui/SocialLinks";
 import { button, container } from "../ui/styles";
-import { PROFILE, THESIS_PATH } from "../../data/profile";
+import { THESIS_PATH } from "../../data/profile";
 import { useCopy } from "../../hooks/useCopy";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
@@ -227,27 +227,18 @@ export function Hero({ ready }: { ready: boolean }) {
             </motion.div>
           </div>
 
-          <motion.figure
-            className="w-full max-w-[15rem] sm:max-w-[22rem] lg:col-span-4 lg:ml-auto"
-            initial={{ opacity: 0, clipPath: "inset(100% 0 0 0)" }}
-            animate={ready ? { opacity: 1, clipPath: "inset(0% 0 0 0)" } : undefined}
-            transition={{ duration: 1.1, delay: 0.25, ease: EASE }}
+          {/* No portrait: the galaxy of the background fills this side; a caption explains how to play with it. */}
+          <motion.div
+            className="hidden lg:col-span-4 lg:block lg:self-end lg:justify-self-end"
+            initial={{ opacity: 0 }}
+            animate={ready ? { opacity: 1 } : undefined}
+            transition={{ duration: 1, delay: 1 }}
           >
-            <Tilt className="group overflow-hidden rounded-sm">
-              {/* Studio-white portrait: multiplied onto a fixed grey and shown in greyscale, colour on hover. */}
-              <div className="aspect-[4/5] overflow-hidden bg-[#e4e4e1]">
-                <img
-                  src={PROFILE.photo}
-                  alt={PROFILE.fullName}
-                  className="h-full w-full object-cover object-[50%_20%] mix-blend-multiply grayscale transition-[filter,transform] duration-700 ease-out group-hover:scale-[1.03] group-hover:grayscale-0"
-                />
-              </div>
-            </Tilt>
-            <figcaption className="mt-2 flex justify-between text-sm text-muted">
-              <span className="italic">{PROFILE.fullName}</span>
-              <span>{t("hero.photoCaption")}</span>
-            </figcaption>
-          </motion.figure>
+            <p className="max-w-[17rem] border-l border-accent/60 pl-4 text-sm leading-relaxed text-muted">
+              <span className="label block text-accent">{t("hero.sky.label")}</span>
+              <span className="mt-1 block font-serif text-[15px] italic">{t("hero.sky.text")}</span>
+            </p>
+          </motion.div>
         </div>
 
         {/* Byline, the way a paper lists its author details. */}
