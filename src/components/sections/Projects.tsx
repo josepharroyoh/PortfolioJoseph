@@ -1,175 +1,193 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import type { MotionValue } from "framer-motion";
-import { useEffect, useRef } from "react";
-import type { ReactNode } from "react";
+import { AnimatePresence, motion, useMotionValue, useSpring } from "framer-motion";
+import { useState } from "react";
+import type { PointerEvent } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ArrowRightIcon, ArrowUpRightIcon, BrowserIcon, LightningIcon, PlanetIcon, WindIcon } from "@phosphor-icons/react";
+import { ArrowUpRightIcon, PlusIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
 import { FieldTrace } from "../fx/FieldTrace";
-import { SectionHeading } from "../ui/SectionHeading";
 import { button, container } from "../ui/styles";
-import { PROJECTS, THESIS_PATH } from "../../data/profile";
+import { PROJECTS } from "../../data/profile";
 import { useCopy } from "../../hooks/useCopy";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 type Item = { key: string; title: string; category: string; year: string; role: string; text: string };
-type Featured = { status: string; title: string; text: string; tags: string[]; cta: string };
 type Demo = { field: string; threshold: string; alert: string; strike: string; lead: string };
 
-type CardData = {
-  key: string;
-  eyebrow: ReactNode;
-  title: string;
-  role?: string;
-  text: string;
-  tags: string[];
-  action?: ReactNode;
-  media: ReactNode;
-  tone: string;
-};
+const meta = (key: string) => PROJECTS.find((p) => p.key === key)!;
 
-/** Plays only while visible, so off-screen videos cost nothing. */
-function LazyVideo({ src, poster, label }: { src: string; poster?: string; label: string }) {
-  const ref = useRef<HTMLVideoElement>(null);
-  useEffect(() => {
-    const video = ref.current;
-    if (!video || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const io = new IntersectionObserver(([e]) => (e.isIntersecting ? video.play().catch(() => {}) : video.pause()), { threshold: 0.3 });
-    io.observe(video);
-    return () => io.disconnect();
-  }, []);
-  return <video ref={ref} src={src} poster={poster} muted loop playsInline preload="none" aria-label={label} className="h-full w-full object-cover" />;
-}
-
-/** Cover for projects without footage: a solid colour field and a large glyph. */
-function Cover({ icon, title, tone }: { icon: ReactNode; title: string; tone: string }) {
+/** Typographic stand-in for projects without footage. */
+function Cover({ item, className }: { item: Item; className?: string }) {
   return (
-    <div className={clsx("relative flex h-full w-full flex-col justify-between overflow-hidden p-6 md:p-8", tone)}>
-      <span className="opacity-90">{icon}</span>
-      <span className="font-display text-[clamp(2rem,5vw,3.6rem)] leading-none font-semibold tracking-[-0.04em]">{title}</span>
+    <div className={clsx("relative flex flex-col justify-between overflow-hidden bg-bg-2 p-5", className)}>
+      <span className="text-sm text-muted">{item.category}</span>
+      <span className="font-display text-[clamp(1.6rem,3vw,2.4rem)] leading-none font-semibold tracking-[-0.04em]">{item.title}</span>
+      <span aria-hidden="true" className="absolute top-5 right-5 h-3 w-3 rounded-full bg-accent" />
     </div>
   );
 }
 
-function StackCard({ data, index, total, progress, stacked }: { data: CardData; index: number; total: number; progress: MotionValue<number>; stacked: boolean }) {
-  const target = 1 - (total - index) * 0.035;
-  const scale = useTransform(progress, [index / total, 1], [1, target]);
-  const transform = useTransform(scale, (s) => `scale(${s})`);
-
-  const card = (
-    <motion.article
-      style={stacked ? { transform, top: `${index * 22}px` } : undefined}
-      className="relative grid origin-top overflow-hidden rounded-3xl border border-line bg-surface shadow-card lg:h-[min(620px,76vh)] lg:grid-cols-12"
-    >
-      <div className="flex flex-col p-6 md:p-10 lg:col-span-5">
-        <p className="flex items-center gap-2 text-sm text-muted">{data.eyebrow}</p>
-        <h3 className="mt-4 text-[clamp(2rem,3.6vw,3.2rem)] leading-[1] font-semibold tracking-[-0.035em]">{data.title}</h3>
-        {data.role && <p className="mt-2 text-accent">{data.role}</p>}
-        <p className="mt-5 leading-relaxed text-muted md:text-[17px]">{data.text}</p>
-        <ul className="mt-6 flex flex-wrap gap-2">
-          {data.tags.map((tag) => (
-            <li key={tag} className="rounded-full border border-line px-3 py-1 text-sm text-muted">
-              {tag}
-            </li>
-          ))}
-        </ul>
-        {data.action && <div className="mt-8 lg:mt-auto lg:pt-8">{data.action}</div>}
+function Media({ item, open }: { item: Item; open: boolean }) {
+  const demo = useCopy<Demo>("thesis.demo");
+  const p = meta(item.key);
+  if (item.key === "thesis") {
+    return (
+      <div className="rounded-xl border border-line bg-surface p-3">
+        {/* Mounted on open so the chart draws itself while you watch. */}
+        {open ? <FieldTrace labels={demo} compact /> : <div className="aspect-[64/26]" />}
       </div>
-      <div className={clsx("relative min-h-64 overflow-hidden border-t border-line lg:col-span-7 lg:border-t-0 lg:border-l", data.tone)}>{data.media}</div>
-    </motion.article>
-  );
+    );
+  }
+  if (p.video) {
+    return open ? (
+      <video src={p.video} poster={p.poster} autoPlay muted loop playsInline className="aspect-video w-full rounded-xl bg-bg-2 object-cover" />
+    ) : (
+      <img src={p.poster} alt="" className="aspect-video w-full rounded-xl object-cover" />
+    );
+  }
+  return <Cover item={item} className="aspect-video rounded-xl" />;
+}
 
-  if (!stacked) return card;
-  return <div className="sticky top-24 flex h-[calc(100dvh-6rem)] items-start pt-4">{card}</div>;
+function Row({ item, open, onToggle, onHover }: { item: Item; open: boolean; onToggle: () => void; onHover: (key: string | null) => void }) {
+  const { t } = useTranslation();
+  const p = meta(item.key);
+  const panelId = `project-${item.key}`;
+
+  return (
+    <li className="border-b border-line">
+      <h3>
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls={panelId}
+          onClick={onToggle}
+          onPointerEnter={() => onHover(item.key)}
+          onPointerLeave={() => onHover(null)}
+          className="group grid w-full grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 py-6 text-left md:grid-cols-[5.5rem_1fr_13rem_auto] md:py-7"
+        >
+          <span className="order-2 col-span-2 font-mono text-sm text-muted md:order-none md:col-span-1">
+            {item.year} <span className="md:hidden">· {item.category}</span>
+          </span>
+          <span
+            className={clsx(
+              "font-display text-[clamp(1.7rem,4vw,3.2rem)] leading-[1.02] font-semibold tracking-[-0.04em] transition-[color,transform] duration-300 ease-out",
+              open ? "text-accent" : "group-hover:translate-x-2",
+            )}
+          >
+            {item.title}
+          </span>
+          <span className="hidden text-[15px] text-muted md:block">{item.category}</span>
+          <span
+            aria-hidden="true"
+            className={clsx(
+              "row-span-2 grid h-10 w-10 place-items-center rounded-full border transition-[transform,background-color,border-color,color] duration-300 ease-out md:row-span-1",
+              open ? "rotate-45 border-accent bg-accent text-on-accent" : "border-line-strong group-hover:border-ink",
+            )}
+          >
+            <PlusIcon size={16} weight="bold" />
+          </span>
+        </button>
+      </h3>
+
+      <div id={panelId} role="region" aria-label={item.title} className={clsx("grid transition-[grid-template-rows] duration-300 ease-out", open ? "grid-rows-[1fr]" : "grid-rows-[0fr]")}>
+        <div className="min-h-0 overflow-hidden" inert={!open}>
+          <div className={clsx("grid gap-8 pb-10 transition-opacity duration-300 md:grid-cols-12 md:pl-[5.5rem]", open ? "opacity-100" : "opacity-0")}>
+            <div className="md:col-span-7">
+              <Media item={item} open={open} />
+            </div>
+            <div className="flex flex-col md:col-span-5">
+              <p className="text-sm text-muted">{item.role}</p>
+              <p className="mt-3 leading-relaxed">{item.text}</p>
+              <ul className="mt-5 flex flex-wrap gap-1.5">
+                {p.tags.map((tag) => (
+                  <li key={tag} className="rounded-full border border-line px-2.5 py-1 text-[13px] text-muted">
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6 md:mt-auto md:pt-6">
+                {p.page ? (
+                  <Link to={p.page} className={button("primary", "h-10 px-4 text-sm")}>
+                    {t("projects.page")}
+                    <ArrowUpRightIcon size={15} />
+                  </Link>
+                ) : p.link ? (
+                  <a href={p.link} target="_blank" rel="noopener noreferrer" className={button("secondary", "h-10 px-4 text-sm")}>
+                    {t("projects.visit")}
+                    <ArrowUpRightIcon size={15} />
+                  </a>
+                ) : null}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  );
 }
 
 export function Projects() {
   const { t } = useTranslation();
   const items = useCopy<Item[]>("projects.items");
-  const featured = useCopy<Featured>("projects.featured");
-  const demo = useCopy<Demo>("thesis.demo");
-  const stacked = useMediaQuery("(min-width: 1024px)");
-  const listRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: listRef, offset: ["start start", "end end"] });
+  const [openKey, setOpenKey] = useState<string | null>(null);
+  const [hovered, setHovered] = useState<string | null>(null);
+  const canPreview = useMediaQuery("(hover: hover) and (pointer: fine) and (min-width: 1024px)");
 
-  const icons: Record<string, ReactNode> = {
-    aireica: <WindIcon size={56} weight="duotone" />,
-    cori: <PlanetIcon size={56} weight="duotone" />,
-    portfolio: <BrowserIcon size={56} weight="duotone" />,
-  };
-  const tones: Record<string, string> = {
-    aireica: "bg-[#e9a23b] text-[#1d1405]",
-    cori: "bg-[#1b1f4b] text-[#e8e9ff]",
-    portfolio: "bg-ink text-bg",
+  // The preview trails the cursor on a spring so it feels attached but not glued.
+  const mx = useMotionValue(0);
+  const my = useMotionValue(0);
+  const x = useSpring(mx, { stiffness: 420, damping: 38, mass: 0.6 });
+  const y = useSpring(my, { stiffness: 420, damping: 38, mass: 0.6 });
+  const onMove = (e: PointerEvent<HTMLElement>) => {
+    mx.set(e.clientX + 24);
+    my.set(e.clientY - 90);
   };
 
-  const cards: CardData[] = [
-    {
-      key: "thesis",
-      eyebrow: (
-        <span className="inline-flex items-center gap-2 rounded-full bg-accent-soft px-3 py-1 font-medium text-accent">
-          <LightningIcon size={14} weight="fill" />
-          {featured.status}
-        </span>
-      ),
-      title: featured.title,
-      text: featured.text,
-      tags: featured.tags,
-      action: (
-        <Link to={THESIS_PATH} className={button("primary")}>
-          {featured.cta}
-          <ArrowRightIcon size={16} weight="bold" />
-        </Link>
-      ),
-      media: (
-        <div className="force-dark flex h-full items-center bg-bg p-6 md:p-10">
-          <FieldTrace labels={demo} className="w-full" />
-        </div>
-      ),
-      tone: "",
-    },
-    ...items.map((item): CardData => {
-      const project = PROJECTS.find((p) => p.key === item.key);
-      return {
-        key: item.key,
-        eyebrow: (
-          <>
-            <span className="font-mono">{item.year}</span>
-            <span aria-hidden="true">/</span>
-            {item.category}
-          </>
-        ),
-        title: item.title,
-        role: item.role,
-        text: item.text,
-        tags: project?.tags ?? [],
-        action: project?.link ? (
-          <a href={project.link} target="_blank" rel="noopener noreferrer" className={button("secondary")}>
-            {t("projects.visit")}
-            <ArrowUpRightIcon size={16} />
-          </a>
-        ) : undefined,
-        media: project?.video ? (
-          <LazyVideo src={project.video} poster={project.poster} label={item.title} />
-        ) : (
-          <Cover icon={icons[item.key]} title={item.title} tone={tones[item.key] ?? "bg-bg-2"} />
-        ),
-        tone: "bg-bg-2",
-      };
-    }),
-  ];
+  const preview = canPreview && hovered && hovered !== openKey ? items.find((i) => i.key === hovered) : undefined;
 
   return (
-    <section id="projects" aria-labelledby="projects-title" className="py-24 md:py-32">
+    <section id="projects" aria-labelledby="projects-title" className="border-t border-line py-20 md:py-28">
       <div className={container}>
-        <SectionHeading id="projects-title" title={t("projects.title")} intro={t("projects.intro")} />
-        <div ref={listRef} className={clsx("mt-12", stacked ? "relative" : "space-y-6")}>
-          {cards.map((card, i) => (
-            <StackCard key={card.key} data={card} index={i} total={cards.length} progress={scrollYProgress} stacked={stacked} />
-          ))}
+        <div className="grid gap-4 lg:grid-cols-12 lg:items-end lg:gap-12">
+          <h2 id="projects-title" className="reveal text-[clamp(2.8rem,7vw,6rem)] leading-[0.95] font-semibold tracking-[-0.05em] lg:col-span-7">
+            {t("projects.title")}
+          </h2>
+          <p className="reveal max-w-[44ch] leading-relaxed text-muted lg:col-span-5 lg:pb-2">{t("projects.intro")}</p>
         </div>
+
+        <ul className="mt-10 border-t border-line-strong" onPointerMove={canPreview ? onMove : undefined}>
+          {items.map((item) => (
+            <Row
+              key={item.key}
+              item={item}
+              open={openKey === item.key}
+              onToggle={() => setOpenKey((k) => (k === item.key ? null : item.key))}
+              onHover={setHovered}
+            />
+          ))}
+        </ul>
       </div>
+
+      <motion.div aria-hidden="true" style={{ x, y }} className="pointer-events-none fixed top-0 left-0 z-40">
+        <AnimatePresence>
+          {preview && (
+            <motion.div
+              key={preview.key}
+              initial={{ opacity: 0, transform: "scale(0.92)" }}
+              animate={{ opacity: 1, transform: "scale(1)" }}
+              exit={{ opacity: 0, transform: "scale(0.96)", transition: { duration: 0.12 } }}
+              transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
+              className="absolute w-[300px] origin-top-left overflow-hidden rounded-xl border border-line shadow-card"
+            >
+              {meta(preview.key).poster ? (
+                <img src={meta(preview.key).poster} alt="" className="aspect-video w-full object-cover" />
+              ) : (
+                <Cover item={preview} className="aspect-video" />
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </section>
   );
 }

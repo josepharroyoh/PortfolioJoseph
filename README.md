@@ -4,9 +4,9 @@ Desplegado [aquí](https://portfolio-josepharroyo.netlify.app/)
 
 Portafolio de investigación y proyectos pensado para comités de posgrado, pasantías y reclutadores:
 
-- Estación de campo eléctrico en vivo en la portada (simulación en canvas con lecturas y rayos).
-- Logros con contadores, proyectos en tarjetas apiladas, trayectoria horizontal con filtros.
-- Paleta de comandos con ⌘K / Ctrl+K, modo claro y oscuro, tres idiomas (es / en / pt).
+- Portada con el nombre, los temas (electricidad atmosférica, EFM, nowcasting, datos) y una señal de campo eléctrico en vivo.
+- Logros con contadores, proyectos en lista expandible con vista previa, trayectoria por año con filtros.
+- Paleta de comandos con ⌘K / Ctrl+K, modo claro y oscuro. Por ahora solo en español (en / pt vuelven al aprobar el diseño).
 - Página de la tesis en [`/proyectos/prediccion-de-rayos`](https://portfolio-josepharroyo.netlify.app/proyectos/prediccion-de-rayos).
 - CV imprimible en [`/cv`](https://portfolio-josepharroyo.netlify.app/cv) (botón «Imprimir o guardar PDF»), generado con los mismos textos de la web.
 
@@ -36,14 +36,14 @@ src/
   pages/ThesisPage.tsx      /proyectos/prediccion-de-rayos
   pages/CVPage.tsx          /cv (imprimible)
   components/
-    fx/                     ElectricField (canvas), FieldTrace (gráfica de la tesis), ProximityText (nombre cinético)
-    sections/               Hero, Highlights, Projects, About, Research, Timeline, Skills, Contact
+    fx/                     SignalTrace (señal de la portada), ElectricField (página de la tesis), FieldTrace (gráfica de la tesis)
+    sections/               Hero, Highlights, About, Projects, Research, Timeline, Skills, Contact
     layout/                 Navbar, CommandPalette (⌘K), Footer, Intro, Assistant (el cubo con ojos), PageShell
     brand/                  Bat (murciélago pixel-art) y CubeBuddy
     ui/                     estilos de botones, encabezados, redes
   data/profile.ts           datos que no dependen del idioma
   locales/                  textos en es / en / pt
-.claude/skills/             skills de diseño usadas (Emil Kowalski, Impeccable, Taste)
+.claude/skills/             skills de diseño (Emil Kowalski, Impeccable, Taste, awesome-ux-skills)
 ```
 
 ## Scripts

@@ -19,19 +19,26 @@ export const THESIS_PATH = "/proyectos/prediccion-de-rayos";
 export const CV_PATH = "/cv";
 
 /** Home page sections in order; the nav and the assistant follow the active one. */
-export const SECTIONS = ["home", "highlights", "projects", "about", "research", "timeline", "skills", "contact"] as const;
+export const SECTIONS = ["home", "highlights", "about", "projects", "research", "timeline", "skills", "contact"] as const;
 export type SectionId = (typeof SECTIONS)[number];
 
 type Project = {
   key: string;
   tags: string[];
   link?: string;
+  /** Route inside this site (the thesis page). */
+  page?: string;
   video?: string;
   poster?: string;
 };
 
 /** Media, tags and links per project, matched by `key` with locale `projects.items`. */
 export const PROJECTS: Project[] = [
+  {
+    key: "thesis",
+    tags: ["EFM", "GOES-GLM", "Radar", "Nowcasting", "Python"],
+    page: THESIS_PATH,
+  },
   {
     key: "reffindr",
     video: "/videos/reffindr.mp4",

@@ -6,7 +6,7 @@
   "nav": {
     "highlights": "Logros",
     "projects": "Proyectos",
-    "about": "Quién soy",
+    "about": "Perfil",
     "research": "Investigación",
     "timeline": "Trayectoria",
     "skills": "Herramientas",
@@ -23,47 +23,39 @@
   },
   "hero": {
     "status": "Abierto a pasantías de investigación y posgrado",
-    "name1": "Joseph",
-    "name2": "Arroyo Hernández",
-    "rolePrefix": "Físico que",
-    "roles": [
-      "investiga la electricidad atmosférica",
-      "anticipa rayos con datos",
-      "construye pipelines en la nube",
-      "lidera equipos de datos"
-    ],
-    "text": "Bachiller en Física por la UNICA. Uno la física de la atmósfera con el análisis de datos y la nube para convertir mediciones en alertas a tiempo.",
+    "name1": "Joseph Arroyo",
+    "name2": "Hernández",
+    "text": "Físico de la UNICA. Convierto mediciones de la atmósfera en datos claros y alertas a tiempo.",
     "ctaWork": "Ver proyectos",
     "ctaCv": "Ver CV",
-    "ctaContact": "Escríbeme",
-    "panel": {
-      "title": "Estación de campo eléctrico",
-      "sim": "Simulación en vivo",
-      "field": "Campo",
-      "state": "Estado",
-      "strikes": "Rayos",
-      "calm": "Calma",
-      "charging": "Cargando",
-      "alert": "Alerta",
-      "strike": "Rayo",
-      "hint": "Mueve el cursor para sumar una carga.",
-      "hintTouch": "Toca para sumar una carga.",
-      "link": "Así funciona mi tesis"
+    "topics": [
+      "Electricidad atmosférica",
+      "Medidores de campo eléctrico (EFM)",
+      "Nowcasting de rayos",
+      "Ciencia de datos",
+      "Cloud"
+    ],
+    "now": {
+      "label": "Ahora",
+      "text": "Tesis sobre predicción de rayos con redes de EFM, satélite GLM y radar.",
+      "link": "Ver el proyecto"
+    },
+    "photoAlt": "Retrato de Joseph Arroyo Hernández",
+    "signal": {
+      "label": "Campo eléctrico en superficie",
+      "note": "Señal ilustrativa. Acerca el cursor para cargar la nube.",
+      "states": {
+        "calm": "Buen tiempo",
+        "charging": "Cargando",
+        "alert": "Alerta",
+        "strike": "Descarga"
+      },
+      "threshold": "Umbral de alerta"
     }
   },
-  "ticker": [
-    "Coautor en el Journal of Atmospheric and Solar-Terrestrial Physics",
-    "Premio de Investigación UNICA 2023",
-    "Beca completa AWS re/Start",
-    "Beca completa ProInnovate y Le Wagon",
-    "Beca SEGIB de Competencias Digitales",
-    "NASA Space Apps Challenge 2025",
-    "Ponente en ECI 2023 y CITICI",
-    "2.º puesto de la promoción de Física"
-  ],
   "highlights": {
-    "title": "Lo que he logrado",
-    "intro": "Resultados concretos en investigación, formación y trabajo técnico.",
+    "title": "Logros",
+    "intro": "Lo que respalda mi trabajo, en cifras.",
     "items": [
       {
         "value": 16000,
@@ -109,22 +101,34 @@
   },
   "projects": {
     "title": "Proyectos",
-    "intro": "Desde mi tesis sobre rayos hasta productos de datos construidos en equipo.",
-    "open": "Ver proyecto",
+    "intro": "Investigación y productos de datos, del más reciente al primero. Abre cada uno para ver el detalle.",
+    "open": "Ver detalle",
     "visit": "Abrir enlace",
-    "featured": {
-      "status": "Tesis en curso",
-      "title": "Predicción de rayos",
-      "text": "Uso redes de medidores de campo eléctrico en São Paulo y evalúo si los datos del satélite GLM y del radar meteorológico hacen más eficiente la alerta.",
-      "tags": [
-        "Campo eléctrico",
-        "GOES-GLM",
-        "Radar",
-        "Algoritmos de alerta"
-      ],
-      "cta": "Ver el proyecto"
-    },
     "items": [
+      {
+        "key": "thesis",
+        "title": "Predicción de rayos",
+        "category": "Tesis en curso",
+        "year": "Hoy",
+        "role": "Tesista",
+        "text": "Uso redes de medidores de campo eléctrico (EFM) en São Paulo para anticipar rayos y evalúo si sumar el satélite GOES-GLM y el radar meteorológico hace más eficiente la alerta."
+      },
+      {
+        "key": "cori",
+        "title": "El viaje de Cori",
+        "category": "Divulgación científica",
+        "year": "2025",
+        "role": "NASA Space Apps Challenge",
+        "text": "Historia interactiva creada con Rubén M. Romero: una eyección de masa coronal viaja a la Tierra y muestra cómo el clima espacial crea auroras y afecta al GPS, los satélites y las redes eléctricas."
+      },
+      {
+        "key": "portfolio",
+        "title": "Este portafolio",
+        "category": "Desarrollo web",
+        "year": "2025",
+        "role": "Diseño y desarrollo",
+        "text": "Sitio en React y TypeScript con una simulación de campo eléctrico en canvas, línea de tiempo interactiva, modo claro y oscuro y tres idiomas."
+      },
       {
         "key": "reffindr",
         "title": "Reffindr",
@@ -148,32 +152,18 @@
         "year": "2023",
         "role": "Tesista y análisis de datos",
         "text": "Plataforma de monitoreo climático y alerta temprana de tormentas de polvo en Ica. Nació del proyecto ganador UNICA 2023 y combina Python, SQL, Power BI y una máquina virtual."
-      },
-      {
-        "key": "cori",
-        "title": "El viaje de Cori",
-        "category": "Divulgación científica",
-        "year": "2025",
-        "role": "NASA Space Apps Challenge",
-        "text": "Historia interactiva creada con Rubén M. Romero: una eyección de masa coronal viaja a la Tierra y muestra cómo el clima espacial crea auroras y afecta al GPS, los satélites y las redes eléctricas."
-      },
-      {
-        "key": "portfolio",
-        "title": "Este portafolio",
-        "category": "Desarrollo web",
-        "year": "2025",
-        "role": "Diseño y desarrollo",
-        "text": "Sitio en React y TypeScript con una simulación de campo eléctrico en canvas, línea de tiempo interactiva, modo claro y oscuro y tres idiomas."
       }
-    ]
+    ],
+    "close": "Cerrar detalle",
+    "page": "Ver la página del proyecto"
   },
   "about": {
-    "title": "Quién soy",
+    "title": "Perfil",
     "manifesto": "Soy físico. Aprendí a escuchar a la atmósfera con radares, magnetómetros y sensores de campo eléctrico, y hoy uso los datos y la nube para anticipar lo que va a pasar.",
     "paragraphs": [
       "Me formé en la Universidad Nacional San Luis Gonzaga, en Ica. En el CIEASEST, el centro que estudia la actividad solar y sus efectos sobre la Tierra, trabajé con grandes volúmenes de datos de instrumentos reales y supervisé equipos del Instituto Geofísico del Perú.",
       "Esa experiencia me llevó al análisis de datos y a la computación en la nube: me formé en Python, SQL y AWS con becas completas, y lideré equipos de datos en proyectos con plazos cortos.",
-      "Mi tesis busca anticipar rayos combinando redes de campo eléctrico, satélite y radar. Quiero seguir investigando en un posgrado y construir sistemas que conviertan mediciones en decisiones a tiempo."
+      "Hoy trabajo en nowcasting de rayos: combino redes de campo eléctrico, satélite y radar en mi tesis. Quiero seguir investigando en un posgrado y construir sistemas que conviertan mediciones en decisiones a tiempo."
     ],
     "cieasest": "Conoce el CIEASEST",
     "facts": [
@@ -250,7 +240,7 @@
   },
   "timeline": {
     "title": "Trayectoria",
-    "intro": "Diez años de formación, investigación y trabajo, en orden. Filtra por tipo o desliza para recorrerlos.",
+    "intro": "Formación, investigación y trabajo desde 2016. Filtra por tipo para ir directo a lo que buscas.",
     "all": "Todo",
     "types": {
       "research": "Investigación",
@@ -474,14 +464,14 @@
     "messages": {
       "home": [
         "Hola, soy Joseph.",
-        "Mueve el cursor sobre la estación.",
+        "Acerca el cursor a la señal.",
         "Prueba ⌘K o Ctrl+K para navegar."
       ],
       "highlights": [
         "Esto es lo que he logrado hasta hoy."
       ],
       "projects": [
-        "Mi tesis busca anticipar rayos."
+        "Abre un proyecto para ver el detalle."
       ],
       "about": [
         "Soy físico de la UNICA, en Ica."

@@ -1,87 +1,53 @@
-# Design system
+# Design system (v4, «Señal»)
 
-Portfolio of a physicist who studies atmospheric electricity. The page reads like a
-clean scientific publication, and its one signature is a live electric field: a storm
-cloud whose field lines flow, charge up and discharge as lightning.
+Portfolio of a physicist who works on atmospheric electricity, EFM networks and
+lightning nowcasting. The page reads like a clean, confident CV: the name and the
+topics lead, the work follows. Its one signature is a live strip-chart of the surface
+electric field running along the bottom of the first screen.
 
 ## Theme
 
-Light ("lab paper", cool off-white) and dark ("storm night") are both first-class.
-The first visit follows `prefers-color-scheme`; the toggle in the nav saves the choice
-in `localStorage` and grows the new theme from the button with a View Transition.
-Tokens live in `src/index.css` as CSS variables and are exposed to Tailwind with
-`@theme inline`.
+Light (cool paper white) and dark (graphite) are both first-class. The first visit
+follows `prefers-color-scheme`; the toggle saves the choice in `localStorage` and grows
+the new theme from the button with a View Transition. Contact and footer are always
+dark (`.force-dark`) so the page ends on a closing slab.
 
 | Token | Light | Dark | Use |
 | --- | --- | --- | --- |
-| `--bg` | `#f3f4f1` | `#0d0f12` | page |
-| `--bg-2` | `#e8eae5` | `#15181d` | tinted panels |
-| `--surface` | `#fafbf9` | `#121519` | raised cards, inputs |
-| `--ink` | `#121418` | `#eceef1` | text |
-| `--muted` | `#545a64` | `#a3a9b3` | secondary text |
-| `--accent` | `#2547d0` | `#8ea4ff` | the only accent: actions, highlights, lightning |
-| `--danger` | `#b42318` | `#ff8f80` | form errors |
+| `--bg` | `#f4f4f2` | `#111113` | page |
+| `--bg-2` | `#e9e9e6` | `#1b1b1e` | tinted bands, chips |
+| `--surface` | `#fbfbfa` | `#161619` | cards, inputs |
+| `--ink` | `#161618` | `#ececee` | text |
+| `--muted` | `#5b5b63` | `#a0a0a8` | secondary text |
+| `--accent` | `#c2410c` | `#ff7a45` | the only accent: signal orange |
+| `--ok` | `#15803d` | `#4ade80` | the "open to opportunities" dot only |
 
-One accent, used everywhere. No gradients, no glows, no gradient text.
+One accent. No gradients, no glows. Elevation is hairlines; shadows only on floating
+things (project preview, cube bubble).
 
 ## Type
 
-- Display: Schibsted Grotesk (variable), semibold, tracking -0.02 to -0.04em, max 6rem.
-- Body: Geist (self-hosted variable).
-- Mono: Geist Mono, only for real data (dates, years, measurements, chart labels).
-- No eyebrows or section numbers; headings carry the sections.
-- No em or en dashes in copy; ranges use a hyphen.
-
-## Shape
-
-Interactive elements are pills (`rounded-full`); surfaces and media use 12-16px radii.
-Cards only where elevation means something (featured thesis, awards); everything else
-is grouped with hairlines and space.
+- Display: Bricolage Grotesque (variable, optical size), semibold, tight tracking.
+- Body: Geist. Mono: Geist Mono, only for dates and measurements.
+- No eyebrows, no section numbers, no em or en dashes in copy.
 
 ## Motion
 
-Easing from Emil Kowalski's rules: `--ease-out: cubic-bezier(0.23, 1, 0.32, 1)` for
-entrances, `--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1)` for on-screen movement.
-
-- Buttons scale to 0.97 on press (160ms).
-- Section reveals use CSS scroll-driven animations (`.reveal`, `.reveal-clip`), so
-  they run off the main thread and content stays visible where unsupported.
-- One authored moment: the hero name rises in, the field fades up and the first
-  lightning strike arrives about two seconds later.
-- Project rows show a spring-follow preview on fine pointers only.
-- `prefers-reduced-motion`: the field is drawn once as static field lines, charts
-  show their final state, nothing moves.
+`--ease-out: cubic-bezier(0.23, 1, 0.32, 1)`; UI transitions 200-300ms; buttons scale
+to 0.97 on press; reveals are CSS scroll-driven. Reduced motion draws the signal once.
 
 ## Page structure (home)
 
-Each section uses a different layout family and owns one interaction:
-
 | Section | Layout | Interaction |
 | --- | --- | --- |
-| Hero | split: copy + instrument panel | kinetic name (letter weight follows the cursor), rotating role, live field station with readouts |
-| Ticker | full-bleed strip | the only marquee on the page, pauses on hover |
-| Highlights | 6-cell bento, research funding leads | count-up numbers, cursor glow |
-| Projects | sticky stacking cards (desktop), stacked list (phones) | cards scale back as the next one arrives |
-| About | statement + photo + facts | words light up on scroll, photo parallax |
-| Research | paper card + project card + talks list | copy APA citation |
-| Journey | horizontal pinned track (desktop), vertical list (phones) | filter by type with a sliding pill |
-| Tools | tabs | staggered chips |
-| Contact | split: copy + form | copy email, link to CV |
+| Hero | name + topics + photo + "Ahora" card, signal strip below | name lines rise from a mask; the signal storms on its own and charges as the cursor nears |
+| Logros | full-bleed tinted band, ruled 3x2 table | count-up numbers |
+| Perfil | index layout (sticky heading + facts) | statement lights up word by word |
+| Proyectos | full-width list | spring-follow preview on hover, rows expand in place (video, thesis chart) |
+| Investigación | index layout | copy APA citation |
+| Trayectoria | index layout, grouped by year | filters with counts, rail fills on scroll |
+| Herramientas | index layout, all groups visible | none |
+| Contacto | dark slab, big email + form | copy email |
 
-Global: island nav with sliding indicator and reading progress, ⌘K / Ctrl+K command
-palette (no animation, it is keyboard-driven), cube assistant, printable CV at `/cv`.
-
-## Signature pieces
-
-- `fx/ElectricField.tsx`: canvas field of a storm cloud (point charges plus mirror
-  charges for the ground), pointer adds a charge, periodic stepped-leader lightning,
-  optional field-mill trace. Pauses off screen and in hidden tabs.
-- `fx/FieldTrace.tsx`: illustrative warning chart (threshold, alert, strike, lead
-  time). Labels are HTML so they stay legible at any size. Always labelled as a
-  simulation.
-- `fx/ProximityText.tsx`: variable-weight letters that thicken near the pointer
-  (fine pointers only, off for reduced motion).
-- `pages/CVPage.tsx`: the CV is generated from the same locale files as the site and
-  prints on A4 (`@media print` hides all chrome).
-- `brand/Bat.tsx` and `brand/CubeBuddy.tsx`: the pixel bat logo and the blinking cube
-  assistant, kept from earlier versions of the site.
+Global: text nav with sliding underline and reading progress, ⌘K palette, cube
+assistant, pixel bat, printable CV at `/cv`, thesis page at `/proyectos/prediccion-de-rayos`.

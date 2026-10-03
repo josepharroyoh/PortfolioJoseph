@@ -12,11 +12,10 @@ import { useTheme } from "../../hooks/useTheme";
 import { palette } from "../../hooks/usePalette";
 import { CV_PATH, type SectionId } from "../../data/profile";
 
-const LINKS = ["highlights", "projects", "about", "research", "timeline", "contact"] as const;
+const LINKS = ["about", "projects", "research", "timeline", "contact"] as const;
 type LinkId = (typeof LINKS)[number];
 
 const NAV_FOR: Partial<Record<SectionId, LinkId>> = {
-  highlights: "highlights",
   projects: "projects",
   about: "about",
   research: "research",
@@ -104,34 +103,33 @@ export function Navbar({ active }: { active?: SectionId }) {
 
   return (
     <>
-      <header className={clsx("no-print fixed inset-x-0 top-0 z-50 transition-colors duration-300", scrolled || !onHome ? "bg-bg/80 backdrop-blur-md" : "bg-transparent")}>
+      <header className={clsx("no-print fixed inset-x-0 top-0 z-50 transition-colors duration-300", scrolled || !onHome ? "border-b border-line bg-bg/85 backdrop-blur-md" : "border-b border-transparent")}>
         <div className={`${container} flex h-16 items-center justify-between gap-4`}>
           <Link to="/" className="press flex items-center gap-3 rounded-lg" aria-label={t("nav.home")}>
             <BatTile size={34} />
             <span className="hidden font-display text-[17px] font-semibold tracking-[-0.01em] whitespace-nowrap sm:inline">Joseph Arroyo</span>
           </Link>
 
-          {/* The island: section links, a sliding indicator and reading progress. */}
-          <nav aria-label="Main" className="relative hidden overflow-hidden rounded-full border border-line bg-surface/80 shadow-card backdrop-blur lg:block">
+          {/* Plain text links; a hairline under the current one slides between them. */}
+          <nav aria-label="Main" className="hidden lg:block">
             <LayoutGroup id="nav">
-              <ul className="flex items-center p-1">
+              <ul className="flex items-center gap-1">
                 {LINKS.map((id) => (
                   <li key={id}>
                     <a
                       href={href(id)}
                       aria-current={current === id ? "true" : undefined}
-                      className={clsx("relative block rounded-full px-3 py-1.5 text-sm whitespace-nowrap transition-colors duration-200", current === id ? "text-bg" : "text-muted hover:text-ink")}
+                      className={clsx("relative block px-3 py-2 text-[15px] whitespace-nowrap transition-colors duration-200", current === id ? "text-ink" : "text-muted hover:text-ink")}
                     >
+                      {t(`nav.${id}`)}
                       {current === id && (
-                        <motion.span layoutId="nav-pill" className="absolute inset-0 rounded-full bg-ink" transition={{ type: "spring", duration: 0.4, bounce: 0.15 }} />
+                        <motion.span layoutId="nav-line" className="absolute inset-x-3 -bottom-px h-[2px] rounded-full bg-accent" transition={{ type: "spring", duration: 0.4, bounce: 0.1 }} />
                       )}
-                      <span className="relative">{t(`nav.${id}`)}</span>
                     </a>
                   </li>
                 ))}
               </ul>
             </LayoutGroup>
-            {onHome && <motion.span aria-hidden="true" style={{ transform: progress }} className="absolute inset-x-3 bottom-0 h-px origin-left bg-accent" />}
           </nav>
 
           <div className="flex items-center gap-1.5">
@@ -144,9 +142,11 @@ export function Navbar({ active }: { active?: SectionId }) {
               <MagnifyingGlassIcon size={16} />
               <kbd className="font-mono text-[11px] whitespace-nowrap">{isMac ? "⌘K" : "Ctrl K"}</kbd>
             </button>
-            <div className="hidden lg:block">
-              <LanguageSwitch />
-            </div>
+            {LANGUAGES.length > 1 && (
+              <div className="hidden lg:block">
+                <LanguageSwitch />
+              </div>
+            )}
             <ThemeToggle />
             <div className="hidden sm:block">
               <Link to={CV_PATH} className={button("primary", "h-10 px-4 text-sm")}>
@@ -166,6 +166,7 @@ export function Navbar({ active }: { active?: SectionId }) {
             </button>
           </div>
         </div>
+        {onHome && <motion.span aria-hidden="true" style={{ transform: progress }} className="absolute inset-x-0 bottom-0 h-px origin-left bg-accent" />}
       </header>
 
       <AnimatePresence>
@@ -212,7 +213,7 @@ export function Navbar({ active }: { active?: SectionId }) {
               </Link>
             </nav>
             <div className={`${container} flex flex-wrap items-center justify-between gap-4 border-t border-line py-6`}>
-              <LanguageSwitch />
+              {LANGUAGES.length > 1 && <LanguageSwitch />}
               <SocialLinks />
             </div>
           </motion.div>

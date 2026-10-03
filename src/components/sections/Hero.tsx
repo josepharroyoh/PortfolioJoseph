@@ -1,153 +1,71 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useEffect, useRef, useState } from "react";
-import type { PointerEvent } from "react";
+import { motion } from "framer-motion";
+import { useCallback, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ArrowRightIcon, ArrowUpRightIcon, FileTextIcon, LightningIcon } from "@phosphor-icons/react";
+import { ArrowDownIcon, ArrowUpRightIcon, FileTextIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
-import { ElectricField } from "../fx/ElectricField";
-import type { FieldState } from "../fx/ElectricField";
-import { ProximityText } from "../fx/ProximityText";
+import { SignalTrace } from "../fx/SignalTrace";
+import type { SignalState } from "../fx/SignalTrace";
 import { SocialLinks } from "../ui/SocialLinks";
 import { button, container } from "../ui/styles";
-import { CV_PATH, THESIS_PATH } from "../../data/profile";
+import { CV_PATH, PROFILE, THESIS_PATH } from "../../data/profile";
 import { useCopy } from "../../hooks/useCopy";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 const EASE = [0.23, 1, 0.32, 1] as const;
 
-type Panel = {
-  title: string;
-  sim: string;
-  field: string;
-  state: string;
-  strikes: string;
-  calm: string;
-  charging: string;
-  alert: string;
-  strike: string;
-  hint: string;
-  hintTouch: string;
-  link: string;
-};
-
-function RoleRotator({ roles }: { roles: string[] }) {
-  const [i, setI] = useState(0);
-  useEffect(() => {
-    const id = window.setInterval(() => setI((n) => (n + 1) % roles.length), 2800);
-    return () => window.clearInterval(id);
-  }, [roles.length]);
-  const role = roles[i % roles.length];
+/** One line of the name, rising out of its own mask. */
+function Line({ children, delay, ready, className }: { children: string; delay: number; ready: boolean; className?: string }) {
   return (
-    <span className="relative inline-grid align-bottom">
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.span
-          key={role}
-          initial={{ opacity: 0, filter: "blur(6px)", transform: "translateY(40%)" }}
-          animate={{ opacity: 1, filter: "blur(0px)", transform: "translateY(0%)" }}
-          exit={{ opacity: 0, filter: "blur(6px)", transform: "translateY(-40%)" }}
-          transition={{ duration: 0.45, ease: EASE }}
-          className="col-start-1 row-start-1 text-accent"
-        >
-          {role}
-        </motion.span>
-      </AnimatePresence>
+    <span className="block overflow-hidden pb-[0.06em]">
+      <motion.span
+        className={clsx("block", className)}
+        initial={{ transform: "translateY(105%)" }}
+        animate={ready ? { transform: "translateY(0%)" } : undefined}
+        transition={{ duration: 0.9, delay, ease: EASE }}
+      >
+        {children}
+      </motion.span>
     </span>
   );
 }
 
-/** Live readouts beside the simulated storm, written straight to the DOM. */
-function StationPanel({ panel }: { panel: Panel }) {
-  const finePointer = useMediaQuery("(pointer: fine)");
-  const traceRef = useRef<HTMLCanvasElement>(null);
+type Signal = { label: string; note: string; threshold: string; states: Record<SignalState["state"], string> };
+
+function SignalReadout() {
+  const signal = useCopy<Signal>("hero.signal");
   const fieldRef = useRef<HTMLSpanElement>(null);
   const stateRef = useRef<HTMLSpanElement>(null);
-  const strikesRef = useRef<HTMLSpanElement>(null);
-  const frameRef = useRef<HTMLDivElement>(null);
-
-  const onTick = useCallback(
-    ({ level, strikes, striking }: FieldState) => {
-      if (fieldRef.current) fieldRef.current.textContent = (0.4 + level * 7.6).toFixed(1);
-      if (strikesRef.current) strikesRef.current.textContent = String(strikes);
-      const state = striking ? "strike" : level >= 0.82 ? "alert" : level >= 0.55 ? "charging" : "calm";
-      if (stateRef.current) {
-        stateRef.current.textContent = panel[state];
-        stateRef.current.dataset.state = state;
-      }
-      frameRef.current?.toggleAttribute("data-striking", striking);
-    },
-    [panel],
-  );
+  const onTick = useCallback(({ field, state }: SignalState) => {
+    if (fieldRef.current) fieldRef.current.textContent = field.toFixed(1).replace("-", "−");
+    if (stateRef.current) {
+      stateRef.current.textContent = signal.states[state];
+      stateRef.current.dataset.state = state;
+    }
+  }, [signal]);
 
   return (
-    <div
-      ref={frameRef}
-      className="force-dark group/panel relative overflow-hidden rounded-2xl border border-line bg-bg shadow-[0_30px_80px_-30px_rgba(10,14,40,0.55)] transition-[box-shadow,border-color] duration-200 data-[striking]:border-accent"
-    >
-      <div className="flex items-center justify-between border-b border-line px-4 py-3">
-        <p className="flex items-center gap-2 text-sm font-medium">
-          <span className="h-2 w-2 animate-pulse-dot rounded-full bg-accent text-accent" aria-hidden="true" />
-          {panel.title}
+    <div className="flex h-full flex-col border-t border-line">
+      <div className={clsx(container, "flex flex-wrap items-end justify-between gap-x-6 gap-y-1 pt-4")}>
+        <p className="text-sm font-medium">
+          {signal.label} <span className="ml-1 hidden font-normal text-faint md:inline">{signal.note}</span>
         </p>
-        <p className="font-mono text-[11px] text-muted">{panel.sim}</p>
+        <p className="flex items-baseline gap-3 font-mono text-sm tabular-nums">
+          <span>
+            <span ref={fieldRef}>0.0</span> <span className="text-muted">kV/m</span>
+          </span>
+          <span
+            ref={stateRef}
+            data-state="calm"
+            className="rounded-full border border-line px-2 py-0.5 font-sans text-xs text-muted transition-colors duration-200 data-[state=alert]:border-accent data-[state=alert]:text-accent data-[state=strike]:border-accent data-[state=strike]:bg-accent data-[state=strike]:text-on-accent"
+          >
+            {signal.states.calm}
+          </span>
+        </p>
+        <p className="w-full text-xs text-faint md:hidden">{signal.note}</p>
       </div>
-
-      <div className="relative aspect-[5/4] w-full sm:aspect-[4/3] lg:aspect-[4/4.2]">
-        <ElectricField vivid cloudX={0.55} ground={0.88} onTick={onTick} traceCanvas={traceRef} className="absolute inset-0" />
-        <p className="pointer-events-none absolute top-3 left-4 max-w-[14rem] text-xs text-muted">{finePointer ? panel.hint : panel.hintTouch}</p>
-      </div>
-
-      <dl className="grid grid-cols-3 border-t border-line">
-        <div className="border-r border-line px-4 py-3">
-          <dt className="text-[11px] text-muted">{panel.field}</dt>
-          <dd className="mt-1 font-mono text-lg tabular-nums">
-            <span ref={fieldRef}>0.4</span>
-            <span className="ml-1 text-xs text-muted">kV/m</span>
-          </dd>
-        </div>
-        <div className="border-r border-line px-4 py-3">
-          <dt className="text-[11px] text-muted">{panel.state}</dt>
-          <dd className="mt-1 text-lg font-medium">
-            <span ref={stateRef} data-state="calm" className="transition-colors duration-200 data-[state=alert]:text-accent data-[state=calm]:text-muted data-[state=strike]:text-accent">
-              {panel.calm}
-            </span>
-          </dd>
-        </div>
-        <div className="px-4 py-3">
-          <dt className="text-[11px] text-muted">{panel.strikes}</dt>
-          <dd className="mt-1 font-mono text-lg tabular-nums">
-            <span ref={strikesRef}>0</span>
-          </dd>
-        </div>
-      </dl>
-      <div className="flex items-center justify-between gap-4 border-t border-line px-4 py-3">
-        <canvas ref={traceRef} aria-hidden="true" className="block h-8 w-40 shrink sm:w-52" />
-        <Link to={THESIS_PATH} className="press group inline-flex items-center gap-1.5 rounded-full text-sm text-accent">
-          {panel.link}
-          <ArrowUpRightIcon size={14} className="transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </Link>
-      </div>
-    </div>
-  );
-}
-
-function Ticker() {
-  const items = useCopy<string[]>("ticker");
-  const row = (hidden: boolean) => (
-    <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
-      {items.map((item) => (
-        <li key={item} className="flex items-center gap-3 px-6 text-[15px] whitespace-nowrap text-muted">
-          <LightningIcon size={14} weight="fill" className="text-accent" />
-          {item}
-        </li>
-      ))}
-    </ul>
-  );
-  return (
-    <div className="marquee-mask overflow-hidden border-y border-line py-4">
-      <div className="marquee-track flex w-max animate-marquee motion-reduce:animate-none">
-        {row(false)}
-        {row(true)}
+      {/* Fills whatever height the first screen has left, never less than a readable strip. */}
+      <div className="relative max-h-[280px] min-h-[110px] flex-1 md:min-h-[128px]">
+        <SignalTrace onTick={onTick} threshold={signal.threshold} className="absolute inset-0 block h-full w-full touch-manipulation" />
       </div>
     </div>
   );
@@ -155,59 +73,54 @@ function Ticker() {
 
 export function Hero({ ready }: { ready: boolean }) {
   const { t } = useTranslation();
-  const roles = useCopy<string[]>("hero.roles");
-  const panel = useCopy<Panel>("hero.panel");
-  const gridRef = useRef<HTMLDivElement>(null);
+  const topics = useCopy<string[]>("hero.topics");
   const state = ready ? "in" : "out";
 
   const item = {
-    out: { opacity: 0, transform: "translateY(16px)" },
-    in: (i: number) => ({ opacity: 1, transform: "translateY(0px)", transition: { duration: 0.7, delay: 0.08 + i * 0.07, ease: EASE } }),
-  };
-
-  // The dot grid follows the pointer; one element, so a CSS variable is cheap here.
-  const onPointerMove = (e: PointerEvent<HTMLElement>) => {
-    const el = gridRef.current;
-    if (!el || e.pointerType !== "mouse") return;
-    const r = e.currentTarget.getBoundingClientRect();
-    el.style.setProperty("--gx", `${e.clientX - r.left}px`);
-    el.style.setProperty("--gy", `${e.clientY - r.top}px`);
+    out: { opacity: 0, transform: "translateY(12px)" },
+    in: (i: number) => ({ opacity: 1, transform: "translateY(0px)", transition: { duration: 0.6, delay: 0.35 + i * 0.07, ease: EASE } }),
   };
 
   return (
-    <section id="home" aria-labelledby="hero-title" onPointerMove={onPointerMove} className="relative overflow-hidden">
-      <div ref={gridRef} aria-hidden="true" className="dot-grid pointer-events-none absolute inset-0" />
-      <div className={clsx(container, "relative grid items-center gap-12 pt-28 pb-16 lg:min-h-[100dvh] lg:grid-cols-12 lg:gap-10 lg:pt-24")}>
-        <div className="lg:col-span-7">
-          <motion.p custom={0} variants={item} initial="out" animate={state} className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/70 px-3.5 py-1.5 text-sm backdrop-blur">
-            <span className="h-2 w-2 animate-pulse-dot rounded-full bg-[#1f9d55] text-[#1f9d55]" aria-hidden="true" />
+    <section id="home" aria-labelledby="hero-title" className="relative flex min-h-[100dvh] flex-col">
+      <div className={clsx(container, "grid items-end gap-10 pt-28 pb-10 lg:grid-cols-12 lg:gap-12 lg:pt-24 lg:pb-10")}>
+        <div className="lg:col-span-8">
+          <motion.p custom={0} variants={item} initial="out" animate={state} className="inline-flex items-center gap-2 text-sm text-muted">
+            <span className="h-2 w-2 animate-pulse-dot rounded-full bg-ok text-ok" aria-hidden="true" />
             {t("hero.status")}
           </motion.p>
 
-          <motion.h1
-            id="hero-title"
-            custom={1}
-            variants={item}
-            initial="out"
-            animate={state}
-            className="mt-7 text-[clamp(2.7rem,5.3vw,4.7rem)] leading-[0.95] tracking-[-0.045em]"
-          >
-            <ProximityText text={t("hero.name1")} className="block" />
-            <ProximityText text={t("hero.name2")} className="block text-muted" />
-          </motion.h1>
+          <h1 id="hero-title" className="mt-6 text-[clamp(3rem,7.2vw,6.8rem)] leading-[0.92] font-semibold tracking-[-0.05em] whitespace-nowrap">
+            <Line ready={ready} delay={0.05}>
+              {t("hero.name1")}
+            </Line>
+            <Line ready={ready} delay={0.14} className="text-muted">
+              {t("hero.name2")}
+            </Line>
+          </h1>
 
-          <motion.p custom={2} variants={item} initial="out" animate={state} className="mt-7 font-display text-[clamp(1.35rem,2.4vw,1.9rem)] leading-snug font-semibold tracking-[-0.02em]">
-            {t("hero.rolePrefix")} <RoleRotator roles={roles} />
-          </motion.p>
+          {/* What I work on, right under the name. */}
+          <motion.ul custom={1} variants={item} initial="out" animate={state} className="mt-7 flex flex-wrap gap-x-2 gap-y-1 font-display text-[clamp(1.05rem,1.7vw,1.4rem)] font-medium tracking-[-0.015em]">
+            {topics.map((topic, i) => (
+              <li key={topic} className="flex items-center gap-2">
+                {topic}
+                {i < topics.length - 1 && (
+                  <span aria-hidden="true" className="text-accent">
+                    /
+                  </span>
+                )}
+              </li>
+            ))}
+          </motion.ul>
 
-          <motion.p custom={3} variants={item} initial="out" animate={state} className="mt-5 max-w-[36rem] text-lg leading-relaxed text-muted">
+          <motion.p custom={2} variants={item} initial="out" animate={state} className="mt-5 max-w-[34rem] text-lg leading-relaxed text-muted">
             {t("hero.text")}
           </motion.p>
 
-          <motion.div custom={4} variants={item} initial="out" animate={state} className="mt-9 flex flex-wrap items-center gap-3">
+          <motion.div custom={3} variants={item} initial="out" animate={state} className="mt-8 flex flex-wrap items-center gap-3">
             <a href="#projects" className={button("primary")}>
               {t("hero.ctaWork")}
-              <ArrowRightIcon size={16} weight="bold" />
+              <ArrowDownIcon size={16} weight="bold" />
             </a>
             <Link to={CV_PATH} className={button("secondary")}>
               <FileTextIcon size={17} />
@@ -217,16 +130,37 @@ export function Hero({ ready }: { ready: boolean }) {
           </motion.div>
         </div>
 
-        <motion.div
-          className="lg:col-span-5"
-          initial={{ opacity: 0, transform: "translateY(24px) scale(0.98)" }}
-          animate={ready ? { opacity: 1, transform: "translateY(0px) scale(1)" } : undefined}
-          transition={{ duration: 0.8, delay: 0.25, ease: EASE }}
+        <motion.aside
+          className="grid grid-cols-[7.5rem_1fr] gap-3 sm:grid-cols-2 lg:col-span-4 lg:grid-cols-1"
+          initial={{ opacity: 0, transform: "translateY(20px)" }}
+          animate={ready ? { opacity: 1, transform: "translateY(0px)" } : undefined}
+          transition={{ duration: 0.8, delay: 0.3, ease: EASE }}
         >
-          <StationPanel panel={panel} />
-        </motion.div>
+          {/* The portrait has a studio-white backdrop; multiplying it onto a fixed light grey seats it in both themes. */}
+          <figure className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-[#e3e3df] lg:aspect-[4/3.3]">
+            <img src={PROFILE.photo} alt={t("hero.photoAlt")} className="h-full w-full object-cover object-[50%_20%] mix-blend-multiply" />
+            <figcaption className="absolute bottom-3 left-3 rounded-full bg-[#161618]/80 px-3 py-1 text-xs font-medium text-[#ececee] backdrop-blur">Ica, Perú</figcaption>
+          </figure>
+          <Link
+            to={THESIS_PATH}
+            className="press group flex flex-col justify-between gap-3 rounded-2xl border border-line bg-surface p-5 hover:border-line-strong"
+          >
+            <span className="flex items-center gap-2 text-sm text-muted">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+              {t("hero.now.label")}
+            </span>
+            <span className="leading-snug font-medium">{t("hero.now.text")}</span>
+            <span className="inline-flex items-center gap-1 text-sm text-accent">
+              {t("hero.now.link")}
+              <ArrowUpRightIcon size={14} className="transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </span>
+          </Link>
+        </motion.aside>
       </div>
-      <Ticker />
+
+      <motion.div className="flex flex-1 flex-col" initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : undefined} transition={{ duration: 0.8, delay: 0.6 }}>
+        <SignalReadout />
+      </motion.div>
     </section>
   );
 }

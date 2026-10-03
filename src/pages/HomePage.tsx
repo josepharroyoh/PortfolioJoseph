@@ -57,8 +57,8 @@ export default function HomePage() {
       {intro && <Intro onDone={finishIntro} />}
       <Hero ready={!intro} />
       <Highlights />
-      <Projects />
       <About />
+      <Projects />
       <Research />
       <Timeline />
       <Skills />
