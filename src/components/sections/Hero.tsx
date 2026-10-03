@@ -185,11 +185,11 @@ export function Hero({ ready }: { ready: boolean }) {
               {t("hero.status")}
             </motion.p>
 
-            <h1 id="hero-title" className="mt-6 text-[clamp(3.3rem,8.4vw,7.6rem)] leading-[0.92] font-[380] tracking-[-0.035em]">
+            <h1 id="hero-title" className="mt-6 text-[clamp(2.7rem,6.2vw,5.9rem)] leading-[0.95] font-semibold tracking-[-0.045em] whitespace-nowrap">
               <Line ready={ready} delay={0.05}>
                 {t("hero.name1")}
               </Line>
-              <Line ready={ready} delay={0.15} className="text-accent italic">
+              <Line ready={ready} delay={0.15} className="text-accent">
                 {t("hero.name2")}
               </Line>
             </h1>

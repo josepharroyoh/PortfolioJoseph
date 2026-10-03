@@ -12,17 +12,17 @@ Contact and footer are always dark (`.force-dark`).
 
 | Token | Light | Dark | Use |
 | --- | --- | --- | --- |
-| `--bg` | | `#07080e` | page (midnight) |
+| `--bg` | | `#070b14` | page (navy) |
 | `--bg-2` | `#f1f1ee` | `#1c1c1f` | plates, tinted areas |
 | `--surface` | `#ffffff` | `#19191c` | figures, inputs |
 | `--ink` | `#1b1b1d` | `#eae9e6` | text |
 | `--muted` | `#5d5d64` | `#a4a3a9` | secondary text |
-| `--accent` | | `#d6b46e` | the only accent: champagne gold, like the galaxy core |
+| `--accent` | | `#4f8dff` | the only accent: electric blue |
 
 ## Type
 
-- Newsreader (variable, optical size, with italics) for headings, the name, leads and
-  long-form text (`.serif-body`, `.dropcap`). Weight 380-450; emphasis is italic.
+- Geist everywhere (semibold, tight tracking for headings and the name): technical and
+  firm. `.serif-body` / `font-serif` now map to Geist too.
 - Geist for UI, metadata and labels (`.label`: tracked caps, used sparingly).
 - Geist Mono only for measurements.
 - No em or en dashes in copy.

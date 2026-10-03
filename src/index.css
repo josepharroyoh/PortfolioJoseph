@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@import "@fontsource-variable/newsreader/opsz.css";
-@import "@fontsource-variable/newsreader/opsz-italic.css";
 
 @font-face {
   font-family: "Geist";
@@ -16,21 +14,21 @@
   font-display: swap;
 }
 
-/* Colour tokens. Dark only: midnight black, ivory ink and a champagne-gold accent
-   that echoes the golden core of the background galaxy. The accent marks links, figures and the few
+/* Colour tokens. Dark only: navy, cool white ink and an electric-blue accent
+   that matches the stars of the background universe. The accent marks links, figures and the few
    things that must stand out. */
 :root {
-  --bg: #07080e;
-  --bg-2: #10121b;
-  --surface: #0c0e16;
-  --ink: #f1ece2;
-  --muted: #aeadb8;
-  --faint: #6f7080;
-  --line: rgb(241 236 226 / 0.1);
-  --line-strong: rgb(241 236 226 / 0.2);
-  --accent: #d6b46e;
-  --accent-soft: rgb(214 180 110 / 0.12);
-  --on-accent: #0b0b10;
+  --bg: #070b14;
+  --bg-2: #0f1626;
+  --surface: #0b1220;
+  --ink: #e8eef8;
+  --muted: #9aa7ba;
+  --faint: #5d6a80;
+  --line: rgb(232 238 248 / 0.1);
+  --line-strong: rgb(232 238 248 / 0.2);
+  --accent: #4f8dff;
+  --accent-soft: rgb(79 141 255 / 0.14);
+  --on-accent: #ffffff;
   --danger: #ff8f80;
   --ok: #4ade80;
   --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 20px 44px -18px rgb(0 0 0 / 0.75);
@@ -39,17 +37,17 @@
 
 /* Instrument panels stay dark whatever the page theme. */
 .force-dark {
-  --bg: #07080e;
-  --bg-2: #10121b;
-  --surface: #0c0e16;
-  --ink: #f1ece2;
-  --muted: #aeadb8;
-  --faint: #6f7080;
-  --line: rgb(241 236 226 / 0.1);
-  --line-strong: rgb(241 236 226 / 0.2);
-  --accent: #d6b46e;
-  --accent-soft: rgb(214 180 110 / 0.12);
-  --on-accent: #0b0b10;
+  --bg: #070b14;
+  --bg-2: #0f1626;
+  --surface: #0b1220;
+  --ink: #e8eef8;
+  --muted: #9aa7ba;
+  --faint: #5d6a80;
+  --line: rgb(232 238 248 / 0.1);
+  --line-strong: rgb(232 238 248 / 0.2);
+  --accent: #4f8dff;
+  --accent-soft: rgb(79 141 255 / 0.14);
+  --on-accent: #ffffff;
   --danger: #ff8f80;
   --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 20px 44px -18px rgb(0 0 0 / 0.75);
   color-scheme: dark;
@@ -59,8 +57,8 @@
 @theme inline {
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
-  --font-display: "Newsreader Variable", Georgia, "Times New Roman", serif;
-  --font-serif: "Newsreader Variable", Georgia, "Times New Roman", serif;
+  --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Geist", ui-sans-serif, system-ui, sans-serif;
 
   --color-bg: var(--bg);
   --color-bg-2: var(--bg-2);
@@ -120,7 +118,8 @@
   h2,
   h3 {
     font-family: var(--font-display);
-    font-weight: 450;
+    font-weight: 600;
+    letter-spacing: -0.03em;
     text-wrap: balance;
   }
 
@@ -165,9 +164,8 @@
   /* Long-form reading text, set like a journal. */
   .serif-body {
     font-family: var(--font-serif);
-    font-size: 1.19rem;
-    line-height: 1.62;
-    font-variant-numeric: oldstyle-nums;
+    font-size: 1.08rem;
+    line-height: 1.7;
   }
   .dropcap::first-letter {
     float: left;
