@@ -58,14 +58,14 @@ export function Bat({ size = 32, className }: BatProps) {
   );
 }
 
-/** The site logo: the bat drawn in light on the dark page, inside a hairline ring that lights up on hover. */
+/** Bat inside the white tile used as the site logo. */
 export function BatTile({ size = 36 }: { size?: number }) {
   return (
     <span
-      className="inline-grid shrink-0 place-items-center overflow-hidden rounded-full ring-1 ring-line-strong transition-[box-shadow,background-color] duration-300 hover:bg-accent-soft hover:ring-accent"
+      className="inline-grid shrink-0 place-items-center overflow-hidden rounded-[9px] bg-white ring-1 ring-line"
       style={{ width: size, height: size }}
     >
-      <Bat size={size * 0.82} className="invert" />
+      <Bat size={size * 0.9} />
     </span>
   );
 }

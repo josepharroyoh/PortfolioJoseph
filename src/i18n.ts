@@ -6,15 +6,11 @@ import es from "./locales/es.json";
 import en from "./locales/en.json";
 import pt from "./locales/pt.json";
 
-const ALL_LANGUAGES = [
+export const LANGUAGES = [
   { code: "es", label: "Español" },
-  { code: "en", label: "English" },
   { code: "pt", label: "Português" },
+  { code: "en", label: "English" },
 ] as const;
-
-// Spanish only while the new design is being reviewed; en / pt return once it is approved.
-const SPANISH_ONLY = true;
-export const LANGUAGES = SPANISH_ONLY ? ALL_LANGUAGES.filter((l) => l.code === "es") : ALL_LANGUAGES;
 
 i18n
   .use(LanguageDetector)
@@ -25,7 +21,6 @@ i18n
       en: { translation: en },
       pt: { translation: pt },
     },
-    ...(SPANISH_ONLY && { lng: "es" }),
     fallbackLng: "es",
     supportedLngs: ["es", "en", "pt"],
     nonExplicitSupportedLngs: true,

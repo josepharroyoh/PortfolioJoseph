@@ -1,161 +1,91 @@
 {
   "meta": {
-    "title": "Joseph Arroyo Hernández | Physicist, researcher and data analyst",
-    "description": "Portfolio of Joseph Arroyo Hernández, B.Sc. in Physics (UNICA). Research in atmospheric electricity and lightning prediction, data analysis and cloud. Projects, publications, awards and CV."
+    "title": "Joseph Arroyo Hernández | Atmospheric electricity and lightning nowcasting",
+    "description": "Portfolio of Joseph Arroyo Hernández, physicist and MSc student in Electrical Engineering and Computing (Mackenzie, CRAAM, São Paulo) with a CAPES scholarship. Atmospheric electricity, lightning nowcasting and time-series deep learning."
   },
   "nav": {
-    "highlights": "Highlights",
+    "highlights": "In numbers",
     "projects": "Projects",
-    "about": "About",
+    "about": "Profile",
     "research": "Research",
     "timeline": "Journey",
-    "skills": "Tools",
+    "skills": "Skills",
     "contact": "Contact",
     "cv": "View CV",
     "search": "Search",
     "menu": "Menu",
     "close": "Close",
     "language": "Language",
-    "toDark": "Switch to dark mode",
-    "toLight": "Switch to light mode",
     "skip": "Skip to content",
-    "home": "Home"
+    "home": "Home",
+    "toc": "Contents",
+    "education": "Education",
+    "publications": "Publications",
+    "awards": "Scholarships and awards",
+    "experience": "Experience",
+    "talks": "Talks",
+    "training": "AI training",
+    "more": "Languages and networks",
+    "academic": "Research",
+    "volunteering": "Volunteering"
   },
   "hero": {
-    "status": "Open to research internships and graduate programs",
-    "name1": "Joseph",
-    "name2": "Arroyo Hernández",
-    "rolePrefix": "A physicist who",
-    "roles": [
-      "studies atmospheric electricity",
-      "anticipates lightning with data",
-      "builds cloud data pipelines",
-      "leads data teams"
-    ],
-    "text": "B.Sc. in Physics from UNICA. I bring together atmospheric physics, data analysis and the cloud to turn measurements into timely warnings.",
-    "ctaWork": "See projects",
+    "status": "CAPES scholar · MSc in progress in São Paulo",
+    "name1": "Joseph Arroyo",
+    "name2": "Hernandez",
+    "text": "Physicist. At CRAAM, Universidade Presbiteriana Mackenzie, I use electric field, satellite data and deep learning to anticipate a storm's first lightning flash.",
+    "ctaWork": "See my journey",
     "ctaCv": "View CV",
-    "ctaContact": "Write to me",
-    "panel": {
-      "title": "Electric field station",
-      "sim": "Live simulation",
-      "field": "Field",
-      "state": "State",
-      "strikes": "Strikes",
-      "calm": "Calm",
-      "charging": "Charging",
-      "alert": "Warning",
-      "strike": "Strike",
-      "hint": "Move your cursor to add a charge.",
-      "hintTouch": "Tap to add a charge.",
-      "link": "How my thesis works"
-    }
-  },
-  "ticker": [
-    "Co-author in the Journal of Atmospheric and Solar-Terrestrial Physics",
-    "UNICA 2023 Research Award",
-    "Full scholarship, AWS re/Start",
-    "Full scholarship, ProInnovate and Le Wagon",
-    "SEGIB Digital Skills scholarship",
-    "NASA Space Apps Challenge 2025",
-    "Speaker at ECI 2023 and CITICI",
-    "2nd in my Physics class"
-  ],
-  "highlights": {
-    "title": "What I have achieved",
-    "intro": "Concrete results in research, training and technical work.",
-    "items": [
-      {
-        "value": 16000,
-        "prefix": "USD ",
-        "suffix": "",
-        "label": "in research funding",
-        "text": "Winning UNICA 2023 research project, where I took part as a thesis student."
-      },
-      {
-        "display": "JASTP",
-        "label": "peer-reviewed article, 2024",
-        "text": "Co-author in the Journal of Atmospheric and Solar-Terrestrial Physics (Elsevier)."
-      },
-      {
-        "value": 3,
-        "prefix": "",
-        "suffix": "",
-        "label": "full scholarships",
-        "text": "AWS re/Start, SEGIB Digital Skills, and ProInnovate with Le Wagon."
-      },
-      {
-        "value": 3,
-        "prefix": "",
-        "suffix": "",
-        "label": "conference talks",
-        "text": "At international scientific meetings: ECI 2023 and CITICI."
-      },
-      {
-        "value": 2,
-        "prefix": "",
-        "suffix": "nd",
-        "label": "in my graduating class",
-        "text": "B.Sc. in Physics, top third at UNICA."
-      },
-      {
-        "value": 95,
-        "prefix": "+",
-        "suffix": "%",
-        "label": "equipment availability",
-        "text": "For the radars and magnetometer I looked after at the Geophysical Institute of Peru."
-      }
-    ]
+    "topics": ["Atmospheric electricity", "Lightning nowcasting", "Time-series deep learning", "Electric field (EFM)", "GOES satellites"],
+    "photoAlt": "Portrait of Joseph Arroyo Hernández",
+    "ctaContact": "Email me",
+    "photoCaption": "São Paulo, Brazil",
+    "byline": [
+      { "label": "Affiliation", "value": "Universidade Presbiteriana Mackenzie, CRAAM" },
+      { "label": "Education", "value": "MSc in progress · BSc in Physics (UNICA)" },
+      { "label": "Now", "value": "Thesis: a storm's first lightning flash over São Paulo", "link": true },
+      { "label": "Status", "value": "Open to research collaborations and internships" }
+    ],
+    "institutionsLabel": "Institutions and programmes along the way",
+    "institutions": [
+      "Universidade Presbiteriana Mackenzie",
+      "CRAAM",
+      "CAPES",
+      "The University of Tokyo",
+      "Atmospheric Research",
+      "Journal of Atmospheric and Solar-Terrestrial Physics",
+      "Instituto Geofísico del Perú",
+      "Jicamarca Radio Observatory",
+      "Universidad Nacional San Luis Gonzaga",
+      "AFINSA",
+      "Amazon Web Services",
+      "NASA Space Apps Challenge",
+      "Le Wagon"
+    ],
+    "role": "MSc Student in Electrical Engineering and Computing, CRAAM · Universidade Presbiteriana Mackenzie",
+    "topicsLabel": "Research lines"
   },
   "projects": {
     "title": "Projects",
-    "intro": "From my lightning thesis to data products built with a team.",
-    "open": "View project",
+    "intro": "From the thesis to data products built in teams. Each figure shows the real work.",
+    "open": "See details",
     "visit": "Open link",
-    "featured": {
-      "status": "Thesis in progress",
-      "title": "Lightning prediction",
-      "text": "I use electric field mill networks in São Paulo and test whether GLM satellite and weather radar data make the warning more efficient.",
-      "tags": [
-        "Electric field",
-        "GOES-GLM",
-        "Radar",
-        "Warning algorithms"
-      ],
-      "cta": "View the project"
-    },
     "items": [
       {
-        "key": "reffindr",
-        "title": "Reffindr",
-        "category": "Data engineering",
-        "year": "2024",
-        "role": "Data team lead",
-        "text": "A PropTech product built in 4 weeks at Igrowker's IT Training Lab. I designed an API that automated the collection of more than 300 real-estate data points and laid the base for the MVP."
-      },
-      {
-        "key": "prello",
-        "title": "Prello",
-        "category": "Data analysis",
-        "year": "2024",
-        "role": "Data analyst",
-        "text": "A scoring system for second-home investment: it combines tourism, real-estate and housing indicators to find the most attractive cities."
-      },
-      {
-        "key": "aireica",
-        "title": "AIREICA",
-        "category": "Environmental monitoring",
-        "year": "2023",
-        "role": "Thesis student and data analysis",
-        "text": "A climate monitoring and dust-storm early warning platform for Ica. Born from the winning UNICA 2023 project, it combines Python, SQL, Power BI and a virtual machine."
+        "key": "thesis",
+        "title": "A storm's first lightning flash",
+        "category": "MSc thesis",
+        "year": "2026 - 2028",
+        "role": "MSc in Electrical Engineering and Computing · CRAAM, Mackenzie",
+        "text": "I predict a storm's first lightning flash over São Paulo from the electric field measured at the surface and GOES satellite observations, and quantify how much warning time each sensor contributes, using time-series deep learning models."
       },
       {
         "key": "cori",
         "title": "Cori's Journey",
         "category": "Science outreach",
         "year": "2025",
-        "role": "NASA Space Apps Challenge",
-        "text": "An interactive story made with Rubén M. Romero: a coronal mass ejection travels to Earth and shows how space weather creates auroras and affects GPS, satellites and power grids."
+        "role": "NASA Space Apps Challenge · Stellar Stories, with R. M. Romero",
+        "text": "Interactive web application on how a coronal mass ejection reaches Earth and affects GPS, satellites and power grids."
       },
       {
         "key": "portfolio",
@@ -163,296 +93,106 @@
         "category": "Web development",
         "year": "2025",
         "role": "Design and development",
-        "text": "A React and TypeScript site with a canvas electric field simulation, an interactive timeline, light and dark modes and three languages."
-      }
-    ]
-  },
-  "about": {
-    "title": "About me",
-    "manifesto": "I am a physicist. I learned to listen to the atmosphere with radars, magnetometers and electric field sensors, and now I use data and the cloud to anticipate what comes next.",
-    "paragraphs": [
-      "I trained at the National University San Luis Gonzaga in Ica. At CIEASEST, the center that studies solar activity and its effects on Earth, I worked with large volumes of data from real instruments and supervised equipment for the Geophysical Institute of Peru.",
-      "That experience led me to data analysis and cloud computing: I trained in Python, SQL and AWS on full scholarships, and led data teams on projects with tight deadlines.",
-      "My thesis aims to anticipate lightning by combining electric field networks, satellite and radar. I want to keep doing research in a graduate program and build systems that turn measurements into timely decisions."
-    ],
-    "cieasest": "Discover CIEASEST",
-    "facts": [
-      {
-        "label": "Degree",
-        "value": "B.Sc. in Physics, UNICA"
+        "text": "A React and TypeScript site designed as an interactive scientific article: a particle universe that changes by section, live electric-field figures and a printable CV."
       },
       {
-        "label": "Based in",
-        "value": "Ica, Peru"
+        "key": "reffindr",
+        "title": "Reffindr",
+        "category": "Data engineering",
+        "year": "2024",
+        "role": "Data team leader",
+        "text": "I led the data team of a four-week build (IT Training Lab No. 04, Igrowker). I designed a Python/Flask API that automated the collection of 300+ property records, ran the ETL that enriched the database and delivered market reports in Power BI. Deployed on Azure App Services with Supabase."
       },
       {
-        "label": "Class rank",
-        "value": "Top third, 2nd place"
+        "key": "prello",
+        "title": "Prello",
+        "category": "Data analysis",
+        "year": "2024",
+        "role": "Capstone project · Data Analytics Bootcamp, Le Wagon",
+        "text": "A scoring model that ranks cities by their attractiveness for second-home investment, combining tourism, real-estate and housing indicators through a Python ETL into BigQuery, with results in Power BI."
       },
       {
-        "label": "Focus",
-        "value": "Atmospheric electricity, data and cloud"
+        "key": "aireica",
+        "title": "AIREICA",
+        "category": "Environmental monitoring",
+        "year": "2023 - 2025",
+        "role": "Thesis student and data analysis",
+        "text": "A dust-storm monitoring and early-warning platform in Ica. It integrates PM2.5 and PM10 sensors, an electric field sensor as a precursor, weather stations and cameras that validate every alert. It issued a public alert on 31 July 2025."
       }
     ],
-    "seekingTitle": "What I'm looking for",
-    "seeking": [
-      "Research internships",
-      "Graduate programs",
-      "Data analysis and cloud projects"
-    ],
-    "traitsTitle": "How I work",
-    "traits": [
-      "Team leadership",
-      "Planning",
-      "Analytical thinking"
-    ]
+    "close": "Close details",
+    "page": "View the project page",
+    "figure": "Figure",
+    "cursor": "View"
   },
   "research": {
-    "title": "Research",
-    "intro": "Publications, projects and talks where atmospheric physics meets data analysis.",
-    "publication": {
-      "label": "Peer-reviewed journal article",
-      "authors": "Romero, R., Tacza, J., Arroyo, J., Prieto, F., Macotela, L., Buleje, Y., Loayza, R., Fernandez, U., & Raulin, J.-P.",
-      "year": "2024",
-      "title": "First results of the potential gradient variation in a tropical station in South America (Ica, Peru).",
-      "journal": "Journal of Atmospheric and Solar-Terrestrial Physics",
-      "copy": "Copy citation",
-      "copied": "Citation copied"
-    },
+    "title": "Publications",
+    "intro": "Peer-reviewed articles, under review and in preparation.",
     "academic": {
-      "label": "UNICA 2023 research project, in progress",
+      "label": "UNICA 2023 research project · thesis student, 2023 - 2025",
       "title": "Air quality analysis for early warning of dust storms through climate monitoring in Ica",
       "authors": "Loayza, R., Romero, R., Buleje, Y., Arroyo, J., & Euribe, C.",
-      "text": "Winner of the UNICA 2023 Scientific Research Contest, funded with about USD 16,000. I took part as a thesis student, doing data analysis in Python, SQL and Power BI. The result is the aireica.com platform.",
+      "text": "Winning project of the UNICA 2023 Scientific Research Contest, funded with about USD 16,000. I built the aireica.com data pipeline in Python and SQL on Linux virtual machines, with Power BI dashboards. The platform issued a public alert during the extreme dust event of 31 July 2025.",
       "link": "Visit aireica.com"
     },
     "congressesTitle": "Talks",
     "congresses": [
       {
-        "date": "2025",
-        "title": "XIII International Congress on Technology and Innovation + Science and Research (CITICI)",
-        "place": "Virtual, Bogotá, Colombia",
-        "topic": "Atmospheric monitoring platform and early warning system for dust storms in Ica, Peru."
+        "date": "Dec 2025",
+        "title": "CONINTI 2025, XI International and XIII National Research Congress",
+        "place": "Ica, Peru",
+        "topic": "Air quality analysis and early warning of dust storms through electric field and meteorological measurements."
       },
       {
-        "date": "Aug 2023",
-        "title": "International Scientific Meeting (ECI 2023)",
-        "place": "Peru",
-        "topic": "Oral presentation as co-author: local and global effects on the variation of the atmospheric electric field in Ica."
+        "date": "Nov 2025",
+        "title": "COINCOM 2025, XVI International Congress on Competencies and Multidisciplinarity",
+        "place": "Cartagena, Colombia",
+        "topic": "AIREICA: atmospheric monitoring platform and early warning system for dust storms."
+      },
+      { "date": "Aug 2023", "title": "International Scientific Meeting (ECI)", "place": "Lima, Peru", "topic": "Atmospheric electric field variation in Ica." },
+      { "date": "Aug 2023", "title": "International Scientific Meeting (ECI)", "place": "Lima, Peru", "topic": "Catalogue of solar phenomena from the Flare Monitor Telescope." }
+    ],
+    "citeLabel": "APA citation",
+    "publications": [
+      {
+        "status": "Published",
+        "authors": "Romero, R. M., Loayza, R., Huamán, G., Calderón, D., Buleje, Y., Arroyo, J., et al.",
+        "year": "2026",
+        "title": "Electrical lead time during an extreme haboob-like dust-front intrusion in Ica, Peru.",
+        "journal": "Atmospheric Research, 342, 109171",
+        "doi": "10.1016/j.atmosres.2026.109171"
       },
       {
-        "date": "Aug 2023",
-        "title": "International Scientific Meeting (ECI 2023)",
-        "place": "Peru",
-        "topic": "Oral presentation as co-author: catalog of solar phenomena observed by the Flare Monitor Telescope."
+        "status": "Published",
+        "authors": "Romero, R., Tacza, J., Arroyo, J., Prieto, F., Macotela, L., Buleje, Y., et al.",
+        "year": "2024",
+        "title": "First results of the potential gradient variation in a tropical station in South America (Ica, Peru).",
+        "journal": "Journal of Atmospheric and Solar-Terrestrial Physics, 256, 106198",
+        "doi": "10.1016/j.jastp.2024.106198"
+      },
+      {
+        "status": "Under review",
+        "authors": "Tacza, J., Romero, R., Arroyo, J., Buzás, A., & Bór, J.",
+        "year": "2026",
+        "title": "Long-term land observations reveal distinct daily patterns in potential gradient measurements.",
+        "journal": "Atmospheric Research"
+      },
+      {
+        "status": "In preparation",
+        "authors": "Romero, R. M., Arroyo, J., Tacza, J., Orosco, G., et al.",
+        "year": "2026",
+        "title": "How the wind regime shapes size-resolved aerosol coupling with sea-breeze electrification at Ica, Peru.",
+        "journal": ""
       }
-    ]
-  },
-  "timeline": {
-    "title": "Journey",
-    "intro": "Ten years of training, research and work, in order. Filter by type or scroll through them.",
-    "all": "All",
-    "types": {
-      "research": "Research",
-      "work": "Experience",
-      "education": "Education",
-      "award": "Awards and scholarships",
-      "community": "Community"
-    },
-    "now": "Now",
-    "events": [
-      {
-        "date": "2016",
-        "type": "award",
-        "title": "First place in productive projects",
-        "org": "República de Bolivia School, Lima",
-        "text": "Productive and Entrepreneurial Projects Contest, 5th year of secondary school."
-      },
-      {
-        "date": "2018",
-        "type": "education",
-        "title": "Started my Physics degree",
-        "org": "National University San Luis Gonzaga (UNICA)",
-        "text": "B.Sc. in Physical Sciences in Ica."
-      },
-      {
-        "date": "2018 - 2022",
-        "type": "community",
-        "title": "Astronomy outreach",
-        "org": "MUTSUNICA Astronomical Group, CIEASEST",
-        "text": "Organized public observations with the Nishimura and FMT telescopes."
-      },
-      {
-        "date": "2021",
-        "type": "community",
-        "title": "Hult Prize",
-        "org": "UNICA campus",
-        "text": "Team Songo: a pumpkin-based cookie to tackle food system problems."
-      },
-      {
-        "date": "2022",
-        "type": "education",
-        "title": "School of Quantum Computing",
-        "org": "Universidad Nacional Mayor de San Marcos, Lima",
-        "text": "Study group on the foundations of quantum computing.",
-        "course": true
-      },
-      {
-        "date": "2022",
-        "type": "community",
-        "title": "Student candidate",
-        "org": "UDI University Movement “For the Common Good”",
-        "text": "Candidate for UNICA's University Assembly."
-      },
-      {
-        "date": "Dec 2022 - May 2023",
-        "type": "education",
-        "title": "Backend Developer with Java",
-        "org": "Oracle Next Education",
-        "text": "Object-oriented programming and backend development.",
-        "course": true
-      },
-      {
-        "date": "Mar 2023 - Jul 2024",
-        "type": "work",
-        "title": "Supervisor and Technical Assistant",
-        "org": "Geophysical Institute of Peru (IGP)",
-        "text": "Kept the HF radar, bistatic radar and magnetometer at CIEASEST running: over 95% availability and 20% faster response times."
-      },
-      {
-        "date": "May - Jul 2023",
-        "type": "work",
-        "title": "Physics Laboratory Intern",
-        "org": "San Luis Gonzaga Educational Institution",
-        "text": "Maintenance, repair and calibration of equipment and laboratory inventory."
-      },
-      {
-        "date": "Aug 2023",
-        "type": "research",
-        "title": "Two talks at ECI 2023",
-        "org": "International Scientific Meeting",
-        "text": "Atmospheric electric field in Ica and a catalog of solar phenomena from the FMT."
-      },
-      {
-        "date": "Aug 2023",
-        "type": "education",
-        "title": "B.Sc. in Physics",
-        "org": "UNICA",
-        "text": "Top third, 2nd place in my graduating class."
-      },
-      {
-        "date": "2023",
-        "type": "award",
-        "title": "UNICA 2023 Research Award",
-        "org": "USD 16,000 in funding",
-        "text": "Thesis student on the winning dust-storm warning project that became AIREICA."
-      },
-      {
-        "date": "Jan - Mar 2024",
-        "type": "education",
-        "title": "Data Science with Python",
-        "org": "Data Analítica",
-        "text": "Specialized program in analysis and modeling with Python.",
-        "course": true
-      },
-      {
-        "date": "Feb - May 2024",
-        "type": "education",
-        "title": "Data Analyst with Python (DataCamp)",
-        "org": "Universitarios por los ODS, Bolivia",
-        "text": "Full data analysis track.",
-        "course": true
-      },
-      {
-        "date": "2024",
-        "type": "research",
-        "title": "Published in JASTP",
-        "org": "Journal of Atmospheric and Solar-Terrestrial Physics",
-        "text": "Co-author of the first study of the potential gradient in Ica."
-      },
-      {
-        "date": "Jul - Oct 2024",
-        "type": "award",
-        "title": "Data Analytics Bootcamp on a full scholarship",
-        "org": "Le Wagon and ProInnovate (USD 5,000)",
-        "text": "Final project: the Prello scoring system."
-      },
-      {
-        "date": "Nov - Dec 2024",
-        "type": "work",
-        "title": "Data team lead at Reffindr",
-        "org": "Igrowker IT Training Lab No. 04",
-        "text": "An API that automated the collection of more than 300 real-estate data points."
-      },
-      {
-        "date": "2025",
-        "type": "community",
-        "title": "Team leader",
-        "org": "NoCountry.Tech",
-        "text": "Led development teams in a tech job simulation."
-      },
-      {
-        "date": "Jul - Sep 2025",
-        "type": "award",
-        "title": "Ibero-American Digital Skills Program scholarship",
-        "org": "SEGIB, SENAJU, OIJ, AECID and IMMUNE",
-        "text": "Digital skills initiation program, 2025 edition."
-      },
-      {
-        "date": "Aug - Nov 2025",
-        "type": "award",
-        "title": "Full scholarship, AWS re/Start",
-        "org": "Amazon Web Services and Bootcamp Institute",
-        "text": "12 weeks of cloud computing training."
-      },
-      {
-        "date": "2025",
-        "type": "research",
-        "title": "Talk at CITICI",
-        "org": "Virtual congress, Bogotá",
-        "text": "Atmospheric monitoring platform and dust-storm warning."
-      },
-      {
-        "date": "Oct 2025",
-        "type": "research",
-        "title": "NASA Space Apps Challenge",
-        "org": "Stellar Stories",
-        "text": "Cori's Journey, an interactive story about space weather."
-      },
-      {
-        "date": "Now",
-        "type": "research",
-        "title": "Thesis: lightning prediction",
-        "org": "CRAAM, Atibaia and USP field mills, GLM and radar",
-        "text": "Testing whether satellite and radar data improve an electric-field-based warning."
-      }
-    ]
+    ],
+    "copy": "Copy citation",
+    "copied": "Citation copied",
+    "doi": "View DOI"
   },
   "skills": {
-    "title": "Tools",
-    "intro": "What I use to go from measurement to result.",
-    "groups": [
-      "Programming",
-      "Cloud and databases",
-      "Analysis and BI",
-      "Environment"
-    ]
-  },
-  "contact": {
-    "title": "Let's talk",
-    "text": "If you're looking for someone for an internship, a graduate program or a data project, write to me. I reply by email or through this form.",
-    "copy": "Copy",
-    "copied": "Copied",
-    "form": {
-      "name": "Name",
-      "email": "Email",
-      "message": "Message",
-      "hint": "Tell me about the opportunity or project.",
-      "send": "Send message",
-      "sending": "Sending…",
-      "success": "Message sent. Thank you!",
-      "error": "It couldn't be sent. Try again or email me directly."
-    }
+    "title": "Technical skills",
+    "intro": "What I use to go from measurement to model.",
+    "groups": ["Machine learning", "Programming", "Databases", "Data and BI", "Scientific data", "Tools and infrastructure"]
   },
   "palette": {
     "placeholder": "Type a section or an action…",
@@ -462,133 +202,208 @@
     "copyEmail": "Copy email",
     "emailCopied": "Email copied",
     "openCv": "Open the CV",
-    "openThesis": "See the lightning prediction thesis",
-    "toggleTheme": "Toggle theme",
+    "openThesis": "View the lightning prediction thesis",
     "language": "Switch language to",
     "hint": "Use ↑ ↓ to move and Enter to open."
   },
-  "assistant": {
-    "label": "Assistant",
-    "more": "More links",
-    "email": "Email",
-    "messages": {
-      "home": [
-        "Hi, I'm Joseph.",
-        "Move your cursor over the station.",
-        "Try ⌘K or Ctrl+K to navigate."
-      ],
-      "highlights": [
-        "This is what I've achieved so far."
-      ],
-      "projects": [
-        "My thesis aims to anticipate lightning."
-      ],
-      "about": [
-        "I'm a physicist from UNICA, in Ica."
-      ],
-      "research": [
-        "You can copy the article citation."
-      ],
-      "timeline": [
-        "Filter the journey by type."
-      ],
-      "skills": [
-        "Python, SQL and AWS are my base."
-      ],
-      "contact": [
-        "Let's talk? The form is right here."
-      ],
-      "thesis": [
-        "This is my thesis in progress.",
-        "The chart is an illustrative simulation."
-      ],
-      "cv": [
-        "Use Print to save it as a PDF."
-      ]
-    }
-  },
   "thesis": {
     "back": "Back to projects",
-    "status": "Thesis in progress",
-    "title": "Lightning prediction with electric field mill networks",
-    "lead": "Lightning usually announces itself: the electric field near the ground changes while a storm charges up. My thesis uses that signal to anticipate strikes and tests whether adding satellite and radar data improves the warning.",
+    "status": "MSc thesis in progress",
+    "title": "A storm's first lightning flash over São Paulo",
+    "lead": "Lightning usually announces itself before it strikes: the electric field near the ground changes as the storm charges up, and satellites see the cloud grow. My thesis at CRAAM, Mackenzie, uses those signals with deep learning to predict the first flash and measure how much warning time each sensor contributes.",
     "questionLabel": "Research question",
-    "question": "Does adding GLM and weather radar data make an electric-field-based warning algorithm more efficient?",
-    "demoTitle": "How an electric field warning works",
-    "demoCaption": "Illustrative simulation, not real data. When the field crosses the threshold a warning is issued; the time until the strike is the lead time.",
+    "question": "How much warning time does each sensor (surface electric field, satellite and detection networks) contribute to predicting a storm's first lightning flash?",
+    "demoTitle": "How an electric-field warning works",
+    "demoCaption": "Illustrative simulation, not real data. When the field crosses the threshold the warning is issued; the time until the strike is the lead time.",
     "demoReplay": "Replay",
-    "demo": {
-      "field": "Electric field",
-      "threshold": "Threshold",
-      "alert": "Warning",
-      "strike": "Strike",
-      "lead": "Lead time"
-    },
+    "demo": { "field": "Electric field", "threshold": "Threshold", "alert": "Warning", "strike": "Strike", "lead": "Lead time" },
     "dataTitle": "Data",
     "data": [
-      {
-        "name": "Electric field mills (EFM)",
-        "text": "Ground sensor networks in São Paulo, Brazil: the CRAAM EFMs (Mackenzie Presbyterian University), the Atibaia station and the USP network."
-      },
-      {
-        "name": "GOES-GLM",
-        "text": "The Geostationary Lightning Mapper on board the GOES satellites detects lightning light from geostationary orbit."
-      },
-      {
-        "name": "Weather radar",
-        "text": "Describes the structure of storm clouds and how they evolve, information that can precede their electrification."
-      }
+      { "name": "Surface electric field", "text": "Electric field mills (EFM) from CRAAM and the AFINSA network, recording how the atmosphere charges up over São Paulo." },
+      { "name": "GOES-16/19: ABI and GLM", "text": "The ABI imager tracks cloud growth and the Geostationary Lightning Mapper detects lightning light from geostationary orbit." },
+      { "name": "STARNET VLF", "text": "A very-low-frequency lightning detection network, used as the reference for when and where each flash occurs." }
     ],
     "methodTitle": "Method",
     "method": [
-      {
-        "name": "Baseline",
-        "text": "A warning algorithm that uses only the electric field network."
-      },
-      {
-        "name": "Data fusion",
-        "text": "Add the GLM and radar data to the same algorithm."
-      },
-      {
-        "name": "Comparison",
-        "text": "Measure whether the warning improves: hits, false alarms and lead time."
-      }
+      { "name": "Baseline", "text": "A warning that uses only the surface electric field." },
+      { "name": "Time-series models", "text": "Recurrent, convolutional and transformer networks that combine electric field and satellite data." },
+      { "name": "Warning attribution", "text": "Measure hits, false alarms, calibration and how many minutes of lead time each sensor contributes." }
     ],
     "whyTitle": "Why it matters",
     "why": "Lightning puts people, power grids, airports and outdoor activities at risk. Knowing which data improve the warning helps decide where to invest in sensors and how to combine them.",
-    "note": "Project in progress. This page will be updated with results.",
-    "cta": "Working on atmospheric electricity or lightning? Write to me."
+    "note": "Project in progress (2026 - 2028). This page will be updated with results.",
+    "cta": "Working on atmospheric electricity or lightning? Email me."
   },
   "cv": {
     "print": "Print or save as PDF",
-    "back": "Back to the portfolio",
-    "title": "Physicist | Atmospheric electricity research, data analysis and cloud",
+    "back": "Back to portfolio",
+    "title": "MSc Student in Electrical Engineering and Computing | Atmospheric electricity, lightning nowcasting and deep learning",
     "summaryTitle": "Profile",
-    "summary": "B.Sc. in Physics (UNICA, top third, 2nd place) with experience operating geophysical instruments at the Geophysical Institute of Peru. Co-author in the Journal of Atmospheric and Solar-Terrestrial Physics and thesis student on a research project awarded USD 16,000. Trained in data analysis, Python, SQL and AWS on full scholarships. Currently developing my thesis on lightning prediction with electric field networks, satellite and radar.",
+    "summary": "Physicist and MSc student in Electrical Engineering and Computing at CRAAM, Universidade Presbiteriana Mackenzie, with a CAPES scholarship. Co-author in Atmospheric Research and the Journal of Atmospheric and Solar-Terrestrial Physics. Experience supervising geophysical instrumentation for the Instituto Geofísico del Perú and building the data pipeline of a dust-storm early-warning platform. My thesis predicts a storm's first lightning flash over São Paulo with electric field, GOES satellites and deep learning.",
     "researchTitle": "Research and publications",
     "experienceTitle": "Experience",
     "educationTitle": "Education",
-    "coursesTitle": "Courses and programs",
+    "coursesTitle": "Courses and programmes",
     "awardsTitle": "Awards and scholarships",
     "projectsTitle": "Projects",
     "communityTitle": "Volunteering and community",
     "skillsTitle": "Skills",
     "talksTitle": "Talks",
-    "degree": {
-      "date": "2018 - 2023",
-      "title": "B.Sc. in Physical Sciences",
-      "org": "National University San Luis Gonzaga (UNICA), Ica, Peru",
-      "text": "Top third, 2nd place in my graduating class."
-    },
     "thesis": {
-      "date": "In progress",
-      "title": "Thesis: lightning prediction with electric field mill networks",
-      "org": "Data from CRAAM, Atibaia and USP field mills, GOES-GLM and weather radar"
-    }
+      "date": "2026 - 2028",
+      "title": "MSc thesis: predicting a storm's first lightning flash over São Paulo",
+      "org": "Surface electric field (AFINSA, CRAAM), GOES-16/19 ABI and GLM, STARNET; time-series deep learning"
+    },
+    "degrees": [
+      {
+        "date": "Aug 2026 - Jul 2028",
+        "title": "MSc in Electrical Engineering and Computing",
+        "org": "Universidade Presbiteriana Mackenzie, CRAAM, São Paulo, Brazil",
+        "text": "CAPES scholarship. Predicting a storm's first lightning flash over São Paulo from surface electric field and satellite observations."
+      },
+      { "date": "2018 - 2023", "title": "BSc in Physics", "org": "Universidad Nacional San Luis Gonzaga (UNICA), Ica, Peru", "text": "GPA 15.29/20, top third of class." }
+    ],
+    "languagesTitle": "Languages",
+    "languages": "Spanish (native) · English (B1) · Portuguese (intermediate)",
+    "thesisTitle": "Research experience"
   },
   "footer": {
     "rights": "All rights reserved.",
     "built": "Designed and built with React, TypeScript and canvas.",
     "top": "Back to top"
+  },
+  "education": {
+    "title": "Education",
+    "intro": "University education, from physics to electrical engineering and computing.",
+    "items": [
+      {
+        "date": "Aug 2026 - Jul 2028",
+        "place": "São Paulo, Brazil",
+        "title": "MSc in Electrical Engineering and Computing",
+        "org": "Universidade Presbiteriana Mackenzie, Center for Radio Astronomy and Astrophysics (CRAAM)",
+        "text": "Predicting a storm's first lightning flash over São Paulo from ground-based atmospheric electric field and satellite observations, and quantifying how much warning time each sensor contributes.",
+        "tags": ["CAPES scholarship", "In progress"]
+      },
+      {
+        "date": "2018 - 2023",
+        "place": "Ica, Peru",
+        "title": "BSc in Physics",
+        "org": "Universidad Nacional San Luis Gonzaga (UNICA)",
+        "text": "GPA 15.29/20 (0-20 scale), top third of class.",
+        "tags": ["Top third"]
+      }
+    ]
+  },
+  "awards": {
+    "title": "Scholarships and awards",
+    "intro": "Scholarships, international programmes and recognitions won by competition.",
+    "items": [
+      { "date": "Sep 2026", "title": "GCI World 2026 (Japan)", "org": "Matsuo-Iwasawa Laboratory, The University of Tokyo", "text": "Selected participant." },
+      { "date": "Jun 2026", "title": "CAPES Master's Scholarship (Brazil)", "org": "Universidade Presbiteriana Mackenzie", "text": "Full funding for the MSc programme, awarded by competition." },
+      { "date": "2025", "title": "AWS re/Start full scholarship", "org": "Amazon Web Services", "text": "12-week cloud computing programme." },
+      { "date": "2025", "title": "Ibero-American Youth Digital Skills Programme", "org": "SEGIB, OIJ and AECID", "text": "Full international scholarship." },
+      { "date": "2024", "title": "ProInnovate full scholarship (approx. USD 5,000)", "org": "Le Wagon", "text": "Data Analytics Bootcamp." },
+      {
+        "date": "2023",
+        "title": "UNICA Scientific Research Project Award",
+        "org": "Universidad Nacional San Luis Gonzaga",
+        "text": "Team member of the winning dust-storm early-warning project, funded with approx. USD 16,000."
+      },
+      { "date": "2016", "title": "First place, Contest of Productive and Entrepreneurial Projects", "org": "Institución Educativa República de Bolivia, Lima", "text": "5th year of secondary school." }
+    ]
+  },
+  "experience": {
+    "title": "Experience",
+    "intro": "Research with data from real instruments and operation of geophysical instrumentation.",
+    "researchTitle": "Research experience",
+    "workTitle": "Professional experience",
+    "research": [
+      {
+        "date": "2023 - 2025",
+        "place": "Ica, Peru",
+        "title": "Thesis student: air quality analysis for early warning of dust storms through climate monitoring in Ica",
+        "org": "CIEASEST, Universidad Nacional San Luis Gonzaga · funded by the UNICA 2023 Scientific Research Contest",
+        "text": "I built the data pipeline behind aireica.com, integrating four instrument groups: particulate matter sensors (PM2.5, PM10), an atmospheric electric field sensor as a storm precursor, weather stations (wind, temperature, humidity, pressure) and cameras that validate every alert. Python and SQL processing on self-configured Linux virtual machines, with Power BI dashboards. The platform issued a public alert during the extreme dust event of 31 July 2025.",
+        "link": "Visit aireica.com"
+      }
+    ],
+    "work": [
+      {
+        "date": "Mar 2023 - Jul 2024",
+        "place": "Ica, Peru",
+        "title": "Geophysical Instrumentation Supervisor",
+        "org": "Instituto Geofísico del Perú, Jicamarca Radio Observatory",
+        "text": "Sole supervision contract for the HF radar, bistatic radar receiving station and MAGDAS magnetometer at the UNICA Solar Station, a node of Peru's HF ionospheric sounding network run under the IGP and Cornell University agreement. I delivered the formal functionality reports to the Jicamarca coordination team, sustained over 95% operational availability and cut incident resolution times by about 20%, in parallel with my degree."
+      },
+      {
+        "date": "May - Jul 2023",
+        "place": "Ica, Peru",
+        "title": "Pre-professional intern, physics laboratory",
+        "org": "Institución Educativa San Luis Gonzaga",
+        "text": "Calibrated measuring instruments, restored damaged equipment through soldering and component replacement, and managed spare-part purchases for student practicals."
+      }
+    ],
+    "tabs": { "research": "Research", "work": "Professional" }
+  },
+  "training": {
+    "title": "AI and data science training",
+    "intro": "Selected programmes in artificial intelligence and data science.",
+    "items": [
+      {
+        "date": "From Sep 2026",
+        "title": "GCI World, Global Consumer Intelligence",
+        "org": "Matsuo-Iwasawa Laboratory, The University of Tokyo (JICA-supported)",
+        "text": "Three-month flagship curriculum in Python, machine learning and applied data analysis."
+      },
+      { "date": "Aug - Nov 2025", "title": "AWS re/Start", "org": "Amazon Web Services and Bootcamp Institute (Mexico)", "text": "Twelve-week cloud computing intensive." },
+      {
+        "date": "Jul - Oct 2025",
+        "title": "Ibero-American Youth Digital Skills Programme",
+        "org": "IMMUNE Technology Institute (Spain)",
+        "text": "Founded and ran a Discord study group for participants across Ibero-America."
+      },
+      { "date": "Feb 2025", "title": "Introduction to AI and Machine Learning on Google Cloud", "org": "Arki1, Google Cloud Authorized Training Partner", "text": "" },
+      { "date": "Nov - Dec 2024", "title": "IT Training Lab No. 04, Data Analyst", "org": "Igrowker (Spain)", "text": "" },
+      { "date": "Jul - Oct 2024", "title": "Data Analytics Bootcamp", "org": "Le Wagon LATAM", "text": "" },
+      { "date": "Oct 2022", "title": "School of Quantum Computing", "org": "Universidad Nacional Mayor de San Marcos (UNMSM), Lima", "text": "" }
+    ]
+  },
+  "more": {
+    "title": "Languages, networks and volunteering",
+    "languagesTitle": "Languages",
+    "languages": [
+      { "name": "Spanish", "level": "Native", "value": 100 },
+      { "name": "English", "level": "B1", "value": 55 },
+      { "name": "Portuguese", "level": "Intermediate, taking classes in São Paulo", "value": 50 }
+    ],
+    "networksTitle": "Networks",
+    "networks": [{ "date": "Since 2022", "title": "AFINSA", "text": "Atmospheric Electric Field Network in South America (Peru, Brazil and Argentina), collaborator." }],
+    "volunteeringTitle": "Volunteering",
+    "volunteering": [
+      { "date": "2025", "title": "Team leader", "org": "No Country Tech", "text": "Led development teams through a full delivery cycle in a technology work simulation." },
+      {
+        "date": "2022",
+        "title": "Student candidate",
+        "org": "UDI, University Movement United for Democracy and Research",
+        "text": "Candidate in the election for the UNICA University Assembly."
+      },
+      {
+        "date": "2021",
+        "title": "Hult Prize, UNICA campus round",
+        "org": "International student competition on social entrepreneurship",
+        "text": "Team Sonqo: a pumpkin-based food product for the food-systems challenge."
+      },
+      { "date": "2018 - 2022", "title": "MUTSUNICA Astronomy Group", "org": "CIEASEST, UNICA", "text": "Outreach events opening public access to the Nishimura and FMT telescopes." }
+    ],
+    "intro": "Leadership, community and science outreach."
+  },
+  "academic": {
+    "title": "Education and research",
+    "intro": "University education, scientific articles and conferences in one place.",
+    "tabs": { "education": "Education", "publications": "Publications", "talks": "Conferences" }
+  },
+  "quote": {
+    "text": "Nothing in life is to be feared, only understood.",
+    "author": "Marie Curie"
   }
 }

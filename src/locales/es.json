@@ -230,24 +230,6 @@
       "Herramientas e infraestructura"
     ]
   },
-  "contact": {
-    "title": "Contacto",
-    "text": "Si buscas a alguien para una colaboración de investigación, una pasantía o un proyecto de datos, escríbeme. Respondo por correo o a través de este formulario.",
-    "copy": "Copiar",
-    "copied": "Copiado",
-    "form": {
-      "name": "Nombre",
-      "email": "Correo",
-      "message": "Mensaje",
-      "hint": "Cuéntame sobre la oportunidad o el proyecto.",
-      "send": "Enviar mensaje",
-      "sending": "Enviando…",
-      "success": "Mensaje enviado. ¡Gracias!",
-      "error": "No se pudo enviar. Inténtalo de nuevo o escríbeme al correo."
-    },
-    "lead": "¿Una pasantía, un posgrado o un proyecto de datos?",
-    "cube": "Te leo mientras escribes."
-  },
   "palette": {
     "placeholder": "Escribe una sección o una acción…",
     "empty": "Sin resultados.",
@@ -354,17 +336,6 @@
     "rights": "Todos los derechos reservados.",
     "built": "Diseñado y desarrollado con React, TypeScript y canvas.",
     "top": "Volver arriba"
-  },
-  "universe": {
-    "label": "Fondo",
-    "shapes": {
-      "galaxy": "Galaxia espiral",
-      "atmosphere": "La Tierra y su atmósfera",
-      "lorenz": "Atractor de Lorenz, el caos del tiempo atmosférico",
-      "lightning": "Líder escalonado de un rayo",
-      "dipole": "Campo magnético terrestre",
-      "wave": "Ondas en una atmósfera estratificada"
-    }
   },
   "education": {
     "title": "Educación",
@@ -476,10 +447,6 @@
       "research": "Investigación",
       "work": "Profesional"
     }
-  },
-  "talks": {
-    "title": "Ponencias",
-    "intro": "Presentaciones orales en congresos científicos, como coautor."
   },
   "training": {
     "title": "Formación en IA y ciencia de datos",
@@ -596,7 +563,7 @@
     }
   },
   "quote": {
-    "text": "Nada en la vida debe ser temido, solo comprendido. Es momento de comprender más, para temer menos.",
+    "text": "Nada debe temerse, solo comprenderse.",
     "author": "Marie Curie"
   }
 }

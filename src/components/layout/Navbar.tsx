@@ -2,13 +2,12 @@ import { AnimatePresence, LayoutGroup, motion, useMotionValueEvent, useScroll, u
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ListIcon, MagnifyingGlassIcon, XIcon } from "@phosphor-icons/react";
+import { ListIcon, XIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
 import { BatTile } from "../brand/Bat";
 import { SocialLinks } from "../ui/SocialLinks";
 import { container } from "../ui/styles";
 import { LANGUAGES } from "../../i18n";
-import { palette } from "../../hooks/usePalette";
 import type { SectionId } from "../../data/profile";
 
 const LINKS = ["academic", "awards", "experience", "projects", "skills"] as const;
@@ -37,7 +36,7 @@ function LanguageSwitch() {
           title={label}
           aria-pressed={current === code}
           onClick={() => i18n.changeLanguage(code)}
-          className={clsx("press h-8 rounded-full px-2.5 text-[0.8125rem] font-medium uppercase", current === code ? "bg-ink text-bg" : "text-muted hover:text-ink")}
+          className={clsx("press h-8 rounded-full px-2.5 text-[0.8125rem] font-medium uppercase", current === code ? "bg-accent text-on-accent" : "text-muted hover:text-ink")}
         >
           {code}
         </button>
@@ -54,7 +53,6 @@ export function Navbar({ active }: { active?: SectionId }) {
   const progress = useTransform(scrollYProgress, (v) => `scaleX(${v})`);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const isMac = typeof navigator !== "undefined" && /Mac|iPhone|iPad/.test(navigator.platform);
 
   useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 8));
 
@@ -76,7 +74,7 @@ export function Navbar({ active }: { active?: SectionId }) {
       <header className={clsx("no-print fixed inset-x-0 top-0 z-50 transition-colors duration-300", scrolled || !onHome ? "border-b border-line bg-bg/85 backdrop-blur-md" : "border-b border-transparent")}>
         <div className={`${container} flex h-16 items-center justify-between gap-4`}>
           <Link to="/" className="press flex items-center gap-3 rounded-lg" aria-label={t("nav.home")}>
-            <BatTile size={40} />
+            <BatTile size={36} />
           </Link>
 
           {/* Plain text links; a hairline under the current one slides between them. */}
@@ -102,20 +100,9 @@ export function Navbar({ active }: { active?: SectionId }) {
           </nav>
 
           <div className="flex items-center gap-1.5">
-            <button
-              type="button"
-              onClick={() => palette.open()}
-              aria-label={t("nav.search")}
-              className="press hidden h-10 items-center gap-2 rounded-full border border-line px-3 text-sm text-muted hover:text-ink xl:inline-flex"
-            >
-              <MagnifyingGlassIcon size={16} />
-              <kbd className="font-mono text-[0.6875rem] whitespace-nowrap">{isMac ? "⌘K" : "Ctrl K"}</kbd>
-            </button>
-            {LANGUAGES.length > 1 && (
-              <div className="hidden lg:block">
-                <LanguageSwitch />
-              </div>
-            )}
+            <div className="hidden sm:block">
+              <LanguageSwitch />
+            </div>
             <button
               type="button"
               onClick={() => setOpen(true)}
@@ -171,7 +158,7 @@ export function Navbar({ active }: { active?: SectionId }) {
               </ul>
             </nav>
             <div className={`${container} flex flex-wrap items-center justify-between gap-4 border-t border-line py-6`}>
-              {LANGUAGES.length > 1 && <LanguageSwitch />}
+              <LanguageSwitch />
               <SocialLinks />
             </div>
           </motion.div>

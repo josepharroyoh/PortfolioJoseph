@@ -2,7 +2,7 @@ import { motion, useScroll } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import clsx from "clsx";
 import type { SectionId } from "../../data/profile";
-import { CubeBuddy } from "../brand/CubeBuddy";
+import { QuoteCard } from "./QuoteCard";
 
 const ITEMS = ["academic", "awards", "experience", "projects", "skills", "training", "volunteering"] as const;
 const OWNER: Partial<Record<SectionId, (typeof ITEMS)[number]>> = {};
@@ -34,14 +34,7 @@ export function Toc({ active }: { active: SectionId }) {
         </ol>
       </div>
 
-      {/* The cube, looking around on its own, signs off a short quote like an email signature. */}
-      <figure className="mt-10 flex items-start gap-3 border-t border-line pt-6">
-        <CubeBuddy size={40} className="mt-1" />
-        <div>
-          <blockquote className="font-serif text-[0.98rem] leading-snug text-ink/90 italic">“{t("quote.text")}”</blockquote>
-          <figcaption className="mt-2 text-xs tracking-wide text-muted">{t("quote.author")}</figcaption>
-        </div>
-      </figure>
+      <QuoteCard />
     </nav>
   );
 }
