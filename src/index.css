@@ -20,17 +20,17 @@
    that matches the stars of the background universe. The accent marks links, figures and the few
    things that must stand out. */
 :root {
-  --bg: #030303;
-  --bg-2: #0d0d0f;
-  --surface: #0a0a0b;
-  --ink: #ededed;
-  --muted: #a1a1a6;
-  --faint: #66666c;
+  --bg: #000000;
+  --bg-2: #0c0c0d;
+  --surface: #09090a;
+  --ink: #f2f2f3;
+  --muted: #a3a3a8;
+  --faint: #6a6a70;
   --line: rgb(237 237 237 / 0.1);
   --line-strong: rgb(237 237 237 / 0.2);
-  --accent: #4f8dff;
-  --accent-soft: rgb(79 141 255 / 0.14);
-  --on-accent: #ffffff;
+  --accent: #9db8ff;
+  --accent-soft: rgb(157 184 255 / 0.12);
+  --on-accent: #050505;
   --danger: #ff8f80;
   --ok: #4ade80;
   --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 20px 44px -18px rgb(0 0 0 / 0.75);
@@ -39,17 +39,17 @@
 
 /* Instrument panels stay dark whatever the page theme. */
 .force-dark {
-  --bg: #030303;
-  --bg-2: #0d0d0f;
-  --surface: #0a0a0b;
-  --ink: #ededed;
-  --muted: #a1a1a6;
-  --faint: #66666c;
+  --bg: #000000;
+  --bg-2: #0c0c0d;
+  --surface: #09090a;
+  --ink: #f2f2f3;
+  --muted: #a3a3a8;
+  --faint: #6a6a70;
   --line: rgb(237 237 237 / 0.1);
   --line-strong: rgb(237 237 237 / 0.2);
-  --accent: #4f8dff;
-  --accent-soft: rgb(79 141 255 / 0.14);
-  --on-accent: #ffffff;
+  --accent: #9db8ff;
+  --accent-soft: rgb(157 184 255 / 0.12);
+  --on-accent: #050505;
   --danger: #ff8f80;
   --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 20px 44px -18px rgb(0 0 0 / 0.75);
   color-scheme: dark;

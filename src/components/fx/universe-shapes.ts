@@ -1,11 +1,11 @@
 // Point clouds the background particles morph between, one per section.
 // Every builder returns N points as [x, y, z, x, y, z, ...], roughly inside a unit sphere.
 
-export type ShapeKey = "galaxy" | "atmosphere" | "lorenz" | "lightning" | "dipole" | "wave";
+export type ShapeKey = "planet" | "galaxy" | "atmosphere" | "lorenz" | "lightning" | "dipole" | "wave";
 
 /** Which figure the particles form while each section is on screen. */
 const SECTION_SHAPE: Record<string, ShapeKey> = {
-  home: "galaxy",
+  home: "planet",
   academic: "lorenz",
   awards: "wave",
   experience: "dipole",
@@ -13,14 +13,15 @@ const SECTION_SHAPE: Record<string, ShapeKey> = {
   skills: "atmosphere",
   training: "lorenz",
   volunteering: "atmosphere",
-  contact: "galaxy",
+  contact: "planet",
   thesis: "lightning",
-  cv: "galaxy",
+  cv: "planet",
 };
-export const sectionShape = (section: string): ShapeKey => SECTION_SHAPE[section] ?? "galaxy";
+export const sectionShape = (section: string): ShapeKey => SECTION_SHAPE[section] ?? "planet";
 
 /** How each shape is shown: tilt towards the viewer, spin speed and size. */
 export const SHAPE_VIEW: Record<ShapeKey, { tilt: number; spin: number; scale: number }> = {
+  planet: { tilt: 1.3, spin: 0.45, scale: 1.1 },
   galaxy: { tilt: 1.12, spin: 1, scale: 1 },
   atmosphere: { tilt: 0.35, spin: 1.2, scale: 0.95 },
   lorenz: { tilt: 0.15, spin: 0.8, scale: 1.05 },
@@ -34,6 +35,32 @@ const gauss = () => {
   const v = Math.random();
   return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
 };
+
+/** A ringed planet: a Fibonacci sphere inside a thin ring system with a dark gap, like Saturn. */
+function planet(n: number) {
+  const out = new Float32Array(n * 3);
+  const body = Math.floor(n * 0.24);
+  const golden = Math.PI * (3 - Math.sqrt(5));
+  for (let i = 0; i < n; i++) {
+    if (i < body) {
+      const y = 1 - (i / (body - 1)) * 2;
+      const ring = Math.sqrt(1 - y * y);
+      const a = i * golden;
+      out[i * 3] = Math.cos(a) * ring * 0.3;
+      out[i * 3 + 1] = Math.sin(a) * ring * 0.3;
+      out[i * 3 + 2] = y * 0.3;
+      continue;
+    }
+    // Three ringlets with dark gaps between them, densest in the middle band.
+    const band = Math.random();
+    const r = band < 0.25 ? 0.5 + Math.random() * 0.1 : band < 0.75 ? 0.64 + Math.random() * 0.14 : 0.83 + Math.random() * 0.12;
+    const a = Math.random() * Math.PI * 2;
+    out[i * 3] = Math.cos(a) * r;
+    out[i * 3 + 1] = Math.sin(a) * r;
+    out[i * 3 + 2] = gauss() * 0.006;
+  }
+  return out;
+}
 
 /** Spiral galaxy: a bright core and three trailing arms. */
 function galaxy(n: number) {
@@ -182,4 +209,4 @@ function wave(n: number) {
   return out;
 }
 
-export const SHAPES: Record<ShapeKey, (n: number) => Float32Array> = { galaxy, atmosphere, lorenz, lightning, dipole, wave };
+export const SHAPES: Record<ShapeKey, (n: number) => Float32Array> = { planet, galaxy, atmosphere, lorenz, lightning, dipole, wave };

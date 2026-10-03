@@ -8,7 +8,7 @@ export function Footer() {
   const { t } = useTranslation();
   return (
     <footer id="site-footer" className="no-print relative z-[1] border-t border-line bg-bg">
-      <div className={`${container} flex flex-col items-center gap-4 py-10 text-center md:flex-row md:justify-between md:text-left`}>
+      <div className={`${container} flex flex-col items-center gap-3 py-5 text-center md:flex-row md:justify-between md:text-left`}>
         <p className="text-sm text-muted">
           © {new Date().getFullYear()} <span className="font-serif text-[0.9375rem] text-ink italic">{PROFILE.fullName}</span>
           <span className="mx-2 text-faint" aria-hidden="true">

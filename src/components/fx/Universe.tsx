@@ -40,7 +40,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const small = window.innerWidth < 768;
-    const N = morph ? (small ? 1200 : 3000) : 0;
+    const N = morph ? (small ? 1400 : 4200) : 0;
     const STARS = small ? 220 : 460;
 
     let w = 0;
@@ -55,6 +55,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
     let pal = DAY;
     // Each figure has its own vivid set (same five slots: base, three hues, highlight).
     const FIGURE: Record<ShapeKey, string[]> = {
+      planet: ["#f4f5f8", "#c7d3f0", "#9fb6ec", "#dfe3ec", "#ffffff"],
       galaxy: ["#f4f6ff", "#7fb2ff", "#62e0f0", "#a990ff", "#ffcf70"],
       atmosphere: ["#e8fbff", "#4fa8ff", "#3ee0d0", "#7cc4ff", "#a6f0ff"],
       lorenz: ["#f1edff", "#8f7bff", "#4cc9f0", "#c08cff", "#ffd166"],
@@ -93,7 +94,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
     from.set(to);
     cur.set(to);
     let progress = 1;
-    const view = { tilt: SHAPE_VIEW[current].tilt, spin: SHAPE_VIEW[current].spin, scale: SHAPE_VIEW[current].scale, home: current === "galaxy" ? 1 : 0 };
+    const view = { tilt: SHAPE_VIEW[current].tilt, spin: SHAPE_VIEW[current].spin, scale: SHAPE_VIEW[current].scale, home: current === "planet" ? 1 : 0 };
     // Colour per particle: a warm golden core, arms in blue, cyan, violet and white.
     const colorIdx = new Uint8Array(N).map((_, i) => {
       if (i < N * 0.16) return Math.random() < 0.7 ? 4 : 0;
@@ -127,24 +128,6 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
       canvas.width = Math.round(w * dpr);
       canvas.height = Math.round(h * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    };
-
-    const drawNebula = (t: number) => {
-      if (!night) return;
-      const blobs = [
-        { x: 0.72 + Math.sin(t * 0.00004) * 0.05, y: 0.3, r: 0.55, c: "#3b6fe0", a: 0.1 },
-        { x: 0.22, y: 0.75 + Math.cos(t * 0.00003) * 0.05, r: 0.5, c: "#7a4fd6", a: 0.08 },
-        { x: 0.5 + Math.cos(t * 0.00002) * 0.08, y: 0.55, r: 0.4, c: "#1fa3b5", a: 0.05 },
-      ];
-      for (const b of blobs) {
-        const g = ctx.createRadialGradient(b.x * w, b.y * h, 0, b.x * w, b.y * h, b.r * Math.max(w, h));
-        g.addColorStop(0, b.c);
-        g.addColorStop(1, "transparent");
-        ctx.globalAlpha = b.a;
-        ctx.fillStyle = g;
-        ctx.fillRect(0, 0, w, h);
-      }
-      ctx.globalAlpha = 1;
     };
 
     const drawStars = (t: number, dt: number) => {
@@ -265,7 +248,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
       view.tilt += (target.tilt - view.tilt) * k;
       view.spin += (target.spin - view.spin) * k;
       view.scale += (target.scale - view.scale) * k;
-      view.home += ((current === "galaxy" ? 1 : 0) - view.home) * k;
+      view.home += ((current === "planet" ? 1 : 0) - view.home) * k;
 
       yaw += dt * 0.00011 * view.spin + impulse * dt * 6;
       const pitch = view.tilt + pointer.sy * 0.22;
@@ -323,7 +306,6 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
       pointer.sy += (pointer.ty - pointer.sy) * 0.05;
 
       ctx.clearRect(0, 0, w, h);
-      drawNebula(t);
       drawStars(t, dt);
       drawFigure(t, dt);
       drawMeteor(t, dt);
