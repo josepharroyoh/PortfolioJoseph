@@ -101,15 +101,14 @@ export function Words({ text, className, delay = 0 }: { text: string; className?
 }
 
 /**
- * A ring that trails the pointer and swells over anything clickable;
- * over project media it reads "Ver". Fine pointers only.
+ * Over project media a small "Ver" badge trails the pointer. Nothing follows
+ * the cursor anywhere else. Fine pointers only.
  */
 export function CursorAura() {
   const fine = useMediaQuery("(hover: hover) and (pointer: fine)");
   const reduced = useReducedMotion();
   const x = useSpring(-100, { stiffness: 500, damping: 40, mass: 0.5 });
   const y = useSpring(-100, { stiffness: 500, damping: 40, mass: 0.5 });
-  const [mode, setMode] = useState<"idle" | "link" | "view" | "hidden">("hidden");
   const [label, setLabel] = useState("");
 
   useEffect(() => {
@@ -118,13 +117,10 @@ export function CursorAura() {
       if (e.pointerType !== "mouse") return;
       x.set(e.clientX);
       y.set(e.clientY);
-      const el = (e.target as HTMLElement | null)?.closest?.("[data-cursor], a, button, input, textarea, [role=radio]") as HTMLElement | null;
-      if (el?.dataset.cursor) {
-        setLabel(el.dataset.cursor);
-        setMode("view");
-      } else setMode(el ? "link" : "idle");
+      const el = (e.target as HTMLElement | null)?.closest?.("[data-cursor]") as HTMLElement | null;
+      setLabel(el?.dataset.cursor ?? "");
     };
-    const onLeave = () => setMode("hidden");
+    const onLeave = () => setLabel("");
     window.addEventListener("pointermove", onMove, { passive: true });
     document.documentElement.addEventListener("pointerleave", onLeave);
     return () => {
@@ -134,18 +130,15 @@ export function CursorAura() {
   }, [fine, reduced, x, y]);
 
   if (!fine || reduced) return null;
-  const size = mode === "view" ? 76 : mode === "link" ? 44 : 22;
   return (
     <motion.div aria-hidden="true" style={{ x, y }} className="no-print pointer-events-none fixed top-0 left-0 z-[80]">
       <div
         className={clsx(
-          "grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border text-[12px] font-medium transition-[width,height,background-color,border-color,opacity] duration-300 ease-out",
-          mode === "view" ? "border-transparent bg-accent text-on-accent" : mode === "link" ? "border-accent bg-accent-soft" : "border-line-strong",
-          mode === "hidden" ? "opacity-0" : "opacity-100",
+          "grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-accent text-[12px] font-medium text-on-accent transition-[opacity,scale] duration-200 ease-out",
+          label ? "scale-100 opacity-100" : "scale-50 opacity-0",
         )}
-        style={{ width: size, height: size }}
       >
-        {mode === "view" && label}
+        {label}
       </div>
     </motion.div>
   );

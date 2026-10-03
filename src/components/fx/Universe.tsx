@@ -13,7 +13,7 @@ type Props = {
   className?: string;
 };
 
-type Star = { x: number; y: number; z: number; tw: number; ph: number };
+type Star = { x: number; y: number; z: number; tw: number; ph: number; c: number };
 
 const ease = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2);
 
@@ -49,6 +49,25 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
     let last = performance.now();
     let night = false;
     const colors = { ink: "#1b1b1d", accent: "#9b1c2e", star: "#1b1b1d" };
+    // Star-temperature palette: blue-white, cyan, violet, gold. Vivid at night, ink-deep by day.
+    const NIGHT = ["#f4f6ff", "#8fc3ff", "#6fe3f0", "#b9a2ff", "#ffd27a"];
+    const DAY = ["#1b1b1d", "#1f4fa8", "#0e7a86", "#5b3fb0", "#a8730c"];
+    let pal = DAY;
+    // Each figure has its own vivid set (same five slots: base, three hues, highlight).
+    const FIGURE: Record<ShapeKey, string[]> = {
+      galaxy: ["#f4f6ff", "#7fb2ff", "#62e0f0", "#a990ff", "#ffcf70"],
+      atmosphere: ["#e8fbff", "#4fa8ff", "#3ee0d0", "#7cc4ff", "#a6f0ff"],
+      lorenz: ["#f1edff", "#8f7bff", "#4cc9f0", "#c08cff", "#ffd166"],
+      lightning: ["#ffffff", "#9ecbff", "#d9c2ff", "#6fb7ff", "#fff1a8"],
+      dipole: ["#effff8", "#4ade9a", "#38d6e8", "#9f8bff", "#c4f56a"],
+      wave: ["#eefcff", "#2fd3c4", "#5aa7ff", "#8be0ff", "#ffd88a"],
+    };
+    const hex = (c: string) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
+    const mix = (a: string, b: string, t: number) => {
+      const A = hex(a), B = hex(b);
+      return `rgb(${A.map((v, i) => Math.round(v + (B[i] - v) * t)).join(",")})`;
+    };
+    let prevShape: ShapeKey = shapeRef.current;
 
     // Starfield in a unit box; z is depth (small = close).
     const stars: Star[] = Array.from({ length: STARS }, () => ({
@@ -57,6 +76,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
       z: Math.random() * 0.95 + 0.05,
       tw: 0.0008 + Math.random() * 0.002,
       ph: Math.random() * Math.PI * 2,
+      c: Math.random() < 0.6 ? 0 : 1 + Math.floor(Math.random() * 4),
     }));
 
     // Morph state.
@@ -74,7 +94,12 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
     cur.set(to);
     let progress = 1;
     const view = { tilt: SHAPE_VIEW[current].tilt, spin: SHAPE_VIEW[current].spin, scale: SHAPE_VIEW[current].scale, home: current === "galaxy" ? 1 : 0 };
-    const accentIdx = new Uint8Array(N).map(() => (Math.random() < 0.12 ? 1 : 0));
+    // Colour per particle: a warm golden core, arms in blue, cyan, violet and white.
+    const colorIdx = new Uint8Array(N).map((_, i) => {
+      if (i < N * 0.16) return Math.random() < 0.7 ? 4 : 0;
+      const r = Math.random();
+      return r < 0.34 ? 1 : r < 0.56 ? 2 : r < 0.76 ? 3 : r < 0.84 ? 4 : 0;
+    });
 
     const pointer = { x: -9999, y: -9999, sx: 0, sy: 0, tx: 0, ty: 0 };
     let scrollPrev = window.scrollY;
@@ -90,7 +115,8 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
       const n = parseInt(bg.replace("#", "").slice(0, 6), 16);
       const lum = ((n >> 16) & 255) * 0.299 + ((n >> 8) & 255) * 0.587 + (n & 255) * 0.114;
       night = lum < 90;
-      colors.star = night ? "#f2f0ea" : colors.ink;
+      colors.star = night ? "#f4f6ff" : colors.ink;
+      pal = night ? NIGHT : DAY;
     };
 
     const resize = () => {
@@ -106,8 +132,9 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
     const drawNebula = (t: number) => {
       if (!night) return;
       const blobs = [
-        { x: 0.72 + Math.sin(t * 0.00004) * 0.05, y: 0.3, r: 0.55, c: colors.accent, a: 0.07 },
-        { x: 0.22, y: 0.75 + Math.cos(t * 0.00003) * 0.05, r: 0.5, c: "#6d7bd8", a: 0.06 },
+        { x: 0.72 + Math.sin(t * 0.00004) * 0.05, y: 0.3, r: 0.55, c: "#3b6fe0", a: 0.1 },
+        { x: 0.22, y: 0.75 + Math.cos(t * 0.00003) * 0.05, r: 0.5, c: "#7a4fd6", a: 0.08 },
+        { x: 0.5 + Math.cos(t * 0.00002) * 0.08, y: 0.55, r: 0.4, c: "#1fa3b5", a: 0.05 },
       ];
       for (const b of blobs) {
         const g = ctx.createRadialGradient(b.x * w, b.y * h, 0, b.x * w, b.y * h, b.r * Math.max(w, h));
@@ -126,8 +153,6 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
       const cy = h / 2 + pointer.sy * 22;
       const focal = Math.max(w, h) * 0.5;
       const near: { x: number; y: number }[] = [];
-      ctx.fillStyle = colors.star;
-      ctx.strokeStyle = colors.star;
       for (const s of stars) {
         const pz = s.z;
         s.z -= speed;
@@ -148,6 +173,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
         const tw = 0.6 + 0.4 * Math.sin(t * s.tw + s.ph);
         const a = (night ? 0.25 + depth * 0.75 : 0.12 + depth * 0.45) * tw;
         const size = 0.5 + depth * (night ? 2 : 1.6);
+        ctx.fillStyle = ctx.strokeStyle = pal[s.c];
         // Warp streaks while scrolling fast.
         if (Math.abs(impulse) > 0.00025) {
           const px = cx + (s.x / pz) * focal * 0.5;
@@ -173,7 +199,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
           const p = near[i];
           const d = Math.hypot(p.x - pointer.x, p.y - pointer.y);
           ctx.globalAlpha = (1 - d / 170) * (night ? 0.55 : 0.4);
-          ctx.strokeStyle = colors.accent;
+          ctx.strokeStyle = pal[2];
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(pointer.x, pointer.y);
@@ -212,7 +238,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
       ctx.lineCap = "round";
       for (let k = 0; k < 4; k++) {
         ctx.globalAlpha = Math.max(0, meteor.life) * (night ? 0.8 : 0.55) * (1 - k / 4);
-        ctx.strokeStyle = night ? "#ffffff" : colors.accent;
+        ctx.strokeStyle = night ? "#ffffff" : pal[1];
         ctx.lineWidth = 1.6 - k * 0.3;
         ctx.beginPath();
         ctx.moveTo(meteor.x - meteor.vx * (len / 0.9) * (k / 4), meteor.y - meteor.vy * (len / 0.9) * (k / 4));
@@ -227,6 +253,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
       if (!N) return;
       // Start a new morph when the section changes.
       if (shapeRef.current !== current) {
+        prevShape = current;
         current = shapeRef.current;
         from.set(cur);
         to = get(current);
@@ -254,10 +281,11 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
       const alphaBase = (night ? 0.7 : 0.38) * (small ? 0.7 : 1) * (0.72 + 0.28 * view.home);
 
       if (night) ctx.globalCompositeOperation = "lighter";
-      for (let pass = 0; pass < 2; pass++) {
-        ctx.fillStyle = pass ? colors.accent : colors.star;
+      for (let pass = 0; pass < pal.length; pass++) {
+        // Colours cross-fade with the morph.
+        ctx.fillStyle = night ? mix(FIGURE[prevShape][pass], FIGURE[current][pass], ease(progress)) : pal[pass];
         for (let i = 0; i < N; i++) {
-          if (accentIdx[i] !== pass) continue;
+          if (colorIdx[i] !== pass) continue;
           const i3 = i * 3;
           const local = Math.min(1, Math.max(0, (progress - (i % 89) / 89 * 0.35) / 0.65));
           const e = ease(local);
@@ -272,19 +300,10 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
           const y2 = y * cp - z1 * sp;
           const z2 = y * sp + z1 * cp;
           const f = 2.6 / (2.6 + z2);
-          let px = ax + x1 * S * f;
-          let py = ay + y2 * S * f;
-          // The cursor nudges particles aside.
-          const dx = px - pointer.x, dy = py - pointer.y;
-          const d2 = dx * dx + dy * dy;
-          if (d2 < 9000) {
-            const d = Math.sqrt(d2) || 1;
-            const push = (95 - d) * 0.35;
-            px += (dx / d) * push;
-            py += (dy / d) * push;
-          }
+          const px = ax + x1 * S * f;
+          const py = ay + y2 * S * f;
           const size = (night ? 1.5 : 1.25) * f;
-          ctx.globalAlpha = alphaBase * Math.min(1, f * f) * (pass ? 1.4 : 1);
+          ctx.globalAlpha = alphaBase * Math.min(1, f * f) * (pass ? 1.25 : 1);
           ctx.fillRect(px, py, size, size);
         }
       }

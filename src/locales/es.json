@@ -16,8 +16,6 @@
     "menu": "Menú",
     "close": "Cerrar",
     "language": "Idioma",
-    "toDark": "Cambiar a modo oscuro",
-    "toLight": "Cambiar a modo claro",
     "skip": "Saltar al contenido",
     "home": "Inicio",
     "toc": "Contenido"
@@ -494,7 +492,6 @@
     "emailCopied": "Correo copiado",
     "openCv": "Abrir el CV",
     "openThesis": "Ver la tesis de predicción de rayos",
-    "toggleTheme": "Cambiar tema",
     "language": "Cambiar idioma a",
     "hint": "Usa ↑ ↓ para moverte y Enter para abrir."
   },

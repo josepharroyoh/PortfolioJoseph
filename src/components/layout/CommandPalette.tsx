@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
   ArrowElbowDownLeftIcon,
-  CircleHalfIcon,
   CopyIcon,
   FileTextIcon,
   HashIcon,
@@ -16,7 +15,6 @@ import clsx from "clsx";
 import { LANGUAGES } from "../../i18n";
 import { CV_PATH, PROFILE, SECTIONS, THESIS_PATH } from "../../data/profile";
 import { palette, usePaletteOpen } from "../../hooks/usePalette";
-import { useTheme } from "../../hooks/useTheme";
 
 type Command = { id: string; group: "sections" | "actions"; label: string; icon: ReactNode; run: () => void };
 
@@ -31,7 +29,6 @@ export function CommandPalette() {
   const open = usePaletteOpen();
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const { toggle } = useTheme();
   const [query, setQuery] = useState("");
   const [index, setIndex] = useState(0);
   const [notice, setNotice] = useState("");
@@ -88,7 +85,6 @@ export function CommandPalette() {
           navigator.clipboard?.writeText(PROFILE.email).then(() => setNotice(t("palette.emailCopied")), () => {});
         },
       },
-      { id: "theme", group: "actions", label: t("palette.toggleTheme"), icon: <CircleHalfIcon size={18} />, run: () => (palette.close(), toggle()) },
       ...LANGUAGES.filter((l) => l.code !== i18n.resolvedLanguage).map((l) => ({
         id: `lang-${l.code}`,
         group: "actions" as const,
@@ -98,7 +94,7 @@ export function CommandPalette() {
       })),
     ];
     return [...sections, ...actions];
-  }, [t, i18n, navigate, pathname, toggle]);
+  }, [t, i18n, navigate, pathname]);
 
   const filtered = commands.filter((c) => fold(c.label).includes(fold(query)));
   const active = Math.min(index, Math.max(0, filtered.length - 1));

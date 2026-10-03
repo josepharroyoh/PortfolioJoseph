@@ -7,7 +7,7 @@ table of contents. Figure 1 is a live strip-chart of the surface electric field.
 
 ## Theme
 
-Light (clean journal white, never cream) and dark (graphite) are both first-class.
+Dark only (graphite under a night sky); there is no theme toggle.
 Contact and footer are always dark (`.force-dark`).
 
 | Token | Light | Dark | Use |
@@ -36,7 +36,7 @@ Contact and footer are always dark (`.force-dark`).
   (`fx/universe-shapes.ts`): spiral galaxy (hero), Earth and atmosphere (Perfil),
   Lorenz attractor (Investigación), stepped leader (Proyectos), dipole magnetic field
   (Trayectoria), atmospheric waves (Herramientas). The cursor pushes particles aside.
-  Light theme reads as an ink star atlas; dark theme as the night sky. The TOC names
+  Each figure has its own vivid palette (blue, cyan, violet, aurora green, gold). The TOC names
   the current figure ("Fondo"). Contact has its own night sky with the bat crossing.
 - Cursor: `CursorAura` ring trails the pointer, swells over links, reads "Ver" over
   project media. `Magnetic` CTAs, `Tilt` 3D cards with a soft sheen.

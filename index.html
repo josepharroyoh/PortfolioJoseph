@@ -6,18 +6,11 @@
     <title>Joseph Arroyo Hernández | Físico e investigador en electricidad atmosférica</title>
     <meta name="description" content="Portafolio de Joseph Arroyo Hernández, Bachiller en Física (UNICA). Investigación en electricidad atmosférica y predicción de rayos, análisis de datos y cloud." />
     <meta name="author" content="Joseph Pascual Arroyo Hernández" />
-    <meta name="theme-color" content="#f3f4f1" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0d0f12" media="(prefers-color-scheme: dark)" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#141416" />
+    <meta name="color-scheme" content="dark" />
     <script>
-      // Apply the saved or system theme before first paint to avoid a flash.
-      (function () {
-        try {
-          var saved = localStorage.getItem("theme");
-          var theme = saved === "light" || saved === "dark" ? saved : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-          document.documentElement.dataset.theme = theme;
-        } catch (e) {}
-      })();
+      // The site is dark only.
+      document.documentElement.dataset.theme = "dark";
     </script>
 
     <meta property="og:type" content="website" />

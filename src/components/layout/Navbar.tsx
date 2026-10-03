@@ -1,14 +1,13 @@
 import { AnimatePresence, LayoutGroup, motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ListIcon, MagnifyingGlassIcon, MoonIcon, SunIcon, XIcon } from "@phosphor-icons/react";
+import { ListIcon, MagnifyingGlassIcon, XIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
 import { BatTile } from "../brand/Bat";
 import { SocialLinks } from "../ui/SocialLinks";
 import { container } from "../ui/styles";
 import { LANGUAGES } from "../../i18n";
-import { useTheme } from "../../hooks/useTheme";
 import { palette } from "../../hooks/usePalette";
 import type { SectionId } from "../../data/profile";
 
@@ -24,36 +23,6 @@ const NAV_FOR: Partial<Record<SectionId, LinkId>> = {
   skills: "timeline",
   contact: "contact",
 };
-
-function ThemeToggle() {
-  const { t } = useTranslation();
-  const { theme, toggle } = useTheme();
-  const ref = useRef<HTMLButtonElement>(null);
-  const dark = theme === "dark";
-  return (
-    <button
-      ref={ref}
-      type="button"
-      onClick={() => toggle(ref.current)}
-      aria-label={dark ? t("nav.toLight") : t("nav.toDark")}
-      title={dark ? t("nav.toLight") : t("nav.toDark")}
-      className="press grid h-10 w-10 place-items-center rounded-full text-ink hover:bg-bg-2"
-    >
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.span
-          key={theme}
-          initial={{ opacity: 0, transform: "rotate(-90deg) scale(0.8)" }}
-          animate={{ opacity: 1, transform: "rotate(0deg) scale(1)" }}
-          exit={{ opacity: 0, transform: "rotate(90deg) scale(0.8)" }}
-          transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-          className="grid place-items-center"
-        >
-          {dark ? <SunIcon size={19} /> : <MoonIcon size={19} />}
-        </motion.span>
-      </AnimatePresence>
-    </button>
-  );
-}
 
 function LanguageSwitch() {
   const { i18n, t } = useTranslation();
@@ -148,7 +117,6 @@ export function Navbar({ active }: { active?: SectionId }) {
                 <LanguageSwitch />
               </div>
             )}
-            <ThemeToggle />
             <button
               type="button"
               onClick={() => setOpen(true)}

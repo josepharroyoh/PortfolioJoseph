@@ -16,28 +16,9 @@
   font-display: swap;
 }
 
-/* Colour tokens. Light is a clean journal page (cool white, never cream);
-   dark is ink-on-graphite. One accent, oxblood, the colour of a university seal,
+/* Colour tokens. Dark only: ink-on-graphite under a night sky. One accent, oxblood, the colour of a university seal,
    marks links, figures and the few things that must stand out. */
 :root {
-  --bg: #fbfbfa;
-  --bg-2: #f1f1ee;
-  --surface: #ffffff;
-  --ink: #1b1b1d;
-  --muted: #5d5d64;
-  --faint: #8c8c93;
-  --line: rgb(27 27 29 / 0.11);
-  --line-strong: rgb(27 27 29 / 0.24);
-  --accent: #9b1c2e;
-  --accent-soft: rgb(155 28 46 / 0.08);
-  --on-accent: #fbfbfa;
-  --danger: #b42318;
-  --ok: #15803d;
-  --shadow: 0 1px 2px rgb(27 27 29 / 0.05), 0 18px 40px -20px rgb(27 27 29 / 0.25);
-  color-scheme: light;
-}
-
-:root[data-theme="dark"] {
   --bg: #141416;
   --bg-2: #1c1c1f;
   --surface: #19191c;
