@@ -59,7 +59,7 @@ Contact and footer are always dark (`.force-dark`).
 | Proyectos | alternating figures (Fig. 2+) with captions | videos play in view, media clip-reveal |
 | Trayectoria | CV table | underline tabs with counts |
 | Herramientas | ruled 2x2 table | none |
-| Contacto | dark slab with night isobars, bat, big cube, form | copy email, cube watches the form |
+| Contacto | dark slab with its own night sky, bat, big cube, form | copy email, cube watches the form |
 
 Global: sticky table of contents on wide screens with reading progress, text nav,
 ⌘K palette, cube assistant, pixel bat, printable CV, thesis page.
