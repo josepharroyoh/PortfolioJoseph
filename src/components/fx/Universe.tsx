@@ -57,7 +57,29 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
     const DAY = ["#1b1b1d", "#1f4fa8", "#0e7a86", "#5b3fb0", "#a8730c"];
     let pal = DAY;
     // Every figure is drawn in the same silver set (base, three greys, warm highlight).
-    const SILVER = ["#ffffff", "#e6e9ef", "#cfd5df", "#b9c1cf", "#f4f1ea"];
+    // Each figure has a vivid set matched to its section's accent (base, three hues, highlight).
+    const FIGURE: Record<ShapeKey, string[]> = {
+      galaxy: ["#eaf4ff", "#6fb6ff", "#4fd2ff", "#9d8cff", "#ffd27a"],
+      lorenz: ["#fff3dc", "#ffb84d", "#ff8f4d", "#ffd56b", "#fff0b8"],
+      fieldlines: ["#f1ecff", "#b49cff", "#8a7bff", "#d3a8ff", "#ffffff"],
+      lightning: ["#ffffff", "#ff9a8a", "#ffc0a8", "#9ecbff", "#fff1d6"],
+      globe: ["#e6fdff", "#4fe0e6", "#4fb6ff", "#8ef0d8", "#ffffff"],
+      wave: ["#ffeaf6", "#ff8fd0", "#c88cff", "#ffb3de", "#ffffff"],
+      atmosphere: ["#eaffe8", "#7fe08a", "#4fd2b4", "#b6f07a", "#e8fff0"],
+      planet: ["#f1f6f3", "#bfe9d6", "#8fd8c0", "#dceee6", "#ffffff"],
+      aurora: ["#e9fbf2", "#7fe0b6", "#5cc8b4", "#a8b8ff", "#d8fff0"],
+      dipole: ["#effff8", "#4ade9a", "#38d6e8", "#9f8bff", "#c4f56a"],
+    };
+    const hex = (c: string) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
+    const mix = (a: string, b: string, k: number) => {
+      const A = hex(a);
+      const B = hex(b);
+      return `rgb(${A.map((v, i) => Math.round(v + (B[i] - v) * k)).join(",")})`;
+    };
+    let prevShape: ShapeKey = shapeRef.current;
+    // After the hero, the first figure assembles slowly out of a scattered cloud.
+    let wasHero = true;
+    let morphMs = 1800;
 
     // Starfield in a unit box; z is depth (small = close).
     const stars: Star[] = Array.from({ length: STARS }, () => ({
@@ -110,7 +132,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
     let scrollPrev = window.scrollY;
     let impulse = 0;
     let yaw = 0;
-    const meteor = { x: 0, y: 0, vx: 0, vy: 0, life: 0, next: performance.now() + 3500 };
+    const meteor = { x: 0, y: 0, vx: 0, vy: 0, life: 0, next: performance.now() + 1500 };
 
     const readColors = () => {
       const cs = getComputedStyle(canvas);
@@ -216,7 +238,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
         meteor.vx = Math.cos(ang) * 0.9;
         meteor.vy = Math.sin(ang) * 0.9;
         meteor.life = 1;
-        meteor.next = t + 6000 + Math.random() * 7000;
+        meteor.next = t + 1800 + Math.random() * 2600;
       }
       if (meteor.life <= 0) return;
       meteor.x += meteor.vx * dt;
@@ -289,13 +311,32 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
     const drawFigure = (t: number, dt: number) => {
       if (!N) return;
       // Start a new morph when the section changes.
+      if (fixed && hero > 0.9) wasHero = true;
+      if (fixed && wasHero && hero < 0.7) {
+        wasHero = false;
+        for (let i = 0; i < N * 3; i += 3) {
+          const a = Math.random() * Math.PI * 2;
+          const b = Math.acos(Math.random() * 2 - 1);
+          const r = 1.6 + Math.random() * 1.6;
+          from[i] = r * Math.sin(b) * Math.cos(a);
+          from[i + 1] = r * Math.sin(b) * Math.sin(a);
+          from[i + 2] = r * Math.cos(b);
+        }
+        prevShape = current;
+        current = shapeRef.current;
+        to = get(current);
+        progress = 0;
+        morphMs = 3200;
+      }
       if (shapeRef.current !== current) {
+        prevShape = current;
         current = shapeRef.current;
         from.set(cur);
         to = get(current);
         progress = 0;
+        morphMs = 1800;
       }
-      progress = Math.min(1, progress + dt / 1800);
+      progress = Math.min(1, progress + dt / morphMs);
       const target = SHAPE_VIEW[current];
       const k = 1 - Math.exp(-dt / 500);
       view.tilt += (target.tilt - view.tilt) * k;
@@ -318,7 +359,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
 
       if (night) ctx.globalCompositeOperation = "lighter";
       for (let pass = 0; pass < pal.length; pass++) {
-        ctx.fillStyle = night ? SILVER[pass] : pal[pass];
+        ctx.fillStyle = night ? mix(FIGURE[prevShape][pass], FIGURE[current][pass], ease(progress)) : pal[pass];
         for (let i = 0; i < N; i++) {
           if (colorIdx[i] !== pass) continue;
           const i3 = i * 3;

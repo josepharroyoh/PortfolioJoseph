@@ -16,7 +16,7 @@ type Props = {
 export function Section({ id, title, intro, aside, children, className }: Props) {
   return (
     <section id={id} aria-labelledby={`${id}-title`} className={clsx("py-16 md:py-24", className)}>
-      <div aria-hidden="true" className="rule-draw h-px bg-line-strong" />
+      <div aria-hidden="true" className="rule-draw h-px bg-[linear-gradient(90deg,var(--accent),var(--line-strong)_45%)]" />
       <h2 id={`${id}-title`} className="mt-10 text-[clamp(2.2rem,4vw,3.4rem)] leading-[1.02] tracking-[-0.025em]">
         <Words text={title} />
       </h2>

@@ -345,6 +345,70 @@
   }
 }
 
+/* Each section after the hero carries its own vivid accent, matched to its background
+   figure, so the page reads in colour rather than black and white. The hero keeps mint. */
+#academic { --accent: #7cc4ff; --accent-soft: rgb(124 196 255 / 0.13); }
+#awards { --accent: #ffc56b; --accent-soft: rgb(255 197 107 / 0.13); }
+#experience { --accent: #b69cff; --accent-soft: rgb(182 156 255 / 0.14); }
+#projects { --accent: #ff8f7e; --accent-soft: rgb(255 143 126 / 0.13); }
+#skills { --accent: #5fe3e6; --accent-soft: rgb(95 227 230 / 0.12); }
+#training { --accent: #ff94d2; --accent-soft: rgb(255 148 210 / 0.13); }
+#volunteering { --accent: #92e58b; --accent-soft: rgb(146 229 139 / 0.13); }
+
+/* Living cards: a light travels around the border on its own; on hover it speeds up and brightens. */
+@property --edge {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.live-card {
+  position: relative;
+  isolation: isolate;
+}
+.live-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--edge), transparent 0deg, var(--accent) 40deg, transparent 90deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0.55;
+  animation: edge-spin 7s linear infinite;
+  transition: opacity 300ms ease;
+}
+.live-card:hover::before {
+  opacity: 1;
+  animation-duration: 2.4s;
+}
+.live-float {
+  animation: card-float 7s ease-in-out infinite;
+}
+@keyframes edge-spin {
+  to {
+    --edge: 360deg;
+  }
+}
+@keyframes card-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .live-card::before,
+  .live-float {
+    animation: none;
+  }
+}
+
 /* Very large screens: scale the whole type and spacing system with the root size,
    so the layout keeps its proportions from a laptop to a 4K monitor. */
 @media (min-width: 1900px) {

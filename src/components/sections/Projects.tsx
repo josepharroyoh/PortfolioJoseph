@@ -63,7 +63,7 @@ function ProjectFigure({ item, index }: { item: Item; index: number }) {
     <article className="grid items-center gap-6 md:grid-cols-12 md:gap-10">
       <figure className={clsx("md:col-span-7", flip && "md:order-2")}>
         <div className="reveal-clip">
-          <Tilt className="group overflow-hidden rounded-sm border border-line-strong shadow-[0_0_0_0_transparent] transition-shadow duration-300 hover:shadow-card">
+          <Tilt className="live-card group overflow-hidden rounded-sm border border-line-strong shadow-[0_0_0_0_transparent] transition-shadow duration-300 hover:shadow-card">
             {p.page ? (
               <Link to={p.page} data-cursor={t("projects.cursor")} aria-label={item.title} className="block aspect-[16/10]">
                 <Media item={item} />

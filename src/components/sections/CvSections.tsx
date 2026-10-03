@@ -123,16 +123,18 @@ export function Awards() {
     <Section id="awards" title={t("awards.title")} intro={t("awards.intro")}>
       <ul className="grid gap-4 sm:grid-cols-2">
         {items.map((e, i) => (
-          <li key={e.title} className={clsx("reveal", i < 2 && "sm:col-span-1")}>
-            <Tilt max={3} className="h-full rounded-xl">
-              <article className="group relative h-full overflow-hidden rounded-xl border border-line bg-surface/80 p-6 backdrop-blur transition-[border-color,box-shadow] duration-300 hover:border-accent/60 hover:shadow-card">
-                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100" />
-                <span className="inline-flex rounded-full border border-accent/40 bg-accent-soft px-2.5 py-0.5 text-[0.8125rem] text-accent tabular-nums">{e.date}</span>
-                <h3 className="mt-4 font-serif text-[1.35rem] leading-snug">{e.title}</h3>
-                {e.org && <p className="mt-1 text-[0.9375rem] text-muted italic">{e.org}</p>}
-                {e.text && <p className="mt-3 text-[0.9375rem] leading-relaxed">{e.text}</p>}
-              </article>
-            </Tilt>
+          <li key={e.title} className="reveal">
+            <div className="live-float h-full" style={{ animationDelay: `${-i * 1.1}s` }}>
+              <Tilt max={4} className="h-full rounded-xl">
+                <article className="live-card group h-full overflow-hidden rounded-xl border border-line bg-surface/80 p-6 backdrop-blur transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-transparent hover:shadow-card">
+                  <span aria-hidden="true" className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-accent transition-transform duration-500 ease-out group-hover:scale-x-100" />
+                  <span className="inline-flex rounded-full border border-accent/40 bg-accent-soft px-2.5 py-0.5 text-[0.8125rem] text-accent tabular-nums">{e.date}</span>
+                  <h3 className="mt-4 font-serif text-[1.35rem] leading-snug">{e.title}</h3>
+                  {e.org && <p className="mt-1 text-[0.9375rem] text-muted italic">{e.org}</p>}
+                  {e.text && <p className="mt-3 text-[0.9375rem] leading-relaxed">{e.text}</p>}
+                </article>
+              </Tilt>
+            </div>
           </li>
         ))}
       </ul>
