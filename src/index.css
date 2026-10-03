@@ -363,12 +363,6 @@
   }
 }
 
-/* The isobar background fades out before the figure and the content below. */
-.isobar-mask {
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 92%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 92%);
-}
-
 /* The CV prints on clean A4 pages with no site chrome. */
 @media print {
   @page {

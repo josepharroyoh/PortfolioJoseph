@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { CheckIcon, CopyIcon } from "@phosphor-icons/react";
 import { Bat } from "../brand/Bat";
 import { CubeBuddy } from "../brand/CubeBuddy";
-import { IsobarField } from "../fx/IsobarField";
+import { Universe } from "../fx/Universe";
 import { Magnetic } from "../fx/Interactions";
 import { SocialLinks } from "../ui/SocialLinks";
 import { button, container } from "../ui/styles";
@@ -35,10 +35,8 @@ export function Contact() {
 
   return (
     <section id="contact" aria-labelledby="contact-title" className="force-dark relative isolate overflow-hidden bg-bg py-24 md:py-32">
-      {/* Night sky: faint isobars and the bat crossing now and then. */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 opacity-60">
-        <IsobarField className="h-full w-full" levels={11} accentLevel={false} letters={false} />
-      </div>
+      {/* Night sky: stars, nebula, shooting stars and the bat crossing now and then. */}
+      <Universe morph={false} fixed={false} className="-z-10" />
       <div aria-hidden="true" className="bat-flight pointer-events-none absolute top-[14%] left-0 -z-10">
         <Bat size={44} className="invert" />
       </div>

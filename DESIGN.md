@@ -29,9 +29,15 @@ Contact and footer are always dark (`.force-dark`).
 
 ## Interaction layer (v5.1)
 
-- Background: `fx/IsobarField.tsx`, weather-map isobars (marching squares over drifting
-  pressure systems, "A"/"B" centres). The cursor is a low that bends the lines. Hero
-  and contact (night version with the pixel bat crossing).
+- Background: `fx/Universe.tsx`, rebuilt from the original site's three effects, fixed
+  behind every page. A deep starfield that warps with scroll speed (streaks forward or
+  backward), a constellation that links the stars around the cursor, shooting stars,
+  a faint nebula at night, and ~3,000 particles that morph per section
+  (`fx/universe-shapes.ts`): spiral galaxy (hero), Earth and atmosphere (Perfil),
+  Lorenz attractor (Investigación), stepped leader (Proyectos), dipole magnetic field
+  (Trayectoria), atmospheric waves (Herramientas). The cursor pushes particles aside.
+  Light theme reads as an ink star atlas; dark theme as the night sky. The TOC names
+  the current figure ("Fondo"). Contact has its own night sky with the bat crossing.
 - Cursor: `CursorAura` ring trails the pointer, swells over links, reads "Ver" over
   project media. `Magnetic` CTAs, `Tilt` 3D cards with a soft sheen.
 - Headings rise word by word (`Words`); highlight cells, timeline rows and the paper

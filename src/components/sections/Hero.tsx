@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import { ArrowDownIcon, ArrowUpRightIcon, EnvelopeSimpleIcon, LightningIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
 import { CubeBuddy } from "../brand/CubeBuddy";
-import { IsobarField } from "../fx/IsobarField";
 import { Magnetic, Tilt } from "../fx/Interactions";
 import { SignalTrace } from "../fx/SignalTrace";
 import type { SignalState } from "../fx/SignalTrace";
@@ -178,17 +177,6 @@ export function Hero({ ready }: { ready: boolean }) {
 
   return (
     <section id="home" aria-labelledby="hero-title" className="relative pt-28 pb-6 md:pt-36">
-      {/* Weather-map isobars behind the title block; the cursor is a low they bend around. */}
-      <motion.div
-        aria-hidden="true"
-        initial={{ opacity: 0 }}
-        animate={ready ? { opacity: 1 } : undefined}
-        transition={{ duration: 1.6, delay: 0.3 }}
-        className="isobar-mask absolute inset-x-0 top-0 h-[min(980px,100%)]"
-      >
-        <IsobarField className="h-full w-full" />
-      </motion.div>
-
       <div className={clsx(container, "relative")}>
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-12">
           <div className="lg:col-span-8">

@@ -87,8 +87,7 @@
       "NASA Space Apps Challenge",
       "Oracle Next Education",
       "Igrowker"
-    ],
-    "backgroundNote": "Fondo: isobaras de un mapa del tiempo. Tu cursor es una baja presión."
+    ]
   },
   "highlights": {
     "title": "En cifras",
@@ -582,5 +581,16 @@
     "rights": "Todos los derechos reservados.",
     "built": "Diseñado y desarrollado con React, TypeScript y canvas.",
     "top": "Volver arriba"
+  },
+  "universe": {
+    "label": "Fondo",
+    "shapes": {
+      "galaxy": "Galaxia espiral",
+      "atmosphere": "La Tierra y su atmósfera",
+      "lorenz": "Atractor de Lorenz, el caos del tiempo atmosférico",
+      "lightning": "Líder escalonado de un rayo",
+      "dipole": "Campo magnético terrestre",
+      "wave": "Ondas en una atmósfera estratificada"
+    }
   }
 }
