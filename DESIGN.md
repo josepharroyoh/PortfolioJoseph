@@ -12,12 +12,12 @@ Contact and footer are always dark (`.force-dark`).
 
 | Token | Light | Dark | Use |
 | --- | --- | --- | --- |
-| `--bg` | | `#0b0e19` | page (deep-space navy) |
+| `--bg` | | `#07080e` | page (midnight) |
 | `--bg-2` | `#f1f1ee` | `#1c1c1f` | plates, tinted areas |
 | `--surface` | `#ffffff` | `#19191c` | figures, inputs |
 | `--ink` | `#1b1b1d` | `#eae9e6` | text |
 | `--muted` | `#5d5d64` | `#a4a3a9` | secondary text |
-| `--accent` | | `#8fb6ff` | the only accent: celestial blue from the universe |
+| `--accent` | | `#d6b46e` | the only accent: champagne gold, like the galaxy core |
 
 ## Type
 
