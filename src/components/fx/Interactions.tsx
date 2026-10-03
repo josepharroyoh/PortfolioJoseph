@@ -134,7 +134,7 @@ export function CursorAura() {
     <motion.div aria-hidden="true" style={{ x, y }} className="no-print pointer-events-none fixed top-0 left-0 z-[80]">
       <div
         className={clsx(
-          "grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-accent text-[12px] font-medium text-on-accent transition-[opacity,scale] duration-200 ease-out",
+          "grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-accent text-[0.75rem] font-medium text-on-accent transition-[opacity,scale] duration-200 ease-out",
           label ? "scale-100 opacity-100" : "scale-50 opacity-0",
         )}
       >

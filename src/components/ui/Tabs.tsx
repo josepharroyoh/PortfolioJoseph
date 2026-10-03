@@ -44,7 +44,7 @@ export function Tabs({ tabs, value, onChange, idPrefix, label }: { tabs: Tab[]; 
               tabIndex={active ? 0 : -1}
               onClick={() => onChange(t.id)}
               className={clsx(
-                "press relative inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-1.5 rounded-full px-2 text-[13px] font-medium transition-colors duration-200 sm:px-5 sm:text-[15px] md:flex-none",
+                "press relative inline-flex h-11 min-w-0 flex-1 items-center justify-center gap-1.5 rounded-full px-2 text-[0.8125rem] font-medium transition-colors duration-200 sm:px-5 sm:text-[0.9375rem] md:flex-none",
                 active ? "text-on-accent" : "text-muted hover:text-ink",
               )}
             >

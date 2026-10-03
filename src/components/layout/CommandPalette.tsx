@@ -135,9 +135,9 @@ export function CommandPalette() {
             placeholder={t("palette.placeholder")}
             aria-controls="palette-list"
             aria-activedescendant={filtered[active] ? `cmd-${filtered[active].id}` : undefined}
-            className="h-14 w-full bg-transparent text-[16px] outline-none placeholder:text-muted"
+            className="h-14 w-full bg-transparent text-[1rem] outline-none placeholder:text-muted"
           />
-          <kbd className="rounded-md border border-line px-1.5 py-0.5 font-mono text-[11px] text-muted">Esc</kbd>
+          <kbd className="rounded-md border border-line px-1.5 py-0.5 font-mono text-[0.6875rem] text-muted">Esc</kbd>
         </div>
         <ul id="palette-list" role="listbox" className="max-h-[50vh] overflow-y-auto p-2">
           {filtered.length === 0 && <li className="px-3 py-6 text-center text-sm text-muted">{t("palette.empty")}</li>}
@@ -154,7 +154,7 @@ export function CommandPalette() {
                   aria-selected={i === active}
                   onMouseMove={() => setIndex(i)}
                   onClick={c.run}
-                  className={clsx("flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[15px]", i === active ? "bg-bg-2 text-ink" : "text-muted")}
+                  className={clsx("flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[0.9375rem]", i === active ? "bg-bg-2 text-ink" : "text-muted")}
                 >
                   <span className={i === active ? "text-accent" : ""}>{c.icon}</span>
                   <span className="flex-1 truncate">{c.label}</span>

@@ -98,7 +98,7 @@ function ProjectFigure({ item, index }: { item: Item; index: number }) {
         <p className="serif-body mt-4 text-[1.1rem]">{item.text}</p>
         <ul className="mt-5 flex flex-wrap gap-1.5">
           {p.tags.map((tag) => (
-            <li key={tag} className="rounded-full border border-line px-2.5 py-0.5 text-[13px] text-muted">
+            <li key={tag} className="rounded-full border border-line px-2.5 py-0.5 text-[0.8125rem] text-muted">
               {tag}
             </li>
           ))}

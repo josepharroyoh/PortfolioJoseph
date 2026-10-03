@@ -37,7 +37,7 @@ function LanguageSwitch() {
           title={label}
           aria-pressed={current === code}
           onClick={() => i18n.changeLanguage(code)}
-          className={clsx("press h-8 rounded-full px-2.5 text-[13px] font-medium uppercase", current === code ? "bg-ink text-bg" : "text-muted hover:text-ink")}
+          className={clsx("press h-8 rounded-full px-2.5 text-[0.8125rem] font-medium uppercase", current === code ? "bg-ink text-bg" : "text-muted hover:text-ink")}
         >
           {code}
         </button>
@@ -77,7 +77,7 @@ export function Navbar({ active }: { active?: SectionId }) {
         <div className={`${container} flex h-16 items-center justify-between gap-4`}>
           <Link to="/" className="press flex items-center gap-3 rounded-lg" aria-label={t("nav.home")}>
             <BatTile size={34} />
-            <span className="hidden font-display text-[19px] whitespace-nowrap italic sm:inline">Joseph Arroyo</span>
+            <span className="hidden font-display text-[1.1875rem] whitespace-nowrap italic sm:inline">Joseph Arroyo</span>
           </Link>
 
           {/* Plain text links; a hairline under the current one slides between them. */}
@@ -89,7 +89,7 @@ export function Navbar({ active }: { active?: SectionId }) {
                     <a
                       href={href(id)}
                       aria-current={current === id ? "true" : undefined}
-                      className={clsx("relative block px-3 py-2 text-[15px] whitespace-nowrap transition-colors duration-200", current === id ? "text-ink" : "text-muted hover:text-ink")}
+                      className={clsx("relative block px-3 py-2 text-[0.9375rem] whitespace-nowrap transition-colors duration-200", current === id ? "text-ink" : "text-muted hover:text-ink")}
                     >
                       {t(`nav.${id}`)}
                       {current === id && (
@@ -110,7 +110,7 @@ export function Navbar({ active }: { active?: SectionId }) {
               className="press hidden h-10 items-center gap-2 rounded-full border border-line px-3 text-sm text-muted hover:text-ink xl:inline-flex"
             >
               <MagnifyingGlassIcon size={16} />
-              <kbd className="font-mono text-[11px] whitespace-nowrap">{isMac ? "⌘K" : "Ctrl K"}</kbd>
+              <kbd className="font-mono text-[0.6875rem] whitespace-nowrap">{isMac ? "⌘K" : "Ctrl K"}</kbd>
             </button>
             {LANGUAGES.length > 1 && (
               <div className="hidden lg:block">

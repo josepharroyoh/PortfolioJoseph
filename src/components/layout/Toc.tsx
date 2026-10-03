@@ -24,7 +24,7 @@ export function Toc({ active }: { active: SectionId }) {
               <a
                 href={`#${id}`}
                 aria-current={current === id ? "true" : undefined}
-                className={clsx("block text-[15px] transition-colors duration-200", current === id ? "font-serif text-[1.05rem] text-ink italic" : "text-muted hover:text-ink")}
+                className={clsx("block text-[0.9375rem] transition-colors duration-200", current === id ? "font-serif text-[1.05rem] text-ink italic" : "text-muted hover:text-ink")}
               >
                 {t(`nav.${id}`)}
               </a>

@@ -75,15 +75,15 @@ export function Hero({ ready }: { ready: boolean }) {
     <section id="home" aria-labelledby="hero-title" className="relative pb-6">
       <div className={clsx(container, "relative")}>
         {/* The first screen: everything from the status line to the byline fits one viewport. */}
-        <div className="flex min-h-[100svh] flex-col pt-24 pb-6 md:pt-28">
+        <div className="flex min-h-[100svh] flex-col pt-[clamp(4.75rem,12svh,8rem)] pb-[clamp(0.75rem,2svh,2rem)]">
           {/* Centred title block over the galaxy: status, name, role, research lines, actions. */}
-          <div className="my-auto flex flex-col items-center py-4 text-center">
+          <div className="my-auto flex flex-col items-center py-[clamp(0.5rem,2svh,2rem)] text-center">
             <motion.p custom={0} variants={item} initial="out" animate={state} className="label">
               <span className="mr-2 inline-block h-1.5 w-1.5 -translate-y-px animate-pulse-dot rounded-full bg-ok align-middle text-ok" aria-hidden="true" />
               {t("hero.status")}
             </motion.p>
 
-            <h1 id="hero-title" className="mt-6 text-[clamp(3.2rem,min(9vw,12vh),8.8rem)] leading-[0.9] font-[360] tracking-[-0.04em]">
+            <h1 id="hero-title" className="mt-[clamp(0.75rem,2.6svh,2rem)] text-[clamp(2.6rem,min(9vw,11.5svh),9.5rem)] leading-[0.9] font-[360] tracking-[-0.04em]">
               <Line ready={ready} delay={0.05}>
                 {t("hero.name1")}
               </Line>
@@ -92,12 +92,12 @@ export function Hero({ ready }: { ready: boolean }) {
               </Line>
             </h1>
 
-            <motion.p custom={1} variants={item} initial="out" animate={state} className="mt-6 max-w-[62ch] font-serif text-[clamp(1.2rem,1.7vw,1.5rem)] leading-snug text-muted">
+            <motion.p custom={1} variants={item} initial="out" animate={state} className="mt-[clamp(0.75rem,2.6svh,2rem)] max-w-[62ch] font-serif text-[clamp(1.05rem,min(1.7vw,2.7svh),1.6rem)] leading-snug text-muted">
               {t("hero.role")}
             </motion.p>
 
             {/* Research lines as one quiet line of text, separated by small diamonds. */}
-            <motion.ul custom={2} variants={item} initial="out" animate={state} className="mt-5 flex max-w-[64rem] flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-[15px] text-ink/90 sm:gap-x-4">
+            <motion.ul custom={2} variants={item} initial="out" animate={state} className="mt-[clamp(0.6rem,2.2svh,1.5rem)] flex max-w-[72rem] flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-[clamp(0.85rem,min(1.1vw,2svh),1rem)] text-ink/90 sm:gap-x-4">
               {topics.map((topic, i) => (
                 <li key={topic} className="flex items-center gap-4">
                   {i > 0 && <span aria-hidden="true" className="hidden h-1.5 w-1.5 rotate-45 bg-accent sm:block" />}
@@ -106,7 +106,7 @@ export function Hero({ ready }: { ready: boolean }) {
               ))}
             </motion.ul>
 
-            <motion.div custom={3} variants={item} initial="out" animate={state} className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <motion.div custom={3} variants={item} initial="out" animate={state} className="mt-[clamp(1rem,3.4svh,2.5rem)] flex flex-wrap items-center justify-center gap-3">
               <Magnetic>
                 <a href="#academic" className={button("primary", "h-12 px-6")}>
                   {t("hero.ctaWork")}
@@ -132,7 +132,7 @@ export function Hero({ ready }: { ready: boolean }) {
             className="grid grid-cols-1 gap-px overflow-hidden border-y border-line-strong bg-line sm:grid-cols-2 lg:grid-cols-4"
           >
             {byline.map((b) => (
-              <div key={b.label} className="group bg-bg py-4 transition-colors duration-300 hover:bg-surface sm:px-5">
+              <div key={b.label} className="group bg-bg py-[clamp(0.6rem,1.8svh,1rem)] transition-colors duration-300 hover:bg-surface sm:px-5">
                 <dt className="label transition-colors duration-200 group-hover:text-accent">{b.label}</dt>
                 <dd className="mt-1.5 leading-snug">
                   {b.link ? (

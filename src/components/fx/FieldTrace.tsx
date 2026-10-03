@@ -58,7 +58,7 @@ export function FieldTrace({
   const alertX = x(alertT);
 
   const pct = (vx: number, vy: number) => ({ left: `${(vx / W) * 100}%`, top: `${(vy / H) * 100}%` });
-  const label = "absolute font-mono text-[11px] leading-none whitespace-nowrap sm:text-xs";
+  const label = "absolute font-mono text-[0.6875rem] leading-none whitespace-nowrap sm:text-xs";
 
   return (
     <figure className={clsx("relative", className)}>

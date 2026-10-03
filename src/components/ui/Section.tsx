@@ -23,7 +23,7 @@ export function Section({ id, title, intro, aside, children, className }: Props)
       {intro && <p className="reveal mt-3 max-w-[58ch] text-muted">{intro}</p>}
       <div className={clsx("mt-10", aside && "grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_14rem] lg:gap-12")}>
         <div className="min-w-0">{children}</div>
-        {aside && <aside className="min-w-0 text-[15px] lg:border-l lg:border-line lg:pl-6">{aside}</aside>}
+        {aside && <aside className="min-w-0 text-[0.9375rem] lg:border-l lg:border-line lg:pl-6">{aside}</aside>}
       </div>
     </section>
   );

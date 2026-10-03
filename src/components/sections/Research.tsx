@@ -51,7 +51,7 @@ export function Reference({ pub }: { pub: Publication }) {
         {pub.title}
       </h3>
       {pub.journal && <p className="mt-2 font-serif text-lg text-muted italic">{pub.journal}</p>}
-      <p className="mt-2 max-w-[70ch] text-[15px] leading-relaxed text-muted">
+      <p className="mt-2 max-w-[70ch] text-[0.9375rem] leading-relaxed text-muted">
         <Authors text={pub.authors} />
       </p>
       {published && (

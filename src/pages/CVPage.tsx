@@ -19,7 +19,7 @@ type Network = { date: string; title: string; text: string };
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="avoid-break mt-9">
-      <h2 className="border-b border-line pb-2 text-[13px] font-semibold tracking-[0.08em] text-accent uppercase print:text-[#1d4ed8]">{title}</h2>
+      <h2 className="border-b border-line pb-2 text-[0.8125rem] font-semibold tracking-[0.08em] text-accent uppercase print:text-[#1d4ed8]">{title}</h2>
       <div className="mt-4 space-y-4">{children}</div>
     </section>
   );
@@ -28,11 +28,11 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
 function Row({ date, title, org, text }: Entry) {
   return (
     <div className="avoid-break grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-5">
-      <p className="font-mono text-[13px] text-muted">{date}</p>
+      <p className="font-mono text-[0.8125rem] text-muted">{date}</p>
       <div>
         <p className="font-semibold leading-snug">{title}</p>
-        {org && <p className="text-[15px] text-muted">{org}</p>}
-        {text && <p className="mt-1 text-[15px] leading-relaxed">{text}</p>}
+        {org && <p className="text-[0.9375rem] text-muted">{org}</p>}
+        {text && <p className="mt-1 text-[0.9375rem] leading-relaxed">{text}</p>}
       </div>
     </div>
   );
@@ -59,7 +59,7 @@ export default function CVPage() {
 
   return (
     <PageShell active="cv">
-      <div className="mx-auto max-w-[860px] px-4 pt-24 pb-16 print:p-0">
+      <div className="mx-auto max-w-[53.75rem] px-4 pt-24 pb-16 print:p-0">
         <div className="no-print mb-6 flex flex-wrap items-center justify-between gap-3">
           <Link to="/" className="press inline-flex items-center gap-2 rounded-full text-sm text-muted hover:text-ink">
             <ArrowLeftIcon size={16} />
@@ -76,7 +76,7 @@ export default function CVPage() {
             <div>
               <h1 className="text-[clamp(2rem,4.5vw,2.8rem)] leading-[1.05] font-semibold tracking-[-0.03em]">{PROFILE.fullName}</h1>
               <p className="mt-2 text-lg text-muted">{t("cv.title")}</p>
-              <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-[15px]">
+              <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-[0.9375rem]">
                 <li>
                   <a href={`mailto:${PROFILE.email}`} className="link-underline">{PROFILE.email}</a>
                 </li>
@@ -108,10 +108,10 @@ export default function CVPage() {
           <Section title={t("academic.tabs.publications")}>
             {pubs.map((pub) => (
               <div key={pub.title} className="avoid-break grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-5">
-                <p className="font-mono text-[13px] text-muted">
+                <p className="font-mono text-[0.8125rem] text-muted">
                   {pub.year} · {pub.status}
                 </p>
-                <p className="text-[15px] leading-relaxed">
+                <p className="text-[0.9375rem] leading-relaxed">
                   <Authors text={pub.authors} /> ({pub.year}). <span className="font-semibold">{pub.title}</span> {pub.journal && <em>{pub.journal}.</em>}{" "}
                   {pub.doi && <span className="text-muted">doi.org/{pub.doi}</span>}
                 </p>
@@ -154,8 +154,8 @@ export default function CVPage() {
           <Section title={t("skills.title")}>
             {SKILL_GROUPS.map((skills, i) => (
               <div key={groups[i]} className="grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-5">
-                <p className="text-[13px] text-muted">{groups[i]}</p>
-                <p className="text-[15px]">{skills.join(", ")}</p>
+                <p className="text-[0.8125rem] text-muted">{groups[i]}</p>
+                <p className="text-[0.9375rem]">{skills.join(", ")}</p>
               </div>
             ))}
           </Section>

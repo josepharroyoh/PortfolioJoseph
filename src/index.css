@@ -345,6 +345,29 @@
   }
 }
 
+/* Very large screens: scale the whole type and spacing system with the root size,
+   so the layout keeps its proportions from a laptop to a 4K monitor. */
+@media (min-width: 1900px) {
+  html {
+    font-size: 17px;
+  }
+}
+@media (min-width: 2300px) {
+  html {
+    font-size: 19px;
+  }
+}
+@media (min-width: 2800px) {
+  html {
+    font-size: 22px;
+  }
+}
+@media (min-width: 3400px) {
+  html {
+    font-size: 26px;
+  }
+}
+
 /* The CV prints on clean A4 pages with no site chrome. */
 @media print {
   @page {
