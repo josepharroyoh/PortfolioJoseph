@@ -184,55 +184,54 @@ export function Hero({ ready }: { ready: boolean }) {
       <div className={clsx(container, "relative")}>
         {/* The first screen: everything from the status line to the byline fits one viewport. */}
         <div className="flex min-h-[100svh] flex-col pt-24 pb-6 md:pt-28">
-          <div className="my-auto max-w-[52rem]">
-            <motion.p custom={0} variants={item} initial="out" animate={state} className="label flex items-center gap-2">
-              <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-ok text-ok" aria-hidden="true" />
-              {t("hero.status")}
-            </motion.p>
+          <div className="my-auto grid gap-12 py-8 lg:grid-cols-12 lg:items-end lg:gap-10">
+            <div className="lg:col-span-7">
+              <motion.p custom={0} variants={item} initial="out" animate={state} className="label flex items-center gap-2">
+                <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-ok text-ok" aria-hidden="true" />
+                {t("hero.status")}
+              </motion.p>
 
-            <h1 id="hero-title" className="mt-5 text-[clamp(3rem,min(7.2vw,11vh),6.6rem)] leading-[0.92] font-[380] tracking-[-0.035em] whitespace-nowrap">
-              <Line ready={ready} delay={0.05}>
-                {t("hero.name1")}
-              </Line>
-              <Line ready={ready} delay={0.15} className="text-accent italic">
-                {t("hero.name2")}
-              </Line>
-            </h1>
+              <h1 id="hero-title" className="mt-6 text-[clamp(3rem,min(5.6vw,11vh),5.6rem)] leading-[0.92] font-[380] tracking-[-0.035em] whitespace-nowrap">
+                <Line ready={ready} delay={0.05}>
+                  {t("hero.name1")}
+                </Line>
+                <Line ready={ready} delay={0.15} className="text-accent italic">
+                  {t("hero.name2")}
+                </Line>
+              </h1>
 
-            <motion.p custom={1} variants={item} initial="out" animate={state} className="mt-5 text-[clamp(1.05rem,1.5vw,1.25rem)] font-medium tracking-[-0.01em]">
-              {t("hero.role")}
-            </motion.p>
+              <motion.p custom={1} variants={item} initial="out" animate={state} className="mt-6 max-w-[30ch] font-serif text-[clamp(1.25rem,1.8vw,1.6rem)] leading-snug text-muted">
+                {t("hero.role")}
+              </motion.p>
 
-            {/* What I work on, right under the name. */}
-            <motion.ul custom={1} variants={item} initial="out" animate={state} className="mt-4 flex flex-wrap gap-2">
-              {topics.map((topic) => (
-                <li
-                  key={topic}
-                  className="rounded-full border border-line-strong bg-bg/70 px-3 py-1 text-[14px] font-medium backdrop-blur-sm transition-colors duration-200 hover:border-accent hover:text-accent"
-                >
-                  {topic}
-                </li>
-              ))}
-            </motion.ul>
+              <motion.div custom={2} variants={item} initial="out" animate={state} className="mt-9 flex flex-wrap items-center gap-3">
+                <Magnetic>
+                  <a href="#research" className={button("primary")}>
+                    {t("hero.ctaWork")}
+                    <ArrowDownIcon size={16} weight="bold" />
+                  </a>
+                </Magnetic>
+                <Magnetic>
+                  <a href="#contact" className={button("secondary", "bg-bg/70 backdrop-blur-sm")}>
+                    <EnvelopeSimpleIcon size={17} />
+                    {t("hero.ctaContact")}
+                  </a>
+                </Magnetic>
+                <SocialLinks className="ml-1" />
+              </motion.div>
+            </div>
 
-            <motion.p custom={2} variants={item} initial="out" animate={state} className="mt-5 max-w-[44ch] font-serif text-[clamp(1.2rem,1.7vw,1.45rem)] leading-[1.45] text-muted">
-              {t("hero.text")}
-            </motion.p>
-
-            <motion.div custom={3} variants={item} initial="out" animate={state} className="mt-7 flex flex-wrap items-center gap-3">
-              <Magnetic>
-                <a href="#research" className={button("primary")}>
-                  {t("hero.ctaWork")}
-                  <ArrowDownIcon size={16} weight="bold" />
-                </a>
-              </Magnetic>
-              <Magnetic>
-                <a href="#contact" className={button("secondary", "bg-bg/70 backdrop-blur-sm")}>
-                  <EnvelopeSimpleIcon size={17} />
-                  {t("hero.ctaContact")}
-                </a>
-              </Magnetic>
-              <SocialLinks className="ml-1" />
+            {/* Research lines on the right, set over the background galaxy like an index. */}
+            <motion.div custom={3} variants={item} initial="out" animate={state} className="lg:col-span-4 lg:col-start-9">
+              <p className="label">{t("hero.topicsLabel")}</p>
+              <ol className="mt-4 border-t border-line-strong">
+                {topics.map((topic, i) => (
+                  <li key={topic} className="group flex items-baseline gap-4 border-b border-line py-3 transition-colors duration-200 hover:text-accent">
+                    <span className="font-mono text-xs text-faint tabular-nums transition-colors duration-200 group-hover:text-accent">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="font-serif text-[clamp(1.1rem,1.45vw,1.3rem)] leading-snug">{topic}</span>
+                  </li>
+                ))}
+              </ol>
             </motion.div>
           </div>
 
