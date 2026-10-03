@@ -17,7 +17,7 @@ Contact and footer are always dark (`.force-dark`).
 | `--surface` | `#ffffff` | `#19191c` | figures, inputs |
 | `--ink` | `#1b1b1d` | `#eae9e6` | text |
 | `--muted` | `#5d5d64` | `#a4a3a9` | secondary text |
-| `--accent` | | `#9db8ff` | the only accent: ice blue |
+| `--accent` | | `#9fe3c6` | the only accent: mint |
 
 ## Type
 
@@ -33,7 +33,7 @@ Contact and footer are always dark (`.force-dark`).
   behind every page. A deep starfield that warps with scroll speed (streaks forward or
   backward), a constellation that links the stars around the cursor, shooting stars,
   a faint nebula at night, and ~3,000 particles that morph per section
-  (`fx/universe-shapes.ts`): ringed planet (hero, silver and ice blue), Earth and atmosphere (Perfil),
+  (`fx/universe-shapes.ts`): ringed planet (hero, silver and mint), Earth and atmosphere (Perfil),
   Lorenz attractor (Investigación), stepped leader (Proyectos), dipole magnetic field
   (Trayectoria), atmospheric waves (Herramientas). The cursor pushes particles aside.
   Each figure has its own vivid palette (blue, cyan, violet, aurora green, gold). The TOC names

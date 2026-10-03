@@ -16,20 +16,20 @@
   font-display: swap;
 }
 
-/* Colour tokens. Dark only: near-black, cool white ink and an electric-blue accent
-   that matches the stars of the background universe. The accent marks links, figures and the few
+/* Colour tokens. Dark only: near-black, soft white ink and a mint accent
+   that echoes the planet rings of the background universe. The accent marks links, figures and the few
    things that must stand out. */
 :root {
   --bg: #000000;
   --bg-2: #0c0c0d;
   --surface: #09090a;
-  --ink: #f2f2f3;
-  --muted: #a3a3a8;
-  --faint: #6a6a70;
-  --line: rgb(237 237 237 / 0.1);
-  --line-strong: rgb(237 237 237 / 0.2);
-  --accent: #9db8ff;
-  --accent-soft: rgb(157 184 255 / 0.12);
+  --ink: #f1f5f2;
+  --muted: #a2aba6;
+  --faint: #66706a;
+  --line: rgb(241 245 242 / 0.1);
+  --line-strong: rgb(241 245 242 / 0.2);
+  --accent: #9fe3c6;
+  --accent-soft: rgb(159 227 198 / 0.12);
   --on-accent: #050505;
   --danger: #ff8f80;
   --ok: #4ade80;
@@ -42,13 +42,13 @@
   --bg: #000000;
   --bg-2: #0c0c0d;
   --surface: #09090a;
-  --ink: #f2f2f3;
-  --muted: #a3a3a8;
-  --faint: #6a6a70;
-  --line: rgb(237 237 237 / 0.1);
-  --line-strong: rgb(237 237 237 / 0.2);
-  --accent: #9db8ff;
-  --accent-soft: rgb(157 184 255 / 0.12);
+  --ink: #f1f5f2;
+  --muted: #a2aba6;
+  --faint: #66706a;
+  --line: rgb(241 245 242 / 0.1);
+  --line-strong: rgb(241 245 242 / 0.2);
+  --accent: #9fe3c6;
+  --accent-soft: rgb(159 227 198 / 0.12);
   --on-accent: #050505;
   --danger: #ff8f80;
   --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 20px 44px -18px rgb(0 0 0 / 0.75);

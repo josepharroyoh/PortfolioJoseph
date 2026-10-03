@@ -3,6 +3,9 @@ import clsx from "clsx";
 import { SHAPES, SHAPE_VIEW, sectionShape } from "./universe-shapes";
 import type { ShapeKey } from "./universe-shapes";
 
+/** Shapes that sit large and centred behind the hero title. */
+const HERO_SHAPES: ShapeKey[] = ["planet", "fieldlines", "globe", "aurora"];
+
 type Props = {
   /** Current section; drives the morphing figure. */
   active?: string;
@@ -55,7 +58,10 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
     let pal = DAY;
     // Each figure has its own vivid set (same five slots: base, three hues, highlight).
     const FIGURE: Record<ShapeKey, string[]> = {
-      planet: ["#f4f5f8", "#c7d3f0", "#9fb6ec", "#dfe3ec", "#ffffff"],
+      fieldlines: ["#f4f6fb", "#b9cdf5", "#8fb0ee", "#dbe4f7", "#ffffff"],
+      globe: ["#eef8f8", "#9fd8d8", "#7cc3c9", "#d6efef", "#ffffff"],
+      aurora: ["#e9fbf2", "#7fe0b6", "#5cc8b4", "#a8b8ff", "#d8fff0"],
+      planet: ["#f1f6f3", "#bfe9d6", "#8fd8c0", "#dceee6", "#ffffff"],
       galaxy: ["#f4f6ff", "#7fb2ff", "#62e0f0", "#a990ff", "#ffcf70"],
       atmosphere: ["#e8fbff", "#4fa8ff", "#3ee0d0", "#7cc4ff", "#a6f0ff"],
       lorenz: ["#f1edff", "#8f7bff", "#4cc9f0", "#c08cff", "#ffd166"],
@@ -94,7 +100,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
     from.set(to);
     cur.set(to);
     let progress = 1;
-    const view = { tilt: SHAPE_VIEW[current].tilt, spin: SHAPE_VIEW[current].spin, scale: SHAPE_VIEW[current].scale, home: current === "planet" ? 1 : 0 };
+    const view = { tilt: SHAPE_VIEW[current].tilt, spin: SHAPE_VIEW[current].spin, scale: SHAPE_VIEW[current].scale, home: HERO_SHAPES.includes(current) ? 1 : 0 };
     // Colour per particle: a warm golden core, arms in blue, cyan, violet and white.
     const colorIdx = new Uint8Array(N).map((_, i) => {
       if (i < N * 0.16) return Math.random() < 0.7 ? 4 : 0;
@@ -248,7 +254,7 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
       view.tilt += (target.tilt - view.tilt) * k;
       view.spin += (target.spin - view.spin) * k;
       view.scale += (target.scale - view.scale) * k;
-      view.home += ((current === "planet" ? 1 : 0) - view.home) * k;
+      view.home += ((HERO_SHAPES.includes(current) ? 1 : 0) - view.home) * k;
 
       yaw += dt * 0.00011 * view.spin + impulse * dt * 6;
       const pitch = view.tilt + pointer.sy * 0.22;

@@ -1,7 +1,7 @@
 // Point clouds the background particles morph between, one per section.
 // Every builder returns N points as [x, y, z, x, y, z, ...], roughly inside a unit sphere.
 
-export type ShapeKey = "planet" | "galaxy" | "atmosphere" | "lorenz" | "lightning" | "dipole" | "wave";
+export type ShapeKey = "fieldlines" | "globe" | "aurora" | "planet" | "galaxy" | "atmosphere" | "lorenz" | "lightning" | "dipole" | "wave";
 
 /** Which figure the particles form while each section is on screen. */
 const SECTION_SHAPE: Record<string, ShapeKey> = {
@@ -21,6 +21,9 @@ export const sectionShape = (section: string): ShapeKey => SECTION_SHAPE[section
 
 /** How each shape is shown: tilt towards the viewer, spin speed and size. */
 export const SHAPE_VIEW: Record<ShapeKey, { tilt: number; spin: number; scale: number }> = {
+  fieldlines: { tilt: 0.25, spin: 0.35, scale: 1.15 },
+  globe: { tilt: 0.38, spin: 0.5, scale: 1.05 },
+  aurora: { tilt: 0.2, spin: 0.3, scale: 1.15 },
   planet: { tilt: 1.3, spin: 0.45, scale: 1.1 },
   galaxy: { tilt: 1.12, spin: 1, scale: 1 },
   atmosphere: { tilt: 0.35, spin: 1.2, scale: 0.95 },
@@ -35,6 +38,104 @@ const gauss = () => {
   const v = Math.random();
   return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
 };
+
+/** Electric field lines of a dipole, revolved around its axis: the textbook figure in particles. */
+function fieldlines(n: number) {
+  const out = new Float32Array(n * 3);
+  const q = 0.42;
+  const lines: number[][] = [];
+  const LINES = 14;
+  for (let k = 0; k < LINES; k++) {
+    const a0 = ((k + 0.5) / LINES) * Math.PI; // upper half-plane, mirrored below
+    let x = q + Math.cos(a0) * 0.04;
+    let y = Math.sin(a0) * 0.04;
+    const pts: number[] = [];
+    for (let step = 0; step < 900; step++) {
+      const d1 = Math.hypot(x - q, y) ** 3 || 1e-6;
+      const d2 = Math.hypot(x + q, y) ** 3 || 1e-6;
+      let ex = (x - q) / d1 - (x + q) / d2;
+      let ey = y / d1 - y / d2;
+      const m = Math.hypot(ex, ey) || 1;
+      ex /= m;
+      ey /= m;
+      x += ex * 0.006;
+      y += ey * 0.006;
+      pts.push(x, y);
+      if (Math.hypot(x + q, y) < 0.03 || Math.abs(x) > 1.4 || Math.abs(y) > 1.1) break;
+    }
+    lines.push(pts);
+  }
+  const total = lines.reduce((t, l) => t + l.length / 2, 0);
+  const charges = Math.floor(n * 0.06);
+  for (let i = 0; i < n; i++) {
+    if (i < charges) {
+      const a = Math.random() * Math.PI * 2;
+      const r = Math.random() * 0.035;
+      const sx = i % 2 ? q : -q;
+      out[i * 3] = sx + Math.cos(a) * r;
+      out[i * 3 + 1] = Math.sin(a) * r;
+      out[i * 3 + 2] = (Math.random() - 0.5) * 0.04;
+      continue;
+    }
+    // Pick a point along a random line, a random side, and one of four azimuthal planes.
+    let pick = Math.floor(Math.random() * total);
+    let line = lines[0];
+    for (const l of lines) {
+      if (pick < l.length / 2) {
+        line = l;
+        break;
+      }
+      pick -= l.length / 2;
+    }
+    const px = line[pick * 2] ?? 0;
+    const py = (line[pick * 2 + 1] ?? 0) * (Math.random() < 0.5 ? 1 : -1);
+    const phi = (Math.floor(Math.random() * 4) / 4) * Math.PI;
+    out[i * 3] = px;
+    out[i * 3 + 1] = py * Math.cos(phi);
+    out[i * 3 + 2] = py * Math.sin(phi);
+  }
+  return out;
+}
+
+/** A wireframe globe: meridians and parallels in particles, like an armillary sphere. */
+function globe(n: number) {
+  const out = new Float32Array(n * 3);
+  const R = 0.78;
+  for (let i = 0; i < n; i++) {
+    const meridian = i % 3 !== 0;
+    let lat: number, lon: number;
+    if (meridian) {
+      lon = (Math.floor(Math.random() * 12) / 12) * Math.PI * 2;
+      lat = (Math.random() - 0.5) * Math.PI;
+    } else {
+      lat = ((Math.floor(Math.random() * 7) - 3) / 4) * (Math.PI / 2);
+      lon = Math.random() * Math.PI * 2;
+    }
+    const j = (Math.random() - 0.5) * 0.006;
+    out[i * 3] = (R + j) * Math.cos(lat) * Math.cos(lon);
+    out[i * 3 + 1] = (R + j) * Math.sin(lat);
+    out[i * 3 + 2] = (R + j) * Math.cos(lat) * Math.sin(lon);
+  }
+  return out;
+}
+
+/** Aurora curtains: folded ribbons of light, brightest at their lower edge. */
+function aurora(n: number) {
+  const out = new Float32Array(n * 3);
+  const CURTAINS = 3;
+  for (let i = 0; i < n; i++) {
+    const c = i % CURTAINS;
+    const u = Math.random() * 2 - 1;
+    const z = (c - 1) * 0.35 + Math.sin(u * 3 + c) * 0.12;
+    const base = -0.35 + Math.sin(u * 2.2 + c * 1.7) * 0.12;
+    const hgt = 0.55 + 0.25 * Math.sin(u * 1.3 + c);
+    const v = Math.pow(Math.random(), 2.2); // dense at the bottom edge
+    out[i * 3] = u * 1.1;
+    out[i * 3 + 1] = -(base + v * hgt);
+    out[i * 3 + 2] = z;
+  }
+  return out;
+}
 
 /** A ringed planet: a Fibonacci sphere inside a thin ring system with a dark gap, like Saturn. */
 function planet(n: number) {
@@ -209,4 +310,4 @@ function wave(n: number) {
   return out;
 }
 
-export const SHAPES: Record<ShapeKey, (n: number) => Float32Array> = { planet, galaxy, atmosphere, lorenz, lightning, dipole, wave };
+export const SHAPES: Record<ShapeKey, (n: number) => Float32Array> = { fieldlines, globe, aurora, planet, galaxy, atmosphere, lorenz, lightning, dipole, wave };
