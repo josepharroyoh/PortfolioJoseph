@@ -10,16 +10,16 @@ import { button } from "../components/ui/styles";
 import { PROFILE, SKILL_GROUPS } from "../data/profile";
 import { useCopy } from "../hooks/useCopy";
 
-type Event = { date: string; type: string; title: string; org: string; text: string; course?: boolean };
-type Entry = { date: string; title: string; org: string; text?: string };
-type Academic = { title: string; authors: string; text: string };
+type Entry = { date: string; place?: string; title: string; org?: string; text?: string };
 type Congress = { date: string; title: string; place: string; topic: string };
 type Project = { title: string; year: string; role: string; text: string };
+type Language = { name: string; level: string };
+type Network = { date: string; title: string; text: string };
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="avoid-break mt-9">
-      <h2 className="border-b border-line pb-2 text-[13px] font-semibold tracking-[0.08em] text-accent uppercase print:text-[#2547d0]">{title}</h2>
+      <h2 className="border-b border-line pb-2 text-[13px] font-semibold tracking-[0.08em] text-accent uppercase print:text-[#1d4ed8]">{title}</h2>
       <div className="mt-4 space-y-4">{children}</div>
     </section>
   );
@@ -31,7 +31,7 @@ function Row({ date, title, org, text }: Entry) {
       <p className="font-mono text-[13px] text-muted">{date}</p>
       <div>
         <p className="font-semibold leading-snug">{title}</p>
-        <p className="text-[15px] text-muted">{org}</p>
+        {org && <p className="text-[15px] text-muted">{org}</p>}
         {text && <p className="mt-1 text-[15px] leading-relaxed">{text}</p>}
       </div>
     </div>
@@ -40,26 +40,22 @@ function Row({ date, title, org, text }: Entry) {
 
 export default function CVPage() {
   const { t } = useTranslation();
-  const events = useCopy<Event[]>("timeline.events");
-  const degrees = useCopy<Entry[]>("cv.degrees");
-  const thesis = useCopy<Entry>("cv.thesis");
+  const degrees = useCopy<Entry[]>("education.items");
   const pubs = useCopy<Publication[]>("research.publications");
-  const academic = useCopy<Academic>("research.academic");
-  const congresses = useCopy<Congress[]>("research.congresses");
+  const awards = useCopy<Entry[]>("awards.items");
+  const research = useCopy<Entry[]>("experience.research");
+  const work = useCopy<Entry[]>("experience.work");
   const projects = useCopy<Project[]>("projects.items");
+  const congresses = useCopy<Congress[]>("research.congresses");
+  const training = useCopy<Entry[]>("training.items");
+  const languages = useCopy<Language[]>("more.languages");
+  const networks = useCopy<Network[]>("more.networks");
+  const volunteering = useCopy<Entry[]>("more.volunteering");
   const groups = useCopy<string[]>("skills.groups");
 
   useEffect(() => {
     document.title = `CV | ${PROFILE.fullName}`;
   }, []);
-
-  // Newest first, as a CV reads: ordered by the last year in each date.
-  const endYear = (date: string) => Number(date.match(/\d{4}(?!.*\d{4})/)?.[0] ?? 9999);
-  const byType = (type: string, filter: (e: Event) => boolean = () => true) =>
-    events
-      .filter((e) => e.type === type && filter(e))
-      .reverse()
-      .sort((a, b) => endYear(b.date) - endYear(a.date));
 
   return (
     <PageShell active="cv">
@@ -103,14 +99,13 @@ export default function CVPage() {
             <p className="leading-relaxed">{t("cv.summary")}</p>
           </Section>
 
-          <Section title={t("cv.educationTitle")}>
+          <Section title={t("education.title")}>
             {degrees.map((d) => (
               <Row key={d.title} {...d} />
             ))}
           </Section>
 
-          <Section title={t("cv.researchTitle")}>
-            <Row date={thesis.date} title={thesis.title} org={thesis.org} />
+          <Section title={t("research.title")}>
             {pubs.map((pub) => (
               <div key={pub.title} className="avoid-break grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-5">
                 <p className="font-mono text-[13px] text-muted">
@@ -122,40 +117,23 @@ export default function CVPage() {
                 </p>
               </div>
             ))}
-            <div className="avoid-break grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-5">
-              <p className="font-mono text-[13px] text-muted">2023</p>
-              <div>
-                <p className="font-semibold leading-snug">{academic.title}</p>
-                <p className="text-[15px] text-muted">
-                  <Authors text={academic.authors} />
-                </p>
-                <p className="mt-1 text-[15px] leading-relaxed">{academic.text}</p>
-              </div>
-            </div>
           </Section>
 
-          <Section title={t("cv.talksTitle")}>
-            {congresses.map((c, i) => (
-              <Row key={i} date={c.date} title={c.title} org={c.place} text={c.topic} />
-            ))}
-          </Section>
-
-          <Section title={t("cv.experienceTitle")}>
-            {byType("work").map((e) => (
+          <Section title={t("awards.title")}>
+            {awards.map((e) => (
               <Row key={e.title} {...e} />
             ))}
           </Section>
 
-
-          <Section title={t("cv.awardsTitle")}>
-            {byType("award").map((e) => (
+          <Section title={t("experience.researchTitle")}>
+            {research.map((e) => (
               <Row key={e.title} {...e} />
             ))}
           </Section>
 
-          <Section title={t("cv.coursesTitle")}>
-            {byType("education", (e) => Boolean(e.course)).map((e) => (
-              <Row key={e.title} date={e.date} title={e.title} org={e.org} />
+          <Section title={t("experience.workTitle")}>
+            {work.map((e) => (
+              <Row key={e.title} {...e} />
             ))}
           </Section>
 
@@ -163,26 +141,38 @@ export default function CVPage() {
             {projects
               .filter((p) => p.year)
               .map((p) => (
-                <Row key={p.title} date={p.year} title={`${p.title}, ${p.role}`} org="" text={p.text} />
+                <Row key={p.title} date={p.year} title={`${p.title}, ${p.role}`} text={p.text} />
               ))}
           </Section>
 
-          <Section title={t("cv.communityTitle")}>
-            {byType("community").map((e) => (
-              <Row key={e.title} {...e} />
+          <Section title={t("talks.title")}>
+            {congresses.map((c, i) => (
+              <Row key={i} date={c.date} title={c.topic} org={`${c.title}, ${c.place}`} />
             ))}
           </Section>
 
-          <Section title={t("cv.languagesTitle")}>
-            <p className="text-[15px]">{t("cv.languages")}</p>
-          </Section>
-
-          <Section title={t("cv.skillsTitle")}>
+          <Section title={t("skills.title")}>
             {SKILL_GROUPS.map((skills, i) => (
               <div key={groups[i]} className="grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-5">
                 <p className="text-[13px] text-muted">{groups[i]}</p>
                 <p className="text-[15px]">{skills.join(", ")}</p>
               </div>
+            ))}
+          </Section>
+
+          <Section title={t("training.title")}>
+            {training.map((e) => (
+              <Row key={e.title} date={e.date} title={e.title} org={e.org} />
+            ))}
+          </Section>
+
+          <Section title={t("more.title")}>
+            <Row date={t("more.languagesTitle")} title={languages.map((l) => `${l.name} (${l.level})`).join(" · ")} />
+            {networks.map((n) => (
+              <Row key={n.title} date={n.date} title={n.title} text={n.text} />
+            ))}
+            {volunteering.map((e) => (
+              <Row key={e.title} {...e} />
             ))}
           </Section>
         </article>

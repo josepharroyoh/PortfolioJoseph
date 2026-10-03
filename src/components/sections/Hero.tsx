@@ -1,32 +1,16 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ArrowDownIcon, ArrowUpRightIcon, EnvelopeSimpleIcon, LightningIcon } from "@phosphor-icons/react";
+import { ArrowDownIcon, ArrowUpRightIcon, EnvelopeSimpleIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
-import { CubeBuddy } from "../brand/CubeBuddy";
 import { Magnetic } from "../fx/Interactions";
-import { SignalTrace } from "../fx/SignalTrace";
-import type { SignalState } from "../fx/SignalTrace";
 import { SocialLinks } from "../ui/SocialLinks";
 import { button, container } from "../ui/styles";
 import { THESIS_PATH } from "../../data/profile";
 import { useCopy } from "../../hooks/useCopy";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 const EASE = [0.23, 1, 0.32, 1] as const;
 
-type Signal = {
-  figure: string;
-  label: string;
-  caption: string;
-  hint: string;
-  hintTouch: string;
-  threshold: string;
-  trigger: string;
-  say: string;
-  states: Record<SignalState["state"], string>;
-};
 type Byline = { label: string; value: string; link?: boolean };
 
 /** One line of the name, rising out of its own mask. */
@@ -42,98 +26,6 @@ function Line({ children, delay, ready, className }: { children: string; delay: 
         {children}
       </motion.span>
     </span>
-  );
-}
-
-/** Figure 1: the live electric-field record, watched over by the cube. */
-function FigureOne() {
-  const signal = useCopy<Signal>("hero.signal");
-  const finePointer = useMediaQuery("(pointer: fine)");
-  const fieldRef = useRef<HTMLSpanElement>(null);
-  const stateRef = useRef<HTMLSpanElement>(null);
-  const lastState = useRef<SignalState["state"]>("calm");
-  const [strikes, setStrikes] = useState(0);
-  const [saying, setSaying] = useState(false);
-
-  // "¡Rayo!" shows for a moment after each strike.
-  useEffect(() => {
-    if (!strikes) return;
-    setSaying(true);
-    const id = window.setTimeout(() => setSaying(false), 1400);
-    return () => window.clearTimeout(id);
-  }, [strikes]);
-
-  const onTick = useCallback(
-    ({ field, state }: SignalState) => {
-      if (fieldRef.current) fieldRef.current.textContent = field.toFixed(1).replace("-", "−");
-      if (stateRef.current) {
-        stateRef.current.textContent = signal.states[state];
-        stateRef.current.dataset.state = state;
-      }
-      if (state === "strike" && lastState.current !== "strike") setStrikes((n) => n + 1);
-      lastState.current = state;
-    },
-    [signal],
-  );
-
-  return (
-    <figure className="reveal relative mt-24 md:mt-28">
-      {/* The cube sits on the frame, follows your cursor and jumps at every strike. */}
-      <div className="absolute -top-[52px] right-5 z-10 flex items-end gap-2 md:right-8">
-        <AnimatePresence>
-          {saying && (
-            <motion.span
-              key={strikes}
-              initial={{ opacity: 0, transform: "translateY(6px) scale(0.9)" }}
-              animate={{ opacity: 1, transform: "translateY(0px) scale(1)" }}
-              exit={{ opacity: 0, transition: { duration: 0.2 } }}
-              transition={{ duration: 0.25, ease: EASE }}
-              className="mb-6 rounded-full border border-line bg-surface px-2.5 py-1 font-serif text-sm italic shadow-card"
-            >
-              {signal.say}
-            </motion.span>
-          )}
-        </AnimatePresence>
-        <CubeBuddy size={52} follow startle={strikes} />
-      </div>
-
-      <div className="overflow-hidden rounded-sm border border-line-strong bg-surface">
-        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-b border-line px-4 py-3 md:px-5">
-          <p className="text-sm font-medium">{signal.label}</p>
-          <div className="flex flex-wrap items-center gap-3">
-            <button
-              type="button"
-              onClick={() => window.dispatchEvent(new Event("signal:storm"))}
-              className="press inline-flex h-8 items-center gap-1.5 rounded-full border border-line-strong px-3 text-[13px] hover:border-accent hover:text-accent"
-            >
-              <LightningIcon size={14} weight="fill" />
-              {signal.trigger}
-            </button>
-            <p className="flex items-center gap-3 font-mono text-sm tabular-nums">
-              <span>
-                <span ref={fieldRef}>0.0</span> <span className="text-muted">kV/m</span>
-              </span>
-              <span
-                ref={stateRef}
-                data-state="calm"
-                className="rounded-full border border-line px-2 py-0.5 font-sans text-xs text-muted transition-colors duration-200 data-[state=alert]:border-accent data-[state=alert]:text-accent data-[state=strike]:border-accent data-[state=strike]:bg-accent data-[state=strike]:text-on-accent"
-              >
-                {signal.states.calm}
-              </span>
-            </p>
-          </div>
-        </div>
-        <div className="relative h-[180px] md:h-[240px]">
-          <SignalTrace onTick={onTick} threshold={signal.threshold} className="absolute inset-0 block h-full w-full touch-manipulation" />
-        </div>
-      </div>
-      <figcaption className="mt-3 grid gap-1 text-[15px] leading-relaxed text-muted md:grid-cols-[minmax(0,1fr)_auto] md:gap-8">
-        <p className="max-w-[80ch] font-serif text-[1.02rem]">
-          <span className="font-sans text-sm font-semibold text-ink">{signal.figure}.</span> {signal.caption}
-        </p>
-        <p className="text-sm text-faint italic">{finePointer ? signal.hint : signal.hintTouch}</p>
-      </figcaption>
-    </figure>
   );
 }
 
@@ -216,7 +108,7 @@ export function Hero({ ready }: { ready: boolean }) {
 
             <motion.div custom={3} variants={item} initial="out" animate={state} className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Magnetic>
-                <a href="#research" className={button("primary", "h-12 px-6")}>
+                <a href="#education" className={button("primary", "h-12 px-6")}>
                   {t("hero.ctaWork")}
                   <ArrowDownIcon size={16} weight="bold" />
                 </a>
@@ -257,7 +149,6 @@ export function Hero({ ready }: { ready: boolean }) {
           </motion.dl>
         </div>
 
-        <FigureOne />
       </div>
       <Institutions />
     </section>

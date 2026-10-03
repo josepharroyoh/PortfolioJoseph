@@ -9,7 +9,7 @@
     "about": "Perfil",
     "research": "Investigación",
     "timeline": "Trayectoria",
-    "skills": "Herramientas",
+    "skills": "Habilidades",
     "contact": "Contacto",
     "cv": "Ver CV",
     "search": "Buscar",
@@ -18,14 +18,21 @@
     "language": "Idioma",
     "skip": "Saltar al contenido",
     "home": "Inicio",
-    "toc": "Contenido"
+    "toc": "Contenido",
+    "education": "Educación",
+    "publications": "Publicaciones",
+    "awards": "Becas y premios",
+    "experience": "Experiencia",
+    "talks": "Ponencias",
+    "training": "Formación",
+    "more": "Idiomas y redes"
   },
   "hero": {
     "status": "Becario CAPES · Maestría en curso en São Paulo",
     "name1": "Joseph Arroyo",
     "name2": "Hernández",
     "text": "Físico. En el CRAAM de la Universidade Presbiteriana Mackenzie uso campo eléctrico, satélites y deep learning para anticipar el primer rayo de una tormenta.",
-    "ctaWork": "Ver investigación",
+    "ctaWork": "Ver mi trayectoria",
     "ctaCv": "Ver CV",
     "topics": [
       "Electricidad atmosférica",
@@ -35,22 +42,6 @@
       "Satélites GOES"
     ],
     "photoAlt": "Retrato de Joseph Arroyo Hernández",
-    "signal": {
-      "figure": "Figura 1",
-      "label": "Campo eléctrico en superficie",
-      "caption": "Lo que registra un medidor de campo eléctrico (EFM) cuando se acerca una tormenta: el campo se vuelve negativo, cruza el umbral y se emite la alerta; cada rayo lo devuelve de golpe. Simulación ilustrativa.",
-      "hint": "Acerca el cursor o pulsa el botón para traer la nube.",
-      "hintTouch": "Toca la figura o pulsa el botón para traer la nube.",
-      "threshold": "Umbral de alerta",
-      "states": {
-        "calm": "Buen tiempo",
-        "charging": "Cargando",
-        "alert": "Alerta",
-        "strike": "Descarga"
-      },
-      "trigger": "Provocar tormenta",
-      "say": "¡Rayo!"
-    },
     "ctaContact": "Escríbeme",
     "photoCaption": "São Paulo, Brasil",
     "byline": [
@@ -90,49 +81,6 @@
     ],
     "role": "Estudiante de Maestría en Ingeniería Eléctrica y Computación, CRAAM · Universidade Presbiteriana Mackenzie",
     "topicsLabel": "Líneas de investigación"
-  },
-  "highlights": {
-    "title": "En cifras",
-    "items": [
-      {
-        "value": 2,
-        "prefix": "",
-        "suffix": "",
-        "label": "artículos indexados",
-        "text": "Atmospheric Research (2026) y Journal of Atmospheric and Solar-Terrestrial Physics (2024); uno más en revisión."
-      },
-      {
-        "display": "CAPES",
-        "label": "beca de maestría",
-        "text": "Financiamiento completo de la maestría en Mackenzie, obtenido por concurso (2026)."
-      },
-      {
-        "display": "GCI World",
-        "label": "seleccionado, 2026",
-        "text": "Matsuo-Iwasawa Laboratory, The University of Tokyo (con apoyo de JICA)."
-      },
-      {
-        "value": 16000,
-        "prefix": "USD ",
-        "suffix": "",
-        "label": "de financiamiento",
-        "text": "Proyecto ganador UNICA 2023 de alerta temprana de tormentas de polvo, donde fui tesista."
-      },
-      {
-        "value": 4,
-        "prefix": "",
-        "suffix": "",
-        "label": "ponencias orales",
-        "text": "CONINTI 2025, COINCOM 2025 y dos en el ECI 2023, como coautor."
-      },
-      {
-        "value": 95,
-        "prefix": "+",
-        "suffix": "%",
-        "label": "de operatividad",
-        "text": "Del radar HF, la estación biestática y el magnetómetro MAGDAS a mi cargo (IGP, Jicamarca)."
-      }
-    ]
   },
   "projects": {
     "title": "Proyectos",
@@ -194,53 +142,9 @@
     "figure": "Figura",
     "cursor": "Ver"
   },
-  "about": {
-    "title": "Perfil",
-    "manifesto": "Soy físico. Aprendí a escuchar a la atmósfera con radares, magnetómetros y sensores de campo eléctrico, y hoy enseño a los modelos de deep learning a anticipar el primer rayo de una tormenta.",
-    "paragraphs": [
-      "Me formé en Física en la Universidad Nacional San Luis Gonzaga, en Ica (tercio superior, promedio 15.29/20). En la Estación Solar UNICA supervisé el radar HF, la estación de radar biestático y el magnetómetro MAGDAS del Instituto Geofísico del Perú, un nodo de la red ionosférica operada con la Universidad de Cornell.",
-      "Como tesista del proyecto ganador UNICA 2023 construí el pipeline de datos de aireica.com: sensores de material particulado, un sensor de campo eléctrico, estaciones meteorológicas y cámaras. La plataforma emitió una alerta pública durante la intrusión extrema de polvo del 31 de julio de 2025, evento que luego publicamos en Atmospheric Research.",
-      "Hoy curso la Maestría en Ingeniería Eléctrica y Computación en el CRAAM de la Universidade Presbiteriana Mackenzie con beca CAPES. Mi tesis combina campo eléctrico en superficie y satélites GOES para predecir el primer rayo de una tormenta sobre São Paulo y medir cuánto tiempo de aviso aporta cada sensor."
-    ],
-    "cieasest": "Conoce el CIEASEST",
-    "facts": [
-      {
-        "label": "Formación",
-        "value": "MSc en curso (Mackenzie, CRAAM) · Bachiller en Física (UNICA)"
-      },
-      {
-        "label": "Base",
-        "value": "São Paulo, Brasil"
-      },
-      {
-        "label": "Promedio",
-        "value": "15.29/20, tercio superior"
-      },
-      {
-        "label": "Idiomas",
-        "value": "Español nativo · inglés B1 · portugués intermedio"
-      },
-      {
-        "label": "Red",
-        "value": "AFINSA, colaborador desde 2022"
-      }
-    ],
-    "seekingTitle": "Lo que busco",
-    "seeking": [
-      "Colaboraciones de investigación",
-      "Pasantías de investigación",
-      "Proyectos de datos y deep learning"
-    ],
-    "traitsTitle": "Cómo trabajo",
-    "traits": [
-      "Liderazgo de equipos",
-      "Instrumentación y datos reales",
-      "Pensamiento analítico"
-    ]
-  },
   "research": {
-    "title": "Investigación",
-    "intro": "Publicaciones, proyectos financiados y ponencias en congresos internacionales.",
+    "title": "Publicaciones",
+    "intro": "Artículos en revistas indexadas, en revisión y en preparación.",
     "academic": {
       "label": "Proyecto de investigación UNICA 2023 · tesista, 2023 - 2025",
       "title": "Análisis de la calidad del aire para la alerta temprana de tormentas de polvo mediante monitoreo climático en Ica",
@@ -312,234 +216,15 @@
     "copied": "Cita copiada",
     "doi": "Ver DOI"
   },
-  "timeline": {
-    "title": "Trayectoria",
-    "intro": "Formación, investigación, premios y trabajo desde 2016, del más reciente al primero.",
-    "all": "Todo",
-    "types": {
-      "research": "Investigación",
-      "work": "Experiencia",
-      "education": "Formación",
-      "award": "Premios y becas",
-      "community": "Comunidad"
-    },
-    "now": "Hoy",
-    "events": [
-      {
-        "date": "2016",
-        "type": "award",
-        "title": "Primer lugar en proyectos productivos",
-        "org": "I.E. República de Bolivia, Lima",
-        "text": "Concurso de Proyectos Productivos y Emprendedores, 5.º de secundaria."
-      },
-      {
-        "date": "2018 - 2022",
-        "type": "community",
-        "title": "Divulgación astronómica",
-        "org": "Grupo Astronómico MUTSUNICA, CIEASEST",
-        "text": "Observaciones públicas con los telescopios Nishimura y FMT."
-      },
-      {
-        "date": "2021",
-        "type": "community",
-        "title": "Hult Prize, ronda UNICA",
-        "org": "Competencia internacional de emprendimiento social",
-        "text": "Equipo Sonqo: un producto alimenticio a base de calabaza."
-      },
-      {
-        "date": "2022",
-        "type": "community",
-        "title": "Candidato estudiantil",
-        "org": "Movimiento Universitario UDI",
-        "text": "Candidato a la Asamblea Universitaria de la UNICA."
-      },
-      {
-        "date": "Oct 2022",
-        "type": "education",
-        "title": "Escuela de Computación Cuántica",
-        "org": "Universidad Nacional Mayor de San Marcos, Lima",
-        "text": "Fundamentos de computación cuántica.",
-        "course": true
-      },
-      {
-        "date": "Desde 2022",
-        "type": "research",
-        "title": "Colaborador de AFINSA",
-        "org": "Red de campo eléctrico atmosférico en Sudamérica",
-        "text": "Red de medición en Perú, Brasil y Argentina."
-      },
-      {
-        "date": "Dic 2022 - May 2023",
-        "type": "education",
-        "title": "Desarrollador Backend con Java",
-        "org": "Oracle Next Education",
-        "text": "Programación orientada a objetos y desarrollo backend.",
-        "course": true
-      },
-      {
-        "date": "2018 - 2023",
-        "type": "education",
-        "title": "Bachiller en Física",
-        "org": "Universidad Nacional San Luis Gonzaga (UNICA)",
-        "text": "Promedio 15.29/20, tercio superior."
-      },
-      {
-        "date": "Mar 2023 - Jul 2024",
-        "type": "work",
-        "title": "Supervisor de instrumentación geofísica",
-        "org": "Instituto Geofísico del Perú, Radio Observatorio de Jicamarca",
-        "text": "Radar HF, estación biestática y magnetómetro MAGDAS de la Estación Solar UNICA: más del 95% de operatividad y 20% menos en tiempos de respuesta."
-      },
-      {
-        "date": "May - Jul 2023",
-        "type": "work",
-        "title": "Practicante en el laboratorio de física",
-        "org": "Institución Educativa San Luis Gonzaga",
-        "text": "Calibración de instrumentos, reparación de equipos y gestión de repuestos."
-      },
-      {
-        "date": "Ago 2023",
-        "type": "research",
-        "title": "Dos ponencias en el ECI",
-        "org": "Encuentro Científico Internacional, Lima",
-        "text": "Campo eléctrico atmosférico en Ica y catálogo de fenómenos solares del FMT."
-      },
-      {
-        "date": "2023",
-        "type": "award",
-        "title": "Premio de Investigación UNICA 2023",
-        "org": "Cerca de USD 16,000 de financiamiento",
-        "text": "Proyecto ganador de alerta de tormentas de polvo, origen de AIREICA."
-      },
-      {
-        "date": "2023 - 2025",
-        "type": "research",
-        "title": "Tesista en el proyecto AIREICA",
-        "org": "CIEASEST, UNICA",
-        "text": "Pipeline de datos de aireica.com con sensores PM, campo eléctrico, meteorología y cámaras."
-      },
-      {
-        "date": "Ene - Mar 2024",
-        "type": "education",
-        "title": "Ciencia de Datos con Python",
-        "org": "Data Analítica",
-        "text": "Análisis y modelado con Python.",
-        "course": true
-      },
-      {
-        "date": "2024",
-        "type": "research",
-        "title": "Publicación en JASTP",
-        "org": "Journal of Atmospheric and Solar-Terrestrial Physics",
-        "text": "Primer estudio del gradiente de potencial en Ica."
-      },
-      {
-        "date": "Jul - Oct 2024",
-        "type": "award",
-        "title": "Beca completa ProInnovate",
-        "org": "Bootcamp de Análisis de Datos, Le Wagon (cerca de USD 5,000)",
-        "text": "Proyecto final: el sistema de puntuación Prello.",
-        "course": true
-      },
-      {
-        "date": "Nov - Dic 2024",
-        "type": "work",
-        "title": "Líder del equipo de datos en Reffindr",
-        "org": "Igrowker, IT Training Lab N.º 04",
-        "text": "API en Python y Flask, ETL y reportes en Power BI."
-      },
-      {
-        "date": "Feb 2025",
-        "type": "education",
-        "title": "Introducción a IA y Machine Learning en Google Cloud",
-        "org": "Arki1, partner autorizado de Google Cloud",
-        "text": "Fundamentos de IA y ML en la nube.",
-        "course": true
-      },
-      {
-        "date": "2025",
-        "type": "community",
-        "title": "Líder de equipo",
-        "org": "No Country Tech",
-        "text": "Lideré equipos de desarrollo en un ciclo completo de entrega."
-      },
-      {
-        "date": "Jul - Oct 2025",
-        "type": "award",
-        "title": "Beca del Programa Iberoamericano de Competencias Digitales",
-        "org": "SEGIB, OIJ, AECID e IMMUNE",
-        "text": "Fundé y coordiné un grupo de estudio en Discord para participantes de Iberoamérica.",
-        "course": true
-      },
-      {
-        "date": "Ago - Nov 2025",
-        "type": "award",
-        "title": "Beca completa AWS re/Start",
-        "org": "Amazon Web Services y Bootcamp Institute",
-        "text": "12 semanas de computación en la nube.",
-        "course": true
-      },
-      {
-        "date": "Oct 2025",
-        "type": "research",
-        "title": "NASA Space Apps Challenge",
-        "org": "Historias Estelares",
-        "text": "El viaje de Cori, una aplicación sobre clima espacial."
-      },
-      {
-        "date": "Nov 2025",
-        "type": "research",
-        "title": "Ponencia en COINCOM 2025",
-        "org": "Cartagena, Colombia",
-        "text": "AIREICA: monitoreo atmosférico y alerta de tormentas de polvo."
-      },
-      {
-        "date": "Dic 2025",
-        "type": "research",
-        "title": "Ponencia en CONINTI 2025",
-        "org": "Ica, Perú",
-        "text": "Calidad del aire y alerta de tormentas de polvo con campo eléctrico."
-      },
-      {
-        "date": "2026",
-        "type": "research",
-        "title": "Publicación en Atmospheric Research",
-        "org": "Elsevier",
-        "text": "Tiempo de anticipación eléctrica durante una intrusión extrema de polvo en Ica."
-      },
-      {
-        "date": "Jun 2026",
-        "type": "award",
-        "title": "Beca CAPES de maestría",
-        "org": "Coordenação de Aperfeiçoamento de Pessoal de Nível Superior, Brasil",
-        "text": "Financiamiento completo de la maestría, obtenido por concurso."
-      },
-      {
-        "date": "Desde Ago 2026",
-        "type": "education",
-        "title": "Maestría en Ingeniería Eléctrica y Computación",
-        "org": "Universidade Presbiteriana Mackenzie, CRAAM, São Paulo",
-        "text": "Tesis: predicción del primer rayo de una tormenta sobre São Paulo."
-      },
-      {
-        "date": "Desde Sep 2026",
-        "type": "award",
-        "title": "GCI World 2026, participante seleccionado",
-        "org": "Matsuo-Iwasawa Laboratory, The University of Tokyo",
-        "text": "Programa de tres meses en Python, machine learning y análisis de datos (apoyo de JICA).",
-        "course": true
-      }
-    ],
-    "cv": "Ver el CV completo"
-  },
   "skills": {
-    "title": "Herramientas",
+    "title": "Habilidades técnicas",
     "intro": "Lo que uso para pasar de la medición al modelo.",
     "groups": [
       "Machine learning",
       "Programación",
+      "Bases de datos",
+      "Datos y BI",
       "Datos científicos",
-      "Bases de datos y BI",
       "Herramientas e infraestructura"
     ]
   },
@@ -660,7 +345,8 @@
       }
     ],
     "languagesTitle": "Idiomas",
-    "languages": "Español (nativo) · Inglés (B1) · Portugués (intermedio)"
+    "languages": "Español (nativo) · Inglés (B1) · Portugués (intermedio)",
+    "thesisTitle": "Experiencia en investigación"
   },
   "footer": {
     "rights": "Todos los derechos reservados.",
@@ -677,5 +363,220 @@
       "dipole": "Campo magnético terrestre",
       "wave": "Ondas en una atmósfera estratificada"
     }
+  },
+  "education": {
+    "title": "Educación",
+    "intro": "Formación universitaria, de la física a la ingeniería eléctrica y computación.",
+    "items": [
+      {
+        "date": "Ago 2026 - Jul 2028",
+        "place": "São Paulo, Brasil",
+        "title": "Maestría en Ingeniería Eléctrica y Computación",
+        "org": "Universidade Presbiteriana Mackenzie, Centro de Radioastronomía y Astrofísica (CRAAM)",
+        "text": "Predicción del primer rayo de una tormenta sobre São Paulo a partir del campo eléctrico atmosférico medido en tierra y de observaciones satelitales, cuantificando cuánto tiempo de aviso aporta cada sensor.",
+        "tags": [
+          "Beca CAPES",
+          "En curso"
+        ]
+      },
+      {
+        "date": "2018 - 2023",
+        "place": "Ica, Perú",
+        "title": "Bachiller en Física",
+        "org": "Universidad Nacional San Luis Gonzaga (UNICA)",
+        "text": "Promedio 15.29/20 (escala 0-20), tercio superior de la promoción.",
+        "tags": [
+          "Tercio superior"
+        ]
+      }
+    ]
+  },
+  "awards": {
+    "title": "Becas y premios",
+    "intro": "Becas, programas internacionales y reconocimientos obtenidos por concurso.",
+    "items": [
+      {
+        "date": "Sep 2026",
+        "title": "GCI World 2026 (Japón)",
+        "org": "Matsuo-Iwasawa Laboratory, The University of Tokyo",
+        "text": "Participante seleccionado."
+      },
+      {
+        "date": "Jun 2026",
+        "title": "Beca CAPES de maestría (Brasil)",
+        "org": "Universidade Presbiteriana Mackenzie",
+        "text": "Financiamiento completo del programa de maestría, otorgado por concurso."
+      },
+      {
+        "date": "2025",
+        "title": "Beca completa AWS re/Start",
+        "org": "Amazon Web Services",
+        "text": "Programa de 12 semanas en computación en la nube."
+      },
+      {
+        "date": "2025",
+        "title": "Programa Iberoamericano de Competencias Digitales para Jóvenes",
+        "org": "SEGIB, OIJ y AECID",
+        "text": "Beca internacional completa."
+      },
+      {
+        "date": "2024",
+        "title": "Beca completa ProInnovate (cerca de USD 5,000)",
+        "org": "Le Wagon",
+        "text": "Bootcamp de Análisis de Datos."
+      },
+      {
+        "date": "2023",
+        "title": "Premio al Proyecto de Investigación Científica UNICA",
+        "org": "Universidad Nacional San Luis Gonzaga",
+        "text": "Integrante del proyecto ganador de alerta temprana de tormentas de polvo, financiado con cerca de USD 16,000."
+      },
+      {
+        "date": "2016",
+        "title": "Primer lugar, Concurso de Proyectos Productivos y Emprendedores",
+        "org": "Institución Educativa República de Bolivia, Lima",
+        "text": "5.º año de secundaria."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Experiencia",
+    "intro": "Investigación con datos de instrumentos reales y operación de instrumentación geofísica.",
+    "researchTitle": "Experiencia en investigación",
+    "workTitle": "Experiencia profesional",
+    "research": [
+      {
+        "date": "2023 - 2025",
+        "place": "Ica, Perú",
+        "title": "Tesista: análisis de la calidad del aire para la alerta temprana de tormentas de polvo mediante monitoreo climático en Ica",
+        "org": "CIEASEST, Universidad Nacional San Luis Gonzaga · financiado por el Concurso de Investigación Científica UNICA 2023",
+        "text": "Construí el pipeline de datos de aireica.com, integrando cuatro grupos de instrumentos: sensores de material particulado (PM2.5, PM10), un sensor de campo eléctrico atmosférico como precursor de tormentas, estaciones meteorológicas (viento, temperatura, humedad, presión) y cámaras que validan cada alerta. Procesamiento en Python y SQL sobre máquinas virtuales Linux configuradas por mí, con tableros en Power BI. La plataforma emitió una alerta pública durante el evento extremo de polvo del 31 de julio de 2025.",
+        "link": "Visitar aireica.com"
+      }
+    ],
+    "work": [
+      {
+        "date": "Mar 2023 - Jul 2024",
+        "place": "Ica, Perú",
+        "title": "Supervisor de instrumentación geofísica",
+        "org": "Instituto Geofísico del Perú, Radio Observatorio de Jicamarca",
+        "text": "Contrato único de supervisión del radar HF, la estación receptora de radar biestático y el magnetómetro MAGDAS de la Estación Solar UNICA, nodo de la red peruana de sondeo ionosférico HF operada bajo el convenio IGP y Cornell University. Entregué los informes formales de funcionamiento al equipo de coordinación de Jicamarca; mantuve más del 95% de disponibilidad operativa y reduje cerca de 20% los tiempos de resolución de incidentes, en paralelo con mi carrera."
+      },
+      {
+        "date": "May - Jul 2023",
+        "place": "Ica, Perú",
+        "title": "Practicante preprofesional, laboratorio de física",
+        "org": "Institución Educativa San Luis Gonzaga",
+        "text": "Calibré instrumentos de medición, restauré equipos dañados mediante soldadura y reemplazo de componentes, y gestioné la compra de repuestos para las prácticas de los estudiantes."
+      }
+    ]
+  },
+  "talks": {
+    "title": "Ponencias",
+    "intro": "Presentaciones orales en congresos científicos, como coautor."
+  },
+  "training": {
+    "title": "Formación complementaria",
+    "intro": "Programas seleccionados en inteligencia artificial y ciencia de datos.",
+    "items": [
+      {
+        "date": "Desde Sep 2026",
+        "title": "GCI World, Global Consumer Intelligence",
+        "org": "Matsuo-Iwasawa Laboratory, The University of Tokyo (apoyo de JICA)",
+        "text": "Currículo insignia de tres meses en Python, machine learning y análisis de datos aplicado."
+      },
+      {
+        "date": "Ago - Nov 2025",
+        "title": "AWS re/Start",
+        "org": "Amazon Web Services y Bootcamp Institute (México)",
+        "text": "Intensivo de doce semanas en computación en la nube."
+      },
+      {
+        "date": "Jul - Oct 2025",
+        "title": "Programa Iberoamericano de Competencias Digitales para Jóvenes",
+        "org": "IMMUNE Technology Institute (España)",
+        "text": "Fundé y coordiné un grupo de estudio en Discord para participantes de toda Iberoamérica."
+      },
+      {
+        "date": "Feb 2025",
+        "title": "Introducción a IA y Machine Learning en Google Cloud",
+        "org": "Arki1, partner autorizado de Google Cloud",
+        "text": ""
+      },
+      {
+        "date": "Nov - Dic 2024",
+        "title": "IT Training Lab N.º 04, Analista de Datos",
+        "org": "Igrowker (España)",
+        "text": ""
+      },
+      {
+        "date": "Jul - Oct 2024",
+        "title": "Bootcamp de Análisis de Datos",
+        "org": "Le Wagon LATAM",
+        "text": ""
+      },
+      {
+        "date": "Oct 2022",
+        "title": "Escuela de Computación Cuántica",
+        "org": "Universidad Nacional Mayor de San Marcos (UNMSM), Lima",
+        "text": ""
+      }
+    ]
+  },
+  "more": {
+    "title": "Idiomas, redes y voluntariado",
+    "languagesTitle": "Idiomas",
+    "languages": [
+      {
+        "name": "Español",
+        "level": "Nativo",
+        "value": 100
+      },
+      {
+        "name": "Inglés",
+        "level": "B1",
+        "value": 55
+      },
+      {
+        "name": "Portugués",
+        "level": "Intermedio, en clases en São Paulo",
+        "value": 50
+      }
+    ],
+    "networksTitle": "Redes",
+    "networks": [
+      {
+        "date": "Desde 2022",
+        "title": "AFINSA",
+        "text": "Red de campo eléctrico atmosférico en Sudamérica (Perú, Brasil y Argentina), colaborador."
+      }
+    ],
+    "volunteeringTitle": "Liderazgo y voluntariado",
+    "volunteering": [
+      {
+        "date": "2025",
+        "title": "Líder de equipo",
+        "org": "No Country Tech",
+        "text": "Lideré equipos de desarrollo en un ciclo completo de entrega en una simulación laboral tecnológica."
+      },
+      {
+        "date": "2022",
+        "title": "Candidato estudiantil",
+        "org": "UDI, Movimiento Universitario Unidos por la Democracia y la Investigación",
+        "text": "Candidato en la elección de la Asamblea Universitaria de la UNICA."
+      },
+      {
+        "date": "2021",
+        "title": "Hult Prize, ronda UNICA",
+        "org": "Competencia internacional de emprendimiento social",
+        "text": "Equipo Sonqo: un producto alimenticio a base de calabaza para el reto de sistemas alimentarios."
+      },
+      {
+        "date": "2018 - 2022",
+        "title": "Grupo Astronómico MUTSUNICA",
+        "org": "CIEASEST, UNICA",
+        "text": "Eventos de divulgación que abrieron al público los telescopios Nishimura y FMT."
+      }
+    ]
   }
 }

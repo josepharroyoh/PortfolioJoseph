@@ -11,16 +11,15 @@ import { LANGUAGES } from "../../i18n";
 import { palette } from "../../hooks/usePalette";
 import type { SectionId } from "../../data/profile";
 
-const LINKS = ["about", "research", "projects", "timeline", "contact"] as const;
+const LINKS = ["education", "publications", "experience", "projects", "contact"] as const;
 type LinkId = (typeof LINKS)[number];
 
 const NAV_FOR: Partial<Record<SectionId, LinkId>> = {
-  highlights: "about",
+  education: "education",
+  publications: "publications",
+  awards: "publications",
+  experience: "experience",
   projects: "projects",
-  about: "about",
-  research: "research",
-  timeline: "timeline",
-  skills: "timeline",
   contact: "contact",
 };
 

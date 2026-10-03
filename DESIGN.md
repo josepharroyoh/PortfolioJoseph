@@ -49,17 +49,10 @@ Contact and footer are always dark (`.force-dark`).
 
 ## Page structure (home)
 
-| Section | Layout | Interaction |
-| --- | --- | --- |
-| Title block | status, name (italic surname in accent), role, topics, dek, CTAs and byline, all inside one viewport; the background galaxy fills the right side | lines rise from masks |
-| Figura 1 | full-width plot with caption | live EFM signal, storms on its own, cursor or tap brings the cloud |
-| Perfil | text column + margin notes | lead lights up word by word, drop cap |
-| En cifras | ruled 3x2 table, serif numerals | count-up |
-| Investigación | reference-list layout + margin (ORCID, copy citation) | copy APA citation |
-| Proyectos | alternating figures (Fig. 2+) with captions | videos play in view, media clip-reveal |
-| Trayectoria | CV table | underline tabs with counts |
-| Herramientas | ruled 2x2 table | none |
-| Contacto | dark slab with its own night sky, bat, big cube, form | copy email, cube watches the form |
-
-Global: sticky table of contents on wide screens with reading progress, text nav,
-⌘K palette, cube assistant, pixel bat, printable CV, thesis page.
+Follows the order of the CV: title block (centred, one viewport), Educación,
+Publicaciones (reference list with DOI and copy citation), Becas y premios, Experiencia
+(research and professional), Proyectos (alternating figures), Ponencias, Habilidades
+técnicas, Formación complementaria, Idiomas, redes y voluntariado, Contacto.
+CV rows share `EntryRow` (`sections/CvSections.tsx`): dates and place in the margin,
+serif title, institution in italics, accent hairline on hover. The printable CV at
+`/cv` reads the same locale keys.

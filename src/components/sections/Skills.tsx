@@ -17,7 +17,7 @@ export function Skills() {
             <dd className="mt-3 font-serif text-[1.2rem] leading-relaxed">
               {skills.map((skill, j) => (
                 <span key={skill}>
-                  <span className="transition-colors duration-200 hover:text-accent">{skill}</span>
+                  <span className="whitespace-nowrap transition-colors duration-200 hover:text-accent">{skill}</span>
                   {j < skills.length - 1 && (
                     <span aria-hidden="true" className="px-1.5 text-faint">
                       ·

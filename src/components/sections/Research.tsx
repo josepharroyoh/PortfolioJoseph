@@ -6,8 +6,6 @@ import { button } from "../ui/styles";
 import { PROFILE } from "../../data/profile";
 import { useCopy } from "../../hooks/useCopy";
 
-type Academic = { label: string; title: string; authors: string; text: string; link: string };
-type Congress = { date: string; title: string; place: string; topic: string };
 
 const ME = /(Arroyo, J\.)/;
 
@@ -78,12 +76,10 @@ function Reference({ pub, featured }: { pub: Publication; featured: boolean }) {
 export function Research() {
   const { t } = useTranslation();
   const pubs = useCopy<Publication[]>("research.publications");
-  const academic = useCopy<Academic>("research.academic");
-  const congresses = useCopy<Congress[]>("research.congresses");
 
   return (
     <Section
-      id="research"
+      id="publications"
       title={t("research.title")}
       intro={t("research.intro")}
       aside={
@@ -102,33 +98,6 @@ export function Research() {
         ))}
       </ol>
 
-      <article className="reveal mt-12 border-l-2 border-accent pl-5 md:pl-7">
-        <p className="text-sm text-muted">{academic.label}</p>
-        <h3 className="mt-2 font-serif text-[1.45rem] leading-snug">{academic.title}</h3>
-        <p className="mt-2 text-sm text-muted">
-          <Authors text={academic.authors} />
-        </p>
-        <p className="serif-body mt-4 max-w-[62ch] text-muted">{academic.text}</p>
-        <a href={PROFILE.links.aireica} target="_blank" rel="noopener noreferrer" className="link-underline mt-4 inline-flex items-center gap-1 text-accent">
-          {academic.link}
-          <ArrowUpRightIcon size={15} />
-        </a>
-      </article>
-
-      <h3 className="label reveal mt-14">{t("research.congressesTitle")}</h3>
-      <ol className="mt-3 border-t border-line">
-        {congresses.map((c, i) => (
-          <li key={`${c.title}-${i}`} className="reveal grid gap-1 border-b border-line py-5 md:grid-cols-[6.5rem_1fr] md:gap-6">
-            <span className="text-sm text-muted tabular-nums">{c.date}</span>
-            <div>
-              <p className="font-serif text-[1.2rem] leading-snug">{c.topic}</p>
-              <p className="mt-1 text-[15px] text-muted">
-                <span className="italic">{c.title}</span>, {c.place}
-              </p>
-            </div>
-          </li>
-        ))}
-      </ol>
     </Section>
   );
 }

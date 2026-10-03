@@ -19,7 +19,7 @@ export const THESIS_PATH = "/proyectos/prediccion-de-rayos";
 export const CV_PATH = "/cv";
 
 /** Home page sections in order; the nav and the assistant follow the active one. */
-export const SECTIONS = ["home", "about", "highlights", "research", "projects", "timeline", "skills", "contact"] as const;
+export const SECTIONS = ["home", "education", "publications", "awards", "experience", "projects", "talks", "skills", "training", "more", "contact"] as const;
 export type SectionId = (typeof SECTIONS)[number];
 
 type Project = {
@@ -74,7 +74,8 @@ export const PROJECTS: Project[] = [
 export const SKILL_GROUPS = [
   ["scikit-learn", "Modelos de series temporales", "Deep learning (RNN, CNN, transformer)", "Evaluación y calibración"],
   ["Python (NumPy, pandas, Matplotlib)", "SQL", "Flask", "Java", "HTML"],
+  ["PostgreSQL", "MySQL", "SQL Server", "BigQuery", "Supabase"],
+  ["Power BI", "Looker Studio", "Pipelines ETL"],
   ["GOES-16/19 (ABI, GLM)", "STARNET VLF", "Red AFINSA de campo eléctrico", "Radiosondas", "Sensores PM y meteorológicos"],
-  ["PostgreSQL", "MySQL", "SQL Server", "BigQuery", "Supabase", "Power BI", "Looker Studio", "ETL"],
   ["Jupyter", "VS Code", "Git y GitHub", "LaTeX", "AWS", "Google Cloud Platform", "Azure App Services", "Linux", "Máquinas virtuales"],
 ];

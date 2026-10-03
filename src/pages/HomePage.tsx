@@ -5,11 +5,9 @@ import { useTranslation } from "react-i18next";
 import { PageShell } from "../components/layout/PageShell";
 import { Intro } from "../components/layout/Intro";
 import { Hero } from "../components/sections/Hero";
-import { Highlights } from "../components/sections/Highlights";
 import { Projects } from "../components/sections/Projects";
-import { About } from "../components/sections/About";
 import { Research } from "../components/sections/Research";
-import { Timeline } from "../components/sections/Timeline";
+import { Awards, Education, Experience, More, Talks, Training } from "../components/sections/CvSections";
 import { Skills } from "../components/sections/Skills";
 import { Contact } from "../components/sections/Contact";
 import { Toc } from "../components/layout/Toc";
@@ -63,12 +61,15 @@ export default function HomePage() {
           <Toc active={active} />
         </aside>
         <div className="min-w-0">
-          <About />
-          <Highlights />
+          <Education />
           <Research />
+          <Awards />
+          <Experience />
           <Projects />
-          <Timeline />
+          <Talks />
           <Skills />
+          <Training />
+          <More />
         </div>
       </div>
       <Contact />

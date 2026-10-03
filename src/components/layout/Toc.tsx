@@ -6,8 +6,8 @@ import { sectionShape } from "../fx/universe-shapes";
 import type { ShapeKey } from "../fx/universe-shapes";
 import { useCopy } from "../../hooks/useCopy";
 
-const ITEMS = ["about", "research", "projects", "timeline", "skills", "contact"] as const;
-const OWNER: Partial<Record<SectionId, (typeof ITEMS)[number]>> = { highlights: "about" };
+const ITEMS = ["education", "publications", "awards", "experience", "projects", "talks", "skills", "training", "more", "contact"] as const;
+const OWNER: Partial<Record<SectionId, (typeof ITEMS)[number]>> = {};
 
 /** Table of contents pinned in the left margin on wide screens, like a long-form paper. */
 export function Toc({ active }: { active: SectionId }) {
