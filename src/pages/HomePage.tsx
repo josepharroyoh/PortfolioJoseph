@@ -6,8 +6,7 @@ import { PageShell } from "../components/layout/PageShell";
 import { Intro } from "../components/layout/Intro";
 import { Hero } from "../components/sections/Hero";
 import { Projects } from "../components/sections/Projects";
-import { Research } from "../components/sections/Research";
-import { Awards, Education, Experience, More, Talks, Training } from "../components/sections/CvSections";
+import { Academic, Awards, Experience, Training, Volunteering } from "../components/sections/CvSections";
 import { Skills } from "../components/sections/Skills";
 import { Contact } from "../components/sections/Contact";
 import { Toc } from "../components/layout/Toc";
@@ -61,15 +60,13 @@ export default function HomePage() {
           <Toc active={active} />
         </aside>
         <div className="min-w-0">
-          <Education />
-          <Research />
+          <Academic />
           <Awards />
           <Experience />
           <Projects />
-          <Talks />
           <Skills />
           <Training />
-          <More />
+          <Volunteering />
         </div>
       </div>
       <Contact />

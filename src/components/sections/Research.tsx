@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowUpRightIcon, CheckIcon, CopyIcon } from "@phosphor-icons/react";
-import { Section } from "../ui/Section";
 import { button } from "../ui/styles";
-import { PROFILE } from "../../data/profile";
-import { useCopy } from "../../hooks/useCopy";
 
 
 const ME = /(Arroyo, J\.)/;
@@ -29,7 +26,7 @@ export function Authors({ text }: { text: string }) {
 export type Publication = { status: string; authors: string; year: string; title: string; journal: string; doi?: string };
 
 /** One reference, set like an entry in a reference list, with its status, DOI and a copy button. */
-function Reference({ pub, featured }: { pub: Publication; featured: boolean }) {
+export function Reference({ pub, featured }: { pub: Publication; featured: boolean }) {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
   const citation = `${pub.authors} (${pub.year}). ${pub.title}${pub.journal ? ` ${pub.journal}.` : ""}${pub.doi ? ` https://doi.org/${pub.doi}` : ""}`;
@@ -70,34 +67,5 @@ function Reference({ pub, featured }: { pub: Publication; featured: boolean }) {
         </div>
       )}
     </li>
-  );
-}
-
-export function Research() {
-  const { t } = useTranslation();
-  const pubs = useCopy<Publication[]>("research.publications");
-
-  return (
-    <Section
-      id="publications"
-      title={t("research.title")}
-      intro={t("research.intro")}
-      aside={
-        <div className="reveal space-y-3">
-          <p className="label">ORCID</p>
-          <a href={PROFILE.links.orcid} target="_blank" rel="noopener noreferrer" className="link-underline inline-flex items-center gap-1 font-mono text-sm">
-            0000-0002-1355-5182
-            <ArrowUpRightIcon size={13} />
-          </a>
-        </div>
-      }
-    >
-      <ol className="divide-y divide-line">
-        {pubs.map((pub, i) => (
-          <Reference key={pub.title} pub={pub} featured={i === 0} />
-        ))}
-      </ol>
-
-    </Section>
   );
 }

@@ -24,8 +24,10 @@
     "awards": "Becas y premios",
     "experience": "Experiencia",
     "talks": "Ponencias",
-    "training": "Formación",
-    "more": "Idiomas y redes"
+    "training": "Formación en IA",
+    "more": "Idiomas y redes",
+    "academic": "Investigación",
+    "volunteering": "Voluntariado"
   },
   "hero": {
     "status": "Becario CAPES · Maestría en curso en São Paulo",
@@ -469,14 +471,18 @@
         "org": "Institución Educativa San Luis Gonzaga",
         "text": "Calibré instrumentos de medición, restauré equipos dañados mediante soldadura y reemplazo de componentes, y gestioné la compra de repuestos para las prácticas de los estudiantes."
       }
-    ]
+    ],
+    "tabs": {
+      "research": "Investigación",
+      "work": "Profesional"
+    }
   },
   "talks": {
     "title": "Ponencias",
     "intro": "Presentaciones orales en congresos científicos, como coautor."
   },
   "training": {
-    "title": "Formación complementaria",
+    "title": "Formación en IA y ciencia de datos",
     "intro": "Programas seleccionados en inteligencia artificial y ciencia de datos.",
     "items": [
       {
@@ -551,7 +557,7 @@
         "text": "Red de campo eléctrico atmosférico en Sudamérica (Perú, Brasil y Argentina), colaborador."
       }
     ],
-    "volunteeringTitle": "Liderazgo y voluntariado",
+    "volunteeringTitle": "Voluntariado",
     "volunteering": [
       {
         "date": "2025",
@@ -577,6 +583,16 @@
         "org": "CIEASEST, UNICA",
         "text": "Eventos de divulgación que abrieron al público los telescopios Nishimura y FMT."
       }
-    ]
+    ],
+    "intro": "Liderazgo, comunidad y divulgación científica."
+  },
+  "academic": {
+    "title": "Educación e investigación",
+    "intro": "Formación universitaria, artículos científicos y conferencias en un solo lugar.",
+    "tabs": {
+      "education": "Educación",
+      "publications": "Publicaciones",
+      "talks": "Conferencias"
+    }
   }
 }

@@ -19,7 +19,7 @@ export const THESIS_PATH = "/proyectos/prediccion-de-rayos";
 export const CV_PATH = "/cv";
 
 /** Home page sections in order; the nav and the assistant follow the active one. */
-export const SECTIONS = ["home", "education", "publications", "awards", "experience", "projects", "talks", "skills", "training", "more", "contact"] as const;
+export const SECTIONS = ["home", "academic", "awards", "experience", "projects", "skills", "training", "volunteering", "contact"] as const;
 export type SectionId = (typeof SECTIONS)[number];
 
 type Project = {

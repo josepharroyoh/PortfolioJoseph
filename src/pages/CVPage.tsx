@@ -105,7 +105,7 @@ export default function CVPage() {
             ))}
           </Section>
 
-          <Section title={t("research.title")}>
+          <Section title={t("academic.tabs.publications")}>
             {pubs.map((pub) => (
               <div key={pub.title} className="avoid-break grid gap-1 sm:grid-cols-[8.5rem_1fr] sm:gap-5">
                 <p className="font-mono text-[13px] text-muted">
@@ -145,7 +145,7 @@ export default function CVPage() {
               ))}
           </Section>
 
-          <Section title={t("talks.title")}>
+          <Section title={t("academic.tabs.talks")}>
             {congresses.map((c, i) => (
               <Row key={i} date={c.date} title={c.topic} org={`${c.title}, ${c.place}`} />
             ))}
@@ -166,7 +166,7 @@ export default function CVPage() {
             ))}
           </Section>
 
-          <Section title={t("more.title")}>
+          <Section title={t("more.volunteeringTitle")}>
             <Row date={t("more.languagesTitle")} title={languages.map((l) => `${l.name} (${l.level})`).join(" · ")} />
             {networks.map((n) => (
               <Row key={n.title} date={n.date} title={n.title} text={n.text} />

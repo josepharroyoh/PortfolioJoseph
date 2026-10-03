@@ -108,7 +108,7 @@ export function Hero({ ready }: { ready: boolean }) {
 
             <motion.div custom={3} variants={item} initial="out" animate={state} className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Magnetic>
-                <a href="#education" className={button("primary", "h-12 px-6")}>
+                <a href="#academic" className={button("primary", "h-12 px-6")}>
                   {t("hero.ctaWork")}
                   <ArrowDownIcon size={16} weight="bold" />
                 </a>

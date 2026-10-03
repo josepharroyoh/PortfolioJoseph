@@ -49,10 +49,9 @@ Contact and footer are always dark (`.force-dark`).
 
 ## Page structure (home)
 
-Follows the order of the CV: title block (centred, one viewport), Educación,
-Publicaciones (reference list with DOI and copy citation), Becas y premios, Experiencia
-(research and professional), Proyectos (alternating figures), Ponencias, Habilidades
-técnicas, Formación complementaria, Idiomas, redes y voluntariado, Contacto.
-CV rows share `EntryRow` (`sections/CvSections.tsx`): dates and place in the margin,
-serif title, institution in italics, accent hairline on hover. The printable CV at
-`/cv` reads the same locale keys.
+Centred title block (one viewport), then: Educación e investigación (tabs: Educación,
+Publicaciones, Conferencias), Becas y premios (tilt cards), Experiencia (tabs:
+Investigación, Profesional), Proyectos (alternating figures), Habilidades técnicas,
+Formación en IA y ciencia de datos, Voluntariado (languages and AFINSA as margin
+notes), Contacto. Tabs are a segmented control with a sliding pill (`ui/Tabs.tsx`,
+arrow-key navigation); CV rows share `EntryRow` (`sections/CvSections.tsx`).
