@@ -184,60 +184,56 @@ export function Hero({ ready }: { ready: boolean }) {
       <div className={clsx(container, "relative")}>
         {/* The first screen: everything from the status line to the byline fits one viewport. */}
         <div className="flex min-h-[100svh] flex-col pt-24 pb-6 md:pt-28">
-          <div className="my-auto grid gap-12 py-8 lg:grid-cols-12 lg:items-end lg:gap-10">
-            <div className="lg:col-span-7">
-              <motion.p custom={0} variants={item} initial="out" animate={state} className="label flex items-center gap-2">
-                <span className="h-1.5 w-1.5 animate-pulse-dot rounded-full bg-ok text-ok" aria-hidden="true" />
-                {t("hero.status")}
-              </motion.p>
+          {/* Centred title block over the galaxy: status, name, role, research lines, actions. */}
+          <div className="my-auto flex flex-col items-center py-4 text-center">
+            <motion.p custom={0} variants={item} initial="out" animate={state} className="label">
+              <span className="mr-2 inline-block h-1.5 w-1.5 -translate-y-px animate-pulse-dot rounded-full bg-ok align-middle text-ok" aria-hidden="true" />
+              {t("hero.status")}
+            </motion.p>
 
-              <h1 id="hero-title" className="mt-6 text-[clamp(3rem,min(5.6vw,11vh),5.6rem)] leading-[0.92] font-[380] tracking-[-0.035em] whitespace-nowrap">
-                <Line ready={ready} delay={0.05}>
-                  {t("hero.name1")}
-                </Line>
-                <Line ready={ready} delay={0.15} className="text-accent italic">
-                  {t("hero.name2")}
-                </Line>
-              </h1>
+            <h1 id="hero-title" className="mt-6 text-[clamp(3.2rem,min(9vw,12vh),8.8rem)] leading-[0.9] font-[360] tracking-[-0.04em]">
+              <Line ready={ready} delay={0.05}>
+                {t("hero.name1")}
+              </Line>
+              <Line ready={ready} delay={0.15} className="text-accent italic">
+                {t("hero.name2")}
+              </Line>
+            </h1>
 
-              <motion.p custom={1} variants={item} initial="out" animate={state} className="mt-6 max-w-[30ch] font-serif text-[clamp(1.25rem,1.8vw,1.6rem)] leading-snug text-muted">
-                {t("hero.role")}
-              </motion.p>
+            <motion.p custom={1} variants={item} initial="out" animate={state} className="mt-6 max-w-[62ch] font-serif text-[clamp(1.2rem,1.7vw,1.5rem)] leading-snug text-muted">
+              {t("hero.role")}
+            </motion.p>
 
-              <motion.div custom={2} variants={item} initial="out" animate={state} className="mt-9 flex flex-wrap items-center gap-3">
-                <Magnetic>
-                  <a href="#research" className={button("primary")}>
-                    {t("hero.ctaWork")}
-                    <ArrowDownIcon size={16} weight="bold" />
-                  </a>
-                </Magnetic>
-                <Magnetic>
-                  <a href="#contact" className={button("secondary", "bg-bg/70 backdrop-blur-sm")}>
-                    <EnvelopeSimpleIcon size={17} />
-                    {t("hero.ctaContact")}
-                  </a>
-                </Magnetic>
-                <SocialLinks className="ml-1" />
-              </motion.div>
-            </div>
+            {/* Research lines as one quiet line of text, separated by small diamonds. */}
+            <motion.ul custom={2} variants={item} initial="out" animate={state} className="mt-5 flex max-w-[64rem] flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-[15px] text-ink/90 sm:gap-x-4">
+              {topics.map((topic, i) => (
+                <li key={topic} className="flex items-center gap-4">
+                  {i > 0 && <span aria-hidden="true" className="hidden h-1.5 w-1.5 rotate-45 bg-accent sm:block" />}
+                  <span className="transition-colors duration-200 hover:text-accent">{topic}</span>
+                </li>
+              ))}
+            </motion.ul>
 
-            {/* Research lines on the right, set over the background galaxy like an index. */}
-            <motion.div custom={3} variants={item} initial="out" animate={state} className="lg:col-span-4 lg:col-start-9">
-              <p className="label">{t("hero.topicsLabel")}</p>
-              <ol className="mt-4 border-t border-line-strong">
-                {topics.map((topic, i) => (
-                  <li key={topic} className="group flex items-baseline gap-4 border-b border-line py-3 transition-colors duration-200 hover:text-accent">
-                    <span className="font-mono text-xs text-faint tabular-nums transition-colors duration-200 group-hover:text-accent">{String(i + 1).padStart(2, "0")}</span>
-                    <span className="font-serif text-[clamp(1.1rem,1.45vw,1.3rem)] leading-snug">{topic}</span>
-                  </li>
-                ))}
-              </ol>
+            <motion.div custom={3} variants={item} initial="out" animate={state} className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <Magnetic>
+                <a href="#research" className={button("primary", "h-12 px-6")}>
+                  {t("hero.ctaWork")}
+                  <ArrowDownIcon size={16} weight="bold" />
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a href="#contact" className={button("secondary", "h-12 px-6 bg-bg/70 backdrop-blur-sm")}>
+                  <EnvelopeSimpleIcon size={17} />
+                  {t("hero.ctaContact")}
+                </a>
+              </Magnetic>
+              <SocialLinks labelled className="justify-center" />
             </motion.div>
           </div>
 
           {/* Byline, the way a paper lists its author details. */}
           <motion.dl
-            custom={4}
+            custom={5}
             variants={item}
             initial="out"
             animate={state}

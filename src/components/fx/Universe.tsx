@@ -274,11 +274,11 @@ export function Universe({ active = "home", morph = true, fixed = true, classNam
 
       // Anchor: wide and central for the galaxy in the hero, to the right margin elsewhere.
       const m = Math.min(w, h);
-      const ax = small ? w * (0.78 - 0.06 * (1 - view.home)) : w * (0.74 + 0.08 * (1 - view.home));
-      const ay = small ? h * (0.16 + 0.12 * (1 - view.home)) : h * (0.3 + 0.22 * (1 - view.home));
+      const ax = small ? w * (0.5 + 0.22 * (1 - view.home)) : w * (0.5 + 0.32 * (1 - view.home));
+      const ay = small ? h * (0.22 + 0.06 * (1 - view.home)) : h * (0.44 + 0.08 * (1 - view.home));
       const S = (small ? w * (0.5 - 0.12 * (1 - view.home)) : m * (0.6 - 0.24 * (1 - view.home))) * view.scale;
       // Brightest as the hero galaxy; dimmer when it sits behind reading text.
-      const alphaBase = (night ? 0.7 : 0.38) * (small ? 0.7 : 1) * (0.72 + 0.28 * view.home);
+      const alphaBase = (night ? 0.7 : 0.38) * (small ? 0.7 : 1) * (0.72 + 0.1 * view.home);
 
       if (night) ctx.globalCompositeOperation = "lighter";
       for (let pass = 0; pass < pal.length; pass++) {
