@@ -1,5 +1,6 @@
 @import "tailwindcss";
-@import "@fontsource-variable/bricolage-grotesque/opsz.css";
+@import "@fontsource-variable/newsreader/opsz.css";
+@import "@fontsource-variable/newsreader/opsz-italic.css";
 
 @font-face {
   font-family: "Geist";
@@ -15,39 +16,39 @@
   font-display: swap;
 }
 
-/* Colour tokens. Light is a cool paper white; dark is graphite, not blue-black.
-   One accent, signal orange (the colour of a warning on an instrument),
-   carries every interactive and highlighted element. */
+/* Colour tokens. Light is a clean journal page (cool white, never cream);
+   dark is ink-on-graphite. One accent, oxblood, the colour of a university seal,
+   marks links, figures and the few things that must stand out. */
 :root {
-  --bg: #f4f4f2;
-  --bg-2: #e9e9e6;
-  --surface: #fbfbfa;
-  --ink: #161618;
-  --muted: #5b5b63;
-  --faint: #8d8d95;
-  --line: rgb(22 22 24 / 0.11);
-  --line-strong: rgb(22 22 24 / 0.22);
-  --accent: #c2410c;
-  --accent-soft: rgb(194 65 12 / 0.1);
+  --bg: #fbfbfa;
+  --bg-2: #f1f1ee;
+  --surface: #ffffff;
+  --ink: #1b1b1d;
+  --muted: #5d5d64;
+  --faint: #8c8c93;
+  --line: rgb(27 27 29 / 0.11);
+  --line-strong: rgb(27 27 29 / 0.24);
+  --accent: #9b1c2e;
+  --accent-soft: rgb(155 28 46 / 0.08);
   --on-accent: #fbfbfa;
   --danger: #b42318;
   --ok: #15803d;
-  --shadow: 0 1px 2px rgb(22 22 24 / 0.05), 0 18px 40px -18px rgb(22 22 24 / 0.22);
+  --shadow: 0 1px 2px rgb(27 27 29 / 0.05), 0 18px 40px -20px rgb(27 27 29 / 0.25);
   color-scheme: light;
 }
 
 :root[data-theme="dark"] {
-  --bg: #111113;
-  --bg-2: #1b1b1e;
-  --surface: #161619;
-  --ink: #ececee;
-  --muted: #a0a0a8;
-  --faint: #6b6b73;
-  --line: rgb(236 236 238 / 0.09);
-  --line-strong: rgb(236 236 238 / 0.2);
-  --accent: #ff7a45;
-  --accent-soft: rgb(255 122 69 / 0.12);
-  --on-accent: #111113;
+  --bg: #141416;
+  --bg-2: #1c1c1f;
+  --surface: #19191c;
+  --ink: #eae9e6;
+  --muted: #a4a3a9;
+  --faint: #6f6e75;
+  --line: rgb(234 233 230 / 0.1);
+  --line-strong: rgb(234 233 230 / 0.22);
+  --accent: #f08a93;
+  --accent-soft: rgb(240 138 147 / 0.12);
+  --on-accent: #141416;
   --danger: #ff8f80;
   --ok: #4ade80;
   --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 20px 44px -18px rgb(0 0 0 / 0.75);
@@ -56,17 +57,17 @@
 
 /* Instrument panels stay dark whatever the page theme. */
 .force-dark {
-  --bg: #111113;
-  --bg-2: #1b1b1e;
-  --surface: #161619;
-  --ink: #ececee;
-  --muted: #a0a0a8;
-  --faint: #6b6b73;
-  --line: rgb(236 236 238 / 0.09);
-  --line-strong: rgb(236 236 238 / 0.2);
-  --accent: #ff7a45;
-  --accent-soft: rgb(255 122 69 / 0.12);
-  --on-accent: #111113;
+  --bg: #141416;
+  --bg-2: #1c1c1f;
+  --surface: #19191c;
+  --ink: #eae9e6;
+  --muted: #a4a3a9;
+  --faint: #6f6e75;
+  --line: rgb(234 233 230 / 0.1);
+  --line-strong: rgb(234 233 230 / 0.22);
+  --accent: #f08a93;
+  --accent-soft: rgb(240 138 147 / 0.12);
+  --on-accent: #141416;
   --danger: #ff8f80;
   --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 20px 44px -18px rgb(0 0 0 / 0.75);
   color-scheme: dark;
@@ -76,7 +77,8 @@
 @theme inline {
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
-  --font-display: "Bricolage Grotesque Variable", "Geist", ui-sans-serif, sans-serif;
+  --font-display: "Newsreader Variable", Georgia, "Times New Roman", serif;
+  --font-serif: "Newsreader Variable", Georgia, "Times New Roman", serif;
 
   --color-bg: var(--bg);
   --color-bg-2: var(--bg-2);
@@ -129,6 +131,7 @@
   h2,
   h3 {
     font-family: var(--font-display);
+    font-weight: 450;
     text-wrap: balance;
   }
 
@@ -170,6 +173,34 @@
     transform: scale(0.97);
   }
 
+  /* Long-form reading text, set like a journal. */
+  .serif-body {
+    font-family: var(--font-serif);
+    font-size: 1.19rem;
+    line-height: 1.62;
+    font-variant-numeric: oldstyle-nums;
+  }
+  .dropcap::first-letter {
+    float: left;
+    font-family: var(--font-serif);
+    font-size: 4.6em;
+    line-height: 0.82;
+    padding: 0.06em 0.1em 0 0;
+    color: var(--accent);
+  }
+  /* Small label above blocks: sans, tracked caps, used sparingly. */
+  .label {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .oldstyle {
+    font-variant-numeric: oldstyle-nums;
+  }
+
   .link-underline {
     text-decoration-line: underline;
     text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
@@ -191,6 +222,12 @@
       animation-timeline: view();
       animation-range: entry 0% entry 35%;
     }
+    .rule-draw {
+      transform-origin: left;
+      animation: rule-draw linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
     .reveal-clip {
       animation: reveal-clip linear both;
       animation-timeline: view();
@@ -203,6 +240,12 @@
   from {
     opacity: 0;
     transform: translateY(16px);
+  }
+}
+
+@keyframes rule-draw {
+  from {
+    transform: scaleX(0);
   }
 }
 

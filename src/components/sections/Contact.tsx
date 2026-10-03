@@ -34,13 +34,14 @@ export function Contact() {
     <section id="contact" aria-labelledby="contact-title" className="force-dark bg-bg py-24 md:py-32">
       <div className={`${container} grid gap-14 lg:grid-cols-12`}>
         <div className="lg:col-span-6">
-          <h2 id="contact-title" className="reveal text-[clamp(3rem,8vw,6.5rem)] leading-[0.92] font-semibold tracking-[-0.05em]">
+          <h2 id="contact-title" className="label reveal">
             {t("contact.title")}
           </h2>
+          <p className="reveal mt-5 font-serif text-[clamp(2.3rem,5vw,4.2rem)] leading-[1.02] tracking-[-0.03em] italic">{t("contact.lead")}</p>
           <p className="reveal mt-6 max-w-[42ch] text-lg leading-relaxed text-muted">{t("contact.text")}</p>
 
           <div className="reveal mt-10 flex flex-wrap items-center gap-3">
-            <a href={`mailto:${PROFILE.email}`} className="link-underline font-display text-[clamp(1.25rem,2.6vw,2rem)] font-semibold tracking-[-0.03em] break-all">
+            <a href={`mailto:${PROFILE.email}`} className="link-underline font-serif text-[clamp(1.3rem,2.6vw,2rem)] tracking-[-0.01em] break-all">
               {PROFILE.email}
             </a>
             <button type="button" onClick={copy} className={button("secondary", "h-9 px-4 text-sm")} aria-live="polite">

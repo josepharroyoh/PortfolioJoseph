@@ -1,53 +1,45 @@
-# Design system (v4, «Señal»)
+# Design system (v5, académico elegante)
 
 Portfolio of a physicist who works on atmospheric electricity, EFM networks and
-lightning nowcasting. The page reads like a clean, confident CV: the name and the
-topics lead, the work follows. Its one signature is a live strip-chart of the surface
-electric field running along the bottom of the first screen.
+lightning nowcasting, set like an interactive scientific article (in the spirit of
+Distill.pub): serif type, a byline, numbered figures with captions, margin notes and a
+table of contents. Figure 1 is a live strip-chart of the surface electric field.
 
 ## Theme
 
-Light (cool paper white) and dark (graphite) are both first-class. The first visit
-follows `prefers-color-scheme`; the toggle saves the choice in `localStorage` and grows
-the new theme from the button with a View Transition. Contact and footer are always
-dark (`.force-dark`) so the page ends on a closing slab.
+Light (clean journal white, never cream) and dark (graphite) are both first-class.
+Contact and footer are always dark (`.force-dark`).
 
 | Token | Light | Dark | Use |
 | --- | --- | --- | --- |
-| `--bg` | `#f4f4f2` | `#111113` | page |
-| `--bg-2` | `#e9e9e6` | `#1b1b1e` | tinted bands, chips |
-| `--surface` | `#fbfbfa` | `#161619` | cards, inputs |
-| `--ink` | `#161618` | `#ececee` | text |
-| `--muted` | `#5b5b63` | `#a0a0a8` | secondary text |
-| `--accent` | `#c2410c` | `#ff7a45` | the only accent: signal orange |
-| `--ok` | `#15803d` | `#4ade80` | the "open to opportunities" dot only |
-
-One accent. No gradients, no glows. Elevation is hairlines; shadows only on floating
-things (project preview, cube bubble).
+| `--bg` | `#fbfbfa` | `#141416` | page |
+| `--bg-2` | `#f1f1ee` | `#1c1c1f` | plates, tinted areas |
+| `--surface` | `#ffffff` | `#19191c` | figures, inputs |
+| `--ink` | `#1b1b1d` | `#eae9e6` | text |
+| `--muted` | `#5d5d64` | `#a4a3a9` | secondary text |
+| `--accent` | `#9b1c2e` | `#f08a93` | the only accent: oxblood |
 
 ## Type
 
-- Display: Bricolage Grotesque (variable, optical size), semibold, tight tracking.
-- Body: Geist. Mono: Geist Mono, only for dates and measurements.
-- No eyebrows, no section numbers, no em or en dashes in copy.
-
-## Motion
-
-`--ease-out: cubic-bezier(0.23, 1, 0.32, 1)`; UI transitions 200-300ms; buttons scale
-to 0.97 on press; reveals are CSS scroll-driven. Reduced motion draws the signal once.
+- Newsreader (variable, optical size, with italics) for headings, the name, leads and
+  long-form text (`.serif-body`, `.dropcap`). Weight 380-450; emphasis is italic.
+- Geist for UI, metadata and labels (`.label`: tracked caps, used sparingly).
+- Geist Mono only for measurements.
+- No em or en dashes in copy.
 
 ## Page structure (home)
 
 | Section | Layout | Interaction |
 | --- | --- | --- |
-| Hero | name + topics + photo + "Ahora" card, signal strip below | name lines rise from a mask; the signal storms on its own and charges as the cursor nears |
-| Logros | full-bleed tinted band, ruled 3x2 table | count-up numbers |
-| Perfil | index layout (sticky heading + facts) | statement lights up word by word |
-| Proyectos | full-width list | spring-follow preview on hover, rows expand in place (video, thesis chart) |
-| Investigación | index layout | copy APA citation |
-| Trayectoria | index layout, grouped by year | filters with counts, rail fills on scroll |
-| Herramientas | index layout, all groups visible | none |
-| Contacto | dark slab, big email + form | copy email |
+| Title block | name (italic surname in accent), topics, dek, B/W portrait, byline grid | lines rise from masks; portrait unveils, colour on hover |
+| Figura 1 | full-width plot with caption | live EFM signal, storms on its own, cursor or tap brings the cloud |
+| Perfil | text column + margin notes | lead lights up word by word, drop cap |
+| En cifras | ruled 3x2 table, serif numerals | count-up |
+| Investigación | reference-list layout + margin (ORCID, copy citation) | copy APA citation |
+| Proyectos | alternating figures (Fig. 2+) with captions | videos play in view, media clip-reveal |
+| Trayectoria | CV table | underline tabs with counts |
+| Herramientas | ruled 2x2 table | none |
+| Contacto | dark slab, serif italic question, form | copy email |
 
-Global: text nav with sliding underline and reading progress, ⌘K palette, cube
-assistant, pixel bat, printable CV at `/cv`, thesis page at `/proyectos/prediccion-de-rayos`.
+Global: sticky table of contents on wide screens with reading progress, text nav,
+⌘K palette, cube assistant, pixel bat, printable CV, thesis page.

@@ -37,13 +37,14 @@ export function SignalTrace({ onTick, threshold, className }: { onTick?: (s: Sig
     let h = 0;
     let raf = 0;
     let visible = true;
-    const colors = { accent: "#c2410c", line: "rgba(0,0,0,.1)", faint: "#888", ink: "#111" };
+    const colors = { accent: "#9b1c2e", line: "rgba(0,0,0,.2)", grid: "rgba(0,0,0,.06)", faint: "#888", ink: "#111" };
 
     const readColors = () => {
       const cs = getComputedStyle(canvas);
       colors.accent = cs.getPropertyValue("--accent").trim() || colors.accent;
       colors.line = cs.getPropertyValue("--line-strong").trim() || colors.line;
       colors.faint = cs.getPropertyValue("--faint").trim() || colors.faint;
+      colors.grid = cs.getPropertyValue("--line").trim() || colors.grid;
       colors.ink = cs.getPropertyValue("--ink").trim() || colors.ink;
     };
 
@@ -83,6 +84,29 @@ export function SignalTrace({ onTick, threshold, className }: { onTick?: (s: Sig
     const draw = () => {
       ctx.clearRect(0, 0, w, h);
       const dx = w / (SAMPLES - 1);
+
+      // Plot grid: kV/m gridlines with tick labels, and time divisions that scroll with the record.
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = colors.grid;
+      ctx.fillStyle = colors.faint;
+      ctx.font = "11px Geist, system-ui, sans-serif";
+      for (const kv of [4, -4, -8]) {
+        const gy = Math.round(yOf(kv / 8)) + 0.5;
+        if (gy < 2 || gy > h - 2) continue;
+        ctx.beginPath();
+        ctx.moveTo(0, gy);
+        ctx.lineTo(w, gy);
+        ctx.stroke();
+        ctx.fillText(kv > 0 ? `+${kv}` : `−${-kv}`, 8, gy - 5);
+      }
+      const div = 60;
+      for (let k = Math.ceil((count - SAMPLES) / div) * div; k <= count; k += div) {
+        const gx = Math.round(w - (count - k) * dx) + 0.5;
+        ctx.beginPath();
+        ctx.moveTo(gx, 0);
+        ctx.lineTo(gx, h);
+        ctx.stroke();
+      }
 
       // Zero line and alert threshold.
       ctx.lineWidth = 1;

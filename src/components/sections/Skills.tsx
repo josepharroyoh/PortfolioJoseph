@@ -10,18 +10,21 @@ export function Skills() {
 
   return (
     <Section id="skills" title={t("skills.title")} intro={t("skills.intro")}>
-      <dl className="border-t border-line">
+      <dl className="grid gap-px overflow-hidden border-y border-line-strong bg-line sm:grid-cols-2">
         {SKILL_GROUPS.map((skills, i) => (
-          <div key={groups[i]} className="reveal grid gap-3 border-b border-line py-6 md:grid-cols-[12rem_1fr] md:gap-6">
-            <dt className="font-medium">{groups[i]}</dt>
-            <dd>
-              <ul className="flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                  <li key={skill} className="rounded-full bg-bg-2 px-3.5 py-1.5 text-[15px] transition-colors duration-200 hover:bg-accent-soft hover:text-accent">
-                    {skill}
-                  </li>
-                ))}
-              </ul>
+          <div key={groups[i]} className="reveal bg-bg py-6 sm:px-5 sm:odd:pl-0">
+            <dt className="label">{groups[i]}</dt>
+            <dd className="mt-3 font-serif text-[1.2rem] leading-relaxed">
+              {skills.map((skill, j) => (
+                <span key={skill}>
+                  <span className="transition-colors duration-200 hover:text-accent">{skill}</span>
+                  {j < skills.length - 1 && (
+                    <span aria-hidden="true" className="px-1.5 text-faint">
+                      ·
+                    </span>
+                  )}
+                </span>
+              ))}
             </dd>
           </div>
         ))}

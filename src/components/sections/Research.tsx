@@ -48,46 +48,61 @@ export function Research() {
   };
 
   return (
-    <Section id="research" title={t("research.title")} intro={t("research.intro")}>
-      {/* The paper, set like a journal title page. */}
-      <article className="reveal rounded-2xl border border-line bg-surface p-6 md:p-9">
-        <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
-          <p className="font-medium text-accent">{pub.label}</p>
-          <p className="font-mono text-muted">{pub.year}</p>
+    <Section
+      id="research"
+      title={t("research.title")}
+      intro={t("research.intro")}
+      aside={
+        <div className="reveal space-y-3">
+          <p className="label">ORCID</p>
+          <a href={PROFILE.links.orcid} target="_blank" rel="noopener noreferrer" className="link-underline inline-flex items-center gap-1 font-mono text-sm">
+            0000-0002-1355-5182
+            <ArrowUpRightIcon size={13} />
+          </a>
+          <p className="pt-4 text-muted">{t("research.citeLabel")}</p>
+          <button type="button" onClick={copy} className={button("secondary", "h-9 px-4 text-sm")} aria-live="polite">
+            {copied ? <CheckIcon size={15} weight="bold" /> : <CopyIcon size={15} />}
+            {copied ? pub.copied : pub.copy}
+          </button>
         </div>
-        <p className="mt-6 text-sm text-muted italic">{pub.journal}</p>
-        <h3 className="mt-2 text-[clamp(1.4rem,2.4vw,2rem)] leading-[1.15] font-semibold tracking-[-0.025em]">{pub.title}</h3>
-        <p className="mt-4 text-[15px] leading-relaxed text-muted">
+      }
+    >
+      {/* The paper, set as it would appear in a reference list, only larger. */}
+      <article className="reveal">
+        <p className="flex flex-wrap items-baseline gap-x-3 text-sm">
+          <span className="font-medium text-accent">{pub.label}</span>
+          <span className="text-faint">{pub.year}</span>
+        </p>
+        <h3 className="mt-3 font-serif text-[clamp(1.6rem,2.8vw,2.3rem)] leading-[1.18] tracking-[-0.015em]">{pub.title}</h3>
+        <p className="mt-3 font-serif text-lg text-muted italic">{pub.journal}</p>
+        <p className="mt-3 max-w-[70ch] leading-relaxed text-muted">
           <Authors text={pub.authors} />
         </p>
-        <button type="button" onClick={copy} className={button("secondary", "mt-7 h-10 px-4 text-sm")} aria-live="polite">
-          {copied ? <CheckIcon size={15} weight="bold" /> : <CopyIcon size={15} />}
-          {copied ? pub.copied : pub.copy}
-        </button>
       </article>
 
-      <article className="reveal mt-4 rounded-2xl bg-bg-2 p-6 md:p-9">
+      <article className="reveal mt-12 border-l-2 border-accent pl-5 md:pl-7">
         <p className="text-sm text-muted">{academic.label}</p>
-        <h3 className="mt-3 text-xl leading-snug font-semibold tracking-[-0.015em]">{academic.title}</h3>
+        <h3 className="mt-2 font-serif text-[1.45rem] leading-snug">{academic.title}</h3>
         <p className="mt-2 text-sm text-muted">
           <Authors text={academic.authors} />
         </p>
-        <p className="mt-4 max-w-[62ch] leading-relaxed text-muted">{academic.text}</p>
-        <a href={PROFILE.links.aireica} target="_blank" rel="noopener noreferrer" className="link-underline mt-5 inline-flex items-center gap-1 text-accent">
+        <p className="serif-body mt-4 max-w-[62ch] text-muted">{academic.text}</p>
+        <a href={PROFILE.links.aireica} target="_blank" rel="noopener noreferrer" className="link-underline mt-4 inline-flex items-center gap-1 text-accent">
           {academic.link}
           <ArrowUpRightIcon size={15} />
         </a>
       </article>
 
-      <h3 className="reveal mt-14 text-xl font-semibold tracking-[-0.01em]">{t("research.congressesTitle")}</h3>
-      <ol className="mt-4 border-t border-line">
+      <h3 className="label reveal mt-14">{t("research.congressesTitle")}</h3>
+      <ol className="mt-3 border-t border-line">
         {congresses.map((c, i) => (
-          <li key={`${c.title}-${i}`} className="reveal grid gap-1 border-b border-line py-5 md:grid-cols-[7rem_1fr] md:gap-6">
-            <span className="font-mono text-sm text-muted">{c.date}</span>
+          <li key={`${c.title}-${i}`} className="reveal grid gap-1 border-b border-line py-5 md:grid-cols-[6.5rem_1fr] md:gap-6">
+            <span className="text-sm text-muted tabular-nums">{c.date}</span>
             <div>
-              <p className="font-medium leading-snug">{c.title}</p>
-              <p className="mt-1 text-[15px] leading-relaxed text-muted">{c.topic}</p>
-              <p className="mt-1 text-sm text-faint">{c.place}</p>
+              <p className="font-serif text-[1.2rem] leading-snug">{c.topic}</p>
+              <p className="mt-1 text-[15px] text-muted">
+                <span className="italic">{c.title}</span>, {c.place}
+              </p>
             </div>
           </li>
         ))}

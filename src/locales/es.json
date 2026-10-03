@@ -4,7 +4,7 @@
     "description": "Portafolio de Joseph Arroyo Hernández, Bachiller en Física (UNICA). Investigación en electricidad atmosférica y predicción de rayos, análisis de datos y cloud. Proyectos, publicaciones, premios y CV."
   },
   "nav": {
-    "highlights": "Logros",
+    "highlights": "En cifras",
     "projects": "Proyectos",
     "about": "Perfil",
     "research": "Investigación",
@@ -19,14 +19,15 @@
     "toDark": "Cambiar a modo oscuro",
     "toLight": "Cambiar a modo claro",
     "skip": "Saltar al contenido",
-    "home": "Inicio"
+    "home": "Inicio",
+    "toc": "Contenido"
   },
   "hero": {
     "status": "Abierto a pasantías de investigación y posgrado",
     "name1": "Joseph Arroyo",
     "name2": "Hernández",
-    "text": "Físico de la UNICA. Convierto mediciones de la atmósfera en datos claros y alertas a tiempo.",
-    "ctaWork": "Ver proyectos",
+    "text": "Físico. Investigo la electricidad atmosférica y el nowcasting de rayos, y construyo herramientas de datos para convertir mediciones en alertas.",
+    "ctaWork": "Ver investigación",
     "ctaCv": "Ver CV",
     "topics": [
       "Electricidad atmosférica",
@@ -35,27 +36,45 @@
       "Ciencia de datos",
       "Cloud"
     ],
-    "now": {
-      "label": "Ahora",
-      "text": "Tesis sobre predicción de rayos con redes de EFM, satélite GLM y radar.",
-      "link": "Ver el proyecto"
-    },
     "photoAlt": "Retrato de Joseph Arroyo Hernández",
     "signal": {
+      "figure": "Figura 1",
       "label": "Campo eléctrico en superficie",
-      "note": "Señal ilustrativa. Acerca el cursor para cargar la nube.",
+      "caption": "Lo que registra un medidor de campo eléctrico (EFM) cuando se acerca una tormenta: el campo se vuelve negativo, cruza el umbral y se emite la alerta; cada rayo lo devuelve de golpe. Simulación ilustrativa.",
+      "hint": "Acerca el cursor para traer la nube.",
+      "hintTouch": "Toca la figura para traer la nube.",
+      "threshold": "Umbral de alerta",
       "states": {
         "calm": "Buen tiempo",
         "charging": "Cargando",
         "alert": "Alerta",
         "strike": "Descarga"
+      }
+    },
+    "ctaContact": "Escríbeme",
+    "photoCaption": "Ica, Perú",
+    "byline": [
+      {
+        "label": "Afiliación",
+        "value": "Universidad Nacional San Luis Gonzaga (UNICA), CIEASEST"
       },
-      "threshold": "Umbral de alerta"
-    }
+      {
+        "label": "Investigación",
+        "value": "Electricidad atmosférica y nowcasting de rayos"
+      },
+      {
+        "label": "Ahora",
+        "value": "Tesis con redes de EFM, satélite GLM y radar",
+        "link": true
+      },
+      {
+        "label": "Estado",
+        "value": "Abierto a pasantías y posgrado"
+      }
+    ]
   },
   "highlights": {
-    "title": "Logros",
-    "intro": "Lo que respalda mi trabajo, en cifras.",
+    "title": "En cifras",
     "items": [
       {
         "value": 16000,
@@ -101,7 +120,7 @@
   },
   "projects": {
     "title": "Proyectos",
-    "intro": "Investigación y productos de datos, del más reciente al primero. Abre cada uno para ver el detalle.",
+    "intro": "De la tesis a los productos de datos construidos en equipo. Cada figura muestra el trabajo real.",
     "open": "Ver detalle",
     "visit": "Abrir enlace",
     "items": [
@@ -127,7 +146,7 @@
         "category": "Desarrollo web",
         "year": "2025",
         "role": "Diseño y desarrollo",
-        "text": "Sitio en React y TypeScript con una simulación de campo eléctrico en canvas, línea de tiempo interactiva, modo claro y oscuro y tres idiomas."
+        "text": "Sitio en React y TypeScript pensado como un artículo científico interactivo: figura de campo eléctrico en vivo, proyectos como figuras, modo claro y oscuro y CV imprimible."
       },
       {
         "key": "reffindr",
@@ -155,7 +174,8 @@
       }
     ],
     "close": "Cerrar detalle",
-    "page": "Ver la página del proyecto"
+    "page": "Ver la página del proyecto",
+    "figure": "Figura"
   },
   "about": {
     "title": "Perfil",
@@ -199,7 +219,7 @@
   },
   "research": {
     "title": "Investigación",
-    "intro": "Publicaciones, proyectos y ponencias donde la física atmosférica se encuentra con el análisis de datos.",
+    "intro": "Publicaciones, proyectos financiados y ponencias en congresos internacionales.",
     "publication": {
       "label": "Artículo en revista indexada",
       "authors": "Romero, R., Tacza, J., Arroyo, J., Prieto, F., Macotela, L., Buleje, Y., Loayza, R., Fernandez, U., y Raulin, J.-P.",
@@ -236,11 +256,12 @@
         "place": "Perú",
         "topic": "Presentación oral como coautor: catálogo de fenómenos solares observados por el Telescopio Monitor de Fulguraciones."
       }
-    ]
+    ],
+    "citeLabel": "Cita en formato APA"
   },
   "timeline": {
     "title": "Trayectoria",
-    "intro": "Formación, investigación y trabajo desde 2016. Filtra por tipo para ir directo a lo que buscas.",
+    "intro": "Experiencia, formación, premios y comunidad desde 2016, del más reciente al primero.",
     "all": "Todo",
     "types": {
       "research": "Investigación",
@@ -416,7 +437,8 @@
         "org": "EFM del CRAAM, Atibaia y USP, GLM y radar",
         "text": "Evalúo si los datos de satélite y radar mejoran una alerta basada en campo eléctrico."
       }
-    ]
+    ],
+    "cv": "Ver el CV completo"
   },
   "skills": {
     "title": "Herramientas",
@@ -429,7 +451,7 @@
     ]
   },
   "contact": {
-    "title": "Hablemos",
+    "title": "Contacto",
     "text": "Si buscas a alguien para una pasantía, un posgrado o un proyecto de datos, escríbeme. Respondo por correo o a través de este formulario.",
     "copy": "Copiar",
     "copied": "Copiado",
@@ -442,7 +464,8 @@
       "sending": "Enviando…",
       "success": "Mensaje enviado. ¡Gracias!",
       "error": "No se pudo enviar. Inténtalo de nuevo o escríbeme al correo."
-    }
+    },
+    "lead": "¿Una pasantía, un posgrado o un proyecto de datos?"
   },
   "palette": {
     "placeholder": "Escribe una sección o una acción…",
@@ -464,14 +487,14 @@
     "messages": {
       "home": [
         "Hola, soy Joseph.",
-        "Acerca el cursor a la señal.",
+        "Acerca el cursor a la Figura 1.",
         "Prueba ⌘K o Ctrl+K para navegar."
       ],
       "highlights": [
         "Esto es lo que he logrado hasta hoy."
       ],
       "projects": [
-        "Abre un proyecto para ver el detalle."
+        "Cada figura es un proyecto real."
       ],
       "about": [
         "Soy físico de la UNICA, en Ica."

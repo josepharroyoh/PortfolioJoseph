@@ -1,193 +1,122 @@
-import { AnimatePresence, motion, useMotionValue, useSpring } from "framer-motion";
-import { useState } from "react";
-import type { PointerEvent } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ArrowUpRightIcon, PlusIcon } from "@phosphor-icons/react";
+import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import clsx from "clsx";
 import { FieldTrace } from "../fx/FieldTrace";
-import { button, container } from "../ui/styles";
+import { Section } from "../ui/Section";
+import { button } from "../ui/styles";
 import { PROJECTS } from "../../data/profile";
 import { useCopy } from "../../hooks/useCopy";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 type Item = { key: string; title: string; category: string; year: string; role: string; text: string };
 type Demo = { field: string; threshold: string; alert: string; strike: string; lead: string };
 
 const meta = (key: string) => PROJECTS.find((p) => p.key === key)!;
 
-/** Typographic stand-in for projects without footage. */
-function Cover({ item, className }: { item: Item; className?: string }) {
+/** Plays muted while on screen, pauses when it leaves (and never under reduced motion). */
+function InViewVideo({ src, poster }: { src: string; poster?: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const io = new IntersectionObserver(([e]) => (e.isIntersecting ? el.play().catch(() => {}) : el.pause()), { threshold: 0.4 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return <video ref={ref} src={src} poster={poster} muted loop playsInline preload="none" className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]" />;
+}
+
+/** Typographic plate for projects without footage. */
+function Plate({ item }: { item: Item }) {
   return (
-    <div className={clsx("relative flex flex-col justify-between overflow-hidden bg-bg-2 p-5", className)}>
-      <span className="text-sm text-muted">{item.category}</span>
-      <span className="font-display text-[clamp(1.6rem,3vw,2.4rem)] leading-none font-semibold tracking-[-0.04em]">{item.title}</span>
-      <span aria-hidden="true" className="absolute top-5 right-5 h-3 w-3 rounded-full bg-accent" />
+    <div className="flex h-full flex-col justify-between bg-bg-2 p-6 md:p-8">
+      <span className="label">{item.category}</span>
+      <span className="font-serif text-[clamp(2rem,4vw,3.4rem)] leading-[0.95] tracking-[-0.03em] italic">{item.title}</span>
+      <span className="text-sm text-muted">{item.role}</span>
     </div>
   );
 }
 
-function Media({ item, open }: { item: Item; open: boolean }) {
+function Media({ item }: { item: Item }) {
   const demo = useCopy<Demo>("thesis.demo");
   const p = meta(item.key);
   if (item.key === "thesis") {
     return (
-      <div className="rounded-xl border border-line bg-surface p-3">
-        {/* Mounted on open so the chart draws itself while you watch. */}
-        {open ? <FieldTrace labels={demo} compact /> : <div className="aspect-[64/26]" />}
+      <div className="flex h-full items-center bg-surface p-4 md:p-6">
+        <FieldTrace labels={demo} compact className="w-full" />
       </div>
     );
   }
-  if (p.video) {
-    return open ? (
-      <video src={p.video} poster={p.poster} autoPlay muted loop playsInline className="aspect-video w-full rounded-xl bg-bg-2 object-cover" />
-    ) : (
-      <img src={p.poster} alt="" className="aspect-video w-full rounded-xl object-cover" />
-    );
-  }
-  return <Cover item={item} className="aspect-video rounded-xl" />;
+  if (p.video) return <InViewVideo src={p.video} poster={p.poster} />;
+  if (p.poster) return <img src={p.poster} alt="" loading="lazy" className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]" />;
+  return <Plate item={item} />;
 }
 
-function Row({ item, open, onToggle, onHover }: { item: Item; open: boolean; onToggle: () => void; onHover: (key: string | null) => void }) {
+function ProjectFigure({ item, index }: { item: Item; index: number }) {
   const { t } = useTranslation();
   const p = meta(item.key);
-  const panelId = `project-${item.key}`;
+  const flip = index % 2 === 1;
 
   return (
-    <li className="border-b border-line">
-      <h3>
-        <button
-          type="button"
-          aria-expanded={open}
-          aria-controls={panelId}
-          onClick={onToggle}
-          onPointerEnter={() => onHover(item.key)}
-          onPointerLeave={() => onHover(null)}
-          className="group grid w-full grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1 py-6 text-left md:grid-cols-[5.5rem_1fr_13rem_auto] md:py-7"
-        >
-          <span className="order-2 col-span-2 font-mono text-sm text-muted md:order-none md:col-span-1">
-            {item.year} <span className="md:hidden">· {item.category}</span>
-          </span>
-          <span
-            className={clsx(
-              "font-display text-[clamp(1.7rem,4vw,3.2rem)] leading-[1.02] font-semibold tracking-[-0.04em] transition-[color,transform] duration-300 ease-out",
-              open ? "text-accent" : "group-hover:translate-x-2",
-            )}
-          >
-            {item.title}
-          </span>
-          <span className="hidden text-[15px] text-muted md:block">{item.category}</span>
-          <span
-            aria-hidden="true"
-            className={clsx(
-              "row-span-2 grid h-10 w-10 place-items-center rounded-full border transition-[transform,background-color,border-color,color] duration-300 ease-out md:row-span-1",
-              open ? "rotate-45 border-accent bg-accent text-on-accent" : "border-line-strong group-hover:border-ink",
-            )}
-          >
-            <PlusIcon size={16} weight="bold" />
-          </span>
-        </button>
-      </h3>
-
-      <div id={panelId} role="region" aria-label={item.title} className={clsx("grid transition-[grid-template-rows] duration-300 ease-out", open ? "grid-rows-[1fr]" : "grid-rows-[0fr]")}>
-        <div className="min-h-0 overflow-hidden" inert={!open}>
-          <div className={clsx("grid gap-8 pb-10 transition-opacity duration-300 md:grid-cols-12 md:pl-[5.5rem]", open ? "opacity-100" : "opacity-0")}>
-            <div className="md:col-span-7">
-              <Media item={item} open={open} />
-            </div>
-            <div className="flex flex-col md:col-span-5">
-              <p className="text-sm text-muted">{item.role}</p>
-              <p className="mt-3 leading-relaxed">{item.text}</p>
-              <ul className="mt-5 flex flex-wrap gap-1.5">
-                {p.tags.map((tag) => (
-                  <li key={tag} className="rounded-full border border-line px-2.5 py-1 text-[13px] text-muted">
-                    {tag}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6 md:mt-auto md:pt-6">
-                {p.page ? (
-                  <Link to={p.page} className={button("primary", "h-10 px-4 text-sm")}>
-                    {t("projects.page")}
-                    <ArrowUpRightIcon size={15} />
-                  </Link>
-                ) : p.link ? (
-                  <a href={p.link} target="_blank" rel="noopener noreferrer" className={button("secondary", "h-10 px-4 text-sm")}>
-                    {t("projects.visit")}
-                    <ArrowUpRightIcon size={15} />
-                  </a>
-                ) : null}
-              </div>
-            </div>
-          </div>
+    <article className="grid items-center gap-6 md:grid-cols-12 md:gap-10">
+      <figure className={clsx("md:col-span-7", flip && "md:order-2")}>
+        <div className="reveal-clip group aspect-[16/10] overflow-hidden rounded-sm border border-line-strong">
+          <Media item={item} />
         </div>
+        <figcaption className="mt-2 text-sm text-muted">
+          <span className="font-semibold text-ink">
+            {t("projects.figure")} {index + 2}.
+          </span>{" "}
+          <span className="font-serif italic">{item.title}</span>, {item.year}. {item.category}.
+        </figcaption>
+      </figure>
+
+      <div className={clsx("reveal md:col-span-5", flip && "md:order-1")}>
+        <p className="label">
+          {item.category} · <span className="tabular-nums">{item.year}</span>
+        </p>
+        <h3 className="mt-3 font-serif text-[clamp(1.9rem,3.2vw,2.7rem)] leading-[1.02] tracking-[-0.025em]">{item.title}</h3>
+        <p className="mt-2 text-sm text-muted italic">{item.role}</p>
+        <p className="serif-body mt-4 text-[1.1rem]">{item.text}</p>
+        <ul className="mt-5 flex flex-wrap gap-1.5">
+          {p.tags.map((tag) => (
+            <li key={tag} className="rounded-full border border-line px-2.5 py-0.5 text-[13px] text-muted">
+              {tag}
+            </li>
+          ))}
+        </ul>
+        {(p.page || p.link) && (
+          <div className="mt-6">
+            {p.page ? (
+              <Link to={p.page} className={button("primary", "h-10 px-4 text-sm")}>
+                {t("projects.page")}
+                <ArrowUpRightIcon size={15} />
+              </Link>
+            ) : (
+              <a href={p.link} target="_blank" rel="noopener noreferrer" className="link-underline inline-flex items-center gap-1 text-accent">
+                {t("projects.visit")}
+                <ArrowUpRightIcon size={15} />
+              </a>
+            )}
+          </div>
+        )}
       </div>
-    </li>
+    </article>
   );
 }
 
 export function Projects() {
   const { t } = useTranslation();
   const items = useCopy<Item[]>("projects.items");
-  const [openKey, setOpenKey] = useState<string | null>(null);
-  const [hovered, setHovered] = useState<string | null>(null);
-  const canPreview = useMediaQuery("(hover: hover) and (pointer: fine) and (min-width: 1024px)");
-
-  // The preview trails the cursor on a spring so it feels attached but not glued.
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const x = useSpring(mx, { stiffness: 420, damping: 38, mass: 0.6 });
-  const y = useSpring(my, { stiffness: 420, damping: 38, mass: 0.6 });
-  const onMove = (e: PointerEvent<HTMLElement>) => {
-    mx.set(e.clientX + 24);
-    my.set(e.clientY - 90);
-  };
-
-  const preview = canPreview && hovered && hovered !== openKey ? items.find((i) => i.key === hovered) : undefined;
 
   return (
-    <section id="projects" aria-labelledby="projects-title" className="border-t border-line py-20 md:py-28">
-      <div className={container}>
-        <div className="grid gap-4 lg:grid-cols-12 lg:items-end lg:gap-12">
-          <h2 id="projects-title" className="reveal text-[clamp(2.8rem,7vw,6rem)] leading-[0.95] font-semibold tracking-[-0.05em] lg:col-span-7">
-            {t("projects.title")}
-          </h2>
-          <p className="reveal max-w-[44ch] leading-relaxed text-muted lg:col-span-5 lg:pb-2">{t("projects.intro")}</p>
-        </div>
-
-        <ul className="mt-10 border-t border-line-strong" onPointerMove={canPreview ? onMove : undefined}>
-          {items.map((item) => (
-            <Row
-              key={item.key}
-              item={item}
-              open={openKey === item.key}
-              onToggle={() => setOpenKey((k) => (k === item.key ? null : item.key))}
-              onHover={setHovered}
-            />
-          ))}
-        </ul>
+    <Section id="projects" title={t("projects.title")} intro={t("projects.intro")}>
+      <div className="space-y-20 md:space-y-28">
+        {items.map((item, i) => (
+          <ProjectFigure key={item.key} item={item} index={i} />
+        ))}
       </div>
-
-      <motion.div aria-hidden="true" style={{ x, y }} className="pointer-events-none fixed top-0 left-0 z-40">
-        <AnimatePresence>
-          {preview && (
-            <motion.div
-              key={preview.key}
-              initial={{ opacity: 0, transform: "scale(0.92)" }}
-              animate={{ opacity: 1, transform: "scale(1)" }}
-              exit={{ opacity: 0, transform: "scale(0.96)", transition: { duration: 0.12 } }}
-              transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
-              className="absolute w-[300px] origin-top-left overflow-hidden rounded-xl border border-line shadow-card"
-            >
-              {meta(preview.key).poster ? (
-                <img src={meta(preview.key).poster} alt="" className="aspect-video w-full object-cover" />
-              ) : (
-                <Cover item={preview} className="aspect-video" />
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
-    </section>
+    </Section>
   );
 }

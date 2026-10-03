@@ -1,32 +1,28 @@
 import type { ReactNode } from "react";
 import clsx from "clsx";
-import { container } from "./styles";
 
 type Props = {
   id: string;
   title: string;
   intro?: string;
-  /** Extra content under the heading, kept in the sticky column on desktop. */
+  /** Margin notes: a narrow column on the right on desktop, after the content on phones. */
   aside?: ReactNode;
   children: ReactNode;
   className?: string;
 };
 
-/** Index layout: the heading stays pinned on the left while the content scrolls past. */
+/** A chapter of the page, laid out like a journal article: text column plus margin notes. */
 export function Section({ id, title, intro, aside, children, className }: Props) {
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className={clsx("border-t border-line py-20 md:py-28", className)}>
-      <div className={clsx(container, "grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12")}>
-        <header className="min-w-0 lg:col-span-4">
-          <div className="lg:sticky lg:top-28">
-            <h2 id={`${id}-title`} className="reveal text-[clamp(2.3rem,4.4vw,3.5rem)] leading-[1] font-semibold tracking-[-0.04em]">
-              {title}
-            </h2>
-            {intro && <p className="reveal mt-4 max-w-[36ch] leading-relaxed text-muted">{intro}</p>}
-            {aside}
-          </div>
-        </header>
-        <div className="min-w-0 lg:col-span-8">{children}</div>
+    <section id={id} aria-labelledby={`${id}-title`} className={clsx("py-16 md:py-24", className)}>
+      <div aria-hidden="true" className="rule-draw h-px bg-line-strong" />
+      <h2 id={`${id}-title`} className="reveal mt-10 text-[clamp(2.2rem,4vw,3.4rem)] leading-[1.02] tracking-[-0.025em]">
+        {title}
+      </h2>
+      {intro && <p className="reveal mt-3 max-w-[58ch] text-muted">{intro}</p>}
+      <div className={clsx("mt-10", aside && "grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_14rem] lg:gap-12")}>
+        <div className="min-w-0">{children}</div>
+        {aside && <aside className="min-w-0 text-[15px] lg:border-l lg:border-line lg:pl-6">{aside}</aside>}
       </div>
     </section>
   );

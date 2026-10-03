@@ -19,7 +19,7 @@ export const THESIS_PATH = "/proyectos/prediccion-de-rayos";
 export const CV_PATH = "/cv";
 
 /** Home page sections in order; the nav and the assistant follow the active one. */
-export const SECTIONS = ["home", "highlights", "about", "projects", "research", "timeline", "skills", "contact"] as const;
+export const SECTIONS = ["home", "about", "highlights", "research", "projects", "timeline", "skills", "contact"] as const;
 export type SectionId = (typeof SECTIONS)[number];
 
 type Project = {
@@ -64,6 +64,7 @@ export const PROJECTS: Project[] = [
   },
   {
     key: "portfolio",
+    poster: "/posters/portfolio.jpg",
     tags: ["React", "TypeScript", "Canvas", "Framer Motion"],
     link: "https://github.com/josepharroyoh/PortfolioJoseph",
   },

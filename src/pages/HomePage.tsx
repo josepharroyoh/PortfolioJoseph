@@ -12,6 +12,8 @@ import { Research } from "../components/sections/Research";
 import { Timeline } from "../components/sections/Timeline";
 import { Skills } from "../components/sections/Skills";
 import { Contact } from "../components/sections/Contact";
+import { Toc } from "../components/layout/Toc";
+import { container } from "../components/ui/styles";
 import { useActiveSection } from "../hooks/useActiveSection";
 
 const INTRO_KEY = "intro-seen";
@@ -56,12 +58,19 @@ export default function HomePage() {
     <PageShell active={active}>
       {intro && <Intro onDone={finishIntro} />}
       <Hero ready={!intro} />
-      <Highlights />
-      <About />
-      <Projects />
-      <Research />
-      <Timeline />
-      <Skills />
+      <div className={`${container} xl:grid xl:grid-cols-[10rem_minmax(0,1fr)] xl:gap-14`}>
+        <aside className="hidden pt-24 xl:block">
+          <Toc active={active} />
+        </aside>
+        <div className="min-w-0">
+          <About />
+          <Highlights />
+          <Research />
+          <Projects />
+          <Timeline />
+          <Skills />
+        </div>
+      </div>
       <Contact />
     </PageShell>
   );
